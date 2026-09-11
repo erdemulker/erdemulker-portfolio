@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Erdem Ülker, Product Designer</title>
+<meta name="description" content="Staff product designer. I turn complex technology, systems and business requirements into product experiences that feel simple." />
+<meta name="color-scheme" content="light dark" />
+<script>
+  (()=>{
+    const saved=localStorage.getItem('theme');
+    const theme=saved||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --s50:#fafaf9;--s100:#f5f5f4;--s200:#e7e5e4;--s300:#d6d3d1;
+    --s400:#a8a29e;--s500:#78716c;--s600:#57534e;--s700:#44403c;
+    --s800:#292524;--s900:#1c1917;
+    --nav-bg:rgba(250,250,249,.88);--panel-bg:rgba(250,250,249,.9);
+    --card-shadow:rgba(28,25,23,.07);--scrim:rgba(28,25,23,.28);
+
+    --f:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+
+    --tk-lbl:.08em;
+    --tk-1:-.011em;
+    --tk-2:-.019em;
+    --tk-3:-.027em;
+
+    --ui:170ms;
+    --rev:720ms;
+    --soft:cubic-bezier(.22,1,.36,1);
+    --out:cubic-bezier(.16,1,.24,1);
+
+    --cols:4;--mx:24px;--gap:20px;
+    --pad:clamp(80px,10vh,120px);
+  }
+  :root[data-theme="dark"]{
+    --s50:#1c1917;--s100:#292524;--s200:#44403c;--s300:#57534e;
+    --s400:#78716c;--s500:#a8a29e;--s600:#d6d3d1;--s700:#e7e5e4;
+    --s800:#f5f5f4;--s900:#fafaf9;
+    --nav-bg:rgba(28,25,23,.88);--panel-bg:rgba(28,25,23,.9);
+    --card-shadow:rgba(0,0,0,.24);--scrim:rgba(0,0,0,.58);
+    color-scheme:dark;
+  }
+  @media(min-width:900px){:root{--cols:12;--mx:48px;--gap:24px}}
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--f);font-size:17px;font-weight:400;line-height:1.6;
+    background:var(--s50);color:var(--s900);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html.theme-fallback body,html.theme-fallback .nav,html.theme-fallback .mech-card,html.theme-fallback .dr-p,
+  html.theme-fallback .dr-bar,html.theme-fallback .cta,html.theme-fallback .btn{transition:background-color 520ms var(--soft),color 520ms var(--soft),border-color 520ms var(--soft),box-shadow 520ms var(--soft)}
+  ::selection{background:var(--s200)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font:inherit;color:inherit;background:none;border:0}
+  :focus-visible{outline:2px solid var(--s900);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--mx)}
+  .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap)}
+  .lbl{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500)}
+  .skip{position:absolute;left:-9999px;background:var(--s900);color:var(--s50);padding:12px 18px;z-index:300;font-size:13px}
+  .skip:focus{left:0}
+  .sec{padding:var(--pad) 0}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* nav */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:150;padding:22px 0;border-bottom:1px solid transparent;
+    transition:padding var(--rev) var(--soft),background var(--rev) var(--soft),border-color var(--rev) var(--soft)}
+  .nav.st{padding:14px 0;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(115%);border-bottom-color:var(--s200)}
+  .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
+  .bd{font-size:16px;font-weight:600;letter-spacing:var(--tk-1)}
+  .bd span{color:var(--s400);font-weight:400}
+  .nr{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--s500)}
+  .nr a:not(.cta){position:relative;transition:color var(--ui) linear}
+  .nr a:not(.cta):hover{color:var(--s900)}
+  .nr a:not(.cta)::after{content:'';position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--s900);transition:width 420ms var(--soft)}
+  .nr a:not(.cta):hover::after{width:100%}
+  .cta{border:1px solid var(--s300);border-radius:99px;padding:7px 16px;font-size:14px;color:var(--s700);
+    transition:background var(--ui) linear,color var(--ui) linear,border-color var(--ui) linear}
+  .cta:hover,.cta:focus-visible{background:var(--s900);border-color:var(--s900);color:var(--s50)}
+  .theme-toggle{position:relative;width:58px;height:32px;flex:none;border-radius:99px;background:var(--s900);cursor:pointer;
+    color:var(--s50);isolation:isolate;transition:transform var(--ui) var(--soft),background-color 520ms var(--soft)}
+  .theme-toggle:hover{transform:scale(1.04)}
+  .theme-toggle:active{transform:scale(.96)}
+  .theme-toggle .knob{position:absolute;z-index:2;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--s50);
+    box-shadow:0 1px 4px var(--card-shadow);transition:transform 520ms var(--soft),background-color 520ms var(--soft)}
+  [data-theme="dark"] .theme-toggle .knob{transform:translateX(26px)}
+  .theme-toggle svg{position:absolute;top:7px;width:18px;height:18px;transition:opacity 320ms linear,transform 520ms var(--soft)}
+  .theme-toggle .sun{right:7px;opacity:1;transform:rotate(0)}
+  .theme-toggle .moon{left:7px;opacity:0;transform:rotate(-45deg)}
+  [data-theme="dark"] .theme-toggle .sun{opacity:0;transform:rotate(45deg)}
+  [data-theme="dark"] .theme-toggle .moon{opacity:1;transform:rotate(0)}
+  @media(max-width:820px){.nr{gap:10px}.nr .hs{display:none}.cta{padding-inline:13px}.bd span{display:none}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(16px);transition:opacity var(--rev) var(--out),transform var(--rev) var(--out)}
+  .rv.in{opacity:1;transform:none}
+  .ln{display:block;overflow:hidden;padding-bottom:.05em}
+  .ln>i{display:block;font-style:normal;transform:translateY(104%);transition:transform 900ms var(--soft)}
+  .in .ln>i{transform:none}
+  .ln:nth-child(2)>i{transition-delay:60ms}
+  .ln:nth-child(3)>i{transition-delay:120ms}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:150px 0 0}
+  .hero h1{font-size:clamp(36px,4.9vw,66px);font-weight:500;line-height:1.1;letter-spacing:var(--tk-3);max-width:21ch}
+  .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
+  .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
+  .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
+  .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
+  .live::after{content:'';position:absolute;inset:0;border-radius:50%;background:#16a34a;animation:pg 2.8s var(--out) infinite}
+  @keyframes pg{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+
+  /* ---------- SIGNATURE: THE MECHANISM ---------- */
+  .mech{margin-top:clamp(50px,7vh,80px);padding-bottom:clamp(80px,10vh,120px)}
+  .mech-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:20px}
+  .mech-q{font-size:15px;font-weight:300;color:var(--s500);max-width:46ch;line-height:1.56}
+  .mech-q b{font-weight:500;color:var(--s700)}
+  .mech-hint{font-size:12.5px;font-weight:300;color:var(--s400);white-space:nowrap}
+
+  .mech-stage{position:relative;border-top:1px solid var(--s200);border-bottom:1px solid var(--s200);
+    padding:clamp(22px,3.4vw,44px) 0}
+  .mech-svg{display:block;width:100%;height:auto;overflow:visible}
+
+  .g-body{fill:var(--s50);stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;opacity:.5;
+    transition:stroke 380ms linear,fill 380ms linear,stroke-width 380ms linear}
+  .g-hub{fill:var(--s50);stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5;transition:stroke 380ms linear,opacity 380ms linear}
+  .g-bore{fill:var(--s200);stroke:none;opacity:.5;transition:fill 380ms linear,opacity 380ms linear}
+  .g-spoke{stroke:var(--s200);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5;transition:stroke 380ms linear,opacity 380ms linear}
+  .g-mk{fill:var(--s300);opacity:.5;transition:fill 380ms linear,opacity 380ms linear}
+  .g-hit{fill:transparent;cursor:pointer}
+
+  .gear .g-body,.gear .g-hub,.gear .g-bore,.gear .g-spoke,.gear .g-mk{transition:opacity 380ms linear,stroke 380ms linear,fill 380ms linear,stroke-width 380ms linear}
+  .gear.dim .g-body{stroke:var(--s200);opacity:.34}
+  .gear.dim .g-hub,.gear.dim .g-bore{opacity:.34}
+  .gear.dim .g-hub{stroke:var(--s200)}
+  .gear.dim .g-spoke,.gear.dim .g-mk{stroke:var(--s200);fill:var(--s200)}
+  .gear.near .g-body{stroke:var(--s500);fill:var(--s100);opacity:.9}
+  .gear.near .g-hub,.gear.near .g-bore,.gear.near .g-spoke,.gear.near .g-mk{opacity:.9}
+  .gear.near .g-hub{stroke:var(--s400);fill:var(--s100)}
+  .gear.near .g-mk{fill:var(--s400)}
+  .gear.act .g-body{stroke:var(--s900);stroke-width:1.4;fill:var(--s100);opacity:1}
+  .gear.act .g-hub,.gear.act .g-bore,.gear.act .g-spoke,.gear.act .g-mk{opacity:1}
+  .gear.act .g-hub{stroke:var(--s700);fill:var(--s50)}
+  .gear.act .g-bore{fill:var(--s900)}
+  .gear.act .g-spoke{stroke:var(--s500)}
+  .gear.act .g-mk{fill:var(--s900)}
+  .gear:focus{outline:none}
+  .gear:focus-visible .g-body{stroke:var(--s900);stroke-width:1.6;opacity:1}
+
+  .lnk-l{stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 5;opacity:0;transition:opacity 360ms linear}
+  .lnk-l.on{opacity:1}
+
+  /* hover card */
+  .mech-card{position:absolute;z-index:5;pointer-events:none;width:236px;
+    background:var(--s50);border:1px solid var(--s200);border-radius:9px;padding:15px 17px;
+    box-shadow:0 10px 30px var(--card-shadow);
+    opacity:0;transform:translateY(-50%) scale(.97);transform-origin:left center;
+    transition:opacity 260ms var(--soft),transform 320ms var(--soft)}
+  .mech-card[data-side=l]{transform:translate(-100%,-50%) scale(.97);transform-origin:right center}
+  .mech-card.on{opacity:1;transform:translateY(-50%) scale(1)}
+  .mech-card.on[data-side=l]{transform:translate(-100%,-50%) scale(1)}
+  .mc-n{font-size:15px;font-weight:500;letter-spacing:var(--tk-1);line-height:1.2}
+  .mc-s{font-size:13px;font-weight:300;color:var(--s500);line-height:1.5;margin-top:5px}
+  .mc-r{margin-top:12px;padding-top:11px;border-top:1px solid var(--s200);display:flex;flex-direction:column;gap:7px}
+  .mc-r div{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .mc-r u{text-decoration:none;font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s400);flex:none}
+  .mc-r b{font-size:12.5px;font-weight:400;color:var(--s700);text-align:right;line-height:1.35}
+  .mc-r b.rate{font-variant-numeric:tabular-nums;font-weight:500}
+  @media(max-width:820px){
+    .mech-card{position:static;width:auto;margin-top:16px;opacity:1;transform:none;box-shadow:none;
+      display:none}
+    .mech-card.on{display:block;transform:none}
+    .mech-card.on[data-side=l]{transform:none}
+    .mech-hint{display:none}
+  }
+
+  /* ---------- work ---------- */
+  .shd{margin-bottom:clamp(30px,4.5vh,46px)}
+  .shd h2{margin-top:12px;font-size:clamp(24px,2.5vw,34px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.16;max-width:26ch}
+  .shd p{margin-top:13px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:56ch;line-height:1.62}
+
+  .prj{display:block;width:100%;text-align:left;border-top:1px solid var(--s200);padding:clamp(26px,3.4vh,38px) 0;
+    cursor:pointer}
+  #prjs .prj:last-child{border-bottom:1px solid var(--s200)}
+  .prj-g{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap);align-items:start}
+  .p-l{grid-column:span 4}
+  .p-r{grid-column:span 4;margin-top:16px}
+  @media(min-width:1000px){.p-l{grid-column:span 6}.p-r{grid-column:7 / span 6;margin-top:0}}
+  .p-ix{font-size:13px;color:var(--s400);font-variant-numeric:tabular-nums}
+  .p-kk{font-size:13px;color:var(--s500);font-weight:300;margin-left:11px}
+  .p-t{margin-top:11px;font-size:clamp(22px,2.1vw,29px);font-weight:500;line-height:1.18;letter-spacing:var(--tk-2)}
+  .p-d{margin-top:12px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.62;max-width:46ch}
+  .p-m{margin-top:18px;display:flex;gap:22px;flex-wrap:wrap}
+  .p-m div span{display:block;font-size:12px;color:var(--s400)}
+  .p-m div b{font-size:14.5px;font-weight:500;letter-spacing:var(--tk-1)}
+  a.p-go{text-decoration:none}
+  a.p-go:hover{color:var(--s900)}
+  a.p-go:hover svg{transform:translateX(5px)}
+  .p-go{display:inline-flex;align-items:center;gap:8px;margin-top:19px;font-size:14.5px;font-weight:500;color:var(--s700)}
+  .p-go svg{transition:transform 540ms var(--soft)}
+  .prj:hover .p-go{color:var(--s900)}
+  .prj:hover .p-go svg{transform:translateX(5px)}
+  .p-im{border-radius:10px;overflow:hidden;aspect-ratio:16/10;background:var(--s100)}
+  .p-im img{width:100%;height:100%;object-fit:cover;object-position:top left;
+    transform-origin:center center;will-change:transform;
+    transition:transform 1100ms var(--soft)}
+  .prj:hover .p-im img,.prj:focus-visible .p-im img{transform:scale(1.08)}
+
+  /* ---------- about ---------- */
+  .ab{align-items:start}
+  .ab .l{grid-column:span 4}
+  .ab .r{grid-column:span 4;margin-top:34px}
+  @media(min-width:900px){.ab .l{grid-column:span 6}.ab .r{grid-column:8 / span 5;margin-top:0;position:sticky;top:104px}}
+  .lede{font-size:clamp(21px,2.2vw,29px);font-weight:400;line-height:1.3;letter-spacing:var(--tk-2)}
+  .lede em{font-style:italic;font-weight:300;color:var(--s500)}
+  .ab p.b{margin-top:20px;font-size:16.5px;font-weight:300;color:var(--s600);line-height:1.74;max-width:58ch}
+  .rowl{border-top:1px solid var(--s200)}
+  .rowl div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--s200)}
+  .rowl div b{font-weight:400;font-size:15.5px;letter-spacing:var(--tk-1)}
+  .rowl div span{font-size:13px;color:var(--s400);white-space:nowrap}
+
+  /* ---------- contact ---------- */
+  .ct h2{font-size:clamp(27px,3.3vw,46px);font-weight:500;line-height:1.12;letter-spacing:var(--tk-3);max-width:24ch}
+  .ct h2 em{font-style:italic;font-weight:300;color:var(--s500)}
+  .ct p{margin-top:18px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:52ch;line-height:1.64}
+  .ct-a{margin-top:32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--s900);color:var(--s50);border-radius:99px;
+    padding:13px 24px;font-size:15px;font-weight:500;letter-spacing:var(--tk-1);
+    transition:transform var(--ui) var(--soft),background var(--ui) linear}
+  .btn:hover{transform:translateY(-2px);background:var(--s800)}
+  .btn svg{transition:transform 540ms var(--soft)}
+  .btn:hover svg{transform:translateX(4px)}
+  .tl{font-size:15px;color:var(--s600);position:relative}
+  .tl::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:var(--s300);transition:background var(--ui) linear}
+  .tl:hover{color:var(--s900)}
+  .tl:hover::after{background:var(--s900)}
+  footer{border-top:1px solid var(--s200);padding:26px 0 34px;margin-top:clamp(60px,9vh,100px)}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--s500)}
+  footer a:hover{color:var(--s900)}
+  .fl{display:flex;gap:22px}
+  ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-new(root){z-index:2;clip-path:circle(0 at var(--theme-x) var(--theme-y));animation:theme-reveal 680ms var(--soft) forwards}
+  ::view-transition-old(root){z-index:1}
+  @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
+</style>
+</head>
+<body>
+<a href="#work" class="skip">Skip to work</a>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="bd">Erdem Ülker <span>/ Product Designer</span></a>
+    <div class="nr">
+      <a href="#work" class="hs">Work</a>
+      <a href="about.html" class="hs">About</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+        <span class="knob" aria-hidden="true"></span>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15.4A9.4 9.4 0 1 1 8.6 3 7.5 7.5 0 0 0 21 15.4Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+      </button>
+      <a href="mailto:hello@erdemulker.com" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1 class="rv">
+      <span class="ln"><i>I turn complex systems into</i></span>
+      <span class="ln"><i>products that feel <em>simple</em>.</i></span>
+    </h1>
+    <p class="hsub rv">Staff level product designer working on B2B platforms and operational tooling. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hmeta rv">
+      <span class="live"></span><span>Open to staff and lead roles</span>
+      <span class="dot"></span><span>Hamburg, working remotely</span>
+      <span class="dot"></span><span>7+ years</span>
+    </p>
+  </div>
+
+  <!-- SIGNATURE INTERACTION: THE MECHANISM -->
+  <section class="mech" aria-labelledby="mechH">
+    <div class="wrap">
+      <div class="mech-hd rv">
+        <p class="mech-q" id="mechH">One platform, ten parts, cut so the teeth actually mesh.
+          <b>Large parts turn slowly. Small parts never stop.</b></p>
+        <p class="mech-hint">Hover a part to trace what it drives</p>
+      </div>
+      <div class="mech-stage rv" id="mechStage">
+        <div class="mech-card" id="mechCard" data-side="r" aria-hidden="true">
+          <p class="mc-n" id="mcName"></p>
+          <p class="mc-s" id="mcSub"></p>
+          <div class="mc-r">
+            <div><u>Meshes with</u><b id="mcMesh"></b></div>
+            <div><u>Turn rate</u><b class="rate" id="mcRate"></b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Selected work</span>
+      <h2>Four projects, chosen for the decisions rather than the screens.</h2>
+      <p>Each one includes the reasoning, the tradeoffs I accepted, and what it changed for the business.</p>
+    </div>
+    <div id="prjs"></div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap grid ab">
+    <div class="l">
+      <div class="shd rv"><span class="lbl">About</span></div>
+      <p class="lede rv">The screens that decide whether a platform works are usually the last ones to get design attention. <em>Configuration flows, investigation tooling, tables holding thousands of rows.</em></p>
+      <p class="b rv">That gap is expensive. An unclear status becomes a support ticket. An ambiguous default becomes a payout error. It is also where renewal risk sits, because customers judge a platform on the tools their own team opens every morning rather than on the marketing site. So I work where attention is underpriced relative to what it protects.</p>
+      <p class="rv" style="margin-top:26px">
+        <a href="about.html" class="p-go" style="font-size:15px">More about how I work
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </p>
+    </div>
+    <div class="r">
+      <div class="rowl">
+        <div class="rv"><b>Product strategy and framing</b><span>Core</span></div>
+        <div class="rv"><b>Information architecture</b><span>Core</span></div>
+        <div class="rv"><b>Design systems and tokens</b><span>Core</span></div>
+        <div class="rv"><b>Data and operations interfaces</b><span>Core</span></div>
+        <div class="rv"><b>AI ready systems, agent workflows</b><span>Core</span></div>
+        <div class="rv"><b>Working with engineering on constraints</b><span>Core</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ct" id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="shd rv"><span class="lbl">Contact</span></div>
+    <h2 class="rv">If the problem is genuinely complicated, I am <em>interested</em>.</h2>
+    <p class="rv">Open to staff and lead roles in B2B and platform teams. Happy to talk through any of the work above in detail.</p>
+    <div class="ct-a rv">
+      <a href="mailto:hello@erdemulker.com" class="btn">hello@erdemulker.com
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener" class="tl">LinkedIn</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Erdem Ülker</span>
+      <span class="fl">
+        <a href="about.html">About</a>
+        <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@erdemulker.com">Email</a>
+      </span>
+    </div>
+  </footer>
+</section>
+
+<div class="dr" id="dr" role="dialog" aria-modal="true" aria-labelledby="drT">
+  <div class="dr-bg" id="drBg"></div>
+  <article class="dr-p" id="drP">
+    <div class="dr-bar">
+      <div class="wrap2">
+        <span class="dr-ix lbl" id="drIx"></span>
+        <button class="dr-x" id="drX" aria-label="Close case study">Close</button>
+      </div>
+      <div class="dr-prog" id="drProg"></div>
+    </div>
+    <div class="dr-in" id="drC"></div>
+  </article>
+</div>
+
+<style>
+  /* ---------- case drawer ---------- */
+  .dr{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none}
+  .dr.on{visibility:visible;pointer-events:auto}
+  .dr-bg{position:absolute;inset:0;background:var(--scrim);opacity:0;
+    transition:opacity 560ms var(--soft);backdrop-filter:blur(4px)}
+  .dr.on .dr-bg{opacity:1}
+  .dr-p{position:absolute;inset:0 0 0 auto;width:min(1060px,96vw);background:var(--s50);
+    transform:translate3d(100%,0,0);transition:transform 700ms var(--soft);
+    overflow-y:auto;overscroll-behavior:contain}
+  .dr.on .dr-p{transform:none}
+  .dr-bar{position:sticky;top:0;z-index:6;background:var(--panel-bg);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--s200)}
+  .wrap2{max-width:820px;margin-inline:auto;padding:14px clamp(22px,4vw,56px);
+    display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .dr-x{font-size:13.5px;font-weight:500;color:var(--s600);border:1px solid var(--s200);border-radius:99px;
+    padding:7px 15px;cursor:pointer;transition:background var(--ui) linear,color var(--ui) linear,border-color var(--ui) linear}
+  .dr-x:hover{background:var(--s900);color:var(--s50);border-color:var(--s900)}
+  .dr-prog{height:1px;background:var(--s900);width:0;transition:width 90ms linear}
+  .dr-in{max-width:820px;margin-inline:auto;padding:clamp(40px,5.5vw,64px) clamp(22px,4vw,56px) 120px}
+
+  /* above the fold in the drawer */
+  .d-kk{font-size:13px;color:var(--s500);font-weight:300}
+  .d-t{margin:12px 0 18px;font-size:clamp(27px,3.7vw,46px);font-weight:500;line-height:1.1;letter-spacing:var(--tk-3)}
+  .d-one{font-size:clamp(17.5px,1.6vw,21px);font-weight:300;color:var(--s600);line-height:1.58;max-width:56ch}
+  .d-tl{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--s200)}
+  .d-tl div span{display:block;font-size:12px;color:var(--s400);margin-bottom:5px}
+  .d-tl div b{font-size:14.5px;font-weight:500;letter-spacing:var(--tk-1)}
+  /* headline impact, above the fold */
+  .d-imp{display:grid;grid-template-columns:1fr;gap:0;margin-top:26px;border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  @media(min-width:700px){.d-imp{grid-template-columns:repeat(3,1fr)}}
+  .d-imp div{padding:20px 22px;border-top:1px solid var(--s200)}
+  .d-imp div:first-child{border-top:0}
+  @media(min-width:700px){.d-imp div{border-top:0}.d-imp div+div{border-left:1px solid var(--s200)}}
+  .d-imp b{display:block;font-size:clamp(21px,2.2vw,27px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;font-variant-numeric:tabular-nums}
+  .d-imp span{display:block;font-size:13px;font-weight:300;color:var(--s500);margin-top:8px;line-height:1.5}
+
+  .d-fig{margin:34px 0 10px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
+  .d-fig:first-of-type{margin-top:0}
+  .beforefig{border-style:dashed;border-color:var(--s300)}
+  .d-pair{display:grid;grid-template-columns:1fr;gap:14px;margin:26px 0 10px}
+  @media(min-width:760px){.d-pair{grid-template-columns:1fr 1fr}}
+  .d-pair figure{margin:0;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
+  /* awaiting assets: collapse the frame instead of showing a broken image */
+  .d-fig img,.d-shot img,.p-im img{min-height:1px}
+  .d-fig:has(img[src=""]),.d-fig:has(img:not([src])){display:none}
+  .d-pair u{display:block;text-decoration:none;font-size:10.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s400);padding:9px 12px;border-bottom:1px solid var(--s200);background:var(--s50)}
+  .d-cap{font-size:13px;font-weight:300;color:var(--s500);line-height:1.6;margin-bottom:36px}
+  .d-shot{margin:26px 0 10px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100);max-height:620px;overflow-y:auto}
+
+  .d-b{margin-top:clamp(40px,5.5vh,58px)}
+  .d-b>h3{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);
+    padding-bottom:11px;border-bottom:1px solid var(--s200);margin-bottom:20px}
+  .d-b p{font-size:16.5px;font-weight:300;color:var(--s700);line-height:1.76;margin-bottom:14px}
+  .d-b p b{font-weight:500;color:var(--s900)}
+  .d-pull{margin:26px 0;padding-left:20px;border-left:2px solid var(--s300);
+    font-size:clamp(18px,1.8vw,23px);font-weight:300;line-height:1.42;letter-spacing:var(--tk-1);color:var(--s800)}
+
+  /* decision blocks with rejected direction */
+  .dcs{display:flex;flex-direction:column;gap:14px}
+  .dc{border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  .dc-h{padding:16px 20px;font-size:15.5px;font-weight:500;letter-spacing:var(--tk-1);border-bottom:1px solid var(--s200)}
+  .dc-b{display:grid;grid-template-columns:1fr}
+  @media(min-width:700px){.dc-b{grid-template-columns:1fr 1fr}}
+  .dc-c{padding:16px 20px;font-size:14.5px;font-weight:300;color:var(--s600);line-height:1.6}
+  @media(min-width:700px){.dc-c+.dc-c{border-left:1px solid var(--s200)}}
+  .dc-c u{display:block;text-decoration:none;font-size:11.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s400);margin-bottom:8px}
+  .dc-c.rj{background:var(--s100)}
+
+  /* system diagram, plain and structural */
+  .sys{border:1px solid var(--s200);border-radius:10px;padding:24px;background:var(--s50)}
+  .sys-r{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+  .sys-c{flex:1 1 150px;border:1px solid var(--s200);border-radius:8px;padding:14px}
+  .sys-c u{display:block;text-decoration:none;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s400);margin-bottom:9px}
+  .sys-c li{list-style:none;font-size:13.5px;font-weight:300;color:var(--s600);padding:4px 0;line-height:1.45}
+  .sys-n{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.6}
+
+  .lst{list-style:none}
+  .lst li{display:flex;gap:18px;padding:15px 0;border-top:1px solid var(--s200);font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.64}
+  .lst li:first-child{border-top:0;padding-top:0}
+  .lst li b{flex:none;width:172px;color:var(--s900);font-weight:500}
+  @media(max-width:700px){.lst li{flex-direction:column;gap:5px}.lst li b{width:auto}}
+
+  .stp{list-style:none;counter-reset:q}
+  .stp li{counter-increment:q;position:relative;padding:17px 0 17px 46px;border-top:1px solid var(--s200);
+    font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.66}
+  .stp li::before{content:counter(q);position:absolute;left:0;top:16px;width:25px;height:25px;border-radius:50%;
+    border:1px solid var(--s300);font-size:12px;font-weight:500;color:var(--s600);display:flex;align-items:center;justify-content:center}
+  .stp li b{display:block;font-size:16.5px;font-weight:500;color:var(--s900);letter-spacing:var(--tk-1);margin-bottom:5px}
+
+  .ld{background:var(--s100);border:1px solid var(--s200);border-radius:10px;padding:24px 26px}
+  .ld li{border-top-color:var(--s200)}
+  .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
+
+  /* optional depth */
+  .more{margin-top:16px;border-top:1px solid var(--s200)}
+  .more summary{list-style:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:500;color:var(--s600);transition:color var(--ui) linear}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary:hover{color:var(--s900)}
+  .more summary .pm{width:16px;height:16px;position:relative;flex:none}
+  .more summary .pm::before,.more summary .pm::after{content:'';position:absolute;background:currentColor;
+    transition:transform 320ms var(--soft)}
+  .more summary .pm::before{left:0;top:7.5px;width:16px;height:1px}
+  .more summary .pm::after{left:7.5px;top:0;width:1px;height:16px}
+  .more[open] summary .pm::after{transform:scaleY(0)}
+  .more-in{padding-bottom:20px}
+
+  .before{margin-top:22px;border:1px dashed var(--s300);border-radius:10px;background:var(--s100);padding:22px}
+  .before u{display:block;text-decoration:none;font-size:11.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:10px}
+  .before p{font-size:14.5px;font-weight:300;color:var(--s500);margin:0}
+
+  .road{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+  @media(min-width:700px){.road{grid-template-columns:1fr 1fr}}
+  .rc{border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  .rh{background:var(--s100);border-bottom:1px solid var(--s200);padding:13px 17px;
+    font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s600);
+    display:flex;justify-content:space-between;align-items:center}
+  .rh span{background:var(--s900);color:var(--s50);border-radius:99px;min-width:20px;height:20px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0;padding:0 6px}
+  .ri{padding:14px 17px;border-top:1px solid var(--s200);font-size:14px;font-weight:300;color:var(--s600);line-height:1.56}
+  .ri:first-of-type{border-top:0}
+  .ri b{display:block;color:var(--s900);font-weight:500;font-size:14.5px;margin-bottom:4px}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+      transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .rv{opacity:1;transform:none}.ln>i{transform:none}
+  }
+</style>
+
+<script>
+const themeToggle=document.getElementById('theme-toggle');
+const setToggleState=()=>{
+  const dark=document.documentElement.dataset.theme==='dark';
+  const label=`Switch to ${dark?'light':'dark'} mode`;
+  themeToggle.setAttribute('aria-label',label);
+  themeToggle.setAttribute('aria-pressed',String(dark));
+  themeToggle.title=label;
+};
+setToggleState();
+themeToggle.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  const apply=()=>{
+    document.documentElement.dataset.theme=next;
+    localStorage.setItem('theme',next);
+    setToggleState();
+  };
+  if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches){
+    document.documentElement.classList.add('theme-fallback');
+    apply();
+    setTimeout(()=>document.documentElement.classList.remove('theme-fallback'),560);
+    return;
+  }
+  const box=themeToggle.getBoundingClientRect();
+  const x=box.left+box.width/2;
+  const y=box.top+box.height/2;
+  const radius=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+  document.documentElement.style.setProperty('--theme-x',`${x}px`);
+  document.documentElement.style.setProperty('--theme-y',`${y}px`);
+  document.documentElement.style.setProperty('--theme-radius',`${radius}px`);
+  document.startViewTransition(apply);
+});
+/* ============================================================
+   THE MECHANISM
+   Ten parts of one platform, cut so the teeth truly mesh.
+   Constant module, so any pair fits. Angular velocity is
+   inversely proportional to tooth count: the design system
+   turns slowly, bug triage never stops.
+   ============================================================ */
+(function mechanism(){
+  const NS='http://www.w3.org/2000/svg';
+  const stage=document.getElementById('mechStage');
+  if(!stage)return;
+
+  const M=3.4;
+  const PARTS=[
+    ['ds', 34,null,  null, 'Design system','Tokens, components, the shared vocabulary'],
+    ['ui', 26,'ds', -140.0,'Interfaces','Dashboards, configuration, operational flows'],
+    ['usr',18,'ui',  -55.0,'End users','The reward experience inside partner apps'],
+    ['dat',22,'ui',  130.0,'Data model','Events, states, the schema everything reads'],
+    ['s2s',16,'dat',-125.0,'Server to server','Postbacks, callbacks, partner integration'],
+    ['rw', 20,'s2s', 175.0,'Rewards','Payout logic across every mechanic'],
+    ['fr', 13,'rw',  125.0,'Fraud','Guards, ceilings, minimum thresholds'],
+    ['rep',14,'rw', -150.0,'Reporting','Revenue, attribution, reconciliation'],
+    ['sup',15,'usr',  30.0,'Support','Investigation and manual resolution'],
+    ['bug',11,'sup',   0.0,'Bug triage','Regressions, edge cases, the daily churn']
+  ];
+
+  const R={},POS={},T={},NAME={},SUB={},BEAR={},PAR={};
+  PARTS.forEach(([id,t,p,a,n,s])=>{R[id]=M*t/2;T[id]=t;NAME[id]=n;SUB[id]=s;BEAR[id]=a;PAR[id]=p});
+  PARTS.forEach(([id,t,p,a])=>{
+    if(!p){POS[id]=[0,0];return}
+    const d=R[p]+R[id], ra=a*Math.PI/180;
+    POS[id]=[POS[p][0]+d*Math.cos(ra), POS[p][1]+d*Math.sin(ra)];
+  });
+
+  const MESH=PARTS.filter(p=>p[2]).map(p=>[p[0],p[2]]);
+  const nb=id=>MESH.filter(m=>m.includes(id)).map(m=>m[0]===id?m[1]:m[0]);
+
+  /* Tooth profile with curved flanks.
+     Sampled around the pitch circle: root arc, rising flank as a
+     smooth cubic, flat tip, falling flank. Reads as a machined
+     gear rather than a star. */
+  function toothPath(n,r){
+    const ad=M*0.50, de=M*0.58;
+    const rt=r+ad, rr=r-de;
+    const st=Math.PI*2/n;
+    const tipW=st*0.30, rootW=st*0.40;
+    const P=(rad,ang)=>[+(rad*Math.cos(ang)).toFixed(2),+(rad*Math.sin(ang)).toFixed(2)];
+    let d='';
+    for(let i=0;i<n;i++){
+      const c=i*st;
+      const rA=c-st/2+rootW/2;     // root end, start of rise
+      const tA=c-tipW/2;           // tip start
+      const tB=c+tipW/2;           // tip end
+      const rB=c+st/2-rootW/2;     // root start, end of fall
+      const p0=P(rr,rA), p1=P(rt,tA), p2=P(rt,tB), p3=P(rr,rB);
+      // control points sit between root and tip radius for a filleted flank
+      const mid=(r+rt)/2, low=(rr+r)/2;
+      const c1=P(low,rA+(tA-rA)*0.34), c2=P(mid,rA+(tA-rA)*0.72);
+      const c3=P(mid,tB+(rB-tB)*0.28), c4=P(low,tB+(rB-tB)*0.66);
+      if(i===0) d+=`M${p0[0]} ${p0[1]}`;
+      d+=`C${c1[0]} ${c1[1]} ${c2[0]} ${c2[1]} ${p1[0]} ${p1[1]}`;
+      d+=`A${rt.toFixed(2)} ${rt.toFixed(2)} 0 0 1 ${p2[0]} ${p2[1]}`;
+      d+=`C${c3[0]} ${c3[1]} ${c4[0]} ${c4[1]} ${p3[0]} ${p3[1]}`;
+      const nx=P(rr,(i+1)*st-st/2+rootW/2);
+      d+=`A${rr.toFixed(2)} ${rr.toFixed(2)} 0 0 1 ${nx[0]} ${nx[1]}`;
+    }
+    return d+'Z';
+  }
+
+  const xs=Object.values(POS).map(p=>p[0]), ys=Object.values(POS).map(p=>p[1]);
+  const pad=Math.max(...Object.values(R))*0.55+16;
+  const vb=[Math.min(...xs)-pad, Math.min(...ys)-pad,
+            (Math.max(...xs)-Math.min(...xs))+pad*2,
+            (Math.max(...ys)-Math.min(...ys))+pad*2];
+
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','mech-svg');
+  svg.setAttribute('viewBox',vb.map(v=>v.toFixed(1)).join(' '));
+  svg.setAttribute('role','img');
+  svg.setAttribute('aria-label','Ten interlocking parts of one platform drawn as meshing gears. Larger parts change slowly, smaller parts change constantly.');
+  svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+  const linkG=document.createElementNS(NS,'g');svg.appendChild(linkG);
+  const linkEls={};
+  MESH.forEach(([a,b])=>{
+    const l=document.createElementNS(NS,'line');
+    l.setAttribute('class','lnk-l');
+    l.setAttribute('x1',POS[a][0].toFixed(1));l.setAttribute('y1',POS[a][1].toFixed(1));
+    l.setAttribute('x2',POS[b][0].toFixed(1));l.setAttribute('y2',POS[b][1].toFixed(1));
+    linkG.appendChild(l);linkEls[a+'|'+b]=l;
+  });
+
+  const gears={};
+  PARTS.forEach(([id,t])=>{
+    const g=document.createElementNS(NS,'g');
+    g.setAttribute('class','gear');
+    g.setAttribute('tabindex','0');
+    g.setAttribute('role','button');
+    g.setAttribute('aria-label',NAME[id]+'. '+SUB[id]+'. '+t+' teeth, meshes with '+nb(id).map(x=>NAME[x]).join(' and ')+'.');
+
+    const rot=document.createElementNS(NS,'g');
+    rot.setAttribute('transform',`translate(${POS[id][0].toFixed(1)} ${POS[id][1].toFixed(1)})`);
+    const spin=document.createElementNS(NS,'g');
+
+    const body=document.createElementNS(NS,'path');
+    body.setAttribute('class','g-body');
+    body.setAttribute('d',toothPath(t,R[id]));
+    spin.appendChild(body);
+
+    const hub=document.createElementNS(NS,'circle');
+    hub.setAttribute('class','g-hub');
+    hub.setAttribute('r',(R[id]*0.30).toFixed(1));
+    spin.appendChild(hub);
+
+    const bore=document.createElementNS(NS,'circle');
+    bore.setAttribute('class','g-bore');
+    bore.setAttribute('r',(R[id]*0.10).toFixed(1));
+    spin.appendChild(bore);
+
+    const sp=t>=22?5:(t>=15?4:3);
+    for(let k=0;k<sp;k++){
+      const ang=(k/sp)*Math.PI*2;
+      const l=document.createElementNS(NS,'line');
+      l.setAttribute('class','g-spoke');
+      l.setAttribute('x1',(Math.cos(ang)*R[id]*0.32).toFixed(1));
+      l.setAttribute('y1',(Math.sin(ang)*R[id]*0.32).toFixed(1));
+      l.setAttribute('x2',(Math.cos(ang)*R[id]*0.70).toFixed(1));
+      l.setAttribute('y2',(Math.sin(ang)*R[id]*0.70).toFixed(1));
+      spin.appendChild(l);
+    }
+    rot.appendChild(spin);
+
+    // marker dot, so rotation is legible without labels
+    const mk=document.createElementNS(NS,'circle');
+    mk.setAttribute('class','g-mk');
+    mk.setAttribute('r','1.7');
+    mk.setAttribute('cx',(R[id]*0.52).toFixed(1));
+    spin.appendChild(mk);
+
+    const hit=document.createElementNS(NS,'circle');
+    hit.setAttribute('class','g-hit');
+    hit.setAttribute('r',(R[id]*0.94).toFixed(1));
+    rot.appendChild(hit);
+
+    g.appendChild(rot);svg.appendChild(g);
+    gears[id]={g,spin,phase:0};
+  });
+  stage.appendChild(svg);
+
+  /* Mesh phase, derived rather than guessed.
+     With centres along bearing T, the parent must present a TOOTH toward the
+     child and the child a GAP toward the parent. That gives the invariant
+       np*(Pp - T) + nc*(Pc - T - 180) = 180  (mod 360)
+     which is preserved as they turn, because the angular terms cancel.
+     Solving for the child's phase: */
+  const dir={},off={};
+  PARTS.forEach(([id,t,p])=>{
+    if(!p){dir[id]=1;off[id]=0;return}
+    dir[id]=-dir[p];
+    const Tb=BEAR[id];
+    off[id]=Tb+180+(180-T[p]*(off[p]-Tb))/t;
+  });
+
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const BASE=7;
+  let running=!reduce,t0=performance.now(),cur=null;
+
+  function frame(now){
+    const dt=Math.min((now-t0)/1000,.05);t0=now;
+    if(running){
+      PARTS.forEach(([id,t])=>{
+        const gr=gears[id];
+        gr.phase+=BASE*(T['ds']/t)*dir[id]*dt;
+        gr.spin.setAttribute('transform',`rotate(${(gr.phase+off[id]).toFixed(2)})`);
+      });
+    }
+    requestAnimationFrame(frame);
+  }
+  if(reduce){PARTS.forEach(([id])=>gears[id].spin.setAttribute('transform',`rotate(${off[id].toFixed(2)})`))}
+  else{requestAnimationFrame(frame)}
+
+  /* ---- hover card, positioned beside the gear ---- */
+  const card=document.getElementById('mechCard');
+  const cName=document.getElementById('mcName');
+  const cSub=document.getElementById('mcSub');
+  const cMesh=document.getElementById('mcMesh');
+  const cRate=document.getElementById('mcRate');
+
+  function place(id){
+    const r=stage.getBoundingClientRect();
+    const sx=r.width/vb[2];
+    const px=(POS[id][0]-vb[0])*sx, py=(POS[id][1]-vb[1])*sx;
+    const rr=R[id]*sx;
+    const right=px<r.width*0.56;
+    card.style.left=(right?px+rr+16:px-rr-16)+'px';
+    card.style.top=py+'px';
+    card.dataset.side=right?'r':'l';
+  }
+
+  function focusG(id){
+    cur=id;
+    const near=nb(id);
+    Object.keys(gears).forEach(k=>{
+      const c=gears[k].g.classList;
+      c.remove('act','near','dim');
+      c.add(k===id?'act':near.includes(k)?'near':'dim');
+    });
+    Object.keys(linkEls).forEach(k=>linkEls[k].classList.toggle('on',k.split('|').includes(id)));
+    cName.textContent=NAME[id];
+    cSub.textContent=SUB[id];
+    cMesh.textContent=near.map(x=>NAME[x]).join(', ');
+    cRate.textContent=(T['ds']/T[id]).toFixed(2)+'x';
+    place(id);
+    card.classList.add('on');
+  }
+  function blurG(){
+    cur=null;
+    Object.keys(gears).forEach(k=>gears[k].g.classList.remove('act','near','dim'));
+    Object.keys(linkEls).forEach(k=>linkEls[k].classList.remove('on'));
+    card.classList.remove('on');
+  }
+
+  Object.keys(gears).forEach(id=>{
+    const g=gears[id].g;
+    g.addEventListener('mouseenter',()=>focusG(id));
+    g.addEventListener('focus',()=>focusG(id));
+    g.addEventListener('blur',blurG);
+    g.addEventListener('click',()=>cur===id?blurG():focusG(id));
+    g.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();cur===id?blurG():focusG(id)}
+    });
+  });
+  stage.addEventListener('mouseleave',()=>{
+    if(!document.activeElement||!document.activeElement.classList.contains('gear'))blurG();
+  });
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(cur)place(cur)},120)},{passive:true});
+
+  new IntersectionObserver(es=>es.forEach(e=>{running=!reduce&&e.isIntersecting}),{threshold:.05}).observe(stage);
+})();
+
+
+/* ============================================================
+   CASE STUDIES
+   Structured as strategic product stories, not UX process docs.
+   ============================================================ */
+const P = [
+{
+  ix:'01',
+  kk:'Offerwall platform, internal operations',
+  t:'Getting the company out of its own support queue',
+  d:'Account managers were resolving every user level reward dispute by hand in a tool built for nobody. I designed the investigation model that let support answer for themselves.',
+  preview:{src:'images/preview/case-01.png',alt:'One row grammar carrying five different reward mechanics, with base, promotional and final amounts kept separate'},
+  metrics:[['56%','less support time per case'],['5','mechanics, one structure']],
+  hero:{src:'images/case-01/milestones.png',alt:'Milestone reward history for one campaign, showing base reward, promotion type, promotion amount, final reward and status per level',
+    cap:'The shipped structure. One row grammar carries every reward mechanic, with base, promotional and final amounts kept as separate columns so a disputed payout explains itself without opening anything.'},
+  one:'Every question about a missing reward became a ticket for one of our account managers. The tool they used could not represent half of what the product now did, so they were interpreting rows that no longer described reality.',
+  role:'Product designer, end to end',
+  team:'1 PM, frontend and backend, support and AMs as users',
+  time:'Initial release, then ongoing iterations',
+  year:'2025 to 2026',
+  impact:[
+    ['56%','less support time per investigation, over a two week measured comparison'],
+    ['5 mechanics','timed, event, repeatable, bonus and IAP unified into one readable structure'],
+    ['6 releases','shipped on that structure afterwards with no redesign needed']
+  ],
+  impactNote:'The 56% comes from a two week comparison against the previous internal tool. The extensibility claim is verifiable in the design file: six subsequent feature releases reused the original structure.',
+  context:'Users earn rewards by completing milestones inside partner apps. When a reward does not arrive, the explanation is spread across install attribution, postbacks, milestone progress, promotions and fraud rules. All of that work sat with our account managers, in an internal tool that had not kept pace with the product. Newer mechanics like boosters, promoted offers and cashback had no real representation in it.',
+  beforeImg:{src:'images/case-01/old-table.png',alt:'The previous investigation table, showing the limited columns and absent state information available before the redesign',
+    cap:'The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.'},
+  tension:'The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.',
+  insight:'While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.',
+  pull:'Six mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
+  decisions:[
+    ['Model the event, or redesign the table',
+     'Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.',
+     'Slower to ship, and it needed data engineering to agree. It is also the only reason cashback, CPA and repeatable bonuses were later additions rather than rebuilds.'],
+    ['Make manual rewarding always available, or conditional on state',
+     'Actions are offered only where the milestone state permits, and lock while processing.',
+     'More states to specify and build. Without it the same payout can be issued twice, which is real money.'],
+    ['Hide internal blockers, or name them',
+     'Surfaced withheld payouts and the specific rule responsible, including the constraint funnel.',
+     'It exposes messy internal logic to the person investigating. That is precisely what lets them answer a partner honestly instead of guessing.']
+  ],
+  system:{
+    intro:'The structure has to survive mechanics that do not exist yet. Five groups, ordered by the question people arrive with rather than by how the data is stored.',
+    cols:[
+      ['Progress',['Timed events','Level events','Repeatable']],
+      ['Rewards',['Bonus','IAP and cashback','Promotions']],
+      ['Attribution',['Install postback','Click window','MMP handshake']],
+      ['Identity',['UUID','External ID','Device, country']],
+      ['Guards',['Fraud rules','Payout ceilings','Consent state']]
+    ],
+    note:'Progress and rewards lead because they answer most tickets. Guards sit last and are explicitly named, so a withheld payout reads as a decision rather than a defect. New mechanics attach to a group instead of adding a column.'
+  },
+  steps:[
+    ['Find the right record','Search by UUID, external user ID or device. Results group per publisher app and carry fraud state up front, because picking the wrong record wastes the whole investigation.'],
+    ['Read eligibility in one block','SDK version, device, country, consent, coins, revenue, account state and fraud reason together, since eligibility questions are almost never answered by a single field.'],
+    ['Read the reward history','Milestone table using the one row grammar, with base, promotional and final amounts separated.'],
+    ['Understand what was withheld','Validation results and the constraint funnel, showing eligible campaigns narrowing and naming the rule that removed each one.'],
+    ['Resolve it','Manual reward with or without promotion, offered only where state allows, locked while processing.']
+  ],
+  shots:[
+    {src:'images/case-01/eventtypes.png',alt:'Specification showing timed, event based, repeatable, bonus and IAP event types, each with a promoted variant',
+     cap:'The row grammar specified as its own artifact, before any screen was drawn. This document is what made the next six releases cheap.'},
+    {src:'images/case-01/constraints.png',alt:'Constraints view showing four rules reducing the eligible campaign count from twelve to zero',
+     cap:'Withheld campaigns, with the responsible rule named and the count narrowing from twelve to zero. Previously this was an unexplained absence.'},
+    {src:'images/case-01/actions.png',alt:'Specification of which manual reward actions are available for each milestone state, including a disabled state during processing',
+     cap:'Actions mapped against state. Both options disable while an action processes, which is the guard against issuing the same payout twice.'}
+  ],
+  leadership:[
+    ['Earning the data dependency','A schema driven table needed data engineering to expose the event store differently. I brought the ticket taxonomy from eight shadowed investigations to that conversation, so the request was evidence rather than preference.'],
+    ['Auditing my own work','Once it was in daily use I ran a structured audit with support managers, TAMs and integration managers. It found that manual rewarding shipped without proper success and failure feedback, which is mine to own and is now the top priority fix.'],
+    ['Holding a position against the loudest customer','Large publishers asked for an unlimited override of our fraud rules. I argued for graduated limits instead, and that argument is still live.']
+  ],
+  debate:{
+    q:'Should the dashboard be able to override our own fraud protection?',
+    intro:'The one decision here I have not won yet, and the one I care most about. It arrives as a UI request and is really a commercial argument.',
+    sides:[
+      ['What publishers want','Large publishers want an absolute override, so their support teams can bypass fraud flags and minimum play rules for users who complain publicly. Their reasoning is sound: they carry the fraud cost, so they want the final call.'],
+      ['Why unlimited is dangerous','Manual completion moves real money. One user can work an agent through many milestones. We had a case where someone claimed every milestone on a campaign and the database showed the install was a day old, making it mechanically impossible.'],
+      ['Why a hard block is also wrong','Blocking overrides protects margin but removes publisher agency, and pushes the work back into our queue. That is the problem this project existed to solve.']
+    ],
+    pos:'Graduated rather than binary. Soft caps on cumulative manual earnings per user and per campaign. A warning at threshold naming how much has already been granted manually and asking for confirmation. Amber rather than red, because the intent is a cognitive speed bump that prompts the agent to check evidence, not a locked door. Every manual payout carries the identifier of whoever issued it.',
+    why:'It preserves publisher agency, makes the risky path slower instead of impossible, and gives finance a ceiling. If I am wrong, the failure shows up in an audit log rather than quietly in the margin.'
+  },
+  road:{
+    intro:'The post launch audit produced a prioritised roadmap. Quick wins are all trust repairs on work already shipped, which is why they come before anything new.',
+    quick:[
+      ['Immediate result after a manual reward','The result exists server side but the agent waits or refreshes. Tighten the click, loading, result loop.'],
+      ['Honest success and failure feedback','Manual rewarding can show a success state on a failure. Map every outcome and give each one truthful UI.'],
+      ['Statuses that cannot contradict','A row can read as installed while the postback says not received, which is impossible. Fix the status logic.'],
+      ['Visible payout blockers','Show internal limits explicitly instead of leaving the investigator to guess.']
+    ],
+    big:[
+      ['Reversible manual rewards','No way back from a manual completion today. Add a delay window before the reward sends.'],
+      ['External ID remapping','Several accounts on one device collapse into one record, so support cannot tell the external IDs apart.'],
+      ['GDPR deletion in product','Consent revocation runs through manual tickets. Replace with a guarded action and secondary authentication.'],
+      ['Localised reward names','Level names are hardcoded in English, so agents translate screenshots by hand.'],
+      ['Country correction','Travelling users trigger country mismatches no agent can resolve.']
+    ]
+  },
+  reflection:'The interface was the straightforward half. The part that mattered was an event model that still held after the business invented two mechanics nobody had described when I started.'
+},
+{
+  ix:'02',
+  kk:'Offerwall platform, partner onboarding',
+  t:'Sixty settings nobody could explain',
+  d:'Publisher setup ran through one narrow dropdown of sixty plus configurations, labelled by the engineers who built them. Ninety percent had no documentation of any kind. I spent two months establishing what they actually did, then rebuilt the flow around that. Deal to release dropped from seven weeks to five.',
+  preview:{src:'images/preview/case-02.png',alt:'Sixty unlabelled configurations on the left, resolved into three ordered decision groups on the right'},
+  metrics:[['7 to 5 weeks','deal to release'],['+17%','configs actually used']],
+  one:'The settings that decide how Playtime behaves sat behind a single dropdown, carrying whatever name their developer chose. Fifty four of them had no description or tooltip. Several of the people who wrote them had left the company. Before I could restructure anything, I had to work out what they did.',
+  role:'Product designer, end to end',
+  team:'Tech leads, developers, BI, technical and growth account managers',
+  time:'Two months of analysis, then design',
+  year:'2025 to 2026',
+  hero:{src:'images/case-02/flow.png',alt:'The three section application creation flow with integration type selected first and one section expanded',
+    cap:'The flow that shipped. Integration type is chosen first because it determines which configurations are relevant, then three sections ordered by who answers the question.'},
+  impact:[
+    ['7 to 5 weeks','average deal to release time, measured over a two month monitoring period after launch'],
+    ['+17% configs used','more configurations actively serving publisher needs over the same two month window, because people could finally see and understand them'],
+    ['54 documented','of sixty plus configs that previously had no description, plus 8 dead ones removed from the interface']
+  ],
+  impactNote:'Measured over a two month monitoring period after release. A single month would not have been enough: with a seven week baseline, one cycle barely completes, so a two week improvement could easily be noise from deal size or publisher readiness. The two week reduction compounds: at five new publishers a month, that is roughly ten publisher weeks of release velocity recovered every month. The 17% figure is the one I find most telling, because nothing was added to the product. The same configurations simply became findable.',
+  context:'Setting up a publisher application is the moment the entire Playtime experience gets decided: how rewards behave, what the end user sees, how payouts reach them. Most of that lived in one dropdown holding sixty plus options. Requirements originated on the business side, but the link between that intent and the eventual label was loose, so engineers named each config however made sense inside the backend. The company onboards around five new publishers a month, so every week of setup friction is a recurring cost rather than a one off.',
+  tension:'Three problems compounded. Comprehension first: 54 of the sixty plus configs had no description or tooltip, so account managers skipped anything they had not been explicitly told to enable, because guessing wrong on a live integration is expensive. Second, there was no rule about where a new setting belonged. When Playtime Studio launched it arrived as one toggle in the first section, then later gained its own configs, some of which went to rewards while others stayed in the dropdown. Third, and worst, several config owners had left and nothing was written down, so the behaviour of those settings existed only in backend code. I could not restructure a system nobody could currently describe.',
+  insight:'The labels were written for the person implementing each setting, not the person deciding whether to use it. Once that was clear, the work stopped being a grouping exercise and became a translation job, and the deliverable became an explanation rather than a form. The evidence for that reframe arrived later: after release, 17% more configurations were in active use. Nothing new had been built. They had simply become legible.',
+  pull:'Every label answered a question the engineer had. None answered the question the person configuring it was actually asking.',
+  decisions:[
+    ['Searchable side panel, or everything visible and grouped',
+     'Everything visible in the form, grouped by purpose, with optional detail inside accordions.',
+     'I prototyped both. I expected the lean form with a searchable add panel to win, because it is tidier. Five of eight testers chose open display, reasoning that three visible sections made the whole flow clearer. I shipped theirs and accepted a longer page for a discoverable one.'],
+    ['What earns a place near the top',
+     'Publisher usage and revenue data from BI, not internal tidiness.',
+     'Configs serving a handful of publishers on a niche problem moved deeper. Configs driving real revenue came up. This is what made the hierarchy defensible when someone disagreed with it.'],
+    ['Everything required, or required first and optional collapsed',
+     'Mandatory fields at the top of each section, everything else collapsed by default.',
+     'Someone who wants a working application quickly can fill the required fields and submit without opening a single accordion. Depth is available and never imposed.'],
+    ['Group by data type, or by dependency',
+     'Eighteen configs that only function in combination were consolidated into six dependency groups.',
+     'More upfront modelling of relationships. It is what stops a publisher enabling cashback and shipping it with no ratio and no cap.'],
+    ['Expose fraud settings, or gate them behind an agreement',
+     'System and security configs are internal only by design. Extending a fraud rule requires a business level agreement before it can be enabled.',
+     'Publishers cannot self serve here, which is friction I chose deliberately. Loosening fraud protection is a commercial decision with real exposure, so it belongs in a conversation rather than a toggle.']
+  ],
+  system:{
+    intro:'Integration type is chosen first, because it determines which configurations are even relevant. The three sections after it are ordered by who answers the question, not by how the data is stored.',
+    cols:[
+      ['0 Integration type',['SDK','Web','API','Playtime Studio']],
+      ['1 Integration and payout',['Payout system','Data we return','Push to own servers']],
+      ['2 Rewards and offers',['Reward types','Offer mix','Currency naming','Verticals, custom events']],
+      ['3 System and security',['Apple relay','DRM protection','Fraud tolerance','Internal only']]
+    ],
+    note:'Section one is everything happening outside the end user experience, answered by an engineer. Section two is where the publisher shapes what their users actually see, and belongs to a commercial owner. Section three is visible to us only: a publisher wanting to extend a fraud rule needs a business agreement first, so the interface reflects that boundary rather than hiding it.'
+  },
+  galleryLabel:'Before, and what replaced it',
+  gallery:[
+    {src:'images/case-02/old-dropdown.png',alt:'The original configuration dropdown, narrow, holding sixty plus backend named options with no descriptions',
+     cap:'The original dropdown. Sixty plus options carrying the names their developers gave them, no descriptions, no grouping. Fifty four had no tooltip of any kind.'},
+    {src:'images/case-02/grouped.png',alt:'A configuration group expanded, showing related settings together with plain language tooltips',
+     cap:'Grouped configurations with tooltips written for the person deciding, not the person who implemented it. Eighteen dependent configs were consolidated into six groups.'},
+    {src:'images/case-02/feedback.png',alt:'Inline validation showing cashback enabled and prompting for the required ratio and cap',
+     cap:'Inline feedback at the moment of enabling. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submit.'}
+  ],
+  steps:[
+    ['Choose the integration type','SDK, Web, API or Playtime Studio. This used to be a toggle buried in the first section, which is why Studio specific settings ended up scattered across three places. It now comes first and filters everything after it.'],
+    ['Integration and payout','How payouts work, which system to use, what data we return, and whether the publisher wants the data we collect pushed to their own servers.'],
+    ['Rewards and offers','Reward types, offer mix, currency naming, verticals, custom event names. Where the end user experience actually gets shaped.'],
+    ['System and security, internally','Apple relay, DRM protection, fraud tolerance. Configured by us, and only after a business level agreement where fraud rules are being extended.'],
+    ['Inline feedback before submit','Each group states what is still incomplete at the moment you enable it. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submission.']
+  ],
+  leadership:[
+    ['Recovering knowledge that had left the company','Sixty plus configs mapped across ten plus alignment sessions with tech leads, developers, and both technical and growth account managers. Fifty four had no documentation. I read backend implementation notes to establish real behaviour rather than inferring it from labels.'],
+    ['Deleting what should not have been there','Eight configs had already been removed from the system endpoints but were still rendering in the frontend. They did nothing and had been offered to publishers as real options. I removed them, which is the clearest evidence the audit was worth doing.'],
+    ['Bringing data to a taste argument','I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.'],
+    ['Letting the users overrule my preferred direction','I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.']
+  ],
+  reflection:'The visible output is a cleaner form. The real deliverable was an explanation. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a direct result. Two of those months produced no design at all, which was the part that mattered.'
+},
+{
+  ix:'03',
+  kk:'Promotions, lifecycle and operations',
+  t:'Arguing for the project nobody had funded',
+  d:'Promotions drove around ten percent of platform revenue and were managed through a table with two statuses and a search box. The design work was straightforward. Getting engineering time allocated to it, against far larger projects, was the actual problem.',
+  preview:{src:'images/preview/case-03.png',alt:'The promotion lifecycle: scheduled, active and expired forming a loop, with draft and inactive sitting outside it'},
+  metrics:[['~10%','of platform revenue'],['2 to 5','lifecycle states']],
+  one:'Promotions had been built quickly as a small feature: a display name, active or inactive, a start and an end date. They were also responsible for roughly a tenth of platform revenue, and account managers were tracking hundreds of them in side spreadsheets because the product could not tell them what state anything was in.',
+  role:'Product designer, end to end',
+  team:'PM, engineering, account managers as primary users',
+  time:'Analysis, then design in stages',
+  year:'2026',
+  hero:{src:'images/preview/case-03.png',alt:'The promotion lifecycle showing scheduled, active and expired as a loop, with draft and inactive outside it',
+    cap:'Five lifecycle states made explicit in the table, with filtering and a date range control in the top bar. Previously this was a binary flag and a search box.'},
+  impact:[
+    ['+12% publisher created','promotions created by publishers with self serve access, over a two month period after release'],
+    ['+18% AM created','promotions created by account managers over the same window, on a base of several hundred active promotions'],
+    ['2 to 5 states','the lifecycle made explicit in the product, replacing a binary active and inactive flag']
+  ],
+  impactNote:'Measured over two months on a base of several hundred promotions. The gap between the two numbers is the part I find interesting: account managers gained more than publishers did, which fits, because they manage volume and were the ones losing time to spreadsheets. The publishers with access are a small self serve group and are less promotion driven than we are.',
+  context:'We earn on a cost per install basis from the offers shown inside Playtime, and promotions are one of the strongest levers on that. They had been built early as a deliberately small feature and never revisited: a name, a binary status, two dates. Account managers ran hundreds of them through that interface, using external trackers to keep hold of what was live, what was queued and what had lapsed. The first thing I did was unrelated to the lifecycle. I linked each promotion to the publisher using it, because the table gave no context about who a promotion belonged to.',
+  before:'Screenshot of the original promotions table, annotated to show the two available statuses, the absence of any filtering, and the reliance on the title field to carry information that should have been structured data.',
+  tension:'The design was not the hard part. Securing the investment was. Promotions sat in the backlog behind several much larger initiatives, and the honest internal view was that it already worked. To change that I had to make the cost of leaving it alone visible. I put a number on the revenue promotions were responsible for, roughly ten percent of platform revenue, which had been broadly understood but never quantified. Then I documented the hidden operational cost: the hours account managers spent reconciling a table against their own side apps, and the risk that a promotion runs past its window or never starts because nobody noticed. Presented together, as recurring cost against unrealised revenue, the project got prioritised. Getting the buy in took longer than the design.',
+  insight:'Promotions already had a lifecycle. It was running in production every day and the product simply refused to acknowledge it. A promotion is scheduled, becomes active, expires, and if it recurs it returns to scheduled. Separately it can sit half configured as a draft, or be parked as inactive. Six behaviours were being flattened into one binary flag, so account managers rebuilt the missing model in spreadsheets. My job was not to invent a system, it was to surface one that was already there.',
+  pull:'The lifecycle was not missing. It was running in production and had never been written down.',
+  decisions:[
+    ['Infer state from dates, or model it explicitly',
+     'Five explicit states: scheduled, active, expired, draft and inactive.',
+     'Deriving status from start and end dates would have been cheaper and needed no data changes. It also cannot work: a recurring promotion between runs and a deliberately parked one both look identical to a date comparison, and a half filled form has no dates at all. The three states that actually caused confusion are exactly the three that cannot be inferred.'],
+    ['Keep the flow linear, or add confirmation steps',
+     'Two interruptions: a confirmation before stopping a live promotion, and a lightweight modal for reactivating an expired one.',
+     'The PM argued against both, reasonably, on the grounds that we had never had confirmation dialogs and they slow a linear process down. I disagreed, because these actions are asymmetric. Stopping a live promotion changes what real end users see immediately and cannot be undone by pressing back, and our own history includes errors of exactly this kind costing more to unpick than a second of friction costs to add. We shipped them.'],
+    ['Where the date range control belongs',
+     'In the page top bar, beside filter, search and the primary action.',
+     'My first pass put the date picker inside the filter panel, which was faster to build and locally sensible. An internal review pointed out we already have an established top bar pattern hosting filter, search, date range and CTA together. I had introduced an inconsistency without noticing. Moving it cost a revision and kept the pattern intact.'],
+    ['Better search, or structured filtering',
+     'A filter system across status, publisher, application and active date, plus sortable columns.',
+     'Search alone only works if the title carries every attribute someone might look for, which is why titles had turned into improvised metadata. Filtering moves that information into structure, at the cost of a heavier top bar.']
+  ],
+  system:{
+    intro:'Five states, with the transitions that actually occur. The happy path is a loop rather than a line, which is the detail the original two state model could not express.',
+    cols:[
+      ['Scheduled',['Created, waiting','Returns here if recurring']],
+      ['Active',['Running now','Stopping asks first']],
+      ['Expired',['Window closed','Reactivate via modal']],
+      ['Draft',['Form half filled','10 to 20 inputs, saved partway']],
+      ['Inactive',['Parked deliberately','Not derivable from dates']]
+    ],
+    note:'Scheduled, active and expired form the recurring loop. Draft and inactive sit outside it, and are the two states no date based logic could ever produce, which is why they had been invisible.'
+  },
+  steps:[
+    ['See state at a glance','Every promotion carries its actual lifecycle state in the table, so the question of what is live right now stops requiring a side app.'],
+    ['Filter instead of guess','Status, publisher, application and active date, with sortable columns, so finding a set of promotions no longer depends on how someone titled them.'],
+    ['Set a date range','A range control in the top bar for checking everything active or planned within a window, which is how account managers actually think about their month.'],
+    ['Stop a live promotion, deliberately','Stopping something that is running asks for confirmation and states the consequence, because end users are already seeing it.'],
+    ['Reactivate without rebuilding','An expired promotion can be brought back through a short modal rather than the full creation form, since the configuration is already correct.']
+  ],
+  leadership:[
+    ['Making an invisible cost visible','Nobody was arguing that promotions worked well. They were arguing that other things mattered more. I quantified the revenue promotions carried and documented the operational time account managers were losing to external trackers, then presented both as an ongoing cost rather than a feature request.'],
+    ['Disagreeing with my PM on purpose','The PM wanted no confirmation dialogs, for consistency with everything else in the product. I pushed for two, argued from a specific class of past incident and the asymmetry of the actions, and shipped them. Being consistent was the weaker argument here.'],
+    ['Accepting a correction in review','The date picker was in the wrong place and an internal review caught it. It was my inconsistency to fix, and I would rather absorb a revision than weaken a pattern the rest of the product depends on.']
+  ],
+  reflection:'This is the case I would use to explain what changes at staff level. The design was not difficult, and a mid level designer could have drawn it. The work was proving that a feature everyone considered finished was quietly costing us revenue and operational hours, and turning that into funded engineering time.'
+},
+{
+  ix:'04',
+  kk:'Design system, foundations to governance',
+  t:'Closing the gap between what shipped and what we drew',
+  d:'Two dashboards had drifted from the library and from each other. I audited both, rebuilt the foundations as tokens, refactored ten components with full state coverage, and structured the system so coding agents can read it. Weekly frontend review dropped from three to four hours to under one.',
+  preview:{src:'images/preview/case-04.png',alt:'The token system: a grey ramp, four semantic roles at four tones each, and the interaction layer'},
+  metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
+  one:'Components disagreed with each other on size, spacing and typography, and having two dashboards meant common components and platform specific ones had quietly diverged. Nothing was broken enough to escalate, which is why it had persisted.',
+  role:'Design system owner',
+  team:'Design and frontend across teams, 9 leaders for the type decision',
+  time:'Ongoing initiative',
+  year:'2026',
+  hero:{src:'images/preview/case-04.png',alt:'The token system showing a grey ramp, semantic roles and the interaction layer',
+    cap:'The token layer that everything else references. Primitives at the bottom, semantic roles above them, and an interaction layer that did not exist before.'},
+  impact:[
+    ['200+ issues closed','at least ten per page across roughly twenty pages, found by systematic audit rather than reported'],
+    ['3-4h to under 1h','weekly time spent reviewing frontend work, because component correctness stopped being a manual check'],
+    ['10 components','refactored with complete state coverage, each with a paired design and development task']
+  ],
+  impactNote:'The QA figure is the one I would defend. Reviewing frontend tasks used to mean checking every component by hand. Now that components are shared rather than custom built per screen, review is about UX and flow, which is roughly 130 hours a year returned to actual design work.',
+  context:'We run two dashboards on a shared Material UI base. Over time each grew its own conventions, so a component that existed in both places behaved differently in each, and the Figma library described neither accurately. Typography was not aligned to the system and the typeface itself was not legible enough at the sizes we use. Spacing, radius and shadow had no tokens, so cards carried a blurry over softened look that came from nobody having defined elevation.',
+  before:'Before and after across the foundations: the previous typeface against Figtree, the mixed grey ramp resolved to cool grey, and the old shadow treatment beside the redefined elevation.',
+  tension:'There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.',
+  insight:'The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.',
+  pull:'Nothing was broken enough to escalate. That is exactly why it had survived for so long.',
+  decisions:[
+    ['Audit by hand, or pull production in and compare',
+     'Used the HTML to Figma plugin to bring live production into the file, then ran a first analysis pass with OpenCode.',
+     'The automated pass was good but incomplete, so I reviewed everything it produced and found what it missed. Faster than a manual audit and it caught systemic patterns a person reading page by page would rationalise away.'],
+    ['Keep the existing typeface, or change it',
+     'Moved to Figtree, after mapping the full system and aligning with nine leaders.',
+     'A typeface change touches every screen and needs management buy in, which is why it took an alignment rather than a decision. It was worth it: legibility at our working sizes was the underlying issue, not the type scale.'],
+    ['Ship foundations first, or component by component',
+     'Pushed non component foundations immediately, then covered component level issues one at a time.',
+     'Split delivery means a period where new foundations sit under old components. It also meant colour, typography, spacing, radius and shadow were correct everywhere at once, instead of waiting on ten sequential component migrations.'],
+    ['Name by value, or name by role',
+     'Semantic roles with four tones each: main, light, dark and strong, across primary, success, danger, warning and information.',
+     'Migration for anything referencing a raw value. Engineers reach for primary dark because it states intent, and ignored indigo 800 because it states a coordinate.'],
+    ['Solid backgrounds only, or opacity based interaction states',
+     'Opposite based tones for components with no background of their own: 8% at rest, 8% hover, 16% pressed.',
+     'Needs care over coloured surfaces. Without it, ghost and text buttons had no legitimate hover or pressed state, which is where most improvised colour came from.']
+  ],
+  system:{
+    intro:'Four layers. A value has one definition and one owner, and components never reference a primitive directly.',
+    cols:[
+      ['Primitives',['Cool grey ramp','Red, orange, blue, green','Type scale, Figtree']],
+      ['Semantic',['Primary, success, danger','Warning, information','Main, light, dark, strong']],
+      ['Interaction',['Ghost at 8%','Hover at 8%','Pressed at 16%']],
+      ['Structural',['Spacing tokens','Radius tokens','Elevation, redefined']]
+    ],
+    note:'The interaction layer and the structural layer are the two that did not exist before. Together they are the reason a component can now declare its own states instead of an engineer deciding them per screen.'
+  },
+  steps:[
+    ['Pull production into the file','HTML to Figma to bring live screens in as artefacts, so the comparison was against what actually ships rather than what we remembered.'],
+    ['First pass with OpenCode','An automated analysis to surface systemic inconsistencies, then a manual review to catch what it missed.'],
+    ['Ship the foundations','Typography, colour, spacing, radius and elevation pushed as V2 libraries, correct everywhere at once.'],
+    ['Refactor components in pairs','Each component became a design task and a development task, picked up by frontend engineers across teams as sprint side items.'],
+    ['Verify before release','Every component checked in Storybook and in a sandbox environment before it went out, because a shared component failing is worse than a one off failing.']
+  ],
+  leadership:[
+    ['Getting a typeface change approved','A new typeface touches every screen, so it needed management level agreement rather than a design decision. I mapped the system, made the legibility argument, and got sign off from nine leaders.'],
+    ['Working through teams I do not manage','Frontend engineers sit in other teams and could only take this as sprint side work, so every component needed to be specified well enough to be picked up without me in the room.'],
+    ['Absorbing a late reversal','The segmented control came back from development planning because our VP disliked it. Rather than defend the original, I produced alternatives and tested them with other leads. The revised version is better and it cost a cycle.'],
+    ['Pulling my own feature','I shipped a keyboard focus ring that looked correct in isolation. In real layouts, wrappers sat flush to component edges so rings were clipped inside dialogs and filter modals. I paused it rather than leave a broken accessibility affordance in place.']
+  ],
+  road:{
+    intro:'Two threads open. The focus ring is an accessibility commitment waiting on a container fix, and the AI workflow is the part I am actively building out.',
+    quick:[
+      ['Audit wrapper spacing','Find every molecule where a child sits flush to its container edge.'],
+      ['Reserve a focus inset','A spacing token so a focus ring always has room to render.'],
+      ['State coverage as a rule','A component without defined hover, pressed and focus tones is incomplete, and should not pass review.']
+    ],
+    big:[
+      ['Return the focus ring','Reintroduce it once containers reserve space, so nesting cannot clip it.'],
+      ['Extend the agent workflow','The MCP connection already fetches component states and details straight into the codebase. Next is widening coverage so more of the system is machine consumable without a briefing step.'],
+      ['Visual regression coverage','Catch drift automatically, so the 200 issues I closed cannot quietly return.']
+    ]
+  },
+  ai:{
+    intro:'The system is built to be read by coding agents, not only by people. That is a deliberate design goal rather than a side effect.',
+    points:[
+      ['Start by asking what it needs','I begin by asking the model how it wants to read a component and which cases it will check. Sometimes its expectations match our structure. Where they do not, the gap tells me our definitions are ambiguous.'],
+      ['Teach it the parts we own','Where our conventions differ from what it assumes, I document the difference explicitly rather than renaming things to suit the model.'],
+      ['Fetch state, not screenshots','An MCP connection pulls component states and specifications directly into the codebase, so generated code references the real system instead of approximating a picture of it.']
+    ]
+  },
+  reflection:'The visible output is a token library and ten components. The two parts I would defend are the interaction layer, because it is why engineers stopped inventing colours, and the QA number, because three hours a week returned is the clearest evidence the system does work people used to do by hand. The focus ring is the honest counterweight: a good idea that failed on contact with real layouts, and pausing it was better than shipping accessibility theatre.'
+}
+];
+
+/* ---------- project list ---------- */
+const AR='<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const prjs=document.getElementById('prjs');
+
+P.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='prj rv';b.type='button';
+  b.setAttribute('aria-haspopup','dialog');
+  b.setAttribute('aria-label',c.t+'. '+c.kk+'. Open case study.');
+  b.innerHTML=`<div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
+      <h3 class="p-t">${c.t}</h3>
+      <p class="p-d">${c.d}</p>
+      <div class="p-m">${c.metrics.map(m=>`<div><span>${m[1]}</span><b>${m[0]}</b></div>`).join('')}</div>
+      <span class="p-go">Read the case ${AR}</span>
+    </div>
+    <div class="p-r">${(c.preview||c.hero)?`<div class="p-im"><img src="${(c.preview||c.hero).src}" alt="${(c.preview||c.hero).alt}" loading="lazy"></div>`:''}</div>
+  </div>`;
+  b.addEventListener('click',()=>openCase(i));
+  prjs.appendChild(b);
+});
+
+/* ---------- case drawer ---------- */
+const dr=document.getElementById('dr'),drP=document.getElementById('drP'),
+      drC=document.getElementById('drC'),drX=document.getElementById('drX'),
+      drIx=document.getElementById('drIx'),drProg=document.getElementById('drProg');
+let lastFocus=null;
+
+function block(h,inner){return `<section class="d-b"><h3>${h}</h3>${inner}</section>`}
+
+function openCase(i){
+  const c=P[i];
+  lastFocus=document.activeElement;
+  drIx.textContent='Case '+c.ix;
+
+  const deeper=[
+    c.steps?block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`):'',
+    c.shots?c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join(''):'',
+    c.debate?block('The argument still open',`
+      <div class="dc"><div class="dc-h">${c.debate.q}</div>
+        <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
+        ${c.debate.sides.map(s=>`<div class="dc-c" style="border-top:1px solid var(--s200)"><u>${s[0]}</u>${s[1]}</div>`).join('')}
+        <div class="dc-c" style="border-top:1px solid var(--s200);background:var(--s100)"><u>Where I landed</u>${c.debate.pos}</div>
+      </div>
+      <p class="note">${c.debate.why}</p>`):'',
+    c.road?block('What comes next',`<p>${c.road.intro}</p>
+      <div class="road">
+        <div class="rc"><div class="rh">Quick wins <span>${c.road.quick.length}</span></div>
+          ${c.road.quick.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
+        <div class="rc"><div class="rh">Structural <span>${c.road.big.length}</span></div>
+          ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
+      </div>`):''
+  ].filter(Boolean).join('');
+
+  drC.innerHTML=`
+    <p class="d-kk">${c.kk}</p>
+    <h1 class="d-t" id="drT">${c.t}</h1>
+    <p class="d-one">${c.one}</p>
+    <div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+    <div class="d-tl">
+      <div><span>Role</span><b>${c.role}</b></div>
+      <div><span>Team</span><b>${c.team}</b></div>
+      <div><span>Timeline</span><b>${c.time}</b></div>
+      <div><span>Year</span><b>${c.year}</b></div>
+    </div>
+    ${c.hero?`<figure class="d-fig"><img src="${c.hero.src}" alt="${c.hero.alt}"></figure><p class="d-cap">${c.hero.cap}</p>`:''}
+    ${block('Context',`<p>${c.context}</p>${
+      c.beforeImg
+        ? `<figure class="d-fig beforefig"><img src="${c.beforeImg.src}" alt="${c.beforeImg.alt}" loading="lazy"></figure><p class="d-cap"><b>Before.</b> ${c.beforeImg.cap}</p>`
+        : (c.before?`<div class="before"><u>Before</u><p>${c.before}</p></div>`:'')
+    }`)}
+    ${block('Tension',`<p>${c.tension}</p>`)}
+    ${block('Insight',`<p>${c.insight}</p>${c.pull?`<p class="d-pull">${c.pull}</p>`:''}`)}
+    ${block('Decisions',`<div class="dcs">${c.decisions.map(d=>`
+      <div class="dc"><div class="dc-h">${d[0]}</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
+          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
+        </div>
+      </div>`).join('')}</div>`)}
+    ${c.system?block('The system underneath',`<p>${c.system.intro}</p>
+      <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
+        <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
+        <p class="sys-n">${c.system.note}</p></div>`):''}
+    ${c.ai?block('Built to be read by agents',`<p>${c.ai.intro}</p>
+      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`):''}
+    ${c.gallery?block(c.galleryLabel||'What it looks like',
+      c.gallery.map(g=>`<figure class="d-fig${g.wide?' wide':''}"><img src="${g.src}" alt="${g.alt}" loading="lazy"></figure><p class="d-cap">${g.cap}</p>`).join('')
+    ):''}
+    ${block('Impact',`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+      <p class="note">${c.impactNote}</p>`)}
+    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
+    ${deeper?`<details class="more"><summary><span class="pm"></span>Deeper detail, if you want it</summary><div class="more-in">${deeper}</div></details>`:''}
+    ${block('Looking back',`<p>${c.reflection}</p>`)}`;
+
+  dr.classList.add('on');
+  document.documentElement.style.overflow='hidden';
+  drP.scrollTop=0;drProg.style.width='0%';
+  drX.focus();
+  document.addEventListener('keydown',onKey);
+}
+function closeCase(){
+  dr.classList.remove('on');
+  document.documentElement.style.overflow='';
+  document.removeEventListener('keydown',onKey);
+  if(lastFocus)lastFocus.focus();
+}
+function onKey(e){
+  if(e.key==='Escape'){closeCase();return}
+  if(e.key==='Tab'){
+    const f=dr.querySelectorAll('button,a[href],summary,[tabindex]:not([tabindex="-1"])');
+    if(!f.length)return;
+    const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+  }
+}
+document.getElementById('drBg').addEventListener('click',closeCase);
+drX.addEventListener('click',closeCase);
+drP.addEventListener('scroll',()=>{
+  const h=drP.scrollHeight-drP.clientHeight;
+  drProg.style.width=(h>0?(drP.scrollTop/h)*100:0)+'%';
+},{passive:true});
+
+/* ---------- reveal ---------- */
+const io2=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.style.transitionDelay=(i%5)*50+'ms';io2.observe(el);
+});
+
+/* ---------- nav ---------- */
+const nav=document.getElementById('nav');
+let r2=false;
+addEventListener('scroll',()=>{
+  if(r2)return;r2=true;
+  requestAnimationFrame(()=>{nav.classList.toggle('st',scrollY>40);r2=false});
+},{passive:true});
+</script>
+</body>
+</html>

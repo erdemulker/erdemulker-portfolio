@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About, Erdem Ülker</title>
+<meta name="description" content="Product designer working on complex B2B platforms. How I work, what I have learned, and what I am doing now." />
+<meta name="color-scheme" content="light dark" />
+<script>
+  (()=>{
+    const saved=localStorage.getItem('theme');
+    const theme=saved||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+
+  :root{
+    --s50:#fafaf9;--s100:#f5f5f4;--s200:#e7e5e4;--s300:#d6d3d1;
+    --s400:#a8a29e;--s500:#78716c;--s600:#57534e;--s700:#44403c;
+    --s800:#292524;--s900:#1c1917;
+    --nav-bg:rgba(250,250,249,.88);--card-shadow:rgba(28,25,23,.05);
+
+    --f:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+
+    --tk-lbl:.08em;
+    --tk-1:-.011em;
+    --tk-2:-.019em;
+    --tk-3:-.027em;
+
+    --ui:170ms;
+    --rev:720ms;
+    --soft:cubic-bezier(.22,1,.36,1);
+    --out:cubic-bezier(.16,1,.24,1);
+
+    --cols:4;--mx:24px;--gap:20px;
+    --pad:clamp(80px,10vh,120px);
+  }
+  :root[data-theme="dark"]{
+    --s50:#1c1917;--s100:#292524;--s200:#44403c;--s300:#57534e;
+    --s400:#78716c;--s500:#a8a29e;--s600:#d6d3d1;--s700:#e7e5e4;
+    --s800:#f5f5f4;--s900:#fafaf9;
+    --nav-bg:rgba(28,25,23,.88);--card-shadow:rgba(0,0,0,.22);
+    color-scheme:dark;
+  }
+  @media(min-width:900px){:root{--cols:12;--mx:48px;--gap:24px}}
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--f);font-size:17px;font-weight:400;line-height:1.6;
+    background:var(--s50);color:var(--s900);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html.theme-fallback body,html.theme-fallback .nav,html.theme-fallback .bc,html.theme-fallback .nm,
+  html.theme-fallback .cta,html.theme-fallback .btn{transition:background-color 520ms var(--soft),color 520ms var(--soft),border-color 520ms var(--soft),box-shadow 520ms var(--soft)}
+  ::selection{background:var(--s200)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font:inherit;color:inherit;background:none;border:0}
+  :focus-visible{outline:2px solid var(--s900);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--mx)}
+  .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap)}
+  .lbl{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500)}
+  .skip{position:absolute;left:-9999px;background:var(--s900);color:var(--s50);padding:12px 18px;z-index:300;font-size:13px}
+  .skip:focus{left:0}
+  .sec{padding:var(--pad) 0}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* nav */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:150;padding:22px 0;border-bottom:1px solid transparent;
+    transition:padding var(--rev) var(--soft),background var(--rev) var(--soft),border-color var(--rev) var(--soft)}
+  .nav.st{padding:14px 0;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(115%);border-bottom-color:var(--s200)}
+  .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
+  .bd{font-size:16px;font-weight:600;letter-spacing:var(--tk-1)}
+  .bd span{color:var(--s400);font-weight:400}
+  .nr{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--s500)}
+  .nr a:not(.cta){position:relative;transition:color var(--ui) linear}
+  .nr a:not(.cta):hover{color:var(--s900)}
+  .nr a:not(.cta)::after{content:'';position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--s900);transition:width 420ms var(--soft)}
+  .nr a:not(.cta):hover::after{width:100%}
+  .cta{border:1px solid var(--s300);border-radius:99px;padding:7px 16px;font-size:14px;color:var(--s700);
+    transition:background var(--ui) linear,color var(--ui) linear,border-color var(--ui) linear}
+  .cta:hover,.cta:focus-visible{background:var(--s900);border-color:var(--s900);color:var(--s50)}
+  .theme-toggle{position:relative;width:58px;height:32px;flex:none;border-radius:99px;background:var(--s900);cursor:pointer;
+    color:var(--s50);isolation:isolate;transition:transform var(--ui) var(--soft),background-color 520ms var(--soft)}
+  .theme-toggle:hover{transform:scale(1.04)}
+  .theme-toggle:active{transform:scale(.96)}
+  .theme-toggle .knob{position:absolute;z-index:2;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--s50);
+    box-shadow:0 1px 4px var(--card-shadow);transition:transform 520ms var(--soft),background-color 520ms var(--soft)}
+  [data-theme="dark"] .theme-toggle .knob{transform:translateX(26px)}
+  .theme-toggle svg{position:absolute;top:7px;width:18px;height:18px;transition:opacity 320ms linear,transform 520ms var(--soft)}
+  .theme-toggle .sun{right:7px;opacity:1;transform:rotate(0)}
+  .theme-toggle .moon{left:7px;opacity:0;transform:rotate(-45deg)}
+  [data-theme="dark"] .theme-toggle .sun{opacity:0;transform:rotate(45deg)}
+  [data-theme="dark"] .theme-toggle .moon{opacity:1;transform:rotate(0)}
+  @media(max-width:820px){.nr{gap:10px}.nr .hs{display:none}.cta{padding-inline:13px}.bd span{display:none}}
+  /* reveal */
+  .rv{opacity:0;transform:translateY(16px);transition:opacity var(--rev) var(--out),transform var(--rev) var(--out)}
+  .rv.in{opacity:1;transform:none}
+  .ln{display:block;overflow:hidden;padding-bottom:.05em}
+  .ln>i{display:block;font-style:normal;transform:translateY(104%);transition:transform 900ms var(--soft)}
+  .in .ln>i{transform:none}
+  .ln:nth-child(2)>i{transition-delay:60ms}
+  .ln:nth-child(3)>i{transition-delay:120ms}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--s900);color:var(--s50);border-radius:99px;
+    padding:13px 24px;font-size:15px;font-weight:500;letter-spacing:var(--tk-1);
+    transition:transform var(--ui) var(--soft),background var(--ui) linear}
+  .btn:hover{transform:translateY(-2px);background:var(--s800)}
+  .btn svg{transition:transform 540ms var(--soft)}
+  .btn:hover svg{transform:translateX(4px)}
+  .tl{font-size:15px;color:var(--s600);position:relative}
+  .tl::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:var(--s300);transition:background var(--ui) linear}
+  .tl:hover{color:var(--s900)}
+  .tl:hover::after{background:var(--s900)}
+  footer{border-top:1px solid var(--s200);padding:26px 0 34px;margin-top:clamp(60px,9vh,100px)}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--s500)}
+  footer a:hover{color:var(--s900)}
+  .fl{display:flex;gap:22px}
+
+  /* ---------- about page ---------- */
+  .hero{padding:150px 0 0}
+  .intro{display:grid;grid-template-columns:1fr;gap:clamp(34px,5vw,64px);align-items:start}
+  @media(min-width:900px){.intro{grid-template-columns:minmax(0,1.35fr) minmax(300px,.85fr)}}
+  .intro h1{font-size:clamp(30px,3.5vw,50px);font-weight:500;line-height:1.16;letter-spacing:var(--tk-3)}
+  .intro h1 em{font-style:italic;font-weight:300;color:var(--s500)}
+  .intro .wave{font-size:clamp(30px,3.5vw,50px);line-height:1}
+  .portrait{border-radius:14px;overflow:hidden;background:var(--s100);aspect-ratio:1;position:relative}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .pcap{margin-top:12px;font-size:13px;font-weight:300;color:var(--s500);line-height:1.5}
+  .down{margin-top:clamp(40px,6vh,72px);display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500)}
+  .down span{width:1px;height:26px;background:var(--s300);display:block}
+
+  .sec{padding:clamp(80px,10vh,120px) 0}
+  .shd{margin-bottom:clamp(30px,4.5vh,48px)}
+  .shd h2{margin-top:12px;font-size:clamp(24px,2.5vw,34px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.16;max-width:28ch}
+  .shd p{margin-top:13px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:58ch;line-height:1.62}
+
+  .story{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,60px)}
+  @media(min-width:900px){.story{grid-template-columns:minmax(0,1fr) minmax(260px,.6fr)}}
+  .story p{font-size:17px;font-weight:300;color:var(--s700);line-height:1.78;max-width:62ch}
+  .story p+p{margin-top:20px}
+  .story p b{font-weight:500;color:var(--s900)}
+  .story .lede{font-size:clamp(20px,2.1vw,27px);font-weight:400;line-height:1.34;letter-spacing:var(--tk-2);color:var(--s900);max-width:26ch}
+  .story .lede em{font-style:italic;font-weight:300;color:var(--s500)}
+
+  /* facts rail */
+  .rail{border-top:1px solid var(--s200)}
+  .rail div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--s200)}
+  .rail div b{font-weight:400;font-size:15.5px;letter-spacing:var(--tk-1)}
+  .rail div span{font-size:13px;color:var(--s400);white-space:nowrap;text-align:right}
+
+  /* process, four steps */
+  .proc{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--s200)}
+  @media(min-width:820px){.proc{grid-template-columns:repeat(4,1fr)}}
+  .pc{padding:28px 0;border-bottom:1px solid var(--s200)}
+  @media(min-width:820px){.pc{padding:30px 26px 36px}.pc+.pc{border-left:1px solid var(--s200)}.pc:first-child{padding-left:0}.pc:last-child{padding-right:0}}
+  .pc .n{font-size:12.5px;font-weight:500;color:var(--s400);font-variant-numeric:tabular-nums}
+  .pc h3{margin-top:18px;font-size:19px;font-weight:500;line-height:1.24;letter-spacing:var(--tk-1)}
+  .pc p{margin-top:10px;font-size:15px;font-weight:300;color:var(--s600);line-height:1.62}
+
+  /* belief cards */
+  .beliefs{display:grid;grid-template-columns:1fr;gap:var(--gap)}
+  @media(min-width:820px){.beliefs{grid-template-columns:repeat(2,1fr)}}
+  .bc{border:1px solid var(--s200);border-radius:12px;padding:28px 26px 30px;
+    transition:border-color var(--rev) var(--soft),transform var(--rev) var(--soft),box-shadow var(--rev) var(--soft)}
+  .bc:hover{border-color:var(--s300);transform:translateY(-3px);box-shadow:0 12px 32px var(--card-shadow)}
+  .bc h3{font-size:19px;font-weight:500;line-height:1.26;letter-spacing:var(--tk-1)}
+  .bc p{margin-top:11px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.65}
+  .bc .q{margin-top:14px;padding-top:13px;border-top:1px solid var(--s200);font-size:14px;font-weight:300;color:var(--s500);font-style:italic}
+
+  /* timeline */
+  .tl-list{border-top:1px solid var(--s200)}
+  .ti{display:grid;grid-template-columns:1fr;gap:6px;padding:22px 0;border-bottom:1px solid var(--s200);
+    transition:padding-left var(--rev) var(--soft)}
+  @media(min-width:760px){.ti{grid-template-columns:150px minmax(0,1fr);gap:28px;align-items:baseline}.ti:hover{padding-left:10px}}
+  .ti .yr{font-size:14px;font-weight:500;color:var(--s400);font-variant-numeric:tabular-nums}
+  .ti h3{font-size:17.5px;font-weight:500;letter-spacing:var(--tk-1);line-height:1.3}
+  .ti p{margin-top:7px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.64;max-width:62ch}
+
+  /* selected outcomes */
+  .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--s200);
+    border:1px solid var(--s200);border-radius:12px;overflow:hidden}
+  @media(min-width:820px){.nums{grid-template-columns:repeat(4,1fr)}}
+  .nm{background:var(--s50);padding:24px 22px 26px}
+  .nm b{display:block;font-size:clamp(24px,2.6vw,32px);font-weight:500;letter-spacing:var(--tk-3);
+    line-height:1.05;font-variant-numeric:tabular-nums}
+  .nm span{display:block;margin-top:10px;font-size:13.5px;font-weight:300;color:var(--s500);line-height:1.5}
+  .nm i{display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--s400)}
+
+  /* outside work */
+  .off{display:grid;grid-template-columns:1fr;gap:clamp(28px,3vw,44px)}
+  @media(min-width:820px){.off{grid-template-columns:repeat(3,1fr)}}
+  .oc h3{font-size:17.5px;font-weight:500;letter-spacing:var(--tk-1)}
+  .oc p{margin-top:10px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.66}
+
+  /* closing */
+  .ct h2{font-size:clamp(27px,3.3vw,46px);font-weight:500;line-height:1.12;letter-spacing:var(--tk-3);max-width:24ch}
+  .ct h2 em{font-style:italic;font-weight:300;color:var(--s500)}
+  .ct p{margin-top:18px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:52ch;line-height:1.64}
+  .ct-a{margin-top:32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+      transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .rv{opacity:1;transform:none}.ln>i{transform:none}
+  }
+  ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-new(root){z-index:2;clip-path:circle(0 at var(--theme-x) var(--theme-y));animation:theme-reveal 680ms var(--soft) forwards}
+  ::view-transition-old(root){z-index:1}
+  @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
+</style>
+</head>
+<body>
+<a href="#story" class="skip">Skip to content</a>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html" class="bd">Erdem Ülker <span>/ Product Designer</span></a>
+    <div class="nr">
+      <a href="index.html#work" class="hs">Work</a>
+      <a href="about.html" class="hs" aria-current="page">About</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+        <span class="knob" aria-hidden="true"></span>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15.4A9.4 9.4 0 1 1 8.6 3 7.5 7.5 0 0 0 21 15.4Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+      </button>
+      <a href="mailto:hello@erdemulker.com" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <h1 class="rv"><span class="wave">👋</span> I am Erdem, a product designer working on the parts of software that carry the most operational weight. Internal tooling, configuration systems, and dashboards where <em>a wrong default costs money</em>.</h1>
+        <a href="#story" class="down rv">My story <span></span></a>
+      </div>
+      <div class="rv">
+        <div class="portrait"><img src="images/about/portrait.jpg" alt="Erdem Ülker at his desk" /></div>
+        <p class="pcap">Hamburg, Germany. Mostly found reading a data model before drawing anything.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="story">
+  <div class="wrap">
+    <div class="story">
+      <div>
+        <p class="lede rv">The screens that decide whether a platform works are usually the last ones to get design attention. <em>Configuration flows, investigation tooling, tables holding thousands of rows.</em></p>
+        <p class="rv" style="margin-top:26px">That gap is expensive. An unclear status becomes a support ticket. An ambiguous default becomes a payout error. It is also where renewal risk sits, because customers judge a platform on the tools their own team opens every morning.</p>
+        <p class="rv">So I work where attention is underpriced. Most of my week goes on the parts that never appear in a portfolio: reading the data model, arguing about field order, deciding which settings a person should never have to see. <b>The visual work is the last ten percent.</b></p>
+        <p class="rv">I did not plan this. I started in consumer work, launching car rental inside a super app and leading a mobile suite, then took on an internal tool nobody wanted. The constraints turned out to be more interesting than the freedom I thought I was after. When a payout is wrong, someone loses money and somebody has to explain it. That makes teams honest.</p>
+        <p class="rv">Consumer work taught me to measure. Platform work taught me that the measurement usually points at a structural problem rather than a visual one. I use both.</p>
+      </div>
+      <div class="rv">
+        <div class="rail">
+          <div><b>Based in</b><span>Hamburg, Germany</span></div>
+          <div><b>Working</b><span>Remote or hybrid</span></div>
+          <div><b>Experience</b><span>7+ years</span></div>
+          <div><b>Currently</b><span>Ad tech, rewards</span></div>
+          <div><b>Also</b><span>Local Leader, IxDF</span></div>
+          <div><b>Markets</b><span>Europe and MENA</span></div>
+          <div><b>Open to</b><span>Staff, lead</span></div>
+          <div><b>Languages</b><span>English, Turkish</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">How I work</span>
+      <h2>Four things I do before I open a design file.</h2>
+      <p>Most of the difficulty in platform work is structural rather than visual, so this is where the time goes.</p>
+    </div>
+    <div class="proc">
+      <div class="pc rv">
+        <div class="n">01</div>
+        <h3>Read the data model</h3>
+        <p>If I cannot explain the events behind a screen, I am not ready to design it. The schema shapes the interface as much as the layout does.</p>
+      </div>
+      <div class="pc rv">
+        <div class="n">02</div>
+        <h3>Find who actually decides</h3>
+        <p>An engineer and a commercial owner ask different questions. Ordering a flow by who answers each part solves more than reordering fields.</p>
+      </div>
+      <div class="pc rv">
+        <div class="n">03</div>
+        <h3>Name the tradeoff out loud</h3>
+        <p>Every structural choice costs something. Saying what, before shipping, is what makes it defensible six months later.</p>
+      </div>
+      <div class="pc rv">
+        <div class="n">04</div>
+        <h3>Go back and audit it</h3>
+        <p>My own work is where I find the most useful problems. One project’s whole roadmap came from auditing what I had shipped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">What I believe</span>
+      <h2>Opinions I have argued for, and occasionally lost.</h2>
+    </div>
+    <div class="beliefs">
+      <div class="bc rv">
+        <h3>Defaults are the real design</h3>
+        <p>Most people never open advanced settings, so the default becomes the actual product behaviour.</p>
+        <p class="q">Sixty settings, and the ones that mattered most were the ones nobody touched.</p>
+      </div>
+      <div class="bc rv">
+        <h3>Friction is a tool, not a failure</h3>
+        <p>Removing steps is the instinct. But an action that changes what real users see, and cannot be undone, deserves resistance. I argued for a dialog against a PM who wanted it linear.</p>
+        <p class="q">One error cost more to unpick than a second of friction costs to add.</p>
+      </div>
+      <div class="bc rv">
+        <h3>A design system is an agreement</h3>
+        <p>Tokens are where the agreement gets written down, not the agreement itself. Naming by role rather than value is what made engineers reach for them.</p>
+        <p class="q">Nobody reaches for indigo 800. They reach for primary dark.</p>
+      </div>
+      <div class="bc rv">
+        <h3>Pull it if it does not hold up</h3>
+        <p>I shipped a focus ring that looked right in isolation and broke once nested in real containers. Pausing beat leaving it half working.</p>
+        <p class="q">Shipping accessibility theatre is worse than shipping nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">How I got here</span>
+      <h2>A short version of the path.</h2>
+    </div>
+    <div class="tl-list">
+      <div class="ti rv">
+        <div class="yr">2024 to now</div>
+        <div>
+          <h3>Senior product designer, adjoe</h3>
+          <p>Platform UX across two dashboards, plus ownership of the design system. Built the user investigation platform, rebuilt publisher onboarding, and designed two new promotion types.</p>
+        </div>
+      </div>
+      <div class="ti rv">
+        <div class="yr">2022 to 2024</div>
+        <div>
+          <h3>Senior product designer, Insider</h3>
+          <p>Led the Mobile Suite team from ideation through release. Ran more than thirty usability tests and tightened design ops, which moved handoff satisfaction from 7.2 to 8.8.</p>
+        </div>
+      </div>
+      <div class="ti rv">
+        <div class="yr">2021 to 2022</div>
+        <div>
+          <h3>Product designer, Getir</h3>
+          <p>Launched car rental inside the super app and shipped EU focused features. Consumer work at speed, where the feedback loop is short and the numbers arrive quickly.</p>
+        </div>
+      </div>
+      <div class="ti rv">
+        <div class="yr">2018 to 2021</div>
+        <div>
+          <h3>Designer, Koç University and freelance</h3>
+          <p>Branding and interface work for startups and NGOs, plus a campus app redesign that cut IT support calls by more than half.</p>
+        </div>
+      </div>
+      <div class="ti rv">
+        <div class="yr">The through line</div>
+        <div>
+          <h3>Complexity that has a cost attached</h3>
+          <p>Every role I have stayed in had one thing in common: being wrong was measurable. That is the environment I look for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Selected outcomes</span>
+      <h2>Numbers I can walk you through.</h2>
+      <p>Measured results from work across ad tech, martech and consumer apps. I am happy to explain how each was captured, including where the measurement is softer than the figure suggests.</p>
+    </div>
+    <div class="nums">
+      <div class="nm rv"><b>56%</b><span>less support time per user investigation</span><i>adjoe, two month window</i></div>
+      <div class="nm rv"><b>~70%</b><span>fewer tickets through a rebuilt install flow</span><i>adjoe</i></div>
+      <div class="nm rv"><b>19 to 48%</b><span>new user revenue increase per publisher after onboarding redesign</span><i>adjoe</i></div>
+      <div class="nm rv"><b>7 to 5 weeks</b><span>deal to release time for new publishers</span><i>adjoe</i></div>
+      <div class="nm rv"><b>68 to 76</b><span>NPS across the mobile suite</span><i>Insider</i></div>
+      <div class="nm rv"><b>7.2 to 8.8</b><span>handoff satisfaction after tightening design ops</span><i>Insider</i></div>
+      <div class="nm rv"><b>+46%</b><span>conversion on car rental launch inside a super app</span><i>Getir</i></div>
+      <div class="nm rv"><b>30+</b><span>usability tests run, raising UMUX above 80</span><i>Insider</i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Outside the work</span>
+      <h2>Three things I spend time on.</h2>
+    </div>
+    <div class="off">
+      <div class="oc rv">
+        <h3>Playing with AI</h3>
+        <p>Mostly through OpenCode with Opus 5 and GPT 5.6, checking whether our design system is legible to something other than a person.</p>
+      </div>
+      <div class="oc rv">
+        <h3>Drawing and watercolour</h3>
+        <p>Art time that is only for me. No brief, no review, no system.</p>
+      </div>
+      <div class="oc rv">
+        <h3>Family</h3>
+        <p>Time with my daughter and my wife. We travel often, mostly to explore somewhere new.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ct" style="padding-top:0;padding-bottom:0">
+  <div class="wrap">
+    <div class="shd rv"><span class="lbl">Contact</span></div>
+    <h2 class="rv">If the problem is genuinely complicated, I am <em>interested</em>.</h2>
+    <p class="rv">Open to staff and lead roles in B2B and platform teams. Happy to talk through any of the work in detail, including the parts that did not go well.</p>
+    <div class="ct-a rv">
+      <a href="mailto:hello@erdemulker.com" class="btn">hello@erdemulker.com
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener" class="tl">LinkedIn</a>
+      <a href="index.html#work" class="tl">See the work</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Erdem Ülker</span>
+      <span class="fl">
+        <a href="index.html">Work</a>
+        <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@erdemulker.com">Email</a>
+      </span>
+    </div>
+  </footer>
+</section>
+
+<script>
+const themeToggle=document.getElementById('theme-toggle');
+const setToggleState=()=>{
+  const dark=document.documentElement.dataset.theme==='dark';
+  const label=`Switch to ${dark?'light':'dark'} mode`;
+  themeToggle.setAttribute('aria-label',label);
+  themeToggle.setAttribute('aria-pressed',String(dark));
+  themeToggle.title=label;
+};
+setToggleState();
+themeToggle.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  const apply=()=>{
+    document.documentElement.dataset.theme=next;
+    localStorage.setItem('theme',next);
+    setToggleState();
+  };
+  if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches){
+    document.documentElement.classList.add('theme-fallback');
+    apply();
+    setTimeout(()=>document.documentElement.classList.remove('theme-fallback'),560);
+    return;
+  }
+  const box=themeToggle.getBoundingClientRect();
+  const x=box.left+box.width/2;
+  const y=box.top+box.height/2;
+  const radius=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+  document.documentElement.style.setProperty('--theme-x',`${x}px`);
+  document.documentElement.style.setProperty('--theme-y',`${y}px`);
+  document.documentElement.style.setProperty('--theme-radius',`${radius}px`);
+  document.startViewTransition(apply);
+});
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.style.transitionDelay=(i%5)*50+'ms';io.observe(el);
+});
+const nav=document.getElementById('nav');
+let raf=false;
+addEventListener('scroll',()=>{
+  if(raf)return;raf=true;
+  requestAnimationFrame(()=>{nav.classList.toggle('st',scrollY>40);raf=false});
+},{passive:true});
+</script>
+</body>
+</html>
