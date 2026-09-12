@@ -189,6 +189,21 @@
   .nm span{display:block;margin-top:10px;font-size:13.5px;font-weight:300;color:var(--s500);line-height:1.5}
   .nm i{display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--s400)}
 
+  /* community leadership */
+  .cl{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,54px);align-items:start}
+  @media(min-width:900px){.cl{grid-template-columns:minmax(0,1fr) minmax(300px,.82fr)}}
+  .cl p{font-size:16.5px;font-weight:300;color:var(--s700);line-height:1.74;max-width:60ch}
+  .cl p+p{margin-top:16px}
+  .cl-l{margin-top:26px;border-top:1px solid var(--s200)}
+  .cl-l div{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--s200)}
+  .cl-l div b{flex:none;width:34px;font-size:15.5px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:var(--tk-1)}
+  .cl-l div span{font-size:15px;font-weight:300;color:var(--s600);line-height:1.55}
+  .cl-ph{display:grid;grid-template-columns:1fr;gap:14px}
+  .cl-ph figure{margin:0}
+  .cl-ph .ph{aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:var(--s100);border:1px solid var(--s200)}
+  .cl-ph .ph img{width:100%;height:100%;object-fit:cover}
+  .cl-ph figcaption{margin-top:9px;font-size:12.5px;font-weight:300;color:var(--s500);line-height:1.5}
+
   /* outside work */
   .off{display:grid;grid-template-columns:1fr;gap:clamp(28px,3vw,44px)}
   @media(min-width:820px){.off{grid-template-columns:repeat(3,1fr)}}
@@ -396,6 +411,37 @@
       <div class="nm rv"><b>7.2 to 8.8</b><span>handoff satisfaction after tightening design ops</span><i>Insider</i></div>
       <div class="nm rv"><b>+46%</b><span>conversion on car rental launch inside a super app</span><i>Getir</i></div>
       <div class="nm rv"><b>30+</b><span>usability tests run, raising UMUX above 80</span><i>Insider</i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Community leadership</span>
+      <h2>Local Leader, Interaction Design Foundation Hamburg.</h2>
+      <p>I run the Hamburg chapter of the Interaction Design Foundation, which means finding the venue, setting the format, and making sure people who arrive alone leave having spoken to someone.</p>
+    </div>
+    <div class="cl">
+      <div>
+        <p class="rv">The work is organisational rather than glamorous. Securing a space, sequencing an agenda, deciding how many people is too many for a real conversation, then following up so the group holds together between events.</p>
+        <p class="rv">It has also made me better at the day job. Explaining design decisions to a room of designers from very different backgrounds is close to the work of getting a decision through a room of engineers and commercial owners.</p>
+        <div class="cl-l rv">
+          <div><b>3</b><span>coffee meetups, kept deliberately small so the conversation stays a conversation</span></div>
+          <div><b>2</b><span>online workshops on portfolio management, run remotely to reach people outside the city</span></div>
+          <div><b>2</b><span>large events in Hamburg, each hosting more than 100 people</span></div>
+        </div>
+      </div>
+      <div class="cl-ph rv">
+        <figure>
+          <div class="ph"><img src="images/idf/event-group.jpg" alt="Attendees at an Interaction Design Foundation Hamburg event" loading="lazy" /></div>
+          <figcaption>One of the larger Hamburg events, over 100 people in the room.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="images/idf/hosting.jpg" alt="Erdem Ülker hosting an Interaction Design Foundation Hamburg session" loading="lazy" /></div>
+          <figcaption>Talking through what it takes to be the only designer in the room, with several stakeholders who each want something different.</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>

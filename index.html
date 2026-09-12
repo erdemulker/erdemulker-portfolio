@@ -74,7 +74,8 @@
   .nav.st{padding:14px 0;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(115%);border-bottom-color:var(--s200)}
   .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
   .bd{font-size:16px;font-weight:600;letter-spacing:var(--tk-1)}
-  .bd span{color:var(--s400);font-weight:400}
+  .bd-short{display:none}
+  .bd-role{color:var(--s400);font-weight:400}
   .nr{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--s500)}
   .nr a:not(.cta){position:relative;transition:color var(--ui) linear}
   .nr a:not(.cta):hover{color:var(--s900)}
@@ -95,7 +96,13 @@
   .theme-toggle .moon{left:7px;opacity:0;transform:rotate(-45deg)}
   [data-theme="dark"] .theme-toggle .sun{opacity:0;transform:rotate(45deg)}
   [data-theme="dark"] .theme-toggle .moon{opacity:1;transform:rotate(0)}
-  @media(max-width:820px){.nr{gap:10px}.nr .hs{display:none}.cta{padding-inline:13px}.bd span{display:none}}
+  @media(max-width:820px){
+    .nav .wrap{gap:12px}.nr{gap:14px}.nr .work-link{display:none}.bd-role{display:none}
+    .bd-full{display:none}.bd-short{display:inline}.theme-toggle{width:32px}.theme-toggle .knob{display:none}
+    .theme-toggle svg{left:7px;right:auto}.nr .about-link{display:inline}
+    .cta{padding:6px 13px;font-size:13.5px;white-space:nowrap}
+  }
+  @media(max-width:400px){.nr{gap:11px}.cta{padding-inline:11px}}
 
   /* reveal */
   .rv{opacity:0;transform:translateY(16px);transition:opacity var(--rev) var(--out),transform var(--rev) var(--out)}
@@ -110,12 +117,15 @@
   .hero{padding:150px 0 0}
   .hero h1{font-size:clamp(36px,4.9vw,66px);font-weight:500;line-height:1.1;letter-spacing:var(--tk-3);max-width:21ch}
   .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
+  @media(max-width:620px){.hero h1 .ln,.hero h1 .ln>i{display:inline;overflow:visible}.hero h1 .ln:first-child::after{content:' '}}
   .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
   .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
   .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
   .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
   .live::after{content:'';position:absolute;inset:0;border-radius:50%;background:#16a34a;animation:pg 2.8s var(--out) infinite}
   @keyframes pg{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+  /* the divider before the line break reads as a trailing dot once wrapped */
+  @media(max-width:620px){.hmeta .dot-wrap{display:none}.hmeta{column-gap:10px;row-gap:7px}}
 
   /* ---------- SIGNATURE: THE MECHANISM ---------- */
   .mech{margin-top:clamp(50px,7vh,80px);padding-bottom:clamp(80px,10vh,120px)}
@@ -166,6 +176,7 @@
   .mech-card[data-side=l]{transform:translate(-100%,-50%) scale(.97);transform-origin:right center}
   .mech-card.on{opacity:1;transform:translateY(-50%) scale(1)}
   .mech-card.on[data-side=l]{transform:translate(-100%,-50%) scale(1)}
+  .mech-empty{display:none}
   .mc-n{font-size:15px;font-weight:500;letter-spacing:var(--tk-1);line-height:1.2}
   .mc-s{font-size:13px;font-weight:300;color:var(--s500);line-height:1.5;margin-top:5px}
   .mc-r{margin-top:12px;padding-top:11px;border-top:1px solid var(--s200);display:flex;flex-direction:column;gap:7px}
@@ -179,6 +190,11 @@
     .mech-card.on{display:block;transform:none}
     .mech-card.on[data-side=l]{transform:none}
     .mech-hint{display:none}
+    /* placeholder occupies the same slot as the card, so the gears do not shift */
+    .mech-empty{display:flex;align-items:center;justify-content:center;text-align:center;
+      margin-top:16px;min-height:150px;padding:20px;border:1px solid var(--s200);border-radius:12px;
+      font-size:14px;font-weight:300;color:var(--s500)}
+    .mech-card.on~.mech-empty{display:none}
   }
 
   /* ---------- work ---------- */
@@ -212,6 +228,7 @@
     transform-origin:center center;will-change:transform;
     transition:transform 1100ms var(--soft)}
   .prj:hover .p-im img,.prj:focus-visible .p-im img{transform:scale(1.08)}
+  @media(max-width:999px){.prj{padding-bottom:52px}.prj+.prj{margin-top:24px}.p-r{margin-top:24px}}
 
   /* ---------- about ---------- */
   .ab{align-items:start}
@@ -256,10 +273,10 @@
 
 <nav class="nav" id="nav">
   <div class="wrap">
-    <a href="#top" class="bd">Erdem Ülker <span>/ Product Designer</span></a>
+    <a href="#top" class="bd"><span class="bd-full">Erdem Ülker</span><span class="bd-short">Erdem</span> <span class="bd-role">/ Product Designer</span></a>
     <div class="nr">
-      <a href="#work" class="hs">Work</a>
-      <a href="about.html" class="hs">About</a>
+      <a href="#work" class="hs work-link">Work</a>
+      <a href="about.html" class="hs about-link">About</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
         <span class="knob" aria-hidden="true"></span>
         <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15.4A9.4 9.4 0 1 1 8.6 3 7.5 7.5 0 0 0 21 15.4Z"/></svg>
@@ -279,7 +296,7 @@
     <p class="hsub rv">Staff level product designer working on B2B platforms and operational tooling. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to staff and lead roles</span>
-      <span class="dot"></span><span>Hamburg, working remotely</span>
+      <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
       <span class="dot"></span><span>7+ years</span>
     </p>
   </div>
@@ -301,6 +318,7 @@
             <div><u>Turn rate</u><b class="rate" id="mcRate"></b></div>
           </div>
         </div>
+        <p class="mech-empty">Click a part to see details</p>
       </div>
     </div>
   </section>
@@ -321,8 +339,8 @@
   <div class="wrap grid ab">
     <div class="l">
       <div class="shd rv"><span class="lbl">About</span></div>
-      <p class="lede rv">The screens that decide whether a platform works are usually the last ones to get design attention. <em>Configuration flows, investigation tooling, tables holding thousands of rows.</em></p>
-      <p class="b rv">That gap is expensive. An unclear status becomes a support ticket. An ambiguous default becomes a payout error. It is also where renewal risk sits, because customers judge a platform on the tools their own team opens every morning rather than on the marketing site. So I work where attention is underpriced relative to what it protects.</p>
+      <p class="lede rv">I am most useful before the interface is obvious: when the model is unfinished, ownership is split, and <em>the team needs a decision it can build around.</em></p>
+      <p class="b rv">My work moves between product framing, system design, and the operational detail required to ship. I stay close to engineering constraints, make tradeoffs explicit, and return after release to find out which assumptions survived contact with real use.</p>
       <p class="rv" style="margin-top:26px">
         <a href="about.html" class="p-go" style="font-size:15px">More about how I work
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -417,8 +435,7 @@
   .d-imp b{display:block;font-size:clamp(21px,2.2vw,27px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;font-variant-numeric:tabular-nums}
   .d-imp span{display:block;font-size:13px;font-weight:300;color:var(--s500);margin-top:8px;line-height:1.5}
 
-  .d-fig{margin:34px 0 10px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
-  .d-fig:first-of-type{margin-top:0}
+  .d-fig{margin:clamp(50px,7vh,74px) 0 12px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
   .beforefig{border-style:dashed;border-color:var(--s300)}
   .d-pair{display:grid;grid-template-columns:1fr;gap:14px;margin:26px 0 10px}
   @media(min-width:760px){.d-pair{grid-template-columns:1fr 1fr}}
@@ -428,10 +445,10 @@
   .d-fig:has(img[src=""]),.d-fig:has(img:not([src])){display:none}
   .d-pair u{display:block;text-decoration:none;font-size:10.5px;font-weight:500;text-transform:uppercase;
     letter-spacing:var(--tk-lbl);color:var(--s400);padding:9px 12px;border-bottom:1px solid var(--s200);background:var(--s50)}
-  .d-cap{font-size:13px;font-weight:300;color:var(--s500);line-height:1.6;margin-bottom:36px}
-  .d-shot{margin:26px 0 10px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100);max-height:620px;overflow-y:auto}
+  .d-cap{font-size:13px;font-weight:300;color:var(--s500);line-height:1.6;margin-bottom:clamp(46px,7vh,72px)}
+  .d-shot{margin:clamp(50px,7vh,74px) 0 12px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100);max-height:620px;overflow-y:auto}
 
-  .d-b{margin-top:clamp(40px,5.5vh,58px)}
+  .d-b{margin-top:clamp(52px,7vh,76px)}
   .d-b>h3{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);
     padding-bottom:11px;border-bottom:1px solid var(--s200);margin-bottom:20px}
   .d-b p{font-size:16.5px;font-weight:300;color:var(--s700);line-height:1.76;margin-bottom:14px}
@@ -451,13 +468,27 @@
     letter-spacing:var(--tk-lbl);color:var(--s400);margin-bottom:8px}
   .dc-c.rj{background:var(--s100)}
 
-  /* system diagram, plain and structural */
-  .sys{border:1px solid var(--s200);border-radius:10px;padding:24px;background:var(--s50)}
-  .sys-r{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
-  .sys-c{flex:1 1 150px;border:1px solid var(--s200);border-radius:8px;padding:14px}
-  .sys-c u{display:block;text-decoration:none;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s400);margin-bottom:9px}
-  .sys-c li{list-style:none;font-size:13.5px;font-weight:300;color:var(--s600);padding:4px 0;line-height:1.45}
-  .sys-n{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.6}
+  /* system diagram, plain and structural.
+     Dividers are grid gaps showing the container background, so a row that
+     does not fill every column can never leave a hanging rule. */
+  .sys{border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s200)}
+  .sys-r{display:grid;grid-template-columns:1fr;gap:1px}
+  .sys-c{background:var(--s50);display:grid;grid-template-columns:minmax(100px,.65fr) minmax(0,1.35fr);gap:18px;padding:16px 20px}
+  .sys-c u{display:block;text-decoration:none;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s400)}
+  .sys-c ul{display:flex;gap:6px 18px;flex-wrap:wrap}
+  .sys-c li{list-style:none;font-size:13.5px;font-weight:300;color:var(--s600);line-height:1.45}
+  .sys-n{background:var(--s50);font-size:13px;font-weight:300;color:var(--s500);padding:16px 20px;margin-top:1px;line-height:1.6}
+  @media(min-width:700px){
+    .sys-r{grid-template-columns:repeat(2,1fr)}
+    .sys-c{display:block;padding:18px 20px}
+    /* an odd final group spans the row instead of leaving an empty cell */
+    .sys-c:last-child:nth-child(odd){grid-column:1 / -1}
+    .sys-c u{margin-bottom:10px}.sys-c ul{display:block}.sys-c li{padding:3px 0}.sys-n{padding:18px 20px}
+  }
+  @media(min-width:1000px){
+    .sys-r{grid-template-columns:repeat(4,1fr)}
+    .sys-c:last-child:nth-child(4n+1){grid-column:1 / -1}
+  }
 
   .lst{list-style:none}
   .lst li{display:flex;gap:18px;padding:15px 0;border-top:1px solid var(--s200);font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.64}
@@ -762,6 +793,7 @@ themeToggle.addEventListener('click',()=>{
     card.classList.add('on');
   }
   function blurG(){
+    if(matchMedia('(hover:none), (pointer:coarse)').matches&&cur)return;
     cur=null;
     Object.keys(gears).forEach(k=>gears[k].g.classList.remove('act','near','dim'));
     Object.keys(linkEls).forEach(k=>linkEls[k].classList.remove('on'));
@@ -773,12 +805,13 @@ themeToggle.addEventListener('click',()=>{
     g.addEventListener('mouseenter',()=>focusG(id));
     g.addEventListener('focus',()=>focusG(id));
     g.addEventListener('blur',blurG);
-    g.addEventListener('click',()=>cur===id?blurG():focusG(id));
+    g.addEventListener('click',()=>focusG(id));
     g.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();cur===id?blurG():focusG(id)}
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();focusG(id)}
     });
   });
   stage.addEventListener('mouseleave',()=>{
+    if(matchMedia('(hover:none), (pointer:coarse)').matches)return;
     if(!document.activeElement||!document.activeElement.classList.contains('gear'))blurG();
   });
   let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(cur)place(cur)},120)},{passive:true});
@@ -1155,6 +1188,24 @@ function openCase(i){
   drIx.textContent='Case '+c.ix;
 
   const deeper=[
+    block('Tension',`<p>${c.tension}</p>`),
+    block('Decisions',`<div class="dcs">${c.decisions.map(d=>`
+      <div class="dc"><div class="dc-h">${d[0]}</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
+          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
+        </div>
+      </div>`).join('')}</div>`),
+    c.system?block('The system underneath',`<p>${c.system.intro}</p>
+      <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
+        <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
+        <p class="sys-n">${c.system.note}</p></div>`):'',
+    c.ai?block('Built to be read by agents',`<p>${c.ai.intro}</p>
+      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`):'',
+    c.gallery?block(c.galleryLabel||'What it looks like',
+      c.gallery.map(g=>`<figure class="d-fig${g.wide?' wide':''}"><img src="${g.src}" alt="${g.alt}" loading="lazy"></figure><p class="d-cap">${g.cap}</p>`).join('')
+    ):'',
+    c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):'',
     c.steps?block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`):'',
     c.shots?c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join(''):'',
     c.debate?block('The argument still open',`
@@ -1190,27 +1241,9 @@ function openCase(i){
         ? `<figure class="d-fig beforefig"><img src="${c.beforeImg.src}" alt="${c.beforeImg.alt}" loading="lazy"></figure><p class="d-cap"><b>Before.</b> ${c.beforeImg.cap}</p>`
         : (c.before?`<div class="before"><u>Before</u><p>${c.before}</p></div>`:'')
     }`)}
-    ${block('Tension',`<p>${c.tension}</p>`)}
     ${block('Insight',`<p>${c.insight}</p>${c.pull?`<p class="d-pull">${c.pull}</p>`:''}`)}
-    ${block('Decisions',`<div class="dcs">${c.decisions.map(d=>`
-      <div class="dc"><div class="dc-h">${d[0]}</div>
-        <div class="dc-b">
-          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
-          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
-        </div>
-      </div>`).join('')}</div>`)}
-    ${c.system?block('The system underneath',`<p>${c.system.intro}</p>
-      <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
-        <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
-        <p class="sys-n">${c.system.note}</p></div>`):''}
-    ${c.ai?block('Built to be read by agents',`<p>${c.ai.intro}</p>
-      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`):''}
-    ${c.gallery?block(c.galleryLabel||'What it looks like',
-      c.gallery.map(g=>`<figure class="d-fig${g.wide?' wide':''}"><img src="${g.src}" alt="${g.alt}" loading="lazy"></figure><p class="d-cap">${g.cap}</p>`).join('')
-    ):''}
     ${block('Impact',`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
       <p class="note">${c.impactNote}</p>`)}
-    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
     ${deeper?`<details class="more"><summary><span class="pm"></span>Deeper detail, if you want it</summary><div class="more-in">${deeper}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}`;
 
