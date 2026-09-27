@@ -180,12 +180,13 @@ function resetTo(name, params = {}, anim = 'fade') {
 // re-render a page in place (keeps scroll)
 function refresh(entry, stagger = false) {
   if (!entry) return;
-  const sc = entry.el.querySelector('.scroll'); const y = sc ? sc.scrollTop : 0;
+  const SCR = '.scroll, .inner, .chips';
+  const keep = [...entry.el.querySelectorAll(SCR)].map(n => [n.scrollTop, n.scrollLeft]);
   const r = routes[entry.name](entry.params) || {};
   entry.el._r = r; entry.el.innerHTML = r.html;
   if (!stagger) entry.el.classList.add('no-anim');
   hydrate(entry.el);
-  const sc2 = entry.el.querySelector('.scroll'); if (sc2) sc2.scrollTop = y;
+  [...entry.el.querySelectorAll(SCR)].forEach((n, i) => { if (keep[i]) { n.scrollTop = keep[i][0]; n.scrollLeft = keep[i][1]; } });
   if (!stagger) requestAnimationFrame(() => entry.el.classList.remove('no-anim'));
 }
 function rerenderTop() { /* pages call refresh explicitly */ }
@@ -217,6 +218,103 @@ function toggleTabbar() {
   renderTabbar();
 }
 
+/* ---------- mobile Safari bleed (content under the glass toolbars) ---------- */
+function setupBleed() {
+  const mq = matchMedia('(max-width:600px)'); const root = document.documentElement;
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  const T = 130, B = 110;           // runway above / below the visible viewport (css px)
+  let snapT = 0;
+  const layout = () => {
+    const on = mq.matches && !standalone;
+    root.classList.toggle('bleed', on);
+    App.bleed = on ? { t: T, b: B } : { t: 0, b: 0 };
+    root.style.setProperty('--bt', App.bleed.t + 'px'); root.style.setProperty('--bb', App.bleed.b + 'px');
+    root.style.setProperty('--app-h', on ? `${window.innerHeight + T + B}px` : '');
+    if (on) window.scrollTo(0, T);
+  };
+  layout();
+  requestAnimationFrame(layout); setTimeout(layout, 300);
+  window.addEventListener('resize', () => { clearTimeout(snapT); snapT = setTimeout(layout, 60); });
+  window.addEventListener('orientationchange', () => setTimeout(layout, 300));
+  // keep the document parked on the runway
+  window.addEventListener('scroll', () => { if (!root.classList.contains('bleed')) return; clearTimeout(snapT); snapT = setTimeout(() => { if (Math.abs(window.scrollY - T) > 1) window.scrollTo({ top: T, behavior: 'smooth' }); }, 140); }, { passive: true });
+  // only real scrollers inside the app may scroll; everything else must not drag the document
+  const canScroll = n => { const cs = getComputedStyle(n); return (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 1) || (/(auto|scroll)/.test(cs.overflowX) && n.scrollWidth > n.clientWidth + 1); };
+  document.addEventListener('touchmove', e => {
+    if (!root.classList.contains('bleed') || e.defaultPrevented || !e.cancelable) return;
+    for (let n = e.target; n && n !== document.body; n = n.parentElement) if (n.nodeType === 1 && canScroll(n)) return;
+    e.preventDefault();
+  }, { passive: false });
+}
+
+/* ---------- vertical drag (touch + mouse) ---------- */
+function scrolledUp(t, root) { for (let n = t; n && n !== root; n = n.parentElement) if (n.scrollTop > 0 && n.scrollHeight > n.clientHeight) return true; return false; }
+function dragY(root, h) {
+  let s = null;
+  const pt = e => e.touches ? e.touches[0] : e;
+  const move = e => {
+    if (!s) return; const p = pt(e); const dy = p.clientY - s.y0, dx = p.clientX - s.x0;
+    if (!s.on) {
+      if (Math.abs(dy) < 6 && Math.abs(dx) < 6) return;
+      if (Math.abs(dx) > Math.abs(dy) || !h.can(dy, s.t)) { s = null; return; }
+      s.on = true; s.y0 = p.clientY; s.last = p.clientY; h.start && h.start();
+    }
+    if (e.cancelable) e.preventDefault();
+    const now = performance.now(); s.v = (p.clientY - s.last) / Math.max(1, now - s.lt); s.last = p.clientY; s.lt = now;
+    h.move(p.clientY - s.y0);
+  };
+  const end = () => {
+    window.removeEventListener('mousemove', move);
+    if (s && s.on) {
+      h.end(s.last - s.y0, performance.now() - s.lt > 90 ? 0 : s.v);
+      const blk = e => { e.stopPropagation(); e.preventDefault(); };
+      window.addEventListener('click', blk, true); setTimeout(() => window.removeEventListener('click', blk, true), 0);
+    }
+    s = null;
+  };
+  const start = e => {
+    if (e.type === 'mousedown') { if (e.button !== 0 || !e.target.closest(h.handle || '.grabber')) return; window.addEventListener('mousemove', move); window.addEventListener('mouseup', end, { once: true }); }
+    const p = pt(e); s = { y0: p.clientY, x0: p.clientX, t: e.target, on: false, last: p.clientY, lt: performance.now(), v: 0 };
+  };
+  root.addEventListener('touchstart', start, { passive: true });
+  root.addEventListener('touchmove', move, { passive: false });
+  root.addEventListener('touchend', end); root.addEventListener('touchcancel', end);
+  root.addEventListener('mousedown', start);
+}
+/* map drawer: half <-> full, drag down from half to close */
+function drawer(el, { half = .46, onClose, onChange } = {}) {
+  const dr = el.querySelector('.drawer'); const inner = dr.querySelector('.inner');
+  const H = () => el.clientHeight;
+  const fullH = () => { const tb = el.querySelector('.topbar .row'); return H() - (tb ? tb.getBoundingClientRect().bottom - el.getBoundingClientRect().top + 8 : 120); };
+  const halfH = () => { const b = App.bleed; return Math.round((H() - b.t - b.b) * half + b.b); };
+  const apply = (st, instant) => {
+    if (instant) dr.style.transition = 'none';
+    const hpx = st === 'full' ? fullH() : halfH(); dr.style.transform = ''; dr.style.height = hpx + 'px'; el.style.setProperty('--dr-h', hpx + 'px');
+    const was = el.dataset.drawer; if (!instant && st === 'half' && was === 'full' && inner) inner.scrollTo({ top: 0, behavior: 'smooth' }); el.dataset.drawer = st; el.classList.toggle('tall', st === 'full');
+    if (was !== st) onChange && onChange(st);
+    if (instant) requestAnimationFrame(() => requestAnimationFrame(() => dr.style.transition = ''));
+  };
+  let h0 = 0;
+  dragY(dr, { handle: '.grabber',
+    can: (dy, t) => { if (!inner || !inner.contains(t)) return true; return dy > 0 ? !scrolledUp(t, dr) : el.dataset.drawer !== 'full'; },
+    start: () => { h0 = dr.getBoundingClientRect().height; dr.style.transition = 'none'; const a = document.activeElement; if (a && a.blur && dr.contains(a)) a.blur(); },
+    move: dy => {
+      const h = h0 - dy, hh = halfH(), fh = fullH();
+      if (h > fh) { dr.style.height = fh + (h - fh) / 5 + 'px'; dr.style.transform = ''; }
+      else if (h >= hh || !onClose) { dr.style.height = Math.max(h, hh - (hh - h) / 5) + 'px'; dr.style.transform = ''; }
+      else { dr.style.height = hh + 'px'; dr.style.transform = `translate3d(0,${hh - h}px,0)`; }
+    },
+    end: (dy, v) => {
+      dr.style.transition = ''; const h = h0 - dy, hh = halfH(), fh = fullH();
+      if (onClose && (h < hh - 90 || (v > .6 && h < hh + 12))) { dr.style.transform = 'translate3d(0,110%,0)'; vibrate(4); setTimeout(onClose, 160); return; }
+      const proj = h - v * 220; apply(proj > (hh + fh) / 2 ? 'full' : 'half'); vibrate(4);
+    } });
+  apply(el.dataset.drawer || 'half', true);
+  const onR = () => { if (!dr.isConnected) return window.removeEventListener('resize', onR); apply(el.dataset.drawer, true); };
+  window.addEventListener('resize', onR);
+  return { set: st => apply(st), toggle: () => apply(el.dataset.drawer === 'full' ? 'half' : 'full') };
+}
+
 /* ---------- sheets ---------- */
 function sheet(html, { onClose, after } = {}) {
   const scrim = document.createElement('div'); scrim.className = 'scrim';
@@ -227,11 +325,12 @@ function sheet(html, { onClose, after } = {}) {
   const close = () => { scrim.classList.remove('in'); sh.classList.remove('in'); sh.style.transform = ''; setTimeout(() => { scrim.remove(); sh.remove(); }, 480); onClose && onClose(); };
   scrim.onclick = close;
   sh.addEventListener('click', e => { if (e.target.closest('[data-close]')) close(); });
-  // drag to dismiss
-  let y0 = null, dy = 0;
-  sh.addEventListener('touchstart', e => { if (e.target.closest('.grabber, .sheet-head')) { y0 = e.touches[0].clientY; sh.classList.add('dragging'); } }, { passive: true });
-  sh.addEventListener('touchmove', e => { if (y0 === null) return; dy = Math.max(0, e.touches[0].clientY - y0); sh.style.transform = `translate3d(0,${dy}px,0)`; scrim.style.opacity = 1 - dy / 400; }, { passive: true });
-  sh.addEventListener('touchend', () => { if (y0 === null) return; sh.classList.remove('dragging'); scrim.style.opacity = ''; if (dy > 120) close(); else sh.style.transform = ''; y0 = null; dy = 0; });
+  // drag down anywhere to dismiss (unless the content under the finger is scrolled)
+  dragY(sh, { handle: '.grabber, .sheet-head',
+    can: (dy, t) => dy > 0 && !scrolledUp(t, sh),
+    start: () => sh.classList.add('dragging'),
+    move: dy => { const d = dy > 0 ? dy : dy / 6; sh.style.transform = `translate3d(0,${d}px,0)`; scrim.style.opacity = 1 - Math.max(0, d) / 400; },
+    end: (dy, v) => { sh.classList.remove('dragging'); scrim.style.opacity = ''; if (dy > 110 || (v > .5 && dy > 16)) close(); else sh.style.transform = ''; } });
   after && after(sh, close);
   vibrate(6);
   return close;
@@ -289,9 +388,10 @@ window.App = {
   roleOf: id => id === 'C' ? 'Organiser' : JOINED[id] || '',
   reveal: el => { const sc = el.closest('.scroll'); if (!sc) return; const r = el.getBoundingClientRect(), s = sc.getBoundingClientRect(); sc.scrollTo({ top: sc.scrollTop + (r.top - s.top) - (s.height - r.height) / 2, behavior: 'smooth' }); },
   S: () => S, set, save, IMG, ic, esc, eur, wait, vibrate, PEOPLE, ORDER, PLACES, nameOf, av, stack, shares, total,
-  def, act, push, pop, popTo, resetTo, refresh, current, stackEls, sheet, notify, toast, topbar, lrow, list, thumb, ibox,
+  drawer, dragY, def, act, push, pop, popTo, resetTo, refresh, current, stackEls, sheet, notify, toast, topbar, lrow, list, thumb, ibox,
   setTab: t => { tab = t; renderTabbar(); },
   reset: () => { localStorage.removeItem('tripup-v3'); S = initial(); tab = 'trips'; resetTo('trips'); },
-  boot: () => { $app.appendChild($tabbar); resetTo('trips', {}, 'fade'); },
+  bleed: { t: 0, b: 0 },
+  boot: () => { setupBleed(); $app.appendChild($tabbar); resetTo('trips', {}, 'fade'); },
 };
 })();

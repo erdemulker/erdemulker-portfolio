@@ -38,7 +38,9 @@ act('soon', () => toast('Only the Lisbon trip is live in this demo', 'info'));
 
 /* ================= A2 Trip ================= */
 const evCard = (e, fresh) => e.slot
-  ? `<button class="slot tap-soft" data-a="slot"><span class="ic">${ic('plus')}</span><span style="flex:1"><span class="eyebrow" style="display:block">${esc(e.label)}</span><span class="b16b">${S().poll && S().poll.status === 'live' ? 'Dinner · the group is deciding' : 'Add or decide together'}</span></span></button>`
+  ? (S().poll && S().poll.status === 'live'
+    ? `<button class="slot live tap-soft" data-a="slot"><span class="ic">${ic('playing-cards-fan')}</span><span style="flex:1;min-width:0"><span class="eyebrow" style="display:block">${esc(e.label)}</span><span class="b16b">Poll ongoing: ${esc(S().poll.question.replace(/^Where for |\?$/g, '').replace(/^dinner/, 'Dinner'))}</span></span></button>`
+    : `<button class="slot tap-soft" data-a="slot"><span class="ic">${ic('plus')}</span><span style="flex:1"><span class="eyebrow" style="display:block">${esc(e.label)}</span><span class="b16b">Add or decide together</span></span></button>`)
   : `<div class="ev ${fresh ? 'fresh' : ''}"><img src="${IMG(e.img)}" alt=""><div class="txt"><div class="eyebrow">${esc(e.cat)}</div><div class="t">${esc(e.title)}</div><div class="m num">${e.time} · <b>${esc(e.cost)}</b></div></div><button class="icon-btn tap" data-a="evMenu" data-id="${e.id}">${ic('ellipsis')}</button></div>`;
 
 def('trip', (p) => {
@@ -112,19 +114,19 @@ App.openCreate = () => {
 
 /* ================= B1 Add to plan (map, single select) ================= */
 const mapLayer = (pins, sel = []) => `<div class="map"><img class="tiles" src="${IMG('map')}" alt="">
-  <span class="me" style="left:46%;top:36%"></span>
-  ${pins.map(id => { const pl = PLACES[id]; const i = sel.indexOf(id); return `<button class="pin ${i > -1 ? 'on' : ''}" style="left:${pl.x}%;top:${pl.y * 0.62 + 6}%" data-a="pin" data-id="${id}"><span class="pi">${i > -1 && sel.length > 1 ? i + 1 : ic('utensils')}</span>${esc(pl.name)}</button>`; }).join('')}</div>`;
+  <div class="pins"><span class="me" style="left:46%;top:36%"></span>
+  ${pins.map(id => { const pl = PLACES[id]; const i = sel.indexOf(id); return `<button class="pin ${i > -1 ? 'on' : ''}" style="left:${pl.x}%;top:${pl.y * 0.62 + 6}%" data-a="pin" data-id="${id}"><span class="pi">${i > -1 && sel.length > 1 ? i + 1 : ic('utensils')}</span>${esc(pl.name)}</button>`; }).join('')}</div></div>`;
 const FOOD = ['cavo', 'altar', 'fogo', 'sushi', 'trat', 'cafe'];
 def('addPlan', () => ({ html: `
   ${mapLayer(FOOD)}
   <div class="topbar clear" style="z-index:11"><div class="row"><button class="icon-btn tap" data-a="back">${ic('x')}</button></div></div>
-  <div class="drawer" style="height:56%"><div class="grabber" style="margin-top:8px"></div>
+  <div class="drawer" style="height:56%"><div class="grabber" style="margin-top:8px" data-a="drawer"></div>
     <div class="inner">
       <label class="search">${ic('search')}<input placeholder="Search places" data-in="q"></label>
       <div class="chips" style="margin-top:12px"><button class="chip on">${ic('utensils')}Food</button><button class="chip" data-a="soon">${ic('landmark')}Sights</button><button class="chip" data-a="soon">${ic('trees')}Outdoors</button></div>
       <div class="stagger" style="margin-top:8px;padding-bottom:calc(var(--safe-bot) + 16px)">${FOOD.map(id => { const p = PLACES[id]; return `<button class="placerow tap-soft" data-a="placeOpen" data-id="${id}"><img src="${IMG(p.img)}" alt=""><span style="flex:1;min-width:0"><span class="b16b" style="display:block">${esc(p.name)}</span><span class="b14 sec">${esc(p.type)} · ${p.dist}</span></span>${ic('chevron-right', 'chev')}</button>`; }).join('')}</div>
     </div></div>`,
-  after: el => { const q = el.querySelector('[data-in=q]'); q.oninput = () => { const v = q.value.toLowerCase(); el.querySelectorAll('.placerow').forEach(r => r.style.display = PLACES[r.dataset.id].name.toLowerCase().includes(v) ? '' : 'none'); }; } }));
+  after: el => { el._drawer = App.drawer(el, { half: .56, onClose: () => pop() }); const q = el.querySelector('[data-in=q]'); q.onfocus = () => el._drawer.set('full'); q.oninput = () => { const v = q.value.toLowerCase(); el.querySelectorAll('.placerow').forEach(r => r.style.display = PLACES[r.dataset.id].name.toLowerCase().includes(v) ? '' : 'none'); }; } }));
 act('addPlan', () => push('addPlan', {}, 'modal'));
 act('pin', d => { const c = current(); if (c.name === 'addPlan') push('placeAdd', { id: d.id }); else App.pollPin && App.pollPin(d.id); });
 act('placeOpen', d => push('placeAdd', { id: d.id }));
@@ -132,7 +134,7 @@ act('placeOpen', d => push('placeAdd', { id: d.id }));
 /* B2 Place · add to plan */
 def('placeAdd', ({ id }) => { const p = PLACES[id]; return { html: `
   ${topbar({ title: p.name, clear: true, trail: `<button class="icon-btn tap" data-a="soon">${ic('ellipsis')}</button>` })}
-  <div class="scroll"><div class="hero" style="height:320px"><img src="${IMG(p.img)}" alt=""></div>
+  <div class="scroll"><div class="hero" style="--hh:320px"><img src="${IMG(p.img)}" alt=""></div>
   <div class="sheet-body"><div class="content stagger" style="padding-bottom:40px">
     <div><h1 class="h1">${esc(p.name)}</h1><div class="b16 sec" style="margin-top:6px">${esc(p.type)} · ${p.price} · ${p.dist}</div></div>
     ${p.desc ? `<p class="b16 sec">${esc(p.desc)}</p>` : ''}

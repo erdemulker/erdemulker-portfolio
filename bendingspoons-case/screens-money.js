@@ -25,7 +25,7 @@ const itemHTML = (it, i) => {
       <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:10px"><label class="field" style="background:#fff"><span class="lbl">Item</span><input value="${esc(it.name)}" placeholder="e.g. Wine" data-f="name" data-i="${i}"></label><label class="field" style="background:#fff"><span class="lbl">Amount</span><input value="${it.amount || ''}" placeholder="0€" inputmode="decimal" data-f="amount" data-i="${i}"></label></div>
       <div class="b14 sec" style="margin:14px 0 4px">Who shares this item</div>
       ${G().map(p => { const on = it.who.includes(p); return `<button class="who ${on ? '' : 'off'}" style="width:100%" data-a="whoToggle" data-i="${i}" data-p="${p}">${av(p, 's')}<span class="n" style="text-align:left">${nameOf(p)}</span><span class="a num">${on ? eur(each) : '—'}</span><span class="tgl ${on ? 'on' : ''}"></span></button>`; }).join('')}
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px"><span class="b14 sec" style="font-size:12px">${n === G().length ? `Split ${n} ways` : `Split ${n} of ${G().length}`} · ${eur(each)} each</span><button class="btn btn-sm btn-secondary tap" data-a="itemDone" style="background:#fff">Done</button></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px"><span class="b14 sec" style="font-size:12px">${n === G().length ? `Split ${n} ways` : `Split ${n} of ${G().length}`} · ${eur(each)} each</span><span style="display:flex;gap:8px"><button class="btn btn-sm btn-secondary tap item-del" data-a="itemDelete" data-i="${i}" aria-label="Delete item">${ic('trash-2')}Delete</button><button class="btn btn-sm btn-secondary tap" data-a="itemDone" style="background:#fff">Done</button></span></div>
     </div></div></div>`;
 };
 def('expense', () => {
@@ -58,6 +58,10 @@ function updateItem(el, i) {
 }
 act('itemToggle', d => { const i = +d.i; X.open = X.open === i ? -1 : i; const el = current().el; el.querySelectorAll('.item').forEach(x => x.classList.toggle('open', +x.dataset.i === X.open)); vibrate(4); });
 act('itemDone', () => { X.open = -1; current().el.querySelectorAll('.item').forEach(x => x.classList.remove('open')); vibrate(4); });
+act('itemDelete', d => { const i = +d.i; const it = X.items[i]; const name = it.name || 'Item';
+  const box = current().el.querySelector(`.item[data-i="${i}"]`); vibrate(6);
+  const fin = () => { if (X.items.length > 1) X.items.splice(i, 1); else X.items = [{ name: '', amount: 0, who: G() }]; X.open = X.items.length === 1 && !X.items[0].amount ? 0 : -1; refresh(current()); toast(`${name} deleted`, 'trash-2'); };
+  if (box) { box.classList.add('removing'); setTimeout(fin, 260); } else fin(); });
 act('whoToggle', (d, b) => { const it = X.items[+d.i]; const k = it.who.indexOf(d.p); if (k > -1) it.who.splice(k, 1); else it.who.push(d.p); it.who.sort((a, b) => G().indexOf(a) - G().indexOf(b)); b.classList.toggle('off', k > -1); b.querySelector('.tgl').classList.toggle('on', k < 0); vibrate(4);
   const el = current().el; updateItem(el, +d.i); const head = el.querySelector(`.item[data-i="${d.i}"] .item-head .b14.sec`); const n = it.who.length; head.textContent = n === G().length ? `Split equally · ${n} people` : n ? `Split ${n} of ${G().length} · ${it.who.map(p => nameOf(p)).join(', ')}` : 'No one selected'; });
 act('addItem', () => { X.items.push({ name: '', amount: 0, who: G() }); X.open = X.items.length - 1; refresh(current()); setTimeout(() => { const f = current().el.querySelector(`.item[data-i="${X.open}"] [data-f=name]`); f && f.focus(); }, 380); });

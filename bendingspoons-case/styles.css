@@ -237,7 +237,7 @@ svg.lucide{width:24px;height:24px;stroke-width:1.75;flex:none}
 /* ============ Sheets ============ */
 .scrim{position:absolute;inset:0;z-index:50;background:rgba(9,9,11,.4);opacity:0;transition:opacity 360ms var(--ease-out)}
 .scrim.in{opacity:1}
-.sheet{position:absolute;left:0;right:0;bottom:0;z-index:51;background:#fff;border-radius:28px 28px 0 0;box-shadow:var(--shadow-sheet);padding:8px var(--pad) calc(var(--safe-bot) + 16px);transform:translate3d(0,100%,0);transition:transform var(--t-page) var(--spring);max-height:92%;display:flex;flex-direction:column}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:51;background:#fff;border-radius:28px 28px 0 0;box-shadow:var(--shadow-sheet);padding:8px var(--pad) calc(var(--safe-bot) + 16px);transform:translate3d(0,100%,0);transition:transform var(--t-page) var(--spring);max-height:calc(100% - var(--safe-top) - 24px);display:flex;flex-direction:column}
 .sheet.in{transform:none}
 .sheet.dragging{transition:none}
 .grabber{width:36px;height:5px;border-radius:9px;background:var(--border-strong);margin:0 auto 12px;flex:none}
@@ -255,7 +255,7 @@ svg.lucide{width:24px;height:24px;stroke-width:1.75;flex:none}
 .sheet .stagger>*{animation-duration:560ms}
 
 /* toast / banner notification */
-.notif{position:absolute;left:8px;right:8px;top:calc(var(--safe-top) - 44px + 8px);z-index:80;border-radius:24px;background:rgba(245,245,245,.86);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:0 12px 40px rgba(0,0,0,.18);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;transform:translate3d(0,-140%,0);transition:transform 560ms var(--spring)}
+.notif{position:absolute;left:8px;right:8px;top:var(--notif-top,calc(var(--safe-top) - 36px));z-index:80;border-radius:24px;background:rgba(245,245,245,.86);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:0 12px 40px rgba(0,0,0,.18);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;transform:translate3d(0,-140%,0);transition:transform 560ms var(--spring)}
 .notif.in{transform:none}
 .notif .appic{width:38px;height:38px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
 .notif .appic svg{width:20px;height:20px}
@@ -268,7 +268,7 @@ svg.lucide{width:24px;height:24px;stroke-width:1.75;flex:none}
 
 /* ============ Specific ============ */
 /* hero page */
-.hero{position:relative;height:300px;flex:none;overflow:hidden;background:#ddd}
+.hero{position:relative;height:calc(var(--hh,300px) + var(--bt,0px));flex:none;overflow:hidden;background:#ddd}
 .hero img{width:100%;height:100%;object-fit:cover;transform-origin:center bottom;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,0) 40%)}
 .sheet-body{position:relative;margin-top:-28px;border-radius:28px 28px 0 0;background:#fff;padding-top:24px;z-index:1}
@@ -422,3 +422,26 @@ svg.lucide{width:24px;height:24px;stroke-width:1.75;flex:none}
 .ter svg.lucide,.lrow .chev,.placerow .chev{color:#9d9d9f}
 .sec>svg.lucide{width:18px;height:18px}
 .tile.inverse svg.lucide{color:#fff;opacity:.72}
+/* ongoing poll slot (Figma "Open slot" 135:17515): 8px inset, 72px icon tile, 6/4 dash */
+.slot.live{padding:8px;gap:12px;background-image:url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='.5' y='.5' width='calc(100%25 - 1px)' height='calc(100%25 - 1px)' rx='19.5' fill='none' stroke='%2309090B' stroke-opacity='.2' stroke-width='1' stroke-dasharray='6 4'/%3e%3c/svg%3e")}
+.slot.live .ic{width:72px;height:72px;border-radius:12px;background:rgba(9,9,11,.04);flex:none}
+.slot.live .ic svg{width:20px;height:20px;color:#848485}
+.slot.live .eyebrow{font-size:11px;line-height:14px;letter-spacing:.06em;margin-bottom:2px}
+.slot.live .b16b{display:block;font-size:16px;line-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-del{background:#fff;color:var(--error);gap:6px;padding:0 12px}
+.item-del svg{width:16px;height:16px;color:var(--error)}
+.item.removing{opacity:0;transform:translate3d(-12px,0,0);transition:opacity 240ms var(--ease-out),transform 260ms var(--ease-out)}
+
+/* ===== Mobile Safari: bleed content behind the translucent toolbars =====
+   The document gets a runway above/below the visible area (--bt / --bb, set in core.js).
+   The app fills the runway, so hero images, maps and shadows show under Safari's glass bars,
+   while UI is inset back into the visible area. */
+html.bleed,html.bleed body{height:auto;overflow-x:hidden}
+html.bleed #device{height:var(--app-h)}
+html.bleed #app{--safe-top:calc(var(--bt) + max(env(safe-area-inset-top),12px));--safe-bot:calc(var(--bb) + max(env(safe-area-inset-bottom),10px));--notif-top:calc(var(--bt) + 8px)}
+.map .pins{position:absolute;left:0;right:0;top:var(--bt,0px);bottom:var(--bb,0px)}
+.preview{bottom:calc(var(--dr-h,46%) + 12px)}
+.drawer{will-change:height}
+.page[data-drawer=half] .drawer .inner{overflow:hidden}
+.drawer .inner{overscroll-behavior:contain}
+.sheet{touch-action:pan-y}

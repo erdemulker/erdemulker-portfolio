@@ -54,12 +54,12 @@ act('multi', (d, b) => { D.multi = !D.multi; b.querySelector('.tgl').classList.t
 /* ---------- Map pick (C2–C4) ---------- */
 const FOOD = ['cavo', 'altar', 'fogo', 'sushi', 'trat', 'cafe'];
 let sel = [];
-def('pollMap', () => { const tall = current() && current().name === 'pollMap' && current().el.classList.contains('tall');
+def('pollMap', () => {
   return { html: `
-  <div class="map"><img class="tiles" src="${IMG('map')}" alt=""><span class="me" style="left:46%;top:36%"></span>
-    ${FOOD.map(id => { const pl = PLACES[id]; const i = sel.indexOf(id); return `<button class="pin ${i > -1 ? 'on' : ''}" style="left:${pl.x}%;top:${pl.y * 0.62 + 6}%" data-a="pin" data-id="${id}"><span class="pi">${i > -1 ? i + 1 : ic('utensils')}</span>${esc(pl.name)}</button>`; }).join('')}</div>
+  <div class="map"><img class="tiles" src="${IMG('map')}" alt=""><div class="pins"><span class="me" style="left:46%;top:36%"></span>
+    ${FOOD.map(id => { const pl = PLACES[id]; const i = sel.indexOf(id); return `<button class="pin ${i > -1 ? 'on' : ''}" style="left:${pl.x}%;top:${pl.y * 0.62 + 6}%" data-a="pin" data-id="${id}"><span class="pi">${i > -1 ? i + 1 : ic('utensils')}</span>${esc(pl.name)}</button>`; }).join('')}</div></div>
   <div class="topbar clear" style="z-index:11"><div class="row"><button class="icon-btn tap" data-a="back">${ic('arrow-left')}</button></div></div>
-  <div class="preview" style="bottom:calc(46% + 12px)"></div>
+  <div class="preview"></div>
   <div class="drawer" style="height:46%"><div class="grabber" style="margin-top:8px" data-a="drawer"></div>
     <div class="inner">
       <label class="search">${ic('search')}<input placeholder="Restaurants" data-in="q">${ic('x', 'clearq')}</label>
@@ -73,15 +73,11 @@ def('pollMap', () => { const tall = current() && current().name === 'pollMap' &&
     q.onfocus = () => expandDrawer(el, true);
     q.oninput = () => { const v = q.value.toLowerCase(); cq.style.display = v ? '' : 'none'; el.querySelectorAll('.placerow').forEach(r => r.style.display = PLACES[r.dataset.id].name.toLowerCase().includes(v) || PLACES[r.dataset.id].type.toLowerCase().includes(v) ? '' : 'none'); };
     cq.onclick = () => { q.value = ''; q.oninput(); q.blur(); expandDrawer(el, false); };
-    if (tall) expandDrawer(el, true, true);
-    // drag drawer
-    const dr = el.querySelector('.drawer'); let y0 = null;
-    dr.querySelector('.grabber').addEventListener('touchstart', e => y0 = e.touches[0].clientY, { passive: true });
-    dr.addEventListener('touchend', e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; if (dy < -30) expandDrawer(el, true); if (dy > 30) expandDrawer(el, false); y0 = null; });
+    el._drawer = App.drawer(el, { half: .46, onClose: () => pop(), onChange: () => closePreview(el) });
   } }; });
-function expandDrawer(el, on, instant) { const dr = el.querySelector('.drawer'); if (instant) dr.style.transition = 'none'; dr.style.height = on ? 'calc(100% - var(--safe-top) - 64px)' : "46%"; el.classList.toggle('tall', on); closePreview(el); if (instant) requestAnimationFrame(() => dr.style.transition = ''); }
+function expandDrawer(el, on) { el._drawer && el._drawer.set(on ? 'full' : 'half'); }
 function closePreview(el) { const pv = el.querySelector('.preview'); pv && pv.classList.remove('in'); }
-act('drawer', () => { const el = current().el; expandDrawer(el, !el.classList.contains('tall')); });
+act('drawer', () => { const el = current().el; el._drawer && el._drawer.toggle(); });
 act('pollMap', () => { sel = D.options.filter(o => o.place).map(o => o.place); push('pollMap'); });
 App.pollPin = id => {
   const el = current().el; const p = PLACES[id]; const pv = el.querySelector('.preview'); const i = sel.indexOf(id);
@@ -108,7 +104,7 @@ def('placeInfo', ({ id, vote }) => { const p = PLACES[id]; const s = S(); const 
   const mine = poll && poll.votes.A === id;
   return { html: `
   ${topbar({ title: p.name, clear: true })}
-  <div class="scroll"><div class="hero" style="height:340px"><img src="${IMG(p.img)}" alt=""></div>
+  <div class="scroll"><div class="hero" style="--hh:340px"><img src="${IMG(p.img)}" alt=""></div>
   <div class="sheet-body"><div class="content stagger" style="padding-bottom:40px">
     <div><h1 class="h1">${esc(p.name)}</h1><p class="b16 sec" style="margin-top:6px">${esc(p.desc || p.type)}</p></div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);text-align:center;border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:14px 0">
