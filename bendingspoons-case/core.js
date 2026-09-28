@@ -223,9 +223,11 @@ function setupBleed() {
   const mq = matchMedia('(max-width:600px)'); const root = document.documentElement;
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   const T = 130, B = 110;           // runway above / below the visible viewport (css px)
-  let snapT = 0;
+  let snapT = 0, lastW = 0;
+  const typing = () => { const a = document.activeElement; return !!a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.isContentEditable); };
   const layout = () => {
-    const on = mq.matches && !standalone;
+    if (typing()) return;                       // keyboard open: keep the app size, never shrink to the keyboard viewport
+    const on = mq.matches && !standalone; lastW = innerWidth;
     root.classList.toggle('bleed', on);
     App.bleed = on ? { t: T, b: B } : { t: 0, b: 0 };
     root.style.setProperty('--bt', App.bleed.t + 'px'); root.style.setProperty('--bb', App.bleed.b + 'px');
@@ -235,9 +237,12 @@ function setupBleed() {
   layout();
   requestAnimationFrame(layout); setTimeout(layout, 300);
   window.addEventListener('resize', () => { clearTimeout(snapT); snapT = setTimeout(layout, 60); });
+  // keyboard dismissed: restore full size and park the document again
+  document.addEventListener('focusout', () => { [120, 420, 800].forEach(t => setTimeout(() => { if (!typing()) layout(); }, t)); });
+  if (window.visualViewport) visualViewport.addEventListener('resize', () => { if (!typing()) { clearTimeout(snapT); snapT = setTimeout(layout, 80); } });
   window.addEventListener('orientationchange', () => setTimeout(layout, 300));
   // keep the document parked on the runway
-  window.addEventListener('scroll', () => { if (!root.classList.contains('bleed')) return; clearTimeout(snapT); snapT = setTimeout(() => { if (Math.abs(window.scrollY - T) > 1) window.scrollTo({ top: T, behavior: 'smooth' }); }, 140); }, { passive: true });
+  window.addEventListener('scroll', () => { if (!root.classList.contains('bleed') || typing()) return; clearTimeout(snapT); snapT = setTimeout(() => { if (Math.abs(window.scrollY - T) > 1) window.scrollTo({ top: T, behavior: 'smooth' }); }, 140); }, { passive: true });
   // only real scrollers inside the app may scroll; everything else must not drag the document
   const canScroll = n => { const cs = getComputedStyle(n); return (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 1) || (/(auto|scroll)/.test(cs.overflowX) && n.scrollWidth > n.clientWidth + 1); };
   document.addEventListener('touchmove', e => {
@@ -296,7 +301,14 @@ function drawer(el, { half = .46, onClose, onChange } = {}) {
   };
   let h0 = 0;
   dragY(dr, { handle: '.grabber',
-    can: (dy, t) => { if (!inner || !inner.contains(t)) return true; return dy > 0 ? !scrolledUp(t, dr) : el.dataset.drawer !== 'full'; },
+    can: (dy, t) => {
+      if (t.closest('.grabber')) return true;
+      if (!inner || !inner.contains(t)) return false;
+      if (t.closest('input')) return false;
+      const atTop = inner.scrollTop <= 0, atEnd = inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 1;
+      if (dy > 0) return atTop && !scrolledUp(t, inner);          // pull down at the top: shrink / close
+      return el.dataset.drawer !== 'full' && atEnd;               // push up at the end of the list: expand
+    },
     start: () => { h0 = dr.getBoundingClientRect().height; dr.style.transition = 'none'; const a = document.activeElement; if (a && a.blur && dr.contains(a)) a.blur(); },
     move: dy => {
       const h = h0 - dy, hh = halfH(), fh = fullH();

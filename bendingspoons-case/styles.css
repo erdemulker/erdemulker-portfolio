@@ -442,6 +442,8 @@ html.bleed #app{--safe-top:calc(var(--bt) + max(env(safe-area-inset-top),12px));
 .map .pins{position:absolute;left:0;right:0;top:var(--bt,0px);bottom:var(--bb,0px)}
 .preview{bottom:calc(var(--dr-h,46%) + 12px)}
 .drawer{will-change:height}
-.page[data-drawer=half] .drawer .inner{overflow:hidden}
 .drawer .inner{overscroll-behavior:contain}
 .sheet{touch-action:pan-y}
+/* bigger drag handle: the whole top strip of a drawer / sheet */
+.drawer>.grabber,.sheet>.grabber{position:relative;cursor:grab;touch-action:none}
+.drawer>.grabber::after,.sheet>.grabber::after{content:"";position:absolute;left:-60vw;right:-60vw;top:-10px;bottom:-11px}
