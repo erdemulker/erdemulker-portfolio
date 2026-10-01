@@ -1176,10 +1176,10 @@ const P = [
     ['10 components','refactored with complete state coverage, each with a paired design and development task']
   ],
   impactNote:'The QA figure is the one I would defend. Reviewing frontend tasks used to mean checking every component by hand. Now that components are shared rather than custom built per screen, review is about UX and flow, which is roughly 130 hours a year returned to actual design work.',
-  context:'We run two dashboards on a shared Material UI base. Over time each grew its own conventions, so a component that existed in both places behaved differently in each, and the Figma library described neither accurately. Typography was not aligned to the system and the typeface itself was not legible enough at the sizes we use. Spacing, radius and shadow had no tokens, so cards carried a blurry over softened look that came from nobody having defined elevation.',
+  context:'We run two dashboards on a shared Material UI base. Over time each grew its own conventions, so a component that existed in both places behaved differently in each, and the Figma library described neither accurately. Typography was not aligned to the system, and the typeface was a paid licence with proportional figures, so numbers in tables never lined up. Spacing, radius and shadow had no tokens, so cards carried a blurry over softened look that came from nobody having defined elevation.',
   beforeImg:{src:'images/case-04/type.png',ph:'type.png · Typography, before and Figtree',
-    alt:'The previous typeface beside Figtree across the type scale, at the sizes used in the dashboards',
-    cap:'The previous typeface against Figtree at the sizes we actually use. The scale needed alignment, but legibility was the real problem, and that is what justified a change touching every screen.'},
+    alt:'The same metrics card set in Hellix and in Figtree, showing figures aligning in Figtree and three distinct text greys replacing two identical ones',
+    cap:'Hellix against Figtree on the same card. Three reasons drove the change: a paid licence replaced by an open one, figures that now align in columns, and text greys that finally separate secondary from disabled.'},
   tension:'There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.',
   insight:'The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.',
   pull:'Nothing was broken enough to escalate. That is exactly why it had survived for so long.',
@@ -1189,7 +1189,7 @@ const P = [
      'The automated pass was good but incomplete, so I reviewed everything it produced and found what it missed. Faster than a manual audit and it caught systemic patterns a person reading page by page would rationalise away.'],
     ['Keep the existing typeface, or change it',
      'Moved to Figtree, after mapping the full system and aligning with nine leaders.',
-     'A typeface change touches every screen and needs management buy in, which is why it took an alignment rather than a decision. It was worth it: legibility at our working sizes was the underlying issue, not the type scale.'],
+     'A typeface change touches every screen and needs management buy in, which is why it took an alignment rather than a decision. The case rested on three things: Figtree is open source where Hellix was licensed, its figures align in tables, and the change was the moment to fix text colours that had two levels sharing one grey.'],
     ['Ship foundations first, or component by component',
      'Pushed non component foundations immediately, then covered component level issues one at a time.',
      'Split delivery means a period where new foundations sit under old components. It also meant colour, typography, spacing, radius and shadow were correct everywhere at once, instead of waiting on ten sequential component migrations.'],
@@ -1197,7 +1197,7 @@ const P = [
      'Semantic roles with four tones each: main, light, dark and strong, across primary, success, danger, warning and information.',
      'Migration for anything referencing a raw value. Engineers reach for primary dark because it states intent, and ignored indigo 800 because it states a coordinate.'],
     ['Solid backgrounds only, or opacity based interaction states',
-     'Opposite based tones for components with no background of their own: 8% at rest, 8% hover, 16% pressed.',
+     'A single overlay of the role colour for components with no background of their own: nothing at rest, 4% on hover, 8% when pressed.',
      'Needs care over coloured surfaces. Without it, ghost and text buttons had no legitimate hover or pressed state, which is where most improvised colour came from.']
   ],
   system:{
@@ -1205,7 +1205,7 @@ const P = [
     cols:[
       ['Primitives',['Cool grey ramp','Red, orange, blue, green','Type scale, Figtree']],
       ['Semantic',['Primary, success, danger','Warning, information','Main, light, dark, strong']],
-      ['Interaction',['Ghost at 8%','Hover at 8%','Pressed at 16%']],
+      ['Interaction',['Rest at 0%','Hover at 4%','Pressed at 8%']],
       ['Structural',['Spacing tokens','Radius tokens','Elevation, redefined']]
     ],
     note:'The interaction layer and the structural layer are the two that did not exist before. Together they are the reason a component can now declare its own states instead of an engineer deciding them per screen.'
@@ -1218,28 +1218,28 @@ const P = [
       {src:'images/case-04/semantic.png',ph:'semantic.png · Five roles, four tones each',
        alt:'Five semantic colour roles, each with main, light, dark and strong tones',
        cap:'Five semantic roles, four tones each, defined once so no component derives a state colour on its own.'},
-      {src:'images/case-04/opacity.png',ph:'opacity.png · Interaction states, 8 and 16 percent',
-       alt:'Ghost and text button interaction states built from an opposite based tone at 8 and 16 percent',
-       cap:'Interaction states for components with no background of their own. Previously improvised per component.'},
+      {src:'images/case-04/opacity.png',ph:'opacity.png · Interaction states, 4 and 8 percent',
+       alt:'Ghost buttons at rest, hover and pressed on three different surfaces, using a 4 and 8 percent overlay',
+       cap:'One overlay of the role colour, 4% on hover and 8% when pressed, holding up on every surface it sits on. Previously each component improvised its own.'},
       {src:'images/case-04/structural.png',ph:'structural.png · Spacing, radius, elevation',
-       alt:'Spacing, radius and elevation tokens, with the old blurred card shadow beside the redefined elevation',
+       alt:'The spacing scale on an 8 pixel base, five radius tokens, and the five elevation levels from none to prominent',
        cap:'Spacing, radius and elevation. The old cards looked soft and blurred because elevation had never been defined, only approximated.'},
       {src:'images/case-04/icons.png',ph:'icons.png · Icon ruleset, 16 and 24 only',
-       alt:'The icon grid, stroke rules and the two permitted sizes',
+       alt:'An icon magnified on its 24 pixel grid, beside the set drawn at the two permitted sizes, 16 and 24',
        cap:'Icons, mostly hand drawn. I set the ruleset and removed every size except 16 and 24, because inconsistent icon sizing was a recurring source of misalignment.'}
     ]},
     {label:'Components, and the one I pulled',items:[
-      {src:'images/case-04/button.png',ph:'button.png · Button, 36 variants, 144 combinations',
-       alt:'The button matrix across four sizes, three hierarchies, three colour variants and four states',
-       cap:'Button. Four sizes, three hierarchies, three colour variants and four states. It had the largest gap from best practice and became the proving ground for the whole colour system.'},
+      {src:'images/case-04/button.png',ph:'button.png · Button, hierarchies, colours and states',
+       alt:'The button matrix: primary, secondary and ghost across brand, danger and neutral, in six states including focus and loading',
+       cap:'Button. Primary, secondary and ghost hierarchies across brand, danger and neutral, each with default, hover, pressed, focus, disabled and loading. It had the largest gap from best practice and became the proving ground for the whole colour system.'},
       {src:'images/case-04/segment.png',ph:'segment.png · Segmented control, before and after review',
        alt:'The segmented control as first designed, beside the revised version after leadership review',
        cap:'Segmented control. Returned from development planning when our VP disliked the treatment, so I produced alternatives and tested them with other leads before settling on this one.'},
       {src:'images/case-04/components.png',ph:'components.png · The ten refactored components',
-       alt:'The ten refactored components: button, link, tooltip, switch, input, avatar, table, dialog, status and icons',
-       cap:'The ten components, each shipped as a paired design and development task and verified in Storybook and a sandbox before release.'},
+       alt:'Six refactored components: input, switch, checkbox and radio, snackbar, chip and time picker',
+       cap:'A sample of the refactored set. Each component shipped as a paired design and development task and was verified in Storybook and a sandbox before release.'},
       {src:'images/case-04/focus.png',ph:'focus.png · Focus ring clipped by flush wrappers',
-       alt:'A focus ring clipped where a component sits flush inside its parent container',
+       alt:'The same focused button inside a filter panel, inset with its ring intact, and flush to the edge with the ring clipped',
        cap:'The focus ring, and why it is paused. Wrappers sit flush to component edges, so the ring is clipped whenever a component is nested inside a dialog or filter panel.'}
     ]}
   ],
@@ -1251,7 +1251,7 @@ const P = [
     ['Verify before release','Every component checked in Storybook and in a sandbox environment before it went out, because a shared component failing is worse than a one off failing.']
   ],
   leadership:[
-    ['Getting a typeface change approved','A new typeface touches every screen, so it needed management level agreement rather than a design decision. I mapped the system, made the legibility argument, and got sign off from nine leaders.'],
+    ['Getting a typeface change approved','A new typeface touches every screen, so it needed management level agreement rather than a design decision. I mapped the system, made the case on licence cost, numeric alignment and text hierarchy, and got sign off from nine leaders.'],
     ['Working through teams I do not manage','Frontend engineers sit in other teams and could only take this as sprint side work, so every component needed to be specified well enough to be picked up without me in the room.'],
     ['Absorbing a late reversal','The segmented control came back from development planning because our VP disliked it. Rather than defend the original, I produced alternatives and tested them with other leads. The revised version is better and it cost a cycle.'],
     ['Pulling my own feature','I shipped a keyboard focus ring that looked correct in isolation. In real layouts, wrappers sat flush to component edges so rings were clipped inside dialogs and filter modals. I paused it rather than leave a broken accessibility affordance in place.']
