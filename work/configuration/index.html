@@ -16,12 +16,14 @@
 <meta property="og:title" content="Sixty settings nobody could explain" />
 <meta property="og:description" content="The settings that decide how Playtime behaves sat behind a single dropdown, carrying whatever name their developer chose. Fifty four of them had no description or tooltip. Several of the people who wrote them had left the company. Before I could restructure anything, I had to work out what they did." />
 <meta property="og:url" content="https://erdemulker.com/work/configuration/" />
-<meta property="og:image" content="https://erdemulker.com/images/case-02/hero.png" />
-<meta property="og:image:alt" content="The application summary grouped into sections, with the install postback setup opened as a focused card" />
+<meta property="og:image" content="https://erdemulker.com/images/og/configuration.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Sixty settings nobody could explain. Case study by Erdem Ülker." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Sixty settings nobody could explain" />
 <meta name="twitter:description" content="The settings that decide how Playtime behaves sat behind a single dropdown, carrying whatever name their developer chose. Fifty four of them had no description or tooltip. Several of the people who wrote them had left the company. Before I could restructure anything, I had to work out what they did." />
-<meta name="twitter:image" content="https://erdemulker.com/images/case-02/hero.png" />
+<meta name="twitter:image" content="https://erdemulker.com/images/og/configuration.png" />
 <script>
   (()=>{
     const saved=localStorage.getItem('theme');
@@ -29,6 +31,8 @@
     document.documentElement.dataset.theme=theme;
   })();
 </script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.ln>i{transform:none!important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Erdem Ülker","jobTitle":"Senior Product Designer","url":"https://erdemulker.com/","email":"mailto:hello@erdemulker.com","address":{"@type":"PostalAddress","addressLocality":"Hamburg","addressCountry":"DE"},"sameAs":["https://www.linkedin.com/in/erdem-ulker/"],"knowsAbout":["Product design","B2B SaaS","Design systems","Monetization platforms","Martech"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -136,6 +140,14 @@
   .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
   @media(max-width:620px){.hero h1 .ln,.hero h1 .ln>i{display:inline;overflow:visible}.hero h1 .ln:first-child::after{content:' '}}
   .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
+  .proof{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--s200);max-width:980px}
+  @media(min-width:760px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .proof li{border-bottom:1px solid var(--s200)}
+  @media(min-width:760px){.proof li{border-bottom:0}.proof li+li{border-left:1px solid var(--s200);padding-left:24px}}
+  .proof a{display:block;padding:18px 16px 18px 0;transition:color var(--ui) linear}
+  .proof b{display:block;font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .proof span{display:block;margin-top:6px;font-size:13.5px;color:var(--s500);line-height:1.45;max-width:30ch}
+  .proof a:hover span{color:var(--s700)}
   .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
   .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
   .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
@@ -315,6 +327,7 @@
   ::view-transition-old(root){z-index:1}
   @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Sixty settings nobody could explain","headline":"Sixty settings nobody could explain","description":"The settings that decide how Playtime behaves sat behind a single dropdown, carrying whatever name their developer chose. Fifty four of them had no description or tooltip. Several of the people who wrote them had left the company. Before I could restructure anything, I had to work out what they did.","url":"https://erdemulker.com/work/configuration/","image":"https://erdemulker.com/images/og/configuration.png","author":{"@type":"Person","name":"Erdem Ülker","url":"https://erdemulker.com/"},"about":"Offerwall platform, partner onboarding"}</script>
 </head>
 <body>
 <a href="#work" class="skip">Skip to work</a>
@@ -338,15 +351,20 @@
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="rv">
-      <span class="ln"><i>I turn complex systems into</i></span>
-      <span class="ln"><i>products that feel <em>simple</em>.</i></span>
+      <span class="ln"><i>I design software where</i></span>
+      <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
     </h1>
-    <p class="hsub rv">Senior Product Designer working on B2B platforms and operational tooling. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS: internal tooling, configuration systems and dashboards in monetization and martech. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to senior and lead roles</span>
       <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
       <span class="dot"></span><span>7+ years</span>
     </p>
+    <ul class="proof rv" aria-label="Selected results">
+      <li><a href="/work/support/" data-case="0"><b>56%</b><span>less support time per investigation</span></a></li>
+      <li><a href="/work/configuration/" data-case="1"><b>7 → 5 weeks</b><span>deal to release for new publishers</span></a></li>
+      <li><a href="/work/design-system/" data-case="3"><b>3–4h → &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
+    </ul>
   </div>
 
   <!-- SIGNATURE INTERACTION: THE MECHANISM -->
@@ -378,7 +396,7 @@
   <div class="wrap">
     <div class="shd rv">
       <span class="lbl">Selected work</span>
-      <h2>Four projects, chosen for the decisions rather than the screens.</h2>
+      <h2>Four projects, chosen for the decisions behind the screens.</h2>
       <p>Each one includes the reasoning, the tradeoffs I accepted, and what it changed for the business.</p>
     </div>
     <div id="prjs"><!-- @cards-start --><a class="prj rv" href="/work/support/" data-case="0" aria-haspopup="dialog" aria-label="Getting the company out of its own support queue. Offerwall platform, internal operations. Open case study."><div class="prj-g">
@@ -523,6 +541,7 @@
       <div><span>Timeline</span><b>Two months of analysis, then design</b></div>
       <div><span>Year</span><b>2025 to 2026</b></div>
     </div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Everything visible in the form, grouped by purpose, with optional detail inside accordions.</p></div><div><u>What it changed</u><p><b>7 to 5 weeks</b> average deal to release time, measured over a two month monitoring period after launch.</p></div></div>
     <figure class="d-fig"><img src="images/case-02/hero.png" alt="The application summary grouped into sections, with the install postback setup opened as a focused card" data-fb="images/case-02/flow.png" onerror="figFail(this)"></figure><p class="d-cap">Sixty settings grouped by the decision they serve. Each section opens on its own instead of sharing one long page.</p>
     <section class="d-b"><h3>Context</h3><p>Setting up a publisher application is the moment the entire Playtime experience gets decided: how rewards behave, what the end user sees, how payouts reach them. Most of that lived in one dropdown holding sixty plus options. Requirements originated on the business side, but the link between that intent and the eventual label was loose, so engineers named each config however made sense inside the backend. The company onboards around five new publishers a month, so every week of setup friction is a recurring cost rather than a one off.</p></section>
     <section class="d-b"><h3>Tension</h3><p>Three problems compounded. Comprehension first: 54 of the sixty plus configs had no description or tooltip, so account managers skipped anything they had not been explicitly told to enable, because guessing wrong on a live integration is expensive. Second, there was no rule about where a new setting belonged. When Playtime Studio launched it arrived as one toggle in the first section, then later gained its own configs, some of which went to rewards while others stayed in the dropdown. Third, and worst, several config owners had left and nothing was written down, so the behaviour of those settings existed only in backend code. I could not restructure a system nobody could currently describe.</p></section>
@@ -558,15 +577,22 @@
           <div class="dc-c rj"><u>What it cost</u>Publishers cannot self serve here, which is friction I chose deliberately. Loosening fraud protection is a commercial decision with real exposure, so it belongs in a conversation rather than a toggle.</div>
         </div>
       </div></div></section>
+    <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Recovering knowledge that had left the company</b><span>Sixty plus configs mapped across ten plus alignment sessions with tech leads, developers, and both technical and growth account managers. Fifty four had no documentation. I read backend implementation notes to establish real behaviour rather than inferring it from labels.</span></li><li><b>Deleting what should not have been there</b><span>Eight configs had already been removed from the system endpoints but were still rendering in the frontend. They did nothing and had been offered to publishers as real options. I removed them, which is the clearest evidence the audit was worth doing.</span></li><li><b>Bringing data to a taste argument</b><span>I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.</span></li><li><b>Letting the users overrule my preferred direction</b><span>I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.</span></li></ul></section>
+    <section class="d-b"><h3>What shipped</h3><figure class="d-fig"><img src="images/case-02/flow.png" alt="The three section application creation flow with integration type selected first and one section expanded" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The flow that shipped. Integration type is chosen first because it determines which configurations are relevant, then three sections ordered by who answers the question.</p><figure class="d-fig"><img src="images/case-02/old-dropdown.png" alt="The original configuration dropdown, narrow, holding sixty plus backend named options with no descriptions" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The original dropdown. Sixty plus options carrying the names their developers gave them, no descriptions, no grouping. Fifty four had no tooltip of any kind.</p></section>
     <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>7 to 5 weeks</b><span>average deal to release time, measured over a two month monitoring period after launch</span></div><div><b>+17% configs used</b><span>more configurations actively serving publisher needs over the same two month window, because people could finally see and understand them</span></div><div><b>54 documented</b><span>of sixty plus configs that previously had no description, plus 8 dead ones removed from the interface</span></div></div><p class="note">Measured over a two month monitoring period after release. A single month would not have been enough: with a seven week baseline, one cycle barely completes, so a two week improvement could easily be noise from deal size or publisher readiness. The two week reduction compounds: at five new publishers a month, that is roughly ten publisher weeks of release velocity recovered every month. The 17% figure is the one I find most telling, because nothing was added to the product. The same configurations simply became findable.</p></section>
-    <details class="more"><summary><span class="pm"></span>More: the system underneath, screens, leadership and step by step</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Integration type is chosen first, because it determines which configurations are even relevant. The three sections after it are ordered by who answers the question, not by how the data is stored.</p>
+    
+    <details class="more"><summary><span class="pm"></span>More: the system underneath, step by step and more screens</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Integration type is chosen first, because it determines which configurations are even relevant. The three sections after it are ordered by who answers the question, not by how the data is stored.</p>
       <div class="sys"><div class="sys-r">
         <div class="sys-c"><u>0 Integration type</u><ul><li>SDK</li><li>Web</li><li>API</li><li>Playtime Studio</li></ul></div>
         <div class="sys-c"><u>1 Integration and payout</u><ul><li>Payout system</li><li>Data we return</li><li>Push to own servers</li></ul></div>
         <div class="sys-c"><u>2 Rewards and offers</u><ul><li>Reward types</li><li>Offer mix</li><li>Currency naming</li><li>Verticals, custom events</li></ul></div>
         <div class="sys-c"><u>3 System and security</u><ul><li>Apple relay</li><li>DRM protection</li><li>Fraud tolerance</li><li>Internal only</li></ul></div></div>
-        <p class="sys-n">Section one is everything happening outside the end user experience, answered by an engineer. Section two is where the publisher shapes what their users actually see, and belongs to a commercial owner. Section three is visible to us only: a publisher wanting to extend a fraud rule needs a business agreement first, so the interface reflects that boundary rather than hiding it.</p></div></section><section class="d-b"><h3>Before, and what replaced it</h3><figure class="d-fig"><img src="images/case-02/flow.png" alt="The three section application creation flow with integration type selected first and one section expanded" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The flow that shipped. Integration type is chosen first because it determines which configurations are relevant, then three sections ordered by who answers the question.</p><figure class="d-fig"><img src="images/case-02/old-dropdown.png" alt="The original configuration dropdown, narrow, holding sixty plus backend named options with no descriptions" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The original dropdown. Sixty plus options carrying the names their developers gave them, no descriptions, no grouping. Fifty four had no tooltip of any kind.</p><figure class="d-fig"><img src="images/case-02/grouped.png" alt="A configuration group expanded, showing related settings together with plain language tooltips" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Grouped configurations with tooltips written for the person deciding, not the person who implemented it. Eighteen dependent configs were consolidated into six groups.</p><figure class="d-fig"><img src="images/case-02/feedback.png" alt="Inline validation showing cashback enabled and prompting for the required ratio and cap" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Inline feedback at the moment of enabling. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submit.</p></section><section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Recovering knowledge that had left the company</b><span>Sixty plus configs mapped across ten plus alignment sessions with tech leads, developers, and both technical and growth account managers. Fifty four had no documentation. I read backend implementation notes to establish real behaviour rather than inferring it from labels.</span></li><li><b>Deleting what should not have been there</b><span>Eight configs had already been removed from the system endpoints but were still rendering in the frontend. They did nothing and had been offered to publishers as real options. I removed them, which is the clearest evidence the audit was worth doing.</span></li><li><b>Bringing data to a taste argument</b><span>I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.</span></li><li><b>Letting the users overrule my preferred direction</b><span>I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.</span></li></ul></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Choose the integration type</b><span>SDK, Web, API or Playtime Studio. This used to be a toggle buried in the first section, which is why Studio specific settings ended up scattered across three places. It now comes first and filters everything after it.</span></li><li><b>Integration and payout</b><span>How payouts work, which system to use, what data we return, and whether the publisher wants the data we collect pushed to their own servers.</span></li><li><b>Rewards and offers</b><span>Reward types, offer mix, currency naming, verticals, custom event names. Where the end user experience actually gets shaped.</span></li><li><b>System and security, internally</b><span>Apple relay, DRM protection, fraud tolerance. Configured by us, and only after a business level agreement where fraud rules are being extended.</span></li><li><b>Inline feedback before submit</b><span>Each group states what is still incomplete at the moment you enable it. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submission.</span></li></ol></section></div></details>
-    <section class="d-b"><h3>Looking back</h3><p>The visible output is a cleaner form. The real deliverable was an explanation. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a direct result. Two of those months produced no design at all, which was the part that mattered.</p></section></div>
+        <p class="sys-n">Section one is everything happening outside the end user experience, answered by an engineer. Section two is where the publisher shapes what their users actually see, and belongs to a commercial owner. Section three is visible to us only: a publisher wanting to extend a fraud rule needs a business agreement first, so the interface reflects that boundary rather than hiding it.</p></div></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Choose the integration type</b><span>SDK, Web, API or Playtime Studio. This used to be a toggle buried in the first section, which is why Studio specific settings ended up scattered across three places. It now comes first and filters everything after it.</span></li><li><b>Integration and payout</b><span>How payouts work, which system to use, what data we return, and whether the publisher wants the data we collect pushed to their own servers.</span></li><li><b>Rewards and offers</b><span>Reward types, offer mix, currency naming, verticals, custom event names. Where the end user experience actually gets shaped.</span></li><li><b>System and security, internally</b><span>Apple relay, DRM protection, fraud tolerance. Configured by us, and only after a business level agreement where fraud rules are being extended.</span></li><li><b>Inline feedback before submit</b><span>Each group states what is still incomplete at the moment you enable it. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submission.</span></li></ol></section><section class="d-b"><h3>Before, and what replaced it</h3><figure class="d-fig"><img src="images/case-02/grouped.png" alt="A configuration group expanded, showing related settings together with plain language tooltips" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Grouped configurations with tooltips written for the person deciding, not the person who implemented it. Eighteen dependent configs were consolidated into six groups.</p><figure class="d-fig"><img src="images/case-02/feedback.png" alt="Inline validation showing cashback enabled and prompting for the required ratio and cap" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Inline feedback at the moment of enabling. Toggle cashback and it asks for the ratio and the cap immediately, rather than failing silently after submit.</p></section></div></details>
+    <section class="d-b"><h3>Looking back</h3><p>The form is cleaner, but most of the value came from explaining it. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a result. I spent two of those months without drawing anything, finding out what each setting actually did.</p></section>
+    <nav class="d-nx" aria-label="More case studies">
+      <a href="/work/support/" data-case="0"><u>Previous case</u><b>Getting the company out of its own support queue</b></a>
+      <a class="nx" href="/work/promotions/" data-case="2"><u>Next case</u><b>Arguing for the project nobody had funded</b></a>
+    </nav></div>
   </article>
 </div>
 
@@ -685,6 +711,23 @@
   .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
 
   /* optional depth */
+  .glance{margin-top:30px;display:grid;grid-template-columns:1fr;border:1px solid var(--s200);border-radius:12px;overflow:hidden}
+  @media(min-width:720px){.glance{grid-template-columns:1fr 1fr}}
+  .glance>div{padding:18px 20px}
+  .glance>div+div{border-top:1px solid var(--s200)}
+  @media(min-width:720px){.glance>div+div{border-top:0;border-left:1px solid var(--s200)}}
+  .glance u{display:block;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
+  .glance p{font-size:15.5px;line-height:1.6;color:var(--s800,var(--s900));font-weight:400;margin:0}
+  .d-q{margin:32px 0 0;padding:22px 24px;border-left:2px solid var(--s900);background:var(--s100);border-radius:0 10px 10px 0}
+  .d-q blockquote{margin:0;font-size:17px;font-weight:300;line-height:1.6;color:var(--s700)}
+  .d-q figcaption{margin-top:12px;font-size:13.5px;color:var(--s500)}
+  .d-q figcaption b{color:var(--s900);font-weight:500}
+  .d-nx{margin-top:clamp(56px,8vh,84px);display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--s200);padding-top:24px}
+  .d-nx a{display:block;padding:16px 18px;border:1px solid var(--s200);border-radius:10px;transition:border-color var(--ui) linear,background var(--ui) linear}
+  .d-nx a:hover{border-color:var(--s900)}
+  .d-nx a.nx{text-align:right;grid-column:2}
+  .d-nx u{display:block;text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:6px}
+  .d-nx b{font-size:15px;font-weight:500;line-height:1.35}
   .more{margin-top:16px;border-top:1px solid var(--s200)}
   .more summary{list-style:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;gap:10px;
     font-size:14px;font-weight:500;color:var(--s600);transition:color var(--ui) linear}
@@ -1030,7 +1073,7 @@ const P = [
     cap:'The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.'},
   tension:'The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.',
   insight:'While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.',
-  pull:'Five mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
+  pull:'Five mechanics were being drawn as one undifferentiated list. Most of the design work was naming them; the table followed from that.',
   decisions:[
     ['Model the event, or redesign the table',
      'Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.',
@@ -1179,7 +1222,7 @@ const P = [
     ['Bringing data to a taste argument','I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.'],
     ['Letting the users overrule my preferred direction','I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.']
   ],
-  reflection:'The visible output is a cleaner form. The real deliverable was an explanation. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a direct result. Two of those months produced no design at all, which was the part that mattered.'
+  reflection:'The form is cleaner, but most of the value came from explaining it. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a result. I spent two of those months without drawing anything, finding out what each setting actually did.'
 },
 {
   ix:'03',
@@ -1286,7 +1329,7 @@ const P = [
     cap:'Hellix against Figtree on the same card. Three reasons drove the change: a paid licence replaced by an open one, figures that now align in columns, and text greys that finally separate secondary from disabled.'},
   tension:'There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.',
   insight:'The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.',
-  pull:'Nothing was broken enough to escalate. That is exactly why it had survived for so long.',
+  pull:'No single issue was bad enough to escalate, which is why the drift had lasted so long.',
   decisions:[
     ['Audit by hand, or pull production in and compare',
      'Used the HTML to Figma plugin to bring live production into the file, then ran a first analysis pass with OpenCode.',
@@ -1376,6 +1419,7 @@ const P = [
       ['Visual regression coverage','Catch drift automatically, so the 200 issues I closed cannot quietly return.']
     ]
   },
+  quote:{text:'In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard.',who:'Puru',role:'Senior Frontend Engineer, adjoe'},
   ai:{
     intro:'The system is built to be read by coding agents, not only by people. That is a deliberate design goal rather than a side effect.',
     points:[
@@ -1418,10 +1462,33 @@ function renderCard(c,i){
   </div></a>`;
 }
 
-/* Tension and Decisions are the senior signal, so they sit in the main flow.
-   Supporting material (system, screens, roadmap) stays behind one disclosure,
-   labelled with what is actually inside it. */
+/* Case layout, in reading order for a hiring manager:
+   at a glance, context, tension, insight, decisions and what they cost,
+   leadership, two key screens, impact. Everything else (system detail,
+   remaining screens, roadmap) sits behind one disclosure that names its contents. */
+function screensOf(c){
+  const out=[];
+  const shot=s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`;
+  if(c.shots) c.shots.forEach(s=>out.push({html:shot(s),group:null}));
+  if(c.gallery) c.gallery.forEach(g=>out.push({html:fig(g,{cls:g.wide?' wide':''}),group:c.galleryLabel||'What it looks like'}));
+  if(c.galleries) c.galleries.forEach(gr=>gr.items.forEach((g,k)=>out.push({html:fig(g),group:gr.label,first:k===0})));
+  return out;
+}
 function renderCase(c){
+  const i=P.indexOf(c);
+  const all=screensOf(c);
+  // two key screens up front: the first of each gallery group if there are groups, otherwise the first two
+  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,2);
+  const rest=all.filter(s=>!key.includes(s));
+  const restHtml=(()=>{
+    if(!rest.length) return '';
+    const groups=[...new Set(rest.map(s=>s.group))];
+    return groups.map(gp=>{
+      const items=rest.filter(s=>s.group===gp).map(s=>s.html).join('');
+      return block(gp||'More screens',items);
+    }).join('');
+  })();
+
   const extra=[
     c.system?['the system underneath',block('The system underneath',`<p>${c.system.intro}</p>
       <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
@@ -1429,11 +1496,8 @@ function renderCase(c){
         <p class="sys-n">${c.system.note}</p></div>`)]:null,
     c.ai?['agent readability',block('Built to be read by agents',`<p>${c.ai.intro}</p>
       <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
-    c.gallery?['screens',block(c.galleryLabel||'What it looks like',c.gallery.map(g=>fig(g,{cls:g.wide?' wide':''})).join(''))]:null,
-    c.galleries?['screens',c.galleries.map(gr=>block(gr.label,gr.items.map(g=>fig(g)).join(''))).join('')]:null,
-    c.leadership?['leadership',block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`)]:null,
     c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
-    c.shots?['screens',c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join('')]:null,
+    restHtml?['more screens',restHtml]:null,
     c.debate?['the open argument',block('The argument still open',`
       <div class="dc"><div class="dc-h">${c.debate.q}</div>
         <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
@@ -1449,9 +1513,11 @@ function renderCase(c){
           ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
       </div>`)]:null
   ].filter(Boolean);
-  const labels=[...new Set(extra.map(e=>e[0]))];
+  const labels=extra.map(e=>e[0]);
   const list=labels.length>1?labels.slice(0,-1).join(', ')+' and '+labels[labels.length-1]:labels[0];
   const imp=`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`;
+  const d0=c.decisions&&c.decisions[0];
+  const prev=i>0?P[i-1]:null, next=i<P.length-1?P[i+1]:null;
   return `
     <p class="d-kk">${c.kk}</p>
     <h1 class="d-t" id="drT">${c.t}</h1>
@@ -1463,6 +1529,7 @@ function renderCase(c){
       <div><span>Timeline</span><b>${c.time}</b></div>
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it changed</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1478,9 +1545,16 @@ function renderCase(c){
           <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
         </div>
       </div>`).join('')}</div>`):''}
+    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
+    ${key.length?block('What shipped',key.map(s=>s.html).join('')):''}
     ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
+    ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
-    ${block('Looking back',`<p>${c.reflection}</p>`)}`;
+    ${block('Looking back',`<p>${c.reflection}</p>`)}
+    <nav class="d-nx" aria-label="More case studies">
+      ${prev?`<a href="${caseUrl(i-1)}" data-case="${i-1}"><u>Previous case</u><b>${prev.t}</b></a>`:''}
+      ${next?`<a class="nx" href="${caseUrl(i+1)}" data-case="${i+1}"><u>Next case</u><b>${next.t}</b></a>`:''}
+    </nav>`;
 }
 /* @render-end */
 
@@ -1490,7 +1564,7 @@ function renderCase(c){
    the build), they are rendered here instead. */
 const prjs=document.getElementById('prjs');
 if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map(renderCard).join('');
-prjs.querySelectorAll('.prj').forEach(a=>{
+document.querySelectorAll('#prjs .prj, .proof a').forEach(a=>{
   a.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
     e.preventDefault();openCase(+a.dataset.case);
@@ -1549,6 +1623,11 @@ function onKey(e){
   }
 }
 document.getElementById('drBg').addEventListener('click',()=>closeCase());
+drC.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-case]');
+  if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+  e.preventDefault();openCase(+a.dataset.case);
+});
 drX.addEventListener('click',()=>closeCase());
 drP.addEventListener('scroll',()=>{
   const h=drP.scrollHeight-drP.clientHeight;

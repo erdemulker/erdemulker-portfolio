@@ -16,12 +16,14 @@
 <meta property="og:title" content="Getting the company out of its own support queue" />
 <meta property="og:description" content="Every question about a missing reward became a ticket for one of our account managers. The tool they used could not represent half of what the product now did, so they were interpreting rows that no longer described reality." />
 <meta property="og:url" content="https://erdemulker.com/work/support/" />
-<meta property="og:image" content="https://erdemulker.com/images/case-01/hero.png" />
-<meta property="og:image:alt" content="The investigation view: one row grammar carrying every reward mechanic, with a popover naming the campaigns removed by a constraint" />
+<meta property="og:image" content="https://erdemulker.com/images/og/support.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Getting the company out of its own support queue. Case study by Erdem Ülker." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Getting the company out of its own support queue" />
 <meta name="twitter:description" content="Every question about a missing reward became a ticket for one of our account managers. The tool they used could not represent half of what the product now did, so they were interpreting rows that no longer described reality." />
-<meta name="twitter:image" content="https://erdemulker.com/images/case-01/hero.png" />
+<meta name="twitter:image" content="https://erdemulker.com/images/og/support.png" />
 <script>
   (()=>{
     const saved=localStorage.getItem('theme');
@@ -29,6 +31,8 @@
     document.documentElement.dataset.theme=theme;
   })();
 </script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.ln>i{transform:none!important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Erdem Ülker","jobTitle":"Senior Product Designer","url":"https://erdemulker.com/","email":"mailto:hello@erdemulker.com","address":{"@type":"PostalAddress","addressLocality":"Hamburg","addressCountry":"DE"},"sameAs":["https://www.linkedin.com/in/erdem-ulker/"],"knowsAbout":["Product design","B2B SaaS","Design systems","Monetization platforms","Martech"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -136,6 +140,14 @@
   .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
   @media(max-width:620px){.hero h1 .ln,.hero h1 .ln>i{display:inline;overflow:visible}.hero h1 .ln:first-child::after{content:' '}}
   .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
+  .proof{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--s200);max-width:980px}
+  @media(min-width:760px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .proof li{border-bottom:1px solid var(--s200)}
+  @media(min-width:760px){.proof li{border-bottom:0}.proof li+li{border-left:1px solid var(--s200);padding-left:24px}}
+  .proof a{display:block;padding:18px 16px 18px 0;transition:color var(--ui) linear}
+  .proof b{display:block;font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .proof span{display:block;margin-top:6px;font-size:13.5px;color:var(--s500);line-height:1.45;max-width:30ch}
+  .proof a:hover span{color:var(--s700)}
   .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
   .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
   .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
@@ -315,6 +327,7 @@
   ::view-transition-old(root){z-index:1}
   @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Getting the company out of its own support queue","headline":"Getting the company out of its own support queue","description":"Every question about a missing reward became a ticket for one of our account managers. The tool they used could not represent half of what the product now did, so they were interpreting rows that no longer described reality.","url":"https://erdemulker.com/work/support/","image":"https://erdemulker.com/images/og/support.png","author":{"@type":"Person","name":"Erdem Ülker","url":"https://erdemulker.com/"},"about":"Offerwall platform, internal operations"}</script>
 </head>
 <body>
 <a href="#work" class="skip">Skip to work</a>
@@ -338,15 +351,20 @@
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="rv">
-      <span class="ln"><i>I turn complex systems into</i></span>
-      <span class="ln"><i>products that feel <em>simple</em>.</i></span>
+      <span class="ln"><i>I design software where</i></span>
+      <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
     </h1>
-    <p class="hsub rv">Senior Product Designer working on B2B platforms and operational tooling. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS: internal tooling, configuration systems and dashboards in monetization and martech. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to senior and lead roles</span>
       <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
       <span class="dot"></span><span>7+ years</span>
     </p>
+    <ul class="proof rv" aria-label="Selected results">
+      <li><a href="/work/support/" data-case="0"><b>56%</b><span>less support time per investigation</span></a></li>
+      <li><a href="/work/configuration/" data-case="1"><b>7 → 5 weeks</b><span>deal to release for new publishers</span></a></li>
+      <li><a href="/work/design-system/" data-case="3"><b>3–4h → &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
+    </ul>
   </div>
 
   <!-- SIGNATURE INTERACTION: THE MECHANISM -->
@@ -378,7 +396,7 @@
   <div class="wrap">
     <div class="shd rv">
       <span class="lbl">Selected work</span>
-      <h2>Four projects, chosen for the decisions rather than the screens.</h2>
+      <h2>Four projects, chosen for the decisions behind the screens.</h2>
       <p>Each one includes the reasoning, the tradeoffs I accepted, and what it changed for the business.</p>
     </div>
     <div id="prjs"><!-- @cards-start --><a class="prj rv" href="/work/support/" data-case="0" aria-haspopup="dialog" aria-label="Getting the company out of its own support queue. Offerwall platform, internal operations. Open case study."><div class="prj-g">
@@ -523,10 +541,11 @@
       <div><span>Timeline</span><b>Initial release, then ongoing iterations</b></div>
       <div><span>Year</span><b>2025 to 2026</b></div>
     </div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.</p></div><div><u>What it changed</u><p><b>56%</b> less support time per investigation, over a two month measured comparison.</p></div></div>
     <figure class="d-fig"><img src="images/case-01/hero.png" alt="The investigation view: one row grammar carrying every reward mechanic, with a popover naming the campaigns removed by a constraint" data-fb="images/case-01/milestones.png" onerror="figFail(this)"></figure><p class="d-cap">One row grammar for every reward mechanic, and the reason a campaign never appeared, surfaced where the investigator is already looking.</p>
     <section class="d-b"><h3>Context</h3><p>Users earn rewards by completing milestones inside partner apps. When a reward does not arrive, the explanation is spread across install attribution, postbacks, milestone progress, promotions and fraud rules. All of that work sat with our account managers, in an internal tool that had not kept pace with the product. Newer mechanics like boosters, promoted offers and cashback had no real representation in it.</p><figure class="d-fig beforefig"><img src="images/case-01/old-table.png" alt="The previous investigation table, showing the limited columns and absent state information available before the redesign" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.</p></section>
     <section class="d-b"><h3>Tension</h3><p>The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.</p></section>
-    <section class="d-b"><h3>Insight</h3><p>While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.</p><p class="d-pull">Five mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.</p></section>
+    <section class="d-b"><h3>Insight</h3><p>While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.</p><p class="d-pull">Five mechanics were being drawn as one undifferentiated list. Most of the design work was naming them; the table followed from that.</p></section>
     <section class="d-b"><h3>Decisions, and what each one cost</h3><div class="dcs">
       <div class="dc"><div class="dc-h">Model the event, or redesign the table</div>
         <div class="dc-b">
@@ -546,15 +565,18 @@
           <div class="dc-c rj"><u>What it cost</u>It exposes messy internal logic to the person investigating. That is precisely what lets them answer a partner honestly instead of guessing.</div>
         </div>
       </div></div></section>
+    <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Earning the data dependency</b><span>A schema driven table needed data engineering to expose the event store differently. I brought the ticket taxonomy from eight shadowed investigations to that conversation, so the request was evidence rather than preference.</span></li><li><b>Auditing my own work</b><span>Once it was in daily use I ran a structured audit with support managers, TAMs and integration managers. It found that manual rewarding shipped without proper success and failure feedback, which is mine to own and is now the top priority fix.</span></li><li><b>Holding a position against the loudest customer</b><span>Large publishers asked for an unlimited override of our fraud rules. I argued for graduated limits instead, and that argument is still live.</span></li></ul></section>
+    <section class="d-b"><h3>What shipped</h3><figure class="d-shot"><img src="images/case-01/milestones.png" alt="Milestone reward history for one campaign, showing base reward, promotion type, promotion amount, final reward and status per level" loading="lazy"></figure><p class="d-cap">The shipped structure. One row grammar carries every reward mechanic, with base, promotional and final amounts kept as separate columns so a disputed payout explains itself without opening anything.</p><figure class="d-shot"><img src="images/case-01/eventtypes.png" alt="Specification showing timed, event based, repeatable, bonus and IAP event types, each with a promoted variant" loading="lazy"></figure><p class="d-cap">The row grammar specified as its own artifact, before any screen was drawn. This document is what made the next six releases cheap.</p></section>
     <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>56%</b><span>less support time per investigation, over a two month measured comparison</span></div><div><b>5 mechanics</b><span>timed, event, repeatable, bonus and IAP unified into one readable structure</span></div><div><b>6 releases</b><span>shipped on that structure afterwards with no redesign needed</span></div></div><p class="note">The 56% comes from a two month comparison against the previous internal tool. The extensibility claim is verifiable in the design file: six subsequent feature releases reused the original structure.</p></section>
-    <details class="more"><summary><span class="pm"></span>More: the system underneath, leadership, step by step, screens, the open argument and what comes next</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>The structure has to survive mechanics that do not exist yet. Five groups, ordered by the question people arrive with rather than by how the data is stored.</p>
+    
+    <details class="more"><summary><span class="pm"></span>More: the system underneath, step by step, more screens, the open argument and what comes next</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>The structure has to survive mechanics that do not exist yet. Five groups, ordered by the question people arrive with rather than by how the data is stored.</p>
       <div class="sys"><div class="sys-r">
         <div class="sys-c"><u>Progress</u><ul><li>Timed events</li><li>Level events</li><li>Repeatable</li></ul></div>
         <div class="sys-c"><u>Rewards</u><ul><li>Bonus</li><li>IAP and cashback</li><li>Promotions</li></ul></div>
         <div class="sys-c"><u>Attribution</u><ul><li>Install postback</li><li>Click window</li><li>MMP handshake</li></ul></div>
         <div class="sys-c"><u>Identity</u><ul><li>UUID</li><li>External ID</li><li>Device, country</li></ul></div>
         <div class="sys-c"><u>Guards</u><ul><li>Fraud rules</li><li>Payout ceilings</li><li>Consent state</li></ul></div></div>
-        <p class="sys-n">Progress and rewards lead because they answer most tickets. Guards sit last and are explicitly named, so a withheld payout reads as a decision rather than a defect. New mechanics attach to a group instead of adding a column.</p></div></section><section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Earning the data dependency</b><span>A schema driven table needed data engineering to expose the event store differently. I brought the ticket taxonomy from eight shadowed investigations to that conversation, so the request was evidence rather than preference.</span></li><li><b>Auditing my own work</b><span>Once it was in daily use I ran a structured audit with support managers, TAMs and integration managers. It found that manual rewarding shipped without proper success and failure feedback, which is mine to own and is now the top priority fix.</span></li><li><b>Holding a position against the loudest customer</b><span>Large publishers asked for an unlimited override of our fraud rules. I argued for graduated limits instead, and that argument is still live.</span></li></ul></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Find the right record</b><span>Search by UUID, external user ID or device. Results group per publisher app and carry fraud state up front, because picking the wrong record wastes the whole investigation.</span></li><li><b>Read eligibility in one block</b><span>SDK version, device, country, consent, coins, revenue, account state and fraud reason together, since eligibility questions are almost never answered by a single field.</span></li><li><b>Read the reward history</b><span>Milestone table using the one row grammar, with base, promotional and final amounts separated.</span></li><li><b>Understand what was withheld</b><span>Validation results and the constraint funnel, showing eligible campaigns narrowing and naming the rule that removed each one.</span></li><li><b>Resolve it</b><span>Manual reward with or without promotion, offered only where state allows, locked while processing.</span></li></ol></section><figure class="d-shot"><img src="images/case-01/milestones.png" alt="Milestone reward history for one campaign, showing base reward, promotion type, promotion amount, final reward and status per level" loading="lazy"></figure><p class="d-cap">The shipped structure. One row grammar carries every reward mechanic, with base, promotional and final amounts kept as separate columns so a disputed payout explains itself without opening anything.</p><figure class="d-shot"><img src="images/case-01/eventtypes.png" alt="Specification showing timed, event based, repeatable, bonus and IAP event types, each with a promoted variant" loading="lazy"></figure><p class="d-cap">The row grammar specified as its own artifact, before any screen was drawn. This document is what made the next six releases cheap.</p><figure class="d-shot"><img src="images/case-01/constraints.png" alt="Constraints view showing four rules reducing the eligible campaign count from twelve to zero" loading="lazy"></figure><p class="d-cap">Withheld campaigns, with the responsible rule named and the count narrowing from twelve to zero. Previously this was an unexplained absence.</p><figure class="d-shot"><img src="images/case-01/actions.png" alt="Specification of which manual reward actions are available for each milestone state, including a disabled state during processing" loading="lazy"></figure><p class="d-cap">Actions mapped against state. Both options disable while an action processes, which is the guard against issuing the same payout twice.</p><section class="d-b"><h3>The argument still open</h3>
+        <p class="sys-n">Progress and rewards lead because they answer most tickets. Guards sit last and are explicitly named, so a withheld payout reads as a decision rather than a defect. New mechanics attach to a group instead of adding a column.</p></div></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Find the right record</b><span>Search by UUID, external user ID or device. Results group per publisher app and carry fraud state up front, because picking the wrong record wastes the whole investigation.</span></li><li><b>Read eligibility in one block</b><span>SDK version, device, country, consent, coins, revenue, account state and fraud reason together, since eligibility questions are almost never answered by a single field.</span></li><li><b>Read the reward history</b><span>Milestone table using the one row grammar, with base, promotional and final amounts separated.</span></li><li><b>Understand what was withheld</b><span>Validation results and the constraint funnel, showing eligible campaigns narrowing and naming the rule that removed each one.</span></li><li><b>Resolve it</b><span>Manual reward with or without promotion, offered only where state allows, locked while processing.</span></li></ol></section><section class="d-b"><h3>More screens</h3><figure class="d-shot"><img src="images/case-01/constraints.png" alt="Constraints view showing four rules reducing the eligible campaign count from twelve to zero" loading="lazy"></figure><p class="d-cap">Withheld campaigns, with the responsible rule named and the count narrowing from twelve to zero. Previously this was an unexplained absence.</p><figure class="d-shot"><img src="images/case-01/actions.png" alt="Specification of which manual reward actions are available for each milestone state, including a disabled state during processing" loading="lazy"></figure><p class="d-cap">Actions mapped against state. Both options disable while an action processes, which is the guard against issuing the same payout twice.</p></section><section class="d-b"><h3>The argument still open</h3>
       <div class="dc"><div class="dc-h">Should the dashboard be able to override our own fraud protection?</div>
         <div class="dc-c" style="border-bottom:1px solid var(--s200)">The one decision here I have not won yet, and the one I care most about. It arrives as a UI request and is really a commercial argument.</div>
         <div class="dc-c" style="border-top:1px solid var(--s200)"><u>What publishers want</u>Large publishers want an absolute override, so their support teams can bypass fraud flags and minimum play rules for users who complain publicly. Their reasoning is sound: they carry the fraud cost, so they want the final call.</div><div class="dc-c" style="border-top:1px solid var(--s200)"><u>Why unlimited is dangerous</u>Manual completion moves real money. One user can work an agent through many milestones. We had a case where someone claimed every milestone on a campaign and the database showed the install was a day old, making it mechanically impossible.</div><div class="dc-c" style="border-top:1px solid var(--s200)"><u>Why a hard block is also wrong</u>Blocking overrides protects margin but removes publisher agency, and pushes the work back into our queue. That is the problem this project existed to solve.</div>
@@ -567,7 +589,11 @@
         <div class="rc"><div class="rh">Structural <span>5</span></div>
           <div class="ri"><b>Reversible manual rewards</b><span>No way back from a manual completion today. Add a delay window before the reward sends.</span></div><div class="ri"><b>External ID remapping</b><span>Several accounts on one device collapse into one record, so support cannot tell the external IDs apart.</span></div><div class="ri"><b>GDPR deletion in product</b><span>Consent revocation runs through manual tickets. Replace with a guarded action and secondary authentication.</span></div><div class="ri"><b>Localised reward names</b><span>Level names are hardcoded in English, so agents translate screenshots by hand.</span></div><div class="ri"><b>Country correction</b><span>Travelling users trigger country mismatches no agent can resolve.</span></div></div>
       </div></section></div></details>
-    <section class="d-b"><h3>Looking back</h3><p>The interface was the straightforward half. The part that mattered was an event model that still held after the business invented two mechanics nobody had described when I started.</p></section></div>
+    <section class="d-b"><h3>Looking back</h3><p>The interface was the straightforward half. The part that mattered was an event model that still held after the business invented two mechanics nobody had described when I started.</p></section>
+    <nav class="d-nx" aria-label="More case studies">
+      
+      <a class="nx" href="/work/configuration/" data-case="1"><u>Next case</u><b>Sixty settings nobody could explain</b></a>
+    </nav></div>
   </article>
 </div>
 
@@ -686,6 +712,23 @@
   .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
 
   /* optional depth */
+  .glance{margin-top:30px;display:grid;grid-template-columns:1fr;border:1px solid var(--s200);border-radius:12px;overflow:hidden}
+  @media(min-width:720px){.glance{grid-template-columns:1fr 1fr}}
+  .glance>div{padding:18px 20px}
+  .glance>div+div{border-top:1px solid var(--s200)}
+  @media(min-width:720px){.glance>div+div{border-top:0;border-left:1px solid var(--s200)}}
+  .glance u{display:block;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
+  .glance p{font-size:15.5px;line-height:1.6;color:var(--s800,var(--s900));font-weight:400;margin:0}
+  .d-q{margin:32px 0 0;padding:22px 24px;border-left:2px solid var(--s900);background:var(--s100);border-radius:0 10px 10px 0}
+  .d-q blockquote{margin:0;font-size:17px;font-weight:300;line-height:1.6;color:var(--s700)}
+  .d-q figcaption{margin-top:12px;font-size:13.5px;color:var(--s500)}
+  .d-q figcaption b{color:var(--s900);font-weight:500}
+  .d-nx{margin-top:clamp(56px,8vh,84px);display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--s200);padding-top:24px}
+  .d-nx a{display:block;padding:16px 18px;border:1px solid var(--s200);border-radius:10px;transition:border-color var(--ui) linear,background var(--ui) linear}
+  .d-nx a:hover{border-color:var(--s900)}
+  .d-nx a.nx{text-align:right;grid-column:2}
+  .d-nx u{display:block;text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:6px}
+  .d-nx b{font-size:15px;font-weight:500;line-height:1.35}
   .more{margin-top:16px;border-top:1px solid var(--s200)}
   .more summary{list-style:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;gap:10px;
     font-size:14px;font-weight:500;color:var(--s600);transition:color var(--ui) linear}
@@ -1031,7 +1074,7 @@ const P = [
     cap:'The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.'},
   tension:'The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.',
   insight:'While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.',
-  pull:'Five mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
+  pull:'Five mechanics were being drawn as one undifferentiated list. Most of the design work was naming them; the table followed from that.',
   decisions:[
     ['Model the event, or redesign the table',
      'Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.',
@@ -1180,7 +1223,7 @@ const P = [
     ['Bringing data to a taste argument','I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.'],
     ['Letting the users overrule my preferred direction','I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.']
   ],
-  reflection:'The visible output is a cleaner form. The real deliverable was an explanation. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a direct result. Two of those months produced no design at all, which was the part that mattered.'
+  reflection:'The form is cleaner, but most of the value came from explaining it. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a result. I spent two of those months without drawing anything, finding out what each setting actually did.'
 },
 {
   ix:'03',
@@ -1287,7 +1330,7 @@ const P = [
     cap:'Hellix against Figtree on the same card. Three reasons drove the change: a paid licence replaced by an open one, figures that now align in columns, and text greys that finally separate secondary from disabled.'},
   tension:'There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.',
   insight:'The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.',
-  pull:'Nothing was broken enough to escalate. That is exactly why it had survived for so long.',
+  pull:'No single issue was bad enough to escalate, which is why the drift had lasted so long.',
   decisions:[
     ['Audit by hand, or pull production in and compare',
      'Used the HTML to Figma plugin to bring live production into the file, then ran a first analysis pass with OpenCode.',
@@ -1377,6 +1420,7 @@ const P = [
       ['Visual regression coverage','Catch drift automatically, so the 200 issues I closed cannot quietly return.']
     ]
   },
+  quote:{text:'In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard.',who:'Puru',role:'Senior Frontend Engineer, adjoe'},
   ai:{
     intro:'The system is built to be read by coding agents, not only by people. That is a deliberate design goal rather than a side effect.',
     points:[
@@ -1419,10 +1463,33 @@ function renderCard(c,i){
   </div></a>`;
 }
 
-/* Tension and Decisions are the senior signal, so they sit in the main flow.
-   Supporting material (system, screens, roadmap) stays behind one disclosure,
-   labelled with what is actually inside it. */
+/* Case layout, in reading order for a hiring manager:
+   at a glance, context, tension, insight, decisions and what they cost,
+   leadership, two key screens, impact. Everything else (system detail,
+   remaining screens, roadmap) sits behind one disclosure that names its contents. */
+function screensOf(c){
+  const out=[];
+  const shot=s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`;
+  if(c.shots) c.shots.forEach(s=>out.push({html:shot(s),group:null}));
+  if(c.gallery) c.gallery.forEach(g=>out.push({html:fig(g,{cls:g.wide?' wide':''}),group:c.galleryLabel||'What it looks like'}));
+  if(c.galleries) c.galleries.forEach(gr=>gr.items.forEach((g,k)=>out.push({html:fig(g),group:gr.label,first:k===0})));
+  return out;
+}
 function renderCase(c){
+  const i=P.indexOf(c);
+  const all=screensOf(c);
+  // two key screens up front: the first of each gallery group if there are groups, otherwise the first two
+  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,2);
+  const rest=all.filter(s=>!key.includes(s));
+  const restHtml=(()=>{
+    if(!rest.length) return '';
+    const groups=[...new Set(rest.map(s=>s.group))];
+    return groups.map(gp=>{
+      const items=rest.filter(s=>s.group===gp).map(s=>s.html).join('');
+      return block(gp||'More screens',items);
+    }).join('');
+  })();
+
   const extra=[
     c.system?['the system underneath',block('The system underneath',`<p>${c.system.intro}</p>
       <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
@@ -1430,11 +1497,8 @@ function renderCase(c){
         <p class="sys-n">${c.system.note}</p></div>`)]:null,
     c.ai?['agent readability',block('Built to be read by agents',`<p>${c.ai.intro}</p>
       <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
-    c.gallery?['screens',block(c.galleryLabel||'What it looks like',c.gallery.map(g=>fig(g,{cls:g.wide?' wide':''})).join(''))]:null,
-    c.galleries?['screens',c.galleries.map(gr=>block(gr.label,gr.items.map(g=>fig(g)).join(''))).join('')]:null,
-    c.leadership?['leadership',block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`)]:null,
     c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
-    c.shots?['screens',c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join('')]:null,
+    restHtml?['more screens',restHtml]:null,
     c.debate?['the open argument',block('The argument still open',`
       <div class="dc"><div class="dc-h">${c.debate.q}</div>
         <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
@@ -1450,9 +1514,11 @@ function renderCase(c){
           ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
       </div>`)]:null
   ].filter(Boolean);
-  const labels=[...new Set(extra.map(e=>e[0]))];
+  const labels=extra.map(e=>e[0]);
   const list=labels.length>1?labels.slice(0,-1).join(', ')+' and '+labels[labels.length-1]:labels[0];
   const imp=`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`;
+  const d0=c.decisions&&c.decisions[0];
+  const prev=i>0?P[i-1]:null, next=i<P.length-1?P[i+1]:null;
   return `
     <p class="d-kk">${c.kk}</p>
     <h1 class="d-t" id="drT">${c.t}</h1>
@@ -1464,6 +1530,7 @@ function renderCase(c){
       <div><span>Timeline</span><b>${c.time}</b></div>
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it changed</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1479,9 +1546,16 @@ function renderCase(c){
           <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
         </div>
       </div>`).join('')}</div>`):''}
+    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
+    ${key.length?block('What shipped',key.map(s=>s.html).join('')):''}
     ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
+    ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
-    ${block('Looking back',`<p>${c.reflection}</p>`)}`;
+    ${block('Looking back',`<p>${c.reflection}</p>`)}
+    <nav class="d-nx" aria-label="More case studies">
+      ${prev?`<a href="${caseUrl(i-1)}" data-case="${i-1}"><u>Previous case</u><b>${prev.t}</b></a>`:''}
+      ${next?`<a class="nx" href="${caseUrl(i+1)}" data-case="${i+1}"><u>Next case</u><b>${next.t}</b></a>`:''}
+    </nav>`;
 }
 /* @render-end */
 
@@ -1491,7 +1565,7 @@ function renderCase(c){
    the build), they are rendered here instead. */
 const prjs=document.getElementById('prjs');
 if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map(renderCard).join('');
-prjs.querySelectorAll('.prj').forEach(a=>{
+document.querySelectorAll('#prjs .prj, .proof a').forEach(a=>{
   a.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
     e.preventDefault();openCase(+a.dataset.case);
@@ -1550,6 +1624,11 @@ function onKey(e){
   }
 }
 document.getElementById('drBg').addEventListener('click',()=>closeCase());
+drC.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-case]');
+  if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+  e.preventDefault();openCase(+a.dataset.case);
+});
 drX.addEventListener('click',()=>closeCase());
 drP.addEventListener('scroll',()=>{
   const h=drP.scrollHeight-drP.clientHeight;
