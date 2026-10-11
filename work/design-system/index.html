@@ -16,12 +16,14 @@
 <meta property="og:title" content="Closing the gap between what shipped and what we drew" />
 <meta property="og:description" content="Components disagreed with each other on size, spacing and typography, and having two dashboards meant common components and platform specific ones had quietly diverged. Nothing was broken enough to escalate, which is why it had persisted." />
 <meta property="og:url" content="https://erdemulker.com/work/design-system/" />
-<meta property="og:image" content="https://erdemulker.com/images/case-04/hero.png" />
-<meta property="og:image:alt" content="A collage of the refactored components: a promotion card with status, segmented control, switch and primary button, the indigo primary ramp with a primary.main token, button states, toggles, chips, an input, a time picker and two toasts" />
+<meta property="og:image" content="https://erdemulker.com/images/og/design-system.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Closing the gap between what shipped and what we drew. Case study by Erdem Ülker." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Closing the gap between what shipped and what we drew" />
 <meta name="twitter:description" content="Components disagreed with each other on size, spacing and typography, and having two dashboards meant common components and platform specific ones had quietly diverged. Nothing was broken enough to escalate, which is why it had persisted." />
-<meta name="twitter:image" content="https://erdemulker.com/images/case-04/hero.png" />
+<meta name="twitter:image" content="https://erdemulker.com/images/og/design-system.png" />
 <script>
   (()=>{
     const saved=localStorage.getItem('theme');
@@ -29,6 +31,8 @@
     document.documentElement.dataset.theme=theme;
   })();
 </script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.ln>i{transform:none!important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Erdem Ülker","jobTitle":"Senior Product Designer","url":"https://erdemulker.com/","email":"mailto:hello@erdemulker.com","address":{"@type":"PostalAddress","addressLocality":"Hamburg","addressCountry":"DE"},"sameAs":["https://www.linkedin.com/in/erdem-ulker/"],"knowsAbout":["Product design","B2B SaaS","Design systems","Monetization platforms","Martech"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -136,6 +140,14 @@
   .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
   @media(max-width:620px){.hero h1 .ln,.hero h1 .ln>i{display:inline;overflow:visible}.hero h1 .ln:first-child::after{content:' '}}
   .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
+  .proof{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--s200);max-width:980px}
+  @media(min-width:760px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .proof li{border-bottom:1px solid var(--s200)}
+  @media(min-width:760px){.proof li{border-bottom:0}.proof li+li{border-left:1px solid var(--s200);padding-left:24px}}
+  .proof a{display:block;padding:18px 16px 18px 0;transition:color var(--ui) linear}
+  .proof b{display:block;font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .proof span{display:block;margin-top:6px;font-size:13.5px;color:var(--s500);line-height:1.45;max-width:30ch}
+  .proof a:hover span{color:var(--s700)}
   .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
   .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
   .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
@@ -315,6 +327,7 @@
   ::view-transition-old(root){z-index:1}
   @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Closing the gap between what shipped and what we drew","headline":"Closing the gap between what shipped and what we drew","description":"Components disagreed with each other on size, spacing and typography, and having two dashboards meant common components and platform specific ones had quietly diverged. Nothing was broken enough to escalate, which is why it had persisted.","url":"https://erdemulker.com/work/design-system/","image":"https://erdemulker.com/images/og/design-system.png","author":{"@type":"Person","name":"Erdem Ülker","url":"https://erdemulker.com/"},"about":"Design system, foundations to governance"}</script>
 </head>
 <body>
 <a href="#work" class="skip">Skip to work</a>
@@ -338,15 +351,20 @@
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="rv">
-      <span class="ln"><i>I turn complex systems into</i></span>
-      <span class="ln"><i>products that feel <em>simple</em>.</i></span>
+      <span class="ln"><i>I design software where</i></span>
+      <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
     </h1>
-    <p class="hsub rv">Senior Product Designer working on B2B platforms and operational tooling. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS: internal tooling, configuration systems and dashboards in monetization and martech. I am usually brought in when the domain is complicated, the requirements conflict, and nobody agrees on what the thing actually is yet. Currently in ad tech, on rewards infrastructure.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to senior and lead roles</span>
       <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
       <span class="dot"></span><span>7+ years</span>
     </p>
+    <ul class="proof rv" aria-label="Selected results">
+      <li><a href="/work/support/" data-case="0"><b>56%</b><span>less support time per investigation</span></a></li>
+      <li><a href="/work/configuration/" data-case="1"><b>7 → 5 weeks</b><span>deal to release for new publishers</span></a></li>
+      <li><a href="/work/design-system/" data-case="3"><b>3–4h → &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
+    </ul>
   </div>
 
   <!-- SIGNATURE INTERACTION: THE MECHANISM -->
@@ -378,7 +396,7 @@
   <div class="wrap">
     <div class="shd rv">
       <span class="lbl">Selected work</span>
-      <h2>Four projects, chosen for the decisions rather than the screens.</h2>
+      <h2>Four projects, chosen for the decisions behind the screens.</h2>
       <p>Each one includes the reasoning, the tradeoffs I accepted, and what it changed for the business.</p>
     </div>
     <div id="prjs"><!-- @cards-start --><a class="prj rv" href="/work/support/" data-case="0" aria-haspopup="dialog" aria-label="Getting the company out of its own support queue. Offerwall platform, internal operations. Open case study."><div class="prj-g">
@@ -523,10 +541,11 @@
       <div><span>Timeline</span><b>Ongoing initiative</b></div>
       <div><span>Year</span><b>2026</b></div>
     </div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Used the HTML to Figma plugin to bring live production into the file, then ran a first analysis pass with OpenCode.</p></div><div><u>What it changed</u><p><b>200+ issues closed</b> at least ten per page across roughly twenty pages, found by systematic audit rather than reported.</p></div></div>
     <figure class="d-fig" data-ph="hero.png · The system in use"><img src="images/case-04/hero.png" alt="A collage of the refactored components: a promotion card with status, segmented control, switch and primary button, the indigo primary ramp with a primary.main token, button states, toggles, chips, an input, a time picker and two toasts" data-fb="images/preview/case-04.png" onerror="figFail(this)"></figure><p class="d-cap">The system in use. One promotion card assembled entirely from shared components, surrounded by the primitives and pieces it is built from.</p>
     <section class="d-b"><h3>Context</h3><p>We run two dashboards on a shared Material UI base. Over time each grew its own conventions, so a component that existed in both places behaved differently in each, and the Figma library described neither accurately. Typography was not aligned to the system, and the typeface was a paid licence with proportional figures, so numbers in tables never lined up. Spacing, radius and shadow had no tokens, so cards carried a blurry over softened look that came from nobody having defined elevation.</p><figure class="d-fig beforefig" data-ph="type.png · Typography, before and Figtree"><img src="images/case-04/type.png" alt="The same metrics card set in Hellix and in Figtree, showing figures aligning in Figtree and three distinct text greys replacing two identical ones" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> Hellix against Figtree on the same card. Three reasons drove the change: a paid licence replaced by an open one, figures that now align in columns, and text greys that finally separate secondary from disabled.</p></section>
     <section class="d-b"><h3>Tension</h3><p>There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.</p></section>
-    <section class="d-b"><h3>Insight</h3><p>The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.</p><p class="d-pull">Nothing was broken enough to escalate. That is exactly why it had survived for so long.</p></section>
+    <section class="d-b"><h3>Insight</h3><p>The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.</p><p class="d-pull">No single issue was bad enough to escalate, which is why the drift had lasted so long.</p></section>
     <section class="d-b"><h3>Decisions, and what each one cost</h3><div class="dcs">
       <div class="dc"><div class="dc-h">Audit by hand, or pull production in and compare</div>
         <div class="dc-b">
@@ -558,22 +577,29 @@
           <div class="dc-c rj"><u>What it cost</u>Needs care over coloured surfaces. Without it, ghost and text buttons had no legitimate hover or pressed state, which is where most improvised colour came from.</div>
         </div>
       </div></div></section>
+    <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Getting a typeface change approved</b><span>A new typeface touches every screen, so it needed management level agreement rather than a design decision. I mapped the system, made the case on licence cost, numeric alignment and text hierarchy, and got sign off from nine leaders.</span></li><li><b>Working through teams I do not manage</b><span>Frontend engineers sit in other teams and could only take this as sprint side work, so every component needed to be specified well enough to be picked up without me in the room.</span></li><li><b>Absorbing a late reversal</b><span>The segmented control came back from development planning because our VP disliked it. Rather than defend the original, I produced alternatives and tested them with other leads. The revised version is better and it cost a cycle.</span></li><li><b>Pulling my own feature</b><span>I shipped a keyboard focus ring that looked correct in isolation. In real layouts, wrappers sat flush to component edges so rings were clipped inside dialogs and filter modals. I paused it rather than leave a broken accessibility affordance in place.</span></li></ul></section>
+    <section class="d-b"><h3>What shipped</h3><figure class="d-fig" data-ph="tokens.png · Token architecture, four layers"><img src="images/case-04/tokens.png" alt="The token architecture: an adjoeBlue primitive ramp mapped to primary main, dark and strong, each driving a real button state" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">How the layers connect. A primitive step becomes a semantic role, and the role drives a component state. Nothing skips a layer.</p><figure class="d-fig" data-ph="button.png · Button, hierarchies, colours and states"><img src="images/case-04/button.png" alt="The button matrix: primary, secondary and ghost across brand, danger and neutral, in six states including focus and loading" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Button. Primary, secondary and ghost hierarchies across brand, danger and neutral, each with default, hover, pressed, focus, disabled and loading. It had the largest gap from best practice and became the proving ground for the whole colour system.</p></section>
     <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>200+ issues closed</b><span>at least ten per page across roughly twenty pages, found by systematic audit rather than reported</span></div><div><b>3-4h to under 1h</b><span>weekly time spent reviewing frontend work, because component correctness stopped being a manual check</span></div><div><b>10 components</b><span>refactored with complete state coverage, each with a paired design and development task</span></div></div><p class="note">The QA figure is the one I would defend. Reviewing frontend tasks used to mean checking every component by hand. Now that components are shared rather than custom built per screen, review is about UX and flow, which is roughly 130 hours a year returned to actual design work.</p></section>
-    <details class="more"><summary><span class="pm"></span>More: the system underneath, agent readability, screens, leadership, step by step and what comes next</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Four layers. A value has one definition and one owner, and components never reference a primitive directly.</p>
+    <figure class="d-q"><blockquote>In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard.</blockquote><figcaption><b>Puru</b>, Senior Frontend Engineer, adjoe</figcaption></figure>
+    <details class="more"><summary><span class="pm"></span>More: the system underneath, agent readability, step by step, more screens and what comes next</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Four layers. A value has one definition and one owner, and components never reference a primitive directly.</p>
       <div class="sys"><div class="sys-r">
         <div class="sys-c"><u>Primitives</u><ul><li>Cool grey ramp</li><li>Red, orange, blue, green</li><li>Type scale, Figtree</li></ul></div>
         <div class="sys-c"><u>Semantic</u><ul><li>Primary, success, danger</li><li>Warning, information</li><li>Main, light, dark, strong</li></ul></div>
         <div class="sys-c"><u>Interaction</u><ul><li>Rest at 0%</li><li>Hover at 4%</li><li>Pressed at 8%</li></ul></div>
         <div class="sys-c"><u>Structural</u><ul><li>Spacing tokens</li><li>Radius tokens</li><li>Elevation, redefined</li></ul></div></div>
         <p class="sys-n">The interaction layer and the structural layer are the two that did not exist before. Together they are the reason a component can now declare its own states instead of an engineer deciding them per screen.</p></div></section><section class="d-b"><h3>Built to be read by agents</h3><p>The system is built to be read by coding agents, not only by people. That is a deliberate design goal rather than a side effect.</p>
-      <ul class="lst ld"><li><b>Start by asking what it needs</b><span>I begin by asking the model how it wants to read a component and which cases it will check. Sometimes its expectations match our structure. Where they do not, the gap tells me our definitions are ambiguous.</span></li><li><b>Teach it the parts we own</b><span>Where our conventions differ from what it assumes, I document the difference explicitly rather than renaming things to suit the model.</span></li><li><b>Fetch state, not screenshots</b><span>An MCP connection pulls component states and specifications directly into the codebase, so generated code references the real system instead of approximating a picture of it.</span></li></ul></section><section class="d-b"><h3>Foundations</h3><figure class="d-fig" data-ph="tokens.png · Token architecture, four layers"><img src="images/case-04/tokens.png" alt="The token architecture: an adjoeBlue primitive ramp mapped to primary main, dark and strong, each driving a real button state" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">How the layers connect. A primitive step becomes a semantic role, and the role drives a component state. Nothing skips a layer.</p><figure class="d-fig" data-ph="greys.png · Grey ramp, mixed to cool grey"><img src="images/case-04/greys.png" alt="The grey ramp before and after, mixed cool and neutral tones resolved into one cool grey family" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Greys before and after. The original ramp mixed cool and neutral tones with no rule, so two adjacent surfaces could disagree.</p><figure class="d-fig" data-ph="semantic.png · Five roles, four tones each"><img src="images/case-04/semantic.png" alt="Five semantic colour roles, each with main, light, dark and strong tones" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Five semantic roles, four tones each, defined once so no component derives a state colour on its own.</p><figure class="d-fig" data-ph="opacity.png · Interaction states, 4 and 8 percent"><img src="images/case-04/opacity.png" alt="Ghost buttons at rest, hover and pressed on three different surfaces, using a 4 and 8 percent overlay" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">One overlay of the role colour, 4% on hover and 8% when pressed, holding up on every surface it sits on. Previously each component improvised its own.</p><figure class="d-fig" data-ph="structural.png · Spacing, radius, elevation"><img src="images/case-04/structural.png" alt="The spacing scale on an 8 pixel base, five radius tokens, and the five elevation levels from none to prominent" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Spacing, radius and elevation. The old cards looked soft and blurred because elevation had never been defined, only approximated.</p><figure class="d-fig" data-ph="icons.png · Icon ruleset, 16 and 24 only"><img src="images/case-04/icons.png" alt="An icon magnified on its 24 pixel grid, beside the set drawn at the two permitted sizes, 16 and 24" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Icons, mostly hand drawn. I set the ruleset and removed every size except 16 and 24, because inconsistent icon sizing was a recurring source of misalignment.</p></section><section class="d-b"><h3>Components, and the one I pulled</h3><figure class="d-fig" data-ph="button.png · Button, hierarchies, colours and states"><img src="images/case-04/button.png" alt="The button matrix: primary, secondary and ghost across brand, danger and neutral, in six states including focus and loading" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Button. Primary, secondary and ghost hierarchies across brand, danger and neutral, each with default, hover, pressed, focus, disabled and loading. It had the largest gap from best practice and became the proving ground for the whole colour system.</p><figure class="d-fig" data-ph="segment.png · Segmented control, before and after review"><img src="images/case-04/segment.png" alt="The segmented control as first designed, beside the revised version after leadership review" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Segmented control. Returned from development planning when our VP disliked the treatment, so I produced alternatives and tested them with other leads before settling on this one.</p><figure class="d-fig" data-ph="components.png · The ten refactored components"><img src="images/case-04/components.png" alt="Six refactored components: input, switch, checkbox and radio, snackbar, chip and time picker" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">A sample of the refactored set. Each component shipped as a paired design and development task and was verified in Storybook and a sandbox before release.</p><figure class="d-fig" data-ph="focus.png · Focus ring clipped by flush wrappers"><img src="images/case-04/focus.png" alt="The same focused button inside a filter panel, inset with its ring intact, and flush to the edge with the ring clipped" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The focus ring, and why it is paused. Wrappers sit flush to component edges, so the ring is clipped whenever a component is nested inside a dialog or filter panel.</p></section><section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Getting a typeface change approved</b><span>A new typeface touches every screen, so it needed management level agreement rather than a design decision. I mapped the system, made the case on licence cost, numeric alignment and text hierarchy, and got sign off from nine leaders.</span></li><li><b>Working through teams I do not manage</b><span>Frontend engineers sit in other teams and could only take this as sprint side work, so every component needed to be specified well enough to be picked up without me in the room.</span></li><li><b>Absorbing a late reversal</b><span>The segmented control came back from development planning because our VP disliked it. Rather than defend the original, I produced alternatives and tested them with other leads. The revised version is better and it cost a cycle.</span></li><li><b>Pulling my own feature</b><span>I shipped a keyboard focus ring that looked correct in isolation. In real layouts, wrappers sat flush to component edges so rings were clipped inside dialogs and filter modals. I paused it rather than leave a broken accessibility affordance in place.</span></li></ul></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Pull production into the file</b><span>HTML to Figma to bring live screens in as artefacts, so the comparison was against what actually ships rather than what we remembered.</span></li><li><b>First pass with OpenCode</b><span>An automated analysis to surface systemic inconsistencies, then a manual review to catch what it missed.</span></li><li><b>Ship the foundations</b><span>Typography, colour, spacing, radius and elevation pushed as V2 libraries, correct everywhere at once.</span></li><li><b>Refactor components in pairs</b><span>Each component became a design task and a development task, picked up by frontend engineers across teams as sprint side items.</span></li><li><b>Verify before release</b><span>Every component checked in Storybook and in a sandbox environment before it went out, because a shared component failing is worse than a one off failing.</span></li></ol></section><section class="d-b"><h3>What comes next</h3><p>Two threads open. The focus ring is an accessibility commitment waiting on a container fix, and the AI workflow is the part I am actively building out.</p>
+      <ul class="lst ld"><li><b>Start by asking what it needs</b><span>I begin by asking the model how it wants to read a component and which cases it will check. Sometimes its expectations match our structure. Where they do not, the gap tells me our definitions are ambiguous.</span></li><li><b>Teach it the parts we own</b><span>Where our conventions differ from what it assumes, I document the difference explicitly rather than renaming things to suit the model.</span></li><li><b>Fetch state, not screenshots</b><span>An MCP connection pulls component states and specifications directly into the codebase, so generated code references the real system instead of approximating a picture of it.</span></li></ul></section><section class="d-b"><h3>How it works, step by step</h3><ol class="stp"><li><b>Pull production into the file</b><span>HTML to Figma to bring live screens in as artefacts, so the comparison was against what actually ships rather than what we remembered.</span></li><li><b>First pass with OpenCode</b><span>An automated analysis to surface systemic inconsistencies, then a manual review to catch what it missed.</span></li><li><b>Ship the foundations</b><span>Typography, colour, spacing, radius and elevation pushed as V2 libraries, correct everywhere at once.</span></li><li><b>Refactor components in pairs</b><span>Each component became a design task and a development task, picked up by frontend engineers across teams as sprint side items.</span></li><li><b>Verify before release</b><span>Every component checked in Storybook and in a sandbox environment before it went out, because a shared component failing is worse than a one off failing.</span></li></ol></section><section class="d-b"><h3>Foundations</h3><figure class="d-fig" data-ph="greys.png · Grey ramp, mixed to cool grey"><img src="images/case-04/greys.png" alt="The grey ramp before and after, mixed cool and neutral tones resolved into one cool grey family" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Greys before and after. The original ramp mixed cool and neutral tones with no rule, so two adjacent surfaces could disagree.</p><figure class="d-fig" data-ph="semantic.png · Five roles, four tones each"><img src="images/case-04/semantic.png" alt="Five semantic colour roles, each with main, light, dark and strong tones" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Five semantic roles, four tones each, defined once so no component derives a state colour on its own.</p><figure class="d-fig" data-ph="opacity.png · Interaction states, 4 and 8 percent"><img src="images/case-04/opacity.png" alt="Ghost buttons at rest, hover and pressed on three different surfaces, using a 4 and 8 percent overlay" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">One overlay of the role colour, 4% on hover and 8% when pressed, holding up on every surface it sits on. Previously each component improvised its own.</p><figure class="d-fig" data-ph="structural.png · Spacing, radius, elevation"><img src="images/case-04/structural.png" alt="The spacing scale on an 8 pixel base, five radius tokens, and the five elevation levels from none to prominent" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Spacing, radius and elevation. The old cards looked soft and blurred because elevation had never been defined, only approximated.</p><figure class="d-fig" data-ph="icons.png · Icon ruleset, 16 and 24 only"><img src="images/case-04/icons.png" alt="An icon magnified on its 24 pixel grid, beside the set drawn at the two permitted sizes, 16 and 24" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Icons, mostly hand drawn. I set the ruleset and removed every size except 16 and 24, because inconsistent icon sizing was a recurring source of misalignment.</p></section><section class="d-b"><h3>Components, and the one I pulled</h3><figure class="d-fig" data-ph="segment.png · Segmented control, before and after review"><img src="images/case-04/segment.png" alt="The segmented control as first designed, beside the revised version after leadership review" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">Segmented control. Returned from development planning when our VP disliked the treatment, so I produced alternatives and tested them with other leads before settling on this one.</p><figure class="d-fig" data-ph="components.png · The ten refactored components"><img src="images/case-04/components.png" alt="Six refactored components: input, switch, checkbox and radio, snackbar, chip and time picker" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">A sample of the refactored set. Each component shipped as a paired design and development task and was verified in Storybook and a sandbox before release.</p><figure class="d-fig" data-ph="focus.png · Focus ring clipped by flush wrappers"><img src="images/case-04/focus.png" alt="The same focused button inside a filter panel, inset with its ring intact, and flush to the edge with the ring clipped" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The focus ring, and why it is paused. Wrappers sit flush to component edges, so the ring is clipped whenever a component is nested inside a dialog or filter panel.</p></section><section class="d-b"><h3>What comes next</h3><p>Two threads open. The focus ring is an accessibility commitment waiting on a container fix, and the AI workflow is the part I am actively building out.</p>
       <div class="road">
         <div class="rc"><div class="rh">Quick wins <span>3</span></div>
           <div class="ri"><b>Audit wrapper spacing</b><span>Find every molecule where a child sits flush to its container edge.</span></div><div class="ri"><b>Reserve a focus inset</b><span>A spacing token so a focus ring always has room to render.</span></div><div class="ri"><b>State coverage as a rule</b><span>A component without defined hover, pressed and focus tones is incomplete, and should not pass review.</span></div></div>
         <div class="rc"><div class="rh">Structural <span>3</span></div>
           <div class="ri"><b>Return the focus ring</b><span>Reintroduce it once containers reserve space, so nesting cannot clip it.</span></div><div class="ri"><b>Extend the agent workflow</b><span>The MCP connection already fetches component states and details straight into the codebase. Next is widening coverage so more of the system is machine consumable without a briefing step.</span></div><div class="ri"><b>Visual regression coverage</b><span>Catch drift automatically, so the 200 issues I closed cannot quietly return.</span></div></div>
       </div></section></div></details>
-    <section class="d-b"><h3>Looking back</h3><p>The visible output is a token library and ten components. The two parts I would defend are the interaction layer, because it is why engineers stopped inventing colours, and the QA number, because three hours a week returned is the clearest evidence the system does work people used to do by hand. The focus ring is the honest counterweight: a good idea that failed on contact with real layouts, and pausing it was better than shipping accessibility theatre.</p></section></div>
+    <section class="d-b"><h3>Looking back</h3><p>The visible output is a token library and ten components. The two parts I would defend are the interaction layer, because it is why engineers stopped inventing colours, and the QA number, because three hours a week returned is the clearest evidence the system does work people used to do by hand. The focus ring is the honest counterweight: a good idea that failed on contact with real layouts, and pausing it was better than shipping accessibility theatre.</p></section>
+    <nav class="d-nx" aria-label="More case studies">
+      <a href="/work/promotions/" data-case="2"><u>Previous case</u><b>Arguing for the project nobody had funded</b></a>
+      
+    </nav></div>
   </article>
 </div>
 
@@ -692,6 +718,23 @@
   .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
 
   /* optional depth */
+  .glance{margin-top:30px;display:grid;grid-template-columns:1fr;border:1px solid var(--s200);border-radius:12px;overflow:hidden}
+  @media(min-width:720px){.glance{grid-template-columns:1fr 1fr}}
+  .glance>div{padding:18px 20px}
+  .glance>div+div{border-top:1px solid var(--s200)}
+  @media(min-width:720px){.glance>div+div{border-top:0;border-left:1px solid var(--s200)}}
+  .glance u{display:block;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
+  .glance p{font-size:15.5px;line-height:1.6;color:var(--s800,var(--s900));font-weight:400;margin:0}
+  .d-q{margin:32px 0 0;padding:22px 24px;border-left:2px solid var(--s900);background:var(--s100);border-radius:0 10px 10px 0}
+  .d-q blockquote{margin:0;font-size:17px;font-weight:300;line-height:1.6;color:var(--s700)}
+  .d-q figcaption{margin-top:12px;font-size:13.5px;color:var(--s500)}
+  .d-q figcaption b{color:var(--s900);font-weight:500}
+  .d-nx{margin-top:clamp(56px,8vh,84px);display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--s200);padding-top:24px}
+  .d-nx a{display:block;padding:16px 18px;border:1px solid var(--s200);border-radius:10px;transition:border-color var(--ui) linear,background var(--ui) linear}
+  .d-nx a:hover{border-color:var(--s900)}
+  .d-nx a.nx{text-align:right;grid-column:2}
+  .d-nx u{display:block;text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:6px}
+  .d-nx b{font-size:15px;font-weight:500;line-height:1.35}
   .more{margin-top:16px;border-top:1px solid var(--s200)}
   .more summary{list-style:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;gap:10px;
     font-size:14px;font-weight:500;color:var(--s600);transition:color var(--ui) linear}
@@ -1037,7 +1080,7 @@ const P = [
     cap:'The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.'},
   tension:'The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.',
   insight:'While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.',
-  pull:'Five mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
+  pull:'Five mechanics were being drawn as one undifferentiated list. Most of the design work was naming them; the table followed from that.',
   decisions:[
     ['Model the event, or redesign the table',
      'Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.',
@@ -1186,7 +1229,7 @@ const P = [
     ['Bringing data to a taste argument','I asked BI for per config publisher usage so decisions about what to bury rested on adoption and revenue rather than my sense of what looked cluttered.'],
     ['Letting the users overrule my preferred direction','I favoured the searchable side panel. Five of eight testers chose visible grouping, so that is what shipped. The tidier design was the wrong one.']
   ],
-  reflection:'The visible output is a cleaner form. The real deliverable was an explanation. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a direct result. Two of those months produced no design at all, which was the part that mattered.'
+  reflection:'The form is cleaner, but most of the value came from explaining it. Sixty plus settings that only made sense to their authors now state their purpose in the interface, and 17% more of them are in use as a result. I spent two of those months without drawing anything, finding out what each setting actually did.'
 },
 {
   ix:'03',
@@ -1293,7 +1336,7 @@ const P = [
     cap:'Hellix against Figtree on the same card. Three reasons drove the change: a paid licence replaced by an open one, figures that now align in columns, and text greys that finally separate secondary from disabled.'},
   tension:'There was no single visible failure to point at. Every individual inconsistency was small enough to ignore, and the cost only appeared in aggregate: engineers rebuilding components that already existed, designers picking values by eye, and me spending three to four hours a week checking whether frontend output matched intent. The other difficulty was that this had to happen under active development on two products, with frontend engineers who report into other teams and could only take work as sprint side items.',
   insight:'The gap was not a documentation problem, it was an absence of source of truth in either direction. Production could not be trusted and neither could the library. So I stopped treating this as a design task and started treating it as an audit: pull production into Figma, compare it against what we claimed, and close the difference item by item. Once the foundations were tokens, component correctness became something a machine could verify rather than something I checked by hand every week.',
-  pull:'Nothing was broken enough to escalate. That is exactly why it had survived for so long.',
+  pull:'No single issue was bad enough to escalate, which is why the drift had lasted so long.',
   decisions:[
     ['Audit by hand, or pull production in and compare',
      'Used the HTML to Figma plugin to bring live production into the file, then ran a first analysis pass with OpenCode.',
@@ -1383,6 +1426,7 @@ const P = [
       ['Visual regression coverage','Catch drift automatically, so the 200 issues I closed cannot quietly return.']
     ]
   },
+  quote:{text:'In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard.',who:'Puru',role:'Senior Frontend Engineer, adjoe'},
   ai:{
     intro:'The system is built to be read by coding agents, not only by people. That is a deliberate design goal rather than a side effect.',
     points:[
@@ -1425,10 +1469,33 @@ function renderCard(c,i){
   </div></a>`;
 }
 
-/* Tension and Decisions are the senior signal, so they sit in the main flow.
-   Supporting material (system, screens, roadmap) stays behind one disclosure,
-   labelled with what is actually inside it. */
+/* Case layout, in reading order for a hiring manager:
+   at a glance, context, tension, insight, decisions and what they cost,
+   leadership, two key screens, impact. Everything else (system detail,
+   remaining screens, roadmap) sits behind one disclosure that names its contents. */
+function screensOf(c){
+  const out=[];
+  const shot=s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`;
+  if(c.shots) c.shots.forEach(s=>out.push({html:shot(s),group:null}));
+  if(c.gallery) c.gallery.forEach(g=>out.push({html:fig(g,{cls:g.wide?' wide':''}),group:c.galleryLabel||'What it looks like'}));
+  if(c.galleries) c.galleries.forEach(gr=>gr.items.forEach((g,k)=>out.push({html:fig(g),group:gr.label,first:k===0})));
+  return out;
+}
 function renderCase(c){
+  const i=P.indexOf(c);
+  const all=screensOf(c);
+  // two key screens up front: the first of each gallery group if there are groups, otherwise the first two
+  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,2);
+  const rest=all.filter(s=>!key.includes(s));
+  const restHtml=(()=>{
+    if(!rest.length) return '';
+    const groups=[...new Set(rest.map(s=>s.group))];
+    return groups.map(gp=>{
+      const items=rest.filter(s=>s.group===gp).map(s=>s.html).join('');
+      return block(gp||'More screens',items);
+    }).join('');
+  })();
+
   const extra=[
     c.system?['the system underneath',block('The system underneath',`<p>${c.system.intro}</p>
       <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
@@ -1436,11 +1503,8 @@ function renderCase(c){
         <p class="sys-n">${c.system.note}</p></div>`)]:null,
     c.ai?['agent readability',block('Built to be read by agents',`<p>${c.ai.intro}</p>
       <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
-    c.gallery?['screens',block(c.galleryLabel||'What it looks like',c.gallery.map(g=>fig(g,{cls:g.wide?' wide':''})).join(''))]:null,
-    c.galleries?['screens',c.galleries.map(gr=>block(gr.label,gr.items.map(g=>fig(g)).join(''))).join('')]:null,
-    c.leadership?['leadership',block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`)]:null,
     c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
-    c.shots?['screens',c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join('')]:null,
+    restHtml?['more screens',restHtml]:null,
     c.debate?['the open argument',block('The argument still open',`
       <div class="dc"><div class="dc-h">${c.debate.q}</div>
         <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
@@ -1456,9 +1520,11 @@ function renderCase(c){
           ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
       </div>`)]:null
   ].filter(Boolean);
-  const labels=[...new Set(extra.map(e=>e[0]))];
+  const labels=extra.map(e=>e[0]);
   const list=labels.length>1?labels.slice(0,-1).join(', ')+' and '+labels[labels.length-1]:labels[0];
   const imp=`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`;
+  const d0=c.decisions&&c.decisions[0];
+  const prev=i>0?P[i-1]:null, next=i<P.length-1?P[i+1]:null;
   return `
     <p class="d-kk">${c.kk}</p>
     <h1 class="d-t" id="drT">${c.t}</h1>
@@ -1470,6 +1536,7 @@ function renderCase(c){
       <div><span>Timeline</span><b>${c.time}</b></div>
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it changed</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1485,9 +1552,16 @@ function renderCase(c){
           <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
         </div>
       </div>`).join('')}</div>`):''}
+    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
+    ${key.length?block('What shipped',key.map(s=>s.html).join('')):''}
     ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
+    ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
-    ${block('Looking back',`<p>${c.reflection}</p>`)}`;
+    ${block('Looking back',`<p>${c.reflection}</p>`)}
+    <nav class="d-nx" aria-label="More case studies">
+      ${prev?`<a href="${caseUrl(i-1)}" data-case="${i-1}"><u>Previous case</u><b>${prev.t}</b></a>`:''}
+      ${next?`<a class="nx" href="${caseUrl(i+1)}" data-case="${i+1}"><u>Next case</u><b>${next.t}</b></a>`:''}
+    </nav>`;
 }
 /* @render-end */
 
@@ -1497,7 +1571,7 @@ function renderCase(c){
    the build), they are rendered here instead. */
 const prjs=document.getElementById('prjs');
 if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map(renderCard).join('');
-prjs.querySelectorAll('.prj').forEach(a=>{
+document.querySelectorAll('#prjs .prj, .proof a').forEach(a=>{
   a.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
     e.preventDefault();openCase(+a.dataset.case);
@@ -1556,6 +1630,11 @@ function onKey(e){
   }
 }
 document.getElementById('drBg').addEventListener('click',()=>closeCase());
+drC.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-case]');
+  if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+  e.preventDefault();openCase(+a.dataset.case);
+});
 drX.addEventListener('click',()=>closeCase());
 drP.addEventListener('scroll',()=>{
   const h=drP.scrollHeight-drP.clientHeight;

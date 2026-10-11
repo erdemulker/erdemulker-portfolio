@@ -46,6 +46,23 @@ vm.runInContext(index.slice(start, end) + '\n;globalThis.__x={P,SLUGS,renderCard
 const { P, SLUGS, renderCard, renderCase, caseUrl } = ctx.__x;
 if (P.length !== SLUGS.length) throw new Error(`P has ${P.length} cases but SLUGS has ${SLUGS.length}`);
 
+// ---- 0. consistency: a number on About must not contradict the same number in a case ----
+{
+  const about = read('about.html');
+  const caseText = P.map(c => JSON.stringify([c.impact, c.impactNote, c.metrics, c.d])).join(' ');
+  const windowOf = s => (String(s).match(/\b(one|two|three|four|six|eight|twelve)[ -](day|week|month)s?\b/i) || [])[0]?.toLowerCase().replace('-', ' ');
+  const problems = [];
+  for (const [, value, label, source] of about.matchAll(/<div class="nm[^"]*"><b>([^<]*)<\/b><span>([^<]*)<\/span><i>([^<]*)<\/i>/g)) {
+    const hits = P.flatMap(c => c.impact.filter(m => m[0].startsWith(value)));
+    for (const m of hits) {
+      const a = windowOf(source), b = windowOf(m[1]);
+      if (a && b && a !== b) problems.push(`"${value}": About says "${a}", case says "${b}"`);
+    }
+    if (/adjoe/i.test(source) && !caseText.includes(value)) console.warn(`note: About stat "${value} ${label}" is not mentioned in any case`);
+  }
+  if (problems.length) throw new Error('About and case numbers disagree:\n  ' + problems.join('\n  '));
+}
+
 // ---- 1. cards into index.html ----
 const cards = P.map((c, i) => renderCard(c, i)).join('');
 index = swapRe(index, /<!-- @cards-start -->[\s\S]*?<!-- @cards-end -->/, `<!-- @cards-start -->${cards}<!-- @cards-end -->`, 'cards');
@@ -68,12 +85,20 @@ P.forEach((c, i) => {
   h = swapRe(h, /<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${attr(plain(c.t))}" />`, 'og:title');
   h = swapRe(h, /<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${attr(desc)}" />`, 'og:description');
   h = swapRe(h, /<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`, 'og:url');
-  if (img) {
-    h = swapRe(h, /<meta property="og:image" content="[^"]*" \/>/, `<meta property="og:image" content="${ORIGIN}/${img.src}" />`, 'og:image');
-    h = swapRe(h, /<meta property="og:image:width"[^>]*>\n<meta property="og:image:height"[^>]*>\n/, '', 'og:image size');
-    h = swapRe(h, /<meta property="og:image:alt" content="[^"]*" \/>/, `<meta property="og:image:alt" content="${attr(plain(img.alt))}" />`, 'og:image:alt');
-    h = swapRe(h, /<meta name="twitter:image" content="[^"]*" \/>/, `<meta name="twitter:image" content="${ORIGIN}/${img.src}" />`, 'twitter:image');
+  // preview image: the designed card from scripts/og-images.mjs if present, else the case hero
+  const og = `images/og/${SLUGS[i]}.png`;
+  const ogSrc = existsSync(join(ROOT, og)) ? og : img?.src;
+  if (ogSrc) {
+    h = swapRe(h, /<meta property="og:image" content="[^"]*" \/>/, `<meta property="og:image" content="${ORIGIN}/${ogSrc}" />`, 'og:image');
+    if (ogSrc !== og) h = swapRe(h, /<meta property="og:image:width"[^>]*>\n<meta property="og:image:height"[^>]*>\n/, '', 'og:image size');
+    else h = swapRe(h, /<meta property="og:image:height" content="[^"]*" \/>/, '<meta property="og:image:height" content="630" />', 'og:image height');
+    h = swapRe(h, /<meta property="og:image:alt" content="[^"]*" \/>/, `<meta property="og:image:alt" content="${attr(plain(c.t))}. Case study by Erdem Ülker." />`, 'og:image:alt');
+    h = swapRe(h, /<meta name="twitter:image" content="[^"]*" \/>/, `<meta name="twitter:image" content="${ORIGIN}/${ogSrc}" />`, 'twitter:image');
   }
+  // structured data for the case itself
+  const ld = { '@context': 'https://schema.org', '@type': 'CreativeWork', name: plain(c.t), headline: plain(c.t), description: desc, url,
+    image: ogSrc ? `${ORIGIN}/${ogSrc}` : undefined, author: { '@type': 'Person', name: 'Erdem Ülker', url: `${ORIGIN}/` }, about: plain(c.kk) };
+  h = swap(h, '</head>', `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n</head>`, 'ld+json');
   h = swapRe(h, /<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${attr(plain(c.t))}" />`, 'twitter:title');
   h = swapRe(h, /<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${attr(desc)}" />`, 'twitter:description');
 
