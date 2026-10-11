@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<base href="/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Erdem Ülker, Product Designer</title>
 <meta name="description" content="Senior Product Designer. I turn complex technology, systems and business requirements into product experiences that feel simple." />
@@ -231,9 +232,10 @@
   .p-kk{font-size:13px;color:var(--s500);font-weight:300;margin-left:11px}
   .p-t{margin-top:11px;font-size:clamp(22px,2.1vw,29px);font-weight:500;line-height:1.18;letter-spacing:var(--tk-2)}
   .p-d{margin-top:12px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.62;max-width:46ch}
-  .p-m{margin-top:18px;display:flex;gap:22px;flex-wrap:wrap}
-  .p-m div span{display:block;font-size:12px;color:var(--s500)}
-  .p-m div b{font-size:14.5px;font-weight:500;letter-spacing:var(--tk-1)}
+  .p-m{margin-top:22px;display:flex;gap:clamp(22px,3vw,40px);flex-wrap:wrap}
+  .p-m div{max-width:22ch}
+  .p-m div b{display:block;font-size:clamp(24px,2.3vw,32px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .p-m div span{display:block;margin-top:6px;font-size:13px;color:var(--s500);line-height:1.4}
   a.p-go{text-decoration:none}
   a.p-go:hover{color:var(--s900)}
   a.p-go:hover svg{transform:translateX(5px)}
@@ -381,7 +383,43 @@
       <h2>Four projects, chosen for the decisions rather than the screens.</h2>
       <p>Each one includes the reasoning, the tradeoffs I accepted, and what it changed for the business.</p>
     </div>
-    <div id="prjs"></div>
+    <div id="prjs"><!-- @cards-start --><a class="prj rv" href="/work/support/" data-case="0" aria-haspopup="dialog" aria-label="Getting the company out of its own support queue. Offerwall platform, internal operations. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">01</span><span class="p-kk">Offerwall platform, internal operations</span></div>
+      <h3 class="p-t">Getting the company out of its own support queue</h3>
+      <p class="p-d">Account managers were resolving every user level reward dispute by hand in a tool built for nobody. I designed the investigation model that let support answer for themselves.</p>
+      <div class="p-m"><div><b>56%</b><span>less support time per case</span></div><div><b>5</b><span>mechanics, one structure</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><img src="images/case-01/hero.png" alt="A milestone reward table with a removed campaigns popover" loading="lazy"></div></div>
+  </div></a><a class="prj rv" href="/work/configuration/" data-case="1" aria-haspopup="dialog" aria-label="Sixty settings nobody could explain. Offerwall platform, partner onboarding. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">02</span><span class="p-kk">Offerwall platform, partner onboarding</span></div>
+      <h3 class="p-t">Sixty settings nobody could explain</h3>
+      <p class="p-d">Publisher setup ran through one narrow dropdown of sixty plus configurations, labelled by the engineers who built them. Ninety percent had no documentation of any kind. I spent two months establishing what they actually did, then rebuilt the flow around that. Deal to release dropped from seven weeks to five.</p>
+      <div class="p-m"><div><b>7 to 5 weeks</b><span>deal to release</span></div><div><b>+17%</b><span>configs actually used</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><img src="images/case-02/hero.png" alt="Grouped application settings with one section opened" loading="lazy"></div></div>
+  </div></a><a class="prj rv" href="/work/promotions/" data-case="2" aria-haspopup="dialog" aria-label="Arguing for the project nobody had funded. Promotions, lifecycle and operations. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">03</span><span class="p-kk">Promotions, lifecycle and operations</span></div>
+      <h3 class="p-t">Arguing for the project nobody had funded</h3>
+      <p class="p-d">Promotions drove around ten percent of platform revenue and were managed through a table with two statuses and a search box. The design work was straightforward. Getting engineering time allocated to it, against far larger projects, was the actual problem.</p>
+      <div class="p-m"><div><b>~10%</b><span>of platform revenue</span></div><div><b>2 to 5</b><span>lifecycle states</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><img src="images/case-03/hero.png" alt="A promotions table showing lifecycle states with the reactivate action open" loading="lazy"></div></div>
+  </div></a><a class="prj rv" href="/work/design-system/" data-case="3" aria-haspopup="dialog" aria-label="Closing the gap between what shipped and what we drew. Design system, foundations to governance. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">04</span><span class="p-kk">Design system, foundations to governance</span></div>
+      <h3 class="p-t">Closing the gap between what shipped and what we drew</h3>
+      <p class="p-d">Two dashboards had drifted from the library and from each other. I audited both, rebuilt the foundations as tokens, refactored ten components with full state coverage, and structured the system so coding agents can read it. Weekly frontend review dropped from three to four hours to under one.</p>
+      <div class="p-m"><div><b>200+ issues</b><span>found and closed</span></div><div><b>3-4h to <1h</b><span>weekly QA time</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><img src="images/case-04/hero.png" alt="A collage of the refactored design system components in use" loading="lazy"></div></div>
+  </div></a><!-- @cards-end --></div>
   </div>
 </section>
 
@@ -911,6 +949,9 @@ themeToggle.addEventListener('click',()=>{
    CASE STUDIES
    Structured as strategic product stories, not UX process docs.
    ============================================================ */
+/* @render-start: case data and pure renderers.
+   scripts/build-case-pages.mjs evaluates this region to prerender the cards
+   and the /work/<slug>/ pages. Keep it free of DOM access. */
 const P = [
 {
   ix:'01',
@@ -927,17 +968,17 @@ const P = [
   time:'Initial release, then ongoing iterations',
   year:'2025 to 2026',
   impact:[
-    ['56%','less support time per investigation, over a two week measured comparison'],
+    ['56%','less support time per investigation, over a two month measured comparison'],
     ['5 mechanics','timed, event, repeatable, bonus and IAP unified into one readable structure'],
     ['6 releases','shipped on that structure afterwards with no redesign needed']
   ],
-  impactNote:'The 56% comes from a two week comparison against the previous internal tool. The extensibility claim is verifiable in the design file: six subsequent feature releases reused the original structure.',
+  impactNote:'The 56% comes from a two month comparison against the previous internal tool. The extensibility claim is verifiable in the design file: six subsequent feature releases reused the original structure.',
   context:'Users earn rewards by completing milestones inside partner apps. When a reward does not arrive, the explanation is spread across install attribution, postbacks, milestone progress, promotions and fraud rules. All of that work sat with our account managers, in an internal tool that had not kept pace with the product. Newer mechanics like boosters, promoted offers and cashback had no real representation in it.',
   beforeImg:{src:'images/case-01/old-table.png',alt:'The previous investigation table, showing the limited columns and absent state information available before the redesign',
     cap:'The table investigators worked from before. Every reward mechanic was flattened into one undifferentiated list, so a timed event, a purchase and a bonus all read the same way, and nothing explained why a payout had been withheld.'},
   tension:'The obvious brief was to redesign the screen. That would have failed, because the screen was not the problem. The problem was that no shared definition of a reward event existed, so every new business mechanic arrived as a special case and the interface accumulated exceptions. Meanwhile support in high volume regions were handling over a hundred tickets a shift, and slow answers were making partners doubt the payout logic itself rather than just the tooling. Fixing the layout would have bought a quarter.',
   insight:'While shadowing investigations I noticed the agents were not reading the data, they were translating it. Each one had built a private mental model for converting rows into an explanation. The bottleneck was not access to information, it was the absence of one structure that held every mechanic. So the deliverable was not a screen, it was an event model, and the screen would fall out of it.',
-  pull:'Six mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
+  pull:'Five mechanics were being drawn as one undifferentiated list. Naming them was the design work. The table was a consequence.',
   decisions:[
     ['Model the event, or redesign the table',
      'Defined one row grammar every mechanic maps into: base amount, promotional amount, final amount, state, timestamp.',
@@ -1295,34 +1336,9 @@ const P = [
 }
 ];
 
-/* ---------- project list ---------- */
+const SLUGS=['support','configuration','promotions','design-system'];
 const AR='<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const prjs=document.getElementById('prjs');
-
-P.forEach((c,i)=>{
-  const b=document.createElement('button');
-  b.className='prj rv';b.type='button';
-  b.setAttribute('aria-haspopup','dialog');
-  b.setAttribute('aria-label',c.t+'. '+c.kk+'. Open case study.');
-  b.innerHTML=`<div class="prj-g">
-    <div class="p-l">
-      <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
-      <h3 class="p-t">${c.t}</h3>
-      <p class="p-d">${c.d}</p>
-      <div class="p-m">${c.metrics.map(m=>`<div><span>${m[1]}</span><b>${m[0]}</b></div>`).join('')}</div>
-      <span class="p-go">Read the case ${AR}</span>
-    </div>
-    <div class="p-r">${(c.preview||c.hero)?`<div class="p-im"><img src="${(c.preview||c.hero).src}" alt="${(c.preview||c.hero).alt}" loading="lazy"></div>`:''}</div>
-  </div>`;
-  b.addEventListener('click',()=>openCase(i));
-  prjs.appendChild(b);
-});
-
-/* ---------- case drawer ---------- */
-const dr=document.getElementById('dr'),drP=document.getElementById('drP'),
-      drC=document.getElementById('drC'),drX=document.getElementById('drX'),
-      drIx=document.getElementById('drIx'),drProg=document.getElementById('drProg');
-let lastFocus=null;
+const caseUrl=i=>'/work/'+SLUGS[i]+'/';
 
 function block(h,inner){return `<section class="d-b"><h3>${h}</h3>${inner}</section>`}
 
@@ -1335,62 +1351,60 @@ function fig(g,{cls='',prefix='',eager=false}={}){
   const fb=g.fb?` data-fb="${g.fb}"`:'';
   return `<figure class="d-fig${cls}"${ph}><img src="${g.src}" alt="${g.alt}"${lazy}${fb} onerror="figFail(this)"></figure><p class="d-cap">${prefix}${g.cap}</p>`;
 }
-window.figFail=function(img){
-  const f=img.closest('figure');
-  if(img.dataset.fb&&img.src.indexOf(img.dataset.fb)<0){img.src=img.dataset.fb;return}
-  if(f&&f.dataset.ph){f.classList.add('ph');f.innerHTML=`<span>${f.dataset.ph}</span>`}
-  else if(f){f.style.display='none'}
-};
 
-function openCase(i){
-  const c=P[i];
-  lastFocus=document.activeElement;
-  drIx.textContent='Case '+c.ix;
-  const want='#case-'+SLUGS[i];
-  if(location.hash!==want){history.pushState(null,'',want);openedViaPush=true}
-  document.title=c.t+' · Erdem Ülker';
+function renderCard(c,i){
+  const im=c.preview||c.hero;
+  return `<a class="prj rv" href="${caseUrl(i)}" data-case="${i}" aria-haspopup="dialog" aria-label="${c.t}. ${c.kk}. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
+      <h3 class="p-t">${c.t}</h3>
+      <p class="p-d">${c.d}</p>
+      <div class="p-m">${c.metrics.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+      <span class="p-go">Read the case ${AR}</span>
+    </div>
+    <div class="p-r">${im?`<div class="p-im"><img src="${im.src}" alt="${im.alt}" loading="lazy"></div>`:''}</div>
+  </div></a>`;
+}
 
-  const deeper=[
-    block('Tension',`<p>${c.tension}</p>`),
-    block('Decisions',`<div class="dcs">${c.decisions.map(d=>`
-      <div class="dc"><div class="dc-h">${d[0]}</div>
-        <div class="dc-b">
-          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
-          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
-        </div>
-      </div>`).join('')}</div>`),
-    c.system?block('The system underneath',`<p>${c.system.intro}</p>
+/* Tension and Decisions are the senior signal, so they sit in the main flow.
+   Supporting material (system, screens, roadmap) stays behind one disclosure,
+   labelled with what is actually inside it. */
+function renderCase(c){
+  const extra=[
+    c.system?['the system underneath',block('The system underneath',`<p>${c.system.intro}</p>
       <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
         <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
-        <p class="sys-n">${c.system.note}</p></div>`):'',
-    c.ai?block('Built to be read by agents',`<p>${c.ai.intro}</p>
-      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`):'',
-    c.gallery?block(c.galleryLabel||'What it looks like',c.gallery.map(g=>fig(g,{cls:g.wide?' wide':''})).join('')):'',
-    c.galleries?c.galleries.map(gr=>block(gr.label,gr.items.map(g=>fig(g)).join(''))).join(''):'',
-    c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):'',
-    c.steps?block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`):'',
-    c.shots?c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join(''):'',
-    c.debate?block('The argument still open',`
+        <p class="sys-n">${c.system.note}</p></div>`)]:null,
+    c.ai?['agent readability',block('Built to be read by agents',`<p>${c.ai.intro}</p>
+      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
+    c.gallery?['screens',block(c.galleryLabel||'What it looks like',c.gallery.map(g=>fig(g,{cls:g.wide?' wide':''})).join(''))]:null,
+    c.galleries?['screens',c.galleries.map(gr=>block(gr.label,gr.items.map(g=>fig(g)).join(''))).join('')]:null,
+    c.leadership?['leadership',block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`)]:null,
+    c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
+    c.shots?['screens',c.shots.map(s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`).join('')]:null,
+    c.debate?['the open argument',block('The argument still open',`
       <div class="dc"><div class="dc-h">${c.debate.q}</div>
         <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
         ${c.debate.sides.map(s=>`<div class="dc-c" style="border-top:1px solid var(--s200)"><u>${s[0]}</u>${s[1]}</div>`).join('')}
         <div class="dc-c" style="border-top:1px solid var(--s200);background:var(--s100)"><u>Where I landed</u>${c.debate.pos}</div>
       </div>
-      <p class="note">${c.debate.why}</p>`):'',
-    c.road?block('What comes next',`<p>${c.road.intro}</p>
+      <p class="note">${c.debate.why}</p>`)]:null,
+    c.road?['what comes next',block('What comes next',`<p>${c.road.intro}</p>
       <div class="road">
         <div class="rc"><div class="rh">Quick wins <span>${c.road.quick.length}</span></div>
           ${c.road.quick.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
         <div class="rc"><div class="rh">Structural <span>${c.road.big.length}</span></div>
           ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
-      </div>`):''
-  ].filter(Boolean).join('');
-
-  drC.innerHTML=`
+      </div>`)]:null
+  ].filter(Boolean);
+  const labels=[...new Set(extra.map(e=>e[0]))];
+  const list=labels.length>1?labels.slice(0,-1).join(', ')+' and '+labels[labels.length-1]:labels[0];
+  const imp=`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`;
+  return `
     <p class="d-kk">${c.kk}</p>
     <h1 class="d-t" id="drT">${c.t}</h1>
     <p class="d-one">${c.one}</p>
-    <div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+    ${imp}
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
@@ -1403,11 +1417,56 @@ function openCase(i){
         ? fig(c.beforeImg,{cls:' beforefig',prefix:'<b>Before.</b> '})
         : (c.before?`<div class="before"><u>Before</u><p>${c.before}</p></div>`:'')
     }`)}
+    ${c.tension?block('Tension',`<p>${c.tension}</p>`):''}
     ${block('Insight',`<p>${c.insight}</p>${c.pull?`<p class="d-pull">${c.pull}</p>`:''}`)}
-    ${block('Impact',`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
-      <p class="note">${c.impactNote}</p>`)}
-    ${deeper?`<details class="more"><summary><span class="pm"></span>Deeper detail, if you want it</summary><div class="more-in">${deeper}</div></details>`:''}
+    ${c.decisions?block('Decisions, and what each one cost',`<div class="dcs">${c.decisions.map(d=>`
+      <div class="dc"><div class="dc-h">${d[0]}</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
+          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
+        </div>
+      </div>`).join('')}</div>`):''}
+    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
+    ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}`;
+}
+/* @render-end */
+
+/* ---------- project list ----------
+   Cards are prerendered into #prjs by the build script, so crawlers and link
+   previews see the work. If they are missing (e.g. a local edit without running
+   the build), they are rendered here instead. */
+const prjs=document.getElementById('prjs');
+if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map(renderCard).join('');
+prjs.querySelectorAll('.prj').forEach(a=>{
+  a.addEventListener('click',e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
+    e.preventDefault();openCase(+a.dataset.case);
+  });
+});
+
+/* ---------- case drawer ---------- */
+const dr=document.getElementById('dr'),drP=document.getElementById('drP'),
+      drC=document.getElementById('drC'),drX=document.getElementById('drX'),
+      drIx=document.getElementById('drIx'),drProg=document.getElementById('drProg');
+let lastFocus=null;
+
+window.figFail=function(img){
+  const f=img.closest('figure');
+  if(img.dataset.fb&&img.src.indexOf(img.dataset.fb)<0){img.src=img.dataset.fb;return}
+  if(f&&f.dataset.ph){f.classList.add('ph');f.innerHTML=`<span>${f.dataset.ph}</span>`}
+  else if(f){f.style.display='none'}
+};
+
+function openCase(i){
+  const c=P[i];
+  current=i;
+  lastFocus=document.activeElement;
+  drIx.textContent='Case '+c.ix;
+  const want=caseUrl(i);
+  if(location.pathname!==want){history.pushState(null,'',want);openedViaPush=true}
+  document.title=c.t+' · Erdem Ülker';
+  drC.innerHTML=renderCase(c);
 
   dr.classList.add('on');
   document.documentElement.style.overflow='hidden';
@@ -1419,9 +1478,9 @@ function closeCase(fromHistory){
   dr.classList.remove('on');
   document.documentElement.style.overflow='';
   document.removeEventListener('keydown',onKey);
-  if(!fromHistory&&SLUG_RE.test(location.hash)){
+  if(!fromHistory&&caseFromLocation()>=0){
     if(openedViaPush) history.back();
-    else history.replaceState(null,'',location.pathname+location.search+'#work');
+    else history.replaceState(null,'','/#work');
   }
   openedViaPush=false;
   document.title=BASE_TITLE;
@@ -1445,36 +1504,36 @@ drP.addEventListener('scroll',()=>{
 },{passive:true});
 
 /* ---------- deep links ----------
-   Each case lives at #case-<slug>. Opening a case pushes the hash, so the back
-   button closes it, and a shared link opens straight into that case. */
-const SLUGS=['support','configuration','promotions','design-system'];
-const BASE_TITLE=document.title;
-const SLUG_RE=/^#case-/;
-let openedViaPush=false;
-function caseFromHash(){
-  const m=location.hash.match(/^#case-([a-z-]+)$/);
+   Each case has a real page at /work/<slug>/ (generated by the build script).
+   Opening a case from the list pushes that path, so back closes it and a
+   shared link loads a page with the case already rendered. Old #case-<slug>
+   links still work. */
+const BASE_TITLE='Erdem Ülker, Product Designer';
+let openedViaPush=false,current=-1;
+function caseFromLocation(){
+  const m=location.pathname.match(/^\/work\/([a-z-]+)\/?$/)||location.hash.match(/^#case-([a-z-]+)$/);
   return m?SLUGS.indexOf(m[1]):-1;
 }
 function syncFromHash(){
-  const i=caseFromHash();
-  if(i>=0){ if(!dr.classList.contains('on')||drIx.textContent!=='Case '+P[i].ix) openCase(i); }
+  const i=caseFromLocation();
+  if(i>=0){ if(!dr.classList.contains('on')||current!==i) openCase(i); }
   else if(dr.classList.contains('on')) closeCase(true);
 }
 addEventListener('popstate',syncFromHash);
 addEventListener('hashchange',syncFromHash);
 const drLink=document.getElementById('drLink');
 drLink.addEventListener('click',async()=>{
-  const url=location.href;
+  const url=location.origin+caseUrl(current);
   try{await navigator.clipboard.writeText(url);drLink.textContent='Link copied'}
   catch(e){drLink.textContent='Copy failed'}
   setTimeout(()=>{drLink.textContent='Copy link'},1800);
 });
-if(caseFromHash()>=0) openCase(caseFromHash());
+if(caseFromLocation()>=0) openCase(caseFromLocation());
 
 /* ---------- reveal ---------- */
 const io2=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})
-},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+},{threshold:0,rootMargin:'0px 0px 12% 0px'});
 document.querySelectorAll('.rv').forEach((el,i)=>{
   el.style.transitionDelay=(i%5)*50+'ms';io2.observe(el);
 });
