@@ -1987,16 +1987,16 @@ html:not([data-kbd]) .btn.secondary:is(:focus,:focus-visible){box-shadow:var(--s
 .fnd p{font-size:15px;line-height:1.6;color:var(--fg);max-width:64ch}
 .fnd p.from{font-size:13px;color:var(--fg-3)}
 /* options: the recommended one is the object, the alternative is plain text */
-.opt{display:flex;flex-direction:column;gap:6px}
-.opt h5{font:600 16px/1.35 var(--font-display)}
-.opt p{font-size:14.5px;line-height:1.55}
-.opt .facts{font-size:13px;color:var(--fg-3)}
-.opt .row2{margin-top:10px}
-.opt.box{gap:6px;padding:20px 22px}
-.opt:not(.box){padding:4px 2px 0}
-.opt.off{opacity:.55}
-.opt.picked h5::after{content:"Chosen";margin-left:10px;font:500 12.5px var(--font-body);color:var(--fg-3)}
-.opt.rec.box.picked,.opt.rec.box.off{border-color:var(--border)}
+.pc.opt{display:flex;flex-direction:column;gap:6px}
+.pc.opt h5{font:600 16px/1.35 var(--font-display)}
+.pc.opt p{font-size:14.5px;line-height:1.55}
+.pc.opt .facts{font-size:13px;color:var(--fg-3)}
+.pc.opt .row2{margin-top:10px}
+.pc.opt.box{gap:6px;padding:20px 22px}
+.pc.opt:not(.box){padding:4px 2px 0}
+.pc.opt.off{opacity:.55}
+.pc.opt.picked h5::after{content:"Chosen";margin-left:10px;font:500 12.5px var(--font-body);color:var(--fg-3)}
+.pc.opt.rec.box.picked,.pc.opt.rec.box.off{border-color:var(--border)}
 /* result: a title with what changed, one hairline above */
 .rc{gap:8px;padding-top:16px;border-top:1px solid var(--border-subtle)}
 .rc-1{border-top:0;padding-top:0}
@@ -2067,7 +2067,7 @@ html:not([data-kbd]) .btn.secondary:is(:focus,:focus-visible){box-shadow:var(--s
 .gres:hover{border-color:var(--border-subtle)}
 .ghome .chips{align-self:stretch}
 .chips .chip{padding-left:0;padding-right:0}
-.opt:not(.box){padding:0;margin-top:14px}
+.pc.opt:not(.box){padding:0;margin-top:14px}
 
 /* ---- sentence-case labels: no tracked caps, no mono ---- */
 .gh,.grp,.subnav .grp,.tbl th,.wt th,.pc .lbl3,.pp .row>span,.slash .sh,.obp legend,.a-proto .menu .gl,.logos,.a-eye,.sc-live{text-transform:none;letter-spacing:0;font-family:var(--font-body)}
@@ -2263,7 +2263,7 @@ html:not([data-kbd]) .btn.secondary:is(:focus,:focus-visible){box-shadow:var(--s
 /* v86: the integrations panel pattern is half as strong (.25 to .125 at rest, .5 to .25 with a card open or hovered) */
 #oPan::before{opacity:.125}
 #oPan.has-card::before,#oPan:hover::before{opacity:.25}
-/* v87: filters use the Arc UI segmented control (.aseg, port in js3z.part). Underline tabs (.tabs2) are for contextual views of a page, like Brain. */
+/* v87: filters use the Arc UI segmented control (.aseg, port in js3z.part). Page views use Arc UI Tabs (.atabs, v167). */
 .aseg{width:fit-content}
 .aseg .ct{font:400 12px var(--font-body)}
 .aseg button[aria-pressed=true] .ct{color:var(--fg-2)}
@@ -2358,29 +2358,29 @@ aside:has(.thread:not([hidden]) .ob-home) .ob-dock:not([data-v=hidden]){display:
 .btn.ico svg,.btn.ico .i{width:16px;height:16px;margin:0}
 
 /* Arc Radio cards (list layout): plan choice in chat. One ring springs to the selected card; the dot scales in. */
-.rcw{margin:8px 0 4px}
-.rcards{position:relative;display:flex;flex-direction:column;gap:8px}
-.rc{position:relative;display:grid;grid-template-columns:16px minmax(0,1fr) auto;gap:12px;align-items:start;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);cursor:pointer;transition:border-color var(--t-fast) var(--e-standard),opacity var(--t-base) var(--e-standard)}
-.rc:hover{border-color:var(--border-strong)}
-.rc:focus{outline:none}
-[data-kbd] .rc:focus-visible{box-shadow:var(--ring)}
-.rc-dot{width:16px;height:16px;margin-top:2px;border-radius:50%;border:1.5px solid var(--border-strong);display:grid;place-items:center;transition:border-color var(--t-fast) var(--e-standard)}
-.rc-dot i{width:8px;height:8px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform var(--t-base) cubic-bezier(.34,1.56,.64,1)}
-.rc[aria-checked=true] .rc-dot{border-color:var(--accent)}
-.rc[aria-checked=true] .rc-dot i{transform:scale(1)}
-.rc-tx{display:flex;flex-direction:column;gap:4px;min-width:0}
-.rc-tx b{font-weight:500;color:var(--fg)}
-.rc-rec{margin-left:8px;font:500 12px var(--font-body);color:var(--accent)}
-.rc-tx small{font:var(--ty-small);color:var(--fg-2)}
-.rc-m{font:var(--ty-small);color:var(--fg-2);white-space:nowrap;padding-top:1px}
-.rc-ring{position:absolute;left:0;right:0;top:0;height:0;z-index:2;pointer-events:none;border:1.5px solid var(--accent);border-radius:14px;transition:transform var(--t-slow) cubic-bezier(.3,1.2,.4,1),height var(--t-slow) cubic-bezier(.3,1.2,.4,1),opacity var(--t-base)}
-.rcards[aria-disabled=true] .rc{cursor:default}
-.rcards[aria-disabled=true] .rc:hover{border-color:var(--border)}
-.rc.off{opacity:.5}
-.rc.picked .rc-rec{display:none}
-.rc.picked b::after{content:"Chosen";margin-left:8px;font:500 12px var(--font-body);color:var(--fg-3)}
-.rcw .row2{margin-top:12px;display:flex;gap:12px;align-items:center}
-@media (prefers-reduced-motion:reduce){.rc-ring,.rc-dot i{transition:none}}
+.rqw{margin:8px 0 4px}
+.rqs{position:relative;display:flex;flex-direction:column;gap:8px}
+.rq{position:relative;display:grid;grid-template-columns:16px minmax(0,1fr) auto;gap:12px;align-items:start;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);cursor:pointer;transition:border-color var(--t-fast) var(--e-standard),opacity var(--t-base) var(--e-standard)}
+.rq:hover{border-color:var(--border-strong)}
+.rq:focus{outline:none}
+[data-kbd] .rq:focus-visible{box-shadow:var(--ring)}
+.rq-dot{width:16px;height:16px;margin-top:2px;border-radius:50%;border:1.5px solid var(--border-strong);display:grid;place-items:center;transition:border-color var(--t-fast) var(--e-standard)}
+.rq-dot i{width:8px;height:8px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform var(--t-base) cubic-bezier(.34,1.56,.64,1)}
+.rq[aria-checked=true] .rq-dot{border-color:var(--accent)}
+.rq[aria-checked=true] .rq-dot i{transform:scale(1)}
+.rq-tx{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rq-tx b{font-weight:500;color:var(--fg)}
+.rq-rec{margin-left:8px;font:500 12px var(--font-body);color:var(--accent)}
+.rq-tx small{font:var(--ty-small);color:var(--fg-2)}
+.rq-m{font:var(--ty-small);color:var(--fg-2);white-space:nowrap;padding-top:1px}
+.rq-ring{position:absolute;left:0;right:0;top:0;height:0;z-index:2;pointer-events:none;border:1.5px solid var(--accent);border-radius:14px;transition:transform var(--t-slow) cubic-bezier(.3,1.2,.4,1),height var(--t-slow) cubic-bezier(.3,1.2,.4,1),opacity var(--t-base)}
+.rqs[aria-disabled=true] .rq{cursor:default}
+.rqs[aria-disabled=true] .rq:hover{border-color:var(--border)}
+.rq.off{opacity:.5}
+.rq.picked .rq-rec{display:none}
+.rq.picked b::after{content:"Chosen";margin-left:8px;font:500 12px var(--font-body);color:var(--fg-3)}
+.rqw .row2{margin-top:12px;display:flex;gap:12px;align-items:center}
+@media (prefers-reduced-motion:reduce){.rq-ring,.rq-dot i{transition:none}}
 
 /* Category header: icon box is one title line tall, so the icon centres on the title */
 .bw-ph .bt{height:25px;display:flex;align-items:center;justify-content:center}
@@ -2434,6 +2434,203 @@ aside:has(.thread:not([hidden]) .ob-home) .ob-dock:not([data-v=hidden]){display:
 
 /* Segmented control runs at 1x (v130): label colour change at the original fast speed */
 .aseg button{transition-duration:150ms}
+
+/* Brain home (v132): six category cards; the workspace is the sub page. */
+#page.bh-on #bw,#page.bh-on #bTabs{display:none!important}
+#page.bws:not(.bh-on) #bTabs{display:none!important}
+.bhome{display:flex;flex-direction:column;gap:20px;margin-top:8px}
+.bh-need{display:flex;align-items:center;gap:12px;font:var(--ty-body);color:var(--fg-2)}
+.bh-need::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--warning)}
+.bh-h h2{margin:0;font:var(--ty-title);letter-spacing:-.012em}
+.bh-h p{margin:6px 0 0;font:var(--ty-body);color:var(--fg-2)}
+.bh-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.bh-c{width:100%;height:100%;display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;padding:24px;border:1px solid var(--border);border-radius:24px;background:var(--surface);color:var(--fg);cursor:pointer;transition:border-color var(--t-fast) var(--e-standard),background-color var(--t-fast) var(--e-standard)}
+.bh-c:hover{border-color:var(--border-strong);background:color-mix(in srgb,var(--fg) 3%,var(--surface))}
+.bh-c:focus{outline:none}[data-kbd] .bh-c:focus-visible{box-shadow:var(--ring)}
+.bh-t{font:600 20px/1.25 var(--font-display);letter-spacing:-.012em}
+.bh-d{font:400 15px/1.55 var(--font-body);color:var(--fg-2);max-width:36ch}
+.bh-f{margin-top:auto;padding-top:14px;display:flex;align-items:center;gap:12px;width:100%}
+.bh-ic{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--h);background:color-mix(in srgb,var(--h) 14%,transparent)}
+.bh-ic svg{width:18px;height:18px}
+.bh-n{flex:1;font:var(--ty-small);color:var(--fg-2)}.bh-n.warn{color:var(--warning)}
+.bh-bars{display:flex;gap:3px;flex:none}
+.bh-bars i{width:5px;height:16px;border-radius:3px;background:var(--border-strong)}
+.bh-bars i.on{background:var(--h)}
+.crumbs .c-lnk{color:var(--fg-2)}
+@media (max-width:640px){.bh-c{padding:20px;border-radius:20px}.bh-grid{grid-template-columns:1fr}}
+
+/* Expanding search (Arc): ghost icon at rest, field when active. */
+.find.xs,.ix-find.xs{position:relative;width:var(--xw);min-width:0;max-width:100%;flex:none;transition:width var(--t-base) cubic-bezier(.3,1.15,.4,1)}
+.find.xs.fold,.ix-find.xs.fold{width:var(--fw,88px)}
+.xs .in{transition:opacity var(--t-fast) var(--e-standard)}
+.xs.fold .in{opacity:0}
+.xs.fold .in input{cursor:pointer}
+.xs-b{position:absolute;left:0;top:50%;transform:translateY(-50%);height:36px;padding:0 12px 0 10px;border:0;border-radius:999px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 14px var(--font-body);background:transparent;color:var(--fg-2);opacity:0;pointer-events:none;transition:opacity var(--t-fast) var(--e-standard),background-color var(--t-fast) var(--e-standard)}
+.xs-b svg{width:16px;height:16px}
+.xs.fold .xs-b{opacity:1;pointer-events:auto}
+.xs.fold .xs-b:hover{background:var(--hover);color:var(--fg)}
+.xs.fold:focus-within .xs-b{box-shadow:var(--ring)}
+@media (prefers-reduced-motion:reduce){.xs{transition:none}}
+
+.bh-need .lnk{display:inline-flex;align-items:center;gap:6px}.bh-need .lnk svg{width:14px;height:14px}
+
+/* Category sub page (v140): category H1 and line; Back sits where the tabs were; no repeated category header in the pane. */
+#page.bh-sub .ix-bar .atabs{display:none}
+#page.bh-sub .ix-bar{justify-content:space-between}
+.bh-back{margin-left:-10px}
+#page.bh-sub .bw-cat>.bw-ph{display:none}
+#page.bh-sub .bw-up:not([data-go=search]){display:none}
+#page.bh-sub .bw-ix .ix-l{display:none}
+
+/* v141: no "Needs you" anywhere; "Needed" is plain grey, never warning colour. */
+.bw-ix .nd-n,.bw-ix .nd-n+.ix-sep{display:none!important}
+.bd-req,.ix-s.req .ct{color:var(--fg-3)}
+.bw .mk.req,.ix-s.req .mk,.ix-flat .ix-s.req .mk{border-color:var(--fg-3)}
+.bh-need::before{background:var(--fg-3)}
+
+/* v142: no "1 of 5" pager in the section header; the list on the left is the navigation. */
+#bDoc .bw-nav{display:none}
+
+/* Setup chip: label and count share one 20px line so they sit on the same centre (v144). */
+.obchip .obl,.obchip [data-l]{line-height:20px}
+.obchip b[data-n]{line-height:20px;font-variant-numeric:tabular-nums}
+.obchip{align-items:baseline}
+
+/* Bylines with avatars (v145) */
+.bd-by,.t-by{display:inline-flex;align-items:center;gap:8px;min-width:0}
+.by-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.av-p{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--muted-surface);border:1px solid var(--border);color:var(--fg-2);font:600 9px/1 var(--font-body);letter-spacing:.02em}
+.av-g{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.av-g svg{width:12px;height:12px}
+
+/* Avatar stack in section rows (v148): 30px (1.5x), overlapping by 8px, each ringed in the surface colour. */
+.av-st{display:inline-flex;align-items:center;flex-direction:row}
+.av-st>span{width:30px;height:30px;box-shadow:0 0 0 2px var(--bg);font-size:11px}
+.av-st>span+span{margin-left:-8px}
+.av-st>.av-g svg{width:16px;height:16px}
+.av-st>span{position:relative}.av-st>span:nth-child(1){z-index:4}.av-st>span:nth-child(2){z-index:3}.av-st>span:nth-child(3){z-index:2}.av-st>span:nth-child(4){z-index:1}
+.bd-em .av-st>span{width:28px;height:28px;font-size:10px}.bd-em .av-st>.av-g svg{width:14px;height:14px}
+
+/* Sub page alignment (v150): the pane's first line sits on the same centre line as the first item in the left list. */
+#page.bh-sub .bw-cat .bw-body{padding-top:0}
+#page.bh-sub .bw-cat .bw-grid>li:first-child .bw-t{padding-top:11px}
+#page.bh-sub .bw-sec>.bw-ph{padding-top:8px}
+
+/* v151: section dots sit in a 14px slot, the same as the All sections icon, so every label starts on one edge. */
+.bw-ix .ix-s>.mk{margin:0 3.5px;flex:none}
+
+/* v152: everything in the selected list item uses the primary text colour (label, count, Needed, icon). */
+.bw-ix button.cur,.bw-ix button.cur .nm,.bw-ix button.cur .ct,.bw-ix .ix-s.req.cur .ct,.bw-ix button.cur svg{color:var(--fg)}
+
+/* v153: Brain side menu uses the Settings sub-nav metrics: 36px rows, 12px side padding, 14px radius, 14px text, 16px icon slot, 2px between rows. */
+.bw-ix button{min-height:36px;height:36px;padding:0 12px;border-radius:14px;font:400 14px/1.4 var(--font-body)}
+.bw-ix button.cur{font-weight:500}
+.bw-ix .ix-flat,.bw-ix ul{display:flex;flex-direction:column;gap:2px}
+.bw-ix button>svg.i{width:16px;height:16px}
+.bw-ix .ix-s>.mk{margin:0 4.5px}
+
+/* v154: section rows show the entry count under the title; no underline (or any stroke) on hover. */
+.bw-t:hover .t-h b{text-decoration:none}
+.bw-t,.bw-t.miss{row-gap:2px}
+.bw-t .t-h{grid-column:1;grid-row:1}
+.bw-t .t-n{grid-column:1;grid-row:2;padding-left:17px;font:var(--ty-small);color:var(--fg-3)}
+.bw-t .t-x{grid-column:2;grid-row:1/span 2}
+.bw-t .t-m{grid-column:3;grid-row:1/span 2}
+@media (max-width:760px){.bw-t .t-h,.bw-t .t-n,.bw-t .t-x,.bw-t .t-m{grid-column:1;grid-row:auto}}
+
+/* Avatar group fan on hover (Arc): fine pointers only; reduced motion keeps it still. */
+.av-st>span{transition:transform var(--t-fast) cubic-bezier(.3,1.3,.4,1)}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .av-st:hover>span:nth-child(2){transform:translateX(6px)}.av-st:hover>span:nth-child(3){transform:translateX(12px)}.av-st:hover>span:nth-child(4){transform:translateX(18px)}.av-st:hover>span:nth-child(5){transform:translateX(24px)}}
+
+/* v158: the blur layer reaches 8px past the text; give it room inside the scroller so it never adds a sideways scroll. */
+#bDoc .bw-body{padding-right:8px}
+
+/* Alert rule on one line (v160): What | Condition (operator + value) | Notify by. Labels sit above their field. */
+.ar1{container-type:inline-size}
+.ar-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) minmax(0,1fr);gap:12px;align-items:end;margin:4px 0 12px}
+.ar-c{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ar-c label{font:var(--ty-small);color:var(--fg-2)}
+.ar-c .sel,.ar-c input{height:40px;width:100%;min-width:0}
+.ar-cv{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:6px}
+.ar-cv input{border:1px solid var(--border-strong);border-radius:var(--r-control);background:var(--surface);color:var(--fg);padding:0 12px;font:var(--ty-body)}
+@container (max-width:460px){.ar-row{grid-template-columns:minmax(0,1fr)}}
+.ar1>.row,.ar1>.note{margin-left:0;padding-left:0}
+
+/* Metric tabs: one sliding accent underline (v161) replaces the per-tab underline. */
+#tabs{position:relative}
+#tabs .tab[aria-selected=true]::after{display:none}
+#tabs .tab-ind{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);border-radius:2px;pointer-events:none;transition:transform 360ms cubic-bezier(.3,1.15,.4,1),width 360ms cubic-bezier(.3,1.15,.4,1)}
+#tabs .tab .v{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){#tabs .tab-ind{transition:none}}
+
+/* Slash Actions menu spacing (v163): header text, icons and the right edge share one 12px inset; rows 2px apart. */
+.slash{padding:6px}
+.slash .sh{padding:8px 12px 6px}
+.slash [role=option]{padding:8px 12px;min-height:52px}
+.slash [role=option]+[role=option]{margin-top:2px}
+.slash [role=option] .tile.sm{width:20px;height:20px}
+
+/* v167: Brain views use Arc UI Tabs (@uiarc/tabs): pill track, sliding selection pill, 36px triggers, min-width 88, active label in accent. Shares the .aseg spring port (js3z). */
+.atabs .aseg-t{padding:4px;gap:4px}
+.atabs .aseg-sel{top:4px;bottom:4px;border-radius:calc(var(--r-control) - 3px)}
+.atabs button{min-width:88px;min-height:36px;padding:0 12px;border-radius:calc(var(--r-control) - 3px);font:500 14px var(--font-body);color:var(--fg-2);justify-content:center}
+.atabs button[aria-selected=true]{color:var(--accent-strong)}
+.atabs button[aria-selected=true] .ct{color:var(--fg-2)}
+@media (hover:hover) and (pointer:fine){.atabs button:hover:not([aria-selected=true]){color:var(--fg)}}
+html:not([data-kbd]) .atabs button:is(:focus,:focus-visible){box-shadow:none}
+.atabs button.warn .ct{color:var(--fg-2)}
+/* v168: a right-aligned avatar group (row bylines, .t-by) fans to the left so it stays inside its row; the last avatar holds still. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .t-by .av-st:hover>span{transform:none}
+ .t-by .av-st:hover>span:nth-last-child(2){transform:translateX(-6px)}.t-by .av-st:hover>span:nth-last-child(3){transform:translateX(-12px)}.t-by .av-st:hover>span:nth-last-child(4){transform:translateX(-18px)}.t-by .av-st:hover>span:nth-last-child(5){transform:translateX(-24px)}}
+.t-by:has(>.av-st){overflow:visible}
+[data-btab].warn .ct::before{content:none}
+/* v171: ghost row actions sit flush with the row edge so the text lines up with values above and below. */
+.srow .ctl>.btn.ghost:last-child{margin-right:-12px}
+/* v172: sparkline scale. Same axis as the main chart, top and bottom labelled, faint guide lines, end dot. */
+.tab .spk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:stretch;height:44px;margin-top:4px}
+.tab .spk-c{position:relative;min-width:0}
+.tab .spk svg.viz{display:block;width:100%;height:44px;margin:0}
+.spk-g{stroke:var(--border);stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.spk-e{position:absolute;right:-3px;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--s1);box-shadow:0 0 0 2px var(--bg)}
+.spk-s{display:flex;flex-direction:column;justify-content:space-between;font:400 11px/1 var(--font-body);color:var(--fg-2);font-variant-numeric:tabular-nums;padding:0}
+/* v172: Gandalf home starters are Arc Buttons (sm, secondary), not full-width rows, so they sit below the signals instead of competing with them. */
+.gq{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.gq .btn{padding-inline:12px}
+/* v172: Workflows status groups. */
+.wf-g+.wf-g{margin-top:16px}
+.wf-gh{display:flex;align-items:center;gap:8px;margin:0;padding:16px 0 4px;font:500 13px/1.3 var(--font-body);color:var(--fg-2);letter-spacing:0;text-transform:none}
+.wf-g:first-child .wf-gh{padding-top:8px}
+.wf-gh .ct{font:400 12px var(--font-body);color:var(--fg-2)}
+.wrow .sd .btn.ghost{margin-right:-12px}
+.wrow .sd .btn{min-width:0}
+.wrow .mprog{max-width:240px}
+/* v172: sign-in. The demo block sits closer to the form. (v176: the grid pattern behind the title is back.) */
+.a-demo{margin-top:8px}
+/* v175: auth screens use the Arc UI primary button (@uiarc/button, variant primary): solid foreground fill, background-colour text, no holo border. */
+.btn.primary.block{background:var(--fg);color:var(--bg);border-color:var(--fg);box-shadow:none;transition:opacity var(--t-fast) var(--e-standard),box-shadow var(--t-fast) var(--e-standard)}
+.btn.primary.block::before,.btn.primary.block::after{content:none;display:none}
+@media (hover:hover) and (pointer:fine){.btn.primary.block:not([disabled]):hover{background:var(--fg);color:var(--bg);opacity:.91;box-shadow:0 1px 2px color-mix(in srgb,#000 12%,transparent)}}
+.btn.primary.block:not([disabled]):active{opacity:.84}
+.btn.primary.block[disabled]{background:var(--fg);color:var(--bg);opacity:.52;cursor:not-allowed}
+/* v173: one left edge in the sidebar. Workspace and account avatars start at 24px, like the nav icons and the setup chip. */
+.ws,.me{padding-left:12px}
+/* v174: Workflows rows keep their text on the page edge, so the hover fill bleeds 12px past it on both sides instead of touching the text. */
+.wrow.click{isolation:isolate}
+.wrow.click:hover{background:none}
+.wrow.click::before{content:"";position:absolute;inset:2px -12px;z-index:-1;border-radius:var(--r-control);background:var(--hover);opacity:0;transition:opacity var(--t-fast) var(--e-standard);pointer-events:none}
+.wrow.click:hover::before{opacity:1}
+.btn.primary.block[aria-busy=true]{opacity:1;cursor:progress}
+.btn.primary.block .spin{border-color:color-mix(in srgb,var(--bg) 35%,transparent);border-top-color:var(--bg)}
+/* v177: one rhythm under every page title. Title → description 8px, description → first control 28px, on Integrations and Brain too (their page gap is 20px). */
+.page.intx>.psub,.page.bws>.psub{margin-top:-12px}
+.page.intx>.psub+*,.page.bws>.psub+*{margin-top:8px}
+/* v177: the dashboard range control no longer pushes the title 2px down. */
+@media (min-width:701px){.ph1>.ph-tools{margin-block:-2px}}
+/* v178: Members toolbar puts the status filter left and search right, like Integrations and Brain. */
+.filters.mfil{justify-content:space-between}
+.filters.mfil>.find{margin-left:auto}
 </style>
 
 <div class="app" id="app">
@@ -2595,8 +2792,8 @@ function pageShell(){$('#page').innerHTML=`
  <div class="gh">Commerce<span class="mono">90 d window</span></div>
  <div id="rev"></div>`}
 
-function renderSigs(){const el=$('#sigs');if(!el)return;const live=LIVESIG();el.className='sigs sum';
- el.innerHTML=live.length?`<div class="sigsum" role="group" aria-label="Signals from Gandalf"><div class="sx"><b>${live.length} signal${live.length>1?'s':''} from Gandalf</b><ul>${live.map(id=>`<li><i class="sdt ${SIGS[id].tone}" aria-hidden="true"></i><span>${esc(SIGS[id].title)}</span></li>`).join('')}</ul></div><button class="lnk go" type="button" data-gnew>Open in Gandalf${icon('right')}</button></div>`:''}
+/* v172: the dashboard no longer repeats Gandalf's signals; they live on the Gandalf home. Kept as a no-op for callers. */
+function renderSigs(){const el=$('#sigs');if(!el)return;el.innerHTML='';el.hidden=true}
 
 const dlab=n=>new Date(2026,9,15+n).toLocaleDateString('en-US',{month:'short',day:'numeric'});
 function runRow(r){const n=r.plan.steps.length,m=r.measure;let st,tx,sm,prog='',side='';
@@ -2613,10 +2810,13 @@ function renderRuns(){const live=S.runs.filter(r=>r.status!=='done'),meas=S.runs
  if($('#runs'))$('#runs').innerHTML=html?`<div class="gh" style="margin-bottom:8px">${active?'In progress':'Results'}<span class="mono">${active?active+(active===1?' item':' items'):res.length+(res.length===1?' result':' results')}</span></div>${html}`:'';
  const ff=$('#ff');if(ff){const obw=typeof obWaiting==='function'&&obWaiting();ff.disabled=!meas.length&&!obw;ff.textContent=(meas.length||obw)?`Fast-forward 7 days, day ${S.day}`:'Fast-forward 7 days'}}
 
-function spark(v,tone){const mn=Math.min(...v),mx=Math.max(...v),W=120,H=44,p=5;const pts=v.map((x,i)=>[i/(v.length-1)*W,H-p-(mx===mn?.5:(x-mn)/(mx-mn))*(H-2*p)]);const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join('');return `<svg class="viz" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><path d="${d}L${W} ${H}L0 ${H}Z" fill="var(--s1)" opacity=".12"/><path d="${d}" fill="none" stroke="var(--s1)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`}
+/* v172: sparklines use the same axis as the main chart and label its top and bottom, so a flat run reads as "unchanged", not "no data". */
+function spark(v,k){const ax=k&&k.axis&&k.axis.line,lo=ax?ax[0]:Math.min(...v),hi=ax?ax[ax.length-1]:Math.max(...v),u=(k&&k.unit)||'',W=120,H=44,p=4;
+ const y=x=>H-p-(hi===lo?.5:(x-lo)/(hi-lo))*(H-2*p),pts=v.map((x,i)=>[i/(v.length-1)*W,y(x)]);const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join('');const e=pts[pts.length-1];
+ return `<div class="spk"><div class="spk-c"><svg class="viz" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><line class="spk-g" x1="0" x2="${W}" y1="${p}" y2="${p}"/><line class="spk-g" x1="0" x2="${W}" y1="${H-p}" y2="${H-p}"/><path d="${d}L${W} ${H}L0 ${H}Z" fill="var(--s1)" opacity=".12"/><path d="${d}" fill="none" stroke="var(--s1)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg><i class="spk-e" style="top:${(e[1]/H*100).toFixed(1)}%" aria-hidden="true"></i></div><span class="spk-s" aria-hidden="true"><span>${hi}${u}</span><span>${lo}${u}</span></span></div>`}
 function viz(k){if(k.id==='sov'){const C=2*Math.PI*16;return `<div style="display:flex;gap:10px;align-items:center;margin-top:4px;height:44px"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="16" fill="none" stroke="var(--border)" stroke-width="5"/><circle cx="22" cy="22" r="16" fill="none" stroke="var(--s1)" stroke-width="5" stroke-dasharray="${(C*.146).toFixed(1)} ${C}" transform="rotate(-90 22 22)"/></svg><small style="color:var(--fg-2);line-height:1.3">1 in 7 brand mentions</small></div>`}
  if(k.id==='position'){const x=(2.3-1)/8*112+4;let t='';for(let i=0;i<9;i++)t+=`<line x1="${4+i*14}" x2="${4+i*14}" y1="14" y2="22" stroke="var(--border-strong)"/>`;return `<svg class="viz" viewBox="0 0 120 44" aria-hidden="true"><line x1="4" x2="116" y1="18" y2="18" stroke="var(--border-strong)"/>${t}<circle cx="${x}" cy="18" r="4.5" fill="var(--s1)"/><text x="4" y="40" fill="var(--fg-3)" font-size="10">#1</text><text x="116" y="40" fill="var(--fg-3)" font-size="10" text-anchor="end">#9</text></svg>`}
- return spark(k.series)}
+ return spark(k.series,k)}
 function renderTabs(){if(!$('#tabs'))return;$('#tabs').innerHTML=K.map(k=>`<button class="tab" role="tab" aria-selected="${S.chart.metric===k.id}" data-tab="${k.id}"><span class="l">${k.label}</span><span class="v num">${k.val}</span><span class="r"><span class="tag ${k.tone}">${k.d}</span>${k.ctx}</span>${viz(k)}</button>`).join('')}
 
 function plotSVG(k,kind,cmp){const W=860,Hh=250,L=44,R=8,T=14,B=30,pw=W-L-R,ph=Hh-T-B,tk=k.axis[kind],lo=tk[0],hi=tk[tk.length-1],y=v=>T+ph-(v-lo)/(hi-lo)*ph,n=DAYS.length,cx=i=>L+pw*(i+.5)/n;
@@ -2657,10 +2857,10 @@ function chips(a,list){const box=h('<div class="chips" role="group" aria-label="
 function receipt(a,o){const warn=o.badgeTone==='warn';
  const el=h(`<div class="pc rc ${o.compact?'rc-1':''}"><div class="rc-h"><span class="rc-i ${warn?'warn':''}">${icon(o.ico==='x'?'x':warn?'file':'check')}</span><h5>${esc(o.title)}</h5></div>${o.rows&&!o.compact?`<dl class="rc-d">${o.rows.map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>`:''}<div class="row" data-btns></div></div>`);const b=$('[data-btns]',el);
  (o.buttons||[]).forEach(bt=>{const x=h(`<button class="btn secondary sm" type="button">${bt.icon?icon(bt.icon):''}${esc(bt.label)}</button>`);x.onclick=bt.fn;b.appendChild(x)});
- if(o.undo){const u=h(`<button class="lnk" type="button">Undo</button>`);u.onclick=async()=>{await o.undo();$('h5',el).textContent='Undone';$('.rc-i',el).innerHTML=icon('undo');$('.rc-d',el)?.remove();b.remove()};b.appendChild(u)}
+ if(o.undo){const u=h(`<button class="btn secondary sm" type="button">Undo</button>`);u.onclick=async()=>{await o.undo();$('h5',el).textContent='Undone';$('.rc-i',el).innerHTML=icon('undo');$('.rc-d',el)?.remove();b.remove()};b.appendChild(u)}
  if(!b.children.length)b.remove();a.appendChild(el);return el}
 /* one-line undo for edits the previous sentence already described */
-function undoLine(a,fn){const el=h('<div class="pc rc rc-1"><div class="row" data-btns><button class="lnk" type="button">Undo</button></div></div>');$('button',el).onclick=async()=>{await fn();el.innerHTML='<p>Undone.</p>'};a.appendChild(el);return el}
+function undoLine(a,fn){const el=h('<div class="pc rc rc-1"><div class="row" data-btns><button class="btn secondary sm" type="button">Undo</button></div></div>');$('button',el).onclick=async()=>{await fn();el.innerHTML='<p>Undone.</p>'};a.appendChild(el);return el}
 function notify(run,msg){if(!S.open||S.active!==run.t)toast(msg,[['Open',()=>openRun(run)]])}
 function openRun(run){openPanel();activate(run.t)}
 async function starter(t){const a=turn(t);const c=t.ctx&&t.ctx.type==='chart';const k=K.find(x=>x.id===S.chart.metric);
@@ -2681,9 +2881,9 @@ async function lookInto(id){const g=SIGS[id];openPanel();let t=S.threads.find(x=
  bNo.onclick=()=>{pk.lock(true);notNow(t,g)}}
 let RCN=0;
 function planPicker(plans,def){const n=++RCN;let v=def;
- const el=h(`<div class="rcw"><div class="rcards" role="radiogroup" aria-label="Plans"><i class="rc-ring" aria-hidden="true"></i>${plans.map((p,i)=>`<div class="rc" role="radio" data-i="${i}" aria-checked="${i===v}" tabindex="${i===v?0:-1}" aria-labelledby="rc${n}-${i}" aria-describedby="rc${n}-${i}d"><span class="rc-dot" aria-hidden="true"><i></i></span><span class="rc-tx"><b id="rc${n}-${i}">${esc(p.title)}${i===0?'<span class="rc-rec">Recommended</span>':''}</b><small id="rc${n}-${i}d">${esc(p.how)}${p.facts?' '+esc(p.facts):''}</small></span>${p.effort?`<span class="rc-m">${esc(p.effort)}</span>`:''}</div>`).join('')}</div>
- <div class="row2"><button class="btn secondary sm" type="button" data-do>${esc(plans[v].cta||'Do this')}</button><button class="lnk" type="button" data-no>Not now</button></div></div>`);
- const g=$('.rcards',el),ring=$('.rc-ring',g),R=[...g.querySelectorAll('.rc')],btn=$('[data-do]',el);let locked=false,placed=false;
+ const el=h(`<div class="rqw"><div class="rqs" role="radiogroup" aria-label="Plans"><i class="rq-ring" aria-hidden="true"></i>${plans.map((p,i)=>`<div class="rq" role="radio" data-i="${i}" aria-checked="${i===v}" tabindex="${i===v?0:-1}" aria-labelledby="rc${n}-${i}" aria-describedby="rc${n}-${i}d"><span class="rq-dot" aria-hidden="true"><i></i></span><span class="rq-tx"><b id="rc${n}-${i}">${esc(p.title)}${i===0?'<span class="rq-rec">Recommended</span>':''}</b><small id="rc${n}-${i}d">${esc(p.how)}${p.facts?' '+esc(p.facts):''}</small></span>${p.effort?`<span class="rq-m">${esc(p.effort)}</span>`:''}</div>`).join('')}</div>
+ <div class="row2"><button class="btn secondary sm" type="button" data-do>${esc(plans[v].cta||'Do this')}</button><button class="btn ghost sm" type="button" data-no>Not now</button></div></div>`);
+ const g=$('.rqs',el),ring=$('.rq-ring',g),R=[...g.querySelectorAll('.rq')],btn=$('[data-do]',el);let locked=false,placed=false;
  const place=()=>{const c=R[v];if(!c||!c.offsetHeight)return;ring.style.transform=`translateY(${c.offsetTop}px)`;ring.style.height=c.offsetHeight+'px';if(!placed){ring.style.transition='none';ring.offsetHeight;ring.style.transition='';placed=true}};
  const set=(i,focus)=>{if(locked)return;v=i;R.forEach((c,j)=>{c.setAttribute('aria-checked',String(j===i));c.tabIndex=j===i?0:-1});btn.textContent=plans[i].cta||'Do this';place();if(focus)R[i].focus()};
  R.forEach((c,i)=>{c.onclick=()=>set(i);c.onkeydown=e=>{if(locked)return;const k=e.key;let j=null;
@@ -2701,7 +2901,7 @@ async function notNow(t,g){const a=turn(t,'Not now');await say(a,'Why? I will re
 async function learn(t,g,reason){const a=turn(t,reason);S.sigState[g.key]='dismissed';renderSigs();
  S.undoDismiss[g.key]=()=>{delete S.sigState[g.key];renderSigs()};
  await tool(a,'Updating Brain','Updated Brain',700);
- const el=h(`<div class="pc"><h5>Brain updated</h5><div class="diff"><div class="p">+ Signals like “${esc(g.title)}”: ${esc(reason.toLowerCase())}</div></div><div class="row"><button class="lnk" type="button">Undo</button></div></div>`);
+ const el=h(`<div class="pc"><h5>Brain updated</h5><div class="diff"><div class="p">+ Signals like “${esc(g.title)}”: ${esc(reason.toLowerCase())}</div></div><div class="row"><button class="btn secondary sm" type="button">Undo</button></div></div>`);
  $('button',el).onclick=()=>{S.undoDismiss[g.key]();el.innerHTML='<p>Undone. The signal is back on the dashboard.</p>'};a.appendChild(el);
  toast('Signal dismissed',[['Undo',()=>{S.undoDismiss[g.key]&&S.undoDismiss[g.key]()}]])}
 
@@ -2716,19 +2916,19 @@ async function autoStep(run,i,st,a){setStep(run,i,'run','Working…');setStatus(
  if(st.k==='draft'&&S.sim==='fail'&&!run.failedOnce){run.failedOnce=true;setStep(run,i,'failed','Stopped. The cached answers expired.');setStatus(run,'failed');notify(run,'A step failed. Nothing was published.');await failCard(run,a);setStep(run,i,'run','Retrying…');setStatus(run,'run');await wait(st.ms||1200)}
  setStep(run,i,'done',((st.ms||1200)/1000).toFixed(1)+'s');
  if(st.k==='research'&&S.sim==='partial'){$(`.step[data-i="${i}"] .tx`,run.el).appendChild(h(`<div class="warnline">${icon('alert')}<span>Grok data is missing for Oct 12. This used 3 of 4 engines.</span></div>`))}}
-function failCard(run,a){return new Promise(res=>{const el=h(`<div class="pc"><div class="row">${icon('alert')}<h5>Drafting stopped</h5></div><p>The cached answers I was reading expired. Nothing was published and nothing was sent.</p><div class="log" hidden>12:03:11 read cache perplexity/3 topics\n12:03:12 cache miss: answers older than 24 h\n12:03:12 draft aborted (0 of 3 pages written)</div><div class="row"><button class="btn secondary sm" type="button" data-r>${icon('undo')}Retry step</button><button class="lnk" type="button" data-l>Show log</button></div></div>`);
+function failCard(run,a){return new Promise(res=>{const el=h(`<div class="pc"><div class="row">${icon('alert')}<h5>Drafting stopped</h5></div><p>The cached answers I was reading expired. Nothing was published and nothing was sent.</p><div class="log" hidden>12:03:11 read cache perplexity/3 topics\n12:03:12 cache miss: answers older than 24 h\n12:03:12 draft aborted (0 of 3 pages written)</div><div class="row"><button class="btn secondary sm" type="button" data-r>${icon('undo')}Retry step</button><button class="btn ghost sm" type="button" data-l>Show log</button></div></div>`);
  $('[data-l]',el).onclick=e=>{const l=$('.log',el);l.hidden=!l.hidden;e.currentTarget.textContent=l.hidden?'Show log':'Hide log'};$('[data-r]',el).onclick=()=>{el.remove();res()};a.appendChild(el)})}
 async function approveStep(run,i,st,a){
  if(st.site&&!S.int.wordpress){const r=await blocked(run,i,a);if(r==='handoff')return 'handoff'}
  for(;;){setStep(run,i,'needs','Waiting for you');setStatus(run,'needs');notify(run,'Gandalf needs your approval');
   const ans=await approvalCard(run,st,a);if(ans==='approve')break;setStep(run,i,'needs','Paused');await resumeCard(a)}
  setStep(run,i,'run','Working…');setStatus(run,'run');await wait(1100);setStep(run,i,'done','1.1s')}
-function approvalCard(run,st,a){return new Promise(res=>{const el=h(`<div class="pc box sq"><h5>${esc(st.q)}</h5>${st.items?`<ul class="items">${st.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<div class="row"><button class="btn secondary sm" type="button" data-y>Approve</button><button class="lnk" type="button" data-n>Not now</button></div><p class="note">Nothing leaves the product until you approve.</p></div>`);
+function approvalCard(run,st,a){return new Promise(res=>{const el=h(`<div class="pc box apv"><h5>${esc(st.q)}</h5>${st.items?`<ul class="items">${st.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<div class="row"><button class="btn secondary sm" type="button" data-y>Approve</button><button class="btn ghost sm" type="button" data-n>Not now</button></div><p class="note">Nothing leaves the product until you approve.</p></div>`);
  $('[data-y]',el).onclick=()=>{$('.row',el).outerHTML='<p>Approved.</p>';res('approve')};$('[data-n]',el).onclick=()=>{$('.row',el).outerHTML='<p>Paused. The drafts are saved.</p>';res('later')};a.appendChild(el)})}
 function resumeCard(a){return new Promise(res=>{const el=h(`<div class="pc"><p>The run is paused. Resume when you are ready.</p><div class="row"><button class="btn secondary sm" type="button">${icon('right')}Resume</button></div></div>`);$('button',el).onclick=()=>{el.remove();res()};a.appendChild(el)})}
 async function blocked(run,i,a){setStep(run,i,'needs','Checking publish access');setStatus(run,'needs');
  await tool(a,'Checking how nike.com is managed','Checked nike.com',1500);
- return new Promise(res=>{const el=h(`<div class="pc box"><h5>I can’t publish to nike.com yet</h5><p>nike.com runs on <b>WordPress</b> behind <b>Cloudflare</b>. Connect WordPress and I publish the drafts directly, with publish access only.</p><label class="chk"><input type="checkbox"><span>Also connect Cloudflare, so I can clear the cache after publishing</span></label><div class="row"><button class="btn secondary sm" type="button" data-c>${icon('plug')}Connect WordPress</button><button class="lnk" type="button" data-h>I’ll publish the drafts myself</button></div><small>Detected from the site’s headers. Simulated in this prototype.</small></div>`);
+ return new Promise(res=>{const el=h(`<div class="pc box"><h5>I can’t publish to nike.com yet</h5><p>nike.com runs on <b>WordPress</b> behind <b>Cloudflare</b>. Connect WordPress and I publish the drafts directly, with publish access only.</p><label class="chk"><input type="checkbox"><span>Also connect Cloudflare, so I can clear the cache after publishing</span></label><div class="row"><button class="btn secondary sm" type="button" data-c>${icon('plug')}Connect WordPress</button><button class="btn ghost sm" type="button" data-h>I’ll publish the drafts myself</button></div><small>Detected from the site’s headers. Simulated in this prototype.</small></div>`);
  $('[data-c]',el).onclick=async e=>{const b=e.currentTarget,cf=$('input',el).checked;b.disabled=true;$('[data-h]',el).disabled=true;b.innerHTML=`<i class="spin"></i>Waiting for ${cf?'WordPress and Cloudflare':'WordPress'}…`;await wait(1700);S.int.wordpress=true;if(cf)S.int.cloudflare=true;
   const ok=h(`<span class="tc done">${icon('check')}<span>${cf?'WordPress and Cloudflare connected':'WordPress connected'}</span></span>`);el.replaceWith(ok);res('connected')};
  $('[data-h]',el).onclick=()=>{el.remove();setStep(run,i,'skip','You publish');const hc=h(`<div class="pc"><h5>The drafts are ready for you</h5><p>I keep this plan open. If you connect WordPress later, I publish from here.</p><div class="row"><button class="btn secondary sm" type="button" data-t="Copied to clipboard">${icon('file')}Copy</button><button class="btn secondary sm" type="button" data-t="Export is simulated">${icon('download')}Export .md</button><button class="btn secondary sm" type="button" data-t="Assigning is simulated">Assign to a teammate</button></div></div>`);$$('[data-t]',hc).forEach(b=>b.onclick=()=>toast(b.dataset.t));a.appendChild(hc);res('handoff')};a.appendChild(el)})}
@@ -2739,18 +2939,22 @@ function finish(run,a,handoff){const p=run.plan,d=handoff?p.handoff:p.done;if(ha
  if(run.measure)say(a,'I measure this on the next runs and report back here and on the dashboard.')}
 
 /* ---------- in-panel resolutions ---------- */
-function alertForm(a,pre){pre=pre||{metric:'Visibility score',cond:'goes below',thr:'30%'};
+function alertForm(a,pre){pre=Object.assign({metric:'Visibility',cond:'Goes beyond',thr:'30%',notify:'By email'},pre||{});const cap=x=>x&&x[0].toUpperCase()+x.slice(1);pre.cond=cap(String(pre.cond).replace('rises above','goes beyond'));if(pre.metric==='Visibility score')pre.metric='Visibility';
  const opt=(v,cur)=>`<option ${v===cur?'selected':''}>${v}</option>`;
- const el=h(`<form class="pc frm"><h5>Alert rule</h5><div class="fr"><label for="arM">When</label><div class="fc"><select id="arM" class="sel">${['Visibility score','Puma visibility','Share of voice'].map(v=>opt(v,pre.metric)).join('')}</select></div></div><div class="fr"><label for="arC">Condition</label><div class="fc two"><select id="arC" class="sel">${['goes below','rises above'].map(v=>opt(v,pre.cond)).join('')}</select><input id="arV" aria-label="Value" value="${esc(pre.thr)}"></div></div><div class="fr"><label for="arN">Notify me</label><div class="fc"><select id="arN" class="sel"><option>In the dashboard, as a signal</option><option>By email</option></select></div></div><div class="row"><button class="btn secondary sm" type="submit">Save alert</button><button class="lnk" type="button" data-x>Cancel</button></div><p class="note">Checked after every run. Next run Oct 16 02:00.</p></form>`);
+ const el=h(`<form class="pc frm ar1"><h5>Alert rule</h5><div class="ar-row">
+ <div class="ar-c"><label for="arM">What</label><select id="arM" class="sel">${['Visibility','Puma visibility','Share of voice'].map(v=>opt(v,pre.metric)).join('')}</select></div>
+ <div class="ar-c ar-cond"><label for="arC">Condition</label><div class="ar-cv"><select id="arC" class="sel">${['Goes below','Goes beyond'].map(v=>opt(v,pre.cond)).join('')}</select><input id="arV" aria-label="Value" value="${esc(pre.thr)}"></div></div>
+ <div class="ar-c"><label for="arN">Notify by</label><select id="arN" class="sel">${['By email','As a signal'].map(v=>opt(v,pre.notify||'By email')).join('')}</select></div></div>
+ <div class="row"><button class="btn secondary sm" type="submit">Save alert</button><button class="btn ghost sm" type="button" data-x>Cancel</button></div><p class="note">Checked after every run. Next run Oct 16 02:00.</p></form>`);
  $('[data-x]',el).onclick=()=>el.remove();
- el.onsubmit=e=>{e.preventDefault();const m=$('#arM',el).value,c=$('#arC',el).value,v=$('#arV',el).value;el.remove();receipt(a,{ico:'bell',title:'Alert saved',rows:[['Metric',m],['Triggers when',`${c} ${v}`],['Next check','Oct 16 02:00']],undo:()=>{}})};a.appendChild(el)}
+ el.onsubmit=e=>{e.preventDefault();const m=$('#arM',el).value,c=$('#arC',el).value,v=$('#arV',el).value;el.remove();receipt(a,{ico:'bell',title:'Alert saved',rows:[['What',m],['Condition',`${c} ${v}`],['Notify by',$('#arN',el)?$('#arN',el).value:'By email'],['Next check','Oct 16 02:00']],undo:()=>{}})};a.appendChild(el)}
 async function ga4Flow(){openPanel();let t=S.threads.find(x=>x.ctx&&x.ctx.type==='ga4');if(t){activate(t);return}
  t=newThread('Connect GA4',{label:'Revenue card',icon:'dash',type:'ga4'});activate(t);const a=turn(t,'Connect GA4');
  await tool(a,'Checking the revenue source','Checked the revenue source',800);await say(a,'The revenue numbers are a sample right now. Connect GA4 and I replace them with yours.');
  const el=h(`<div class="pc box"><h5>Google Analytics 4</h5><p>Read-only access to sessions and revenue. I never change anything in GA4.</p><div class="row"><button class="btn secondary sm" type="button">Connect GA4</button></div><small>The Google sign-in is simulated in this prototype.</small></div>`);
  $('button',el).onclick=async e=>{const b=e.currentTarget;b.disabled=true;b.innerHTML='<i class="spin"></i>Waiting for Google…';await wait(1700);el.remove();S.ga4='syncing';renderRev();
   receipt(a,{ico:'plug',title:'GA4 connected',rows:[['Access','Read-only'],['First sync','In progress'],['Revenue card','Updated']],undo:()=>{S.ga4='sample';renderRev()}})};a.appendChild(el)}
-async function brainFlow(a,text){await tool(a,'Updating Brain','Updated Brain',700);const el=h(`<div class="pc"><h5>Brain updated</h5><div class="diff"><div class="p">+ ${esc(text.replace(/^\s*(remember|note)( that)?\s*/i,''))}</div></div><div class="row"><button class="lnk" type="button">Undo</button></div></div>`);$('button',el).onclick=()=>{el.innerHTML='<p>Undone.</p>'};a.appendChild(el)}
+async function brainFlow(a,text){await tool(a,'Updating Brain','Updated Brain',700);const el=h(`<div class="pc"><h5>Brain updated</h5><div class="diff"><div class="p">+ ${esc(text.replace(/^\s*(remember|note)( that)?\s*/i,''))}</div></div><div class="row"><button class="btn secondary sm" type="button">Undo</button></div></div>`);$('button',el).onclick=()=>{el.innerHTML='<p>Undone.</p>'};a.appendChild(el)}
 
 /* ---------- chart edit (stays on the page) ---------- */
 async function chartEdit(a,kind){const k=K.find(x=>x.id===S.chart.metric);if(!k.series){await say(a,`${k.name} has no daily series yet, so I can’t chart it by day.`);return}
@@ -2766,7 +2970,7 @@ async function route(t,text,a){const x=text.toLowerCase();
  if(/\bbars?\b/.test(x))return chartEdit(a,'bar');
  if(/\bline\b/.test(x))return chartEdit(a,'line');
  if(/compare|previous|last (week|period)/.test(x)){S.chart.cmp=!S.chart.cmp;renderChart(true);return say(a,S.chart.cmp?'Added the previous 7 days to the chart.':'Removed the previous 7 days from the chart.')}
- if(/alert|notify/.test(x)){const m=x.match(/(\d+(?:\.\d+)?)\s*%?/);await say(a,'Check the rule and save it.');return alertForm(a,{metric:'Visibility score',cond:/above|over|rises?/.test(x)?'rises above':'goes below',thr:(m?m[1]:'30')+'%'})}
+ if(/alert|notify/.test(x)){const m=x.match(/(\d+(?:\.\d+)?)\s*%?/);await say(a,'Check the rule and save it.');return alertForm(a,{metric:'Visibility score',cond:/below|under|drops?|falls?/.test(x)?'goes below':'goes beyond',thr:(m?m[1]:'30')+'%'})}
  if(/ga4|analytics|revenue/.test(x)){await say(a,'Opening the GA4 connection in its own thread.');return ga4Flow()}
  if(/remember|brain|priorit/.test(x))return brainFlow(a,text);
  if(/why|drop|down|fell/.test(x))return why(a);
@@ -2891,7 +3095,7 @@ async function previewWidget(a,sp,t){const d=WCAT[sp.key];await tool(a,'Building
  draw();if(t)t.prev={sp,draw};
  card.addEventListener('click',e=>{const k=e.target.closest('[data-k]');if(k){sp.kind=k.dataset.k;draw();return}
   if(e.target.closest('[data-pin]')){const slot=$('.slot',card);if(slot.innerHTML)return;$('[data-pin]',card).hidden=true;
-   slot.innerHTML=`<form class="pinform"><label class="field"><span>Widget name</span><input value="${esc(wTitle(sp))}" aria-label="Widget name"></label><div class="field"><span>Size</span><div class="seg" role="group" aria-label="Widget size" data-g="size">${SZ.map(z=>`<button type="button" data-v="${z[0]}" aria-pressed="${z[0]===(sp.key==='sov'?'s':'m')}">${z[2]}</button>`).join('')}</div></div><div class="field"><span>Place it</span><div class="seg" role="group" aria-label="Placement" data-g="place"><button type="button" data-v="top" aria-pressed="true">At the top</button><button type="button" data-v="end" aria-pressed="false">At the end</button></div></div><small>It refreshes with each tracking run.</small><div class="row"><button class="btn secondary sm" type="submit">${icon('pin')}Pin to dashboard</button><button class="lnk" type="button" data-x>Cancel</button></div></form>`;
+   slot.innerHTML=`<form class="pinform"><label class="field"><span>Widget name</span><input value="${esc(wTitle(sp))}" aria-label="Widget name"></label><div class="field"><span>Size</span><div class="seg" role="group" aria-label="Widget size" data-g="size">${SZ.map(z=>`<button type="button" data-v="${z[0]}" aria-pressed="${z[0]===(sp.key==='sov'?'s':'m')}">${z[2]}</button>`).join('')}</div></div><div class="field"><span>Place it</span><div class="seg" role="group" aria-label="Placement" data-g="place"><button type="button" data-v="top" aria-pressed="true">At the top</button><button type="button" data-v="end" aria-pressed="false">At the end</button></div></div><small>It refreshes with each tracking run.</small><div class="row"><button class="btn secondary sm" type="submit">${icon('pin')}Pin to dashboard</button><button class="btn ghost sm" type="button" data-x>Cancel</button></div></form>`;
    const f=$('form',slot);$('input',f).focus();$('input',f).select();
    f.addEventListener('click',e2=>{const b=e2.target.closest('[data-v]');if(b)$$('button',b.parentElement).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(e2.target.closest('[data-x]')){slot.innerHTML='';$('[data-pin]',card).hidden=false;$('[data-pin]',card).focus()}});
    f.addEventListener('submit',e2=>{e2.preventDefault();const title=$('input',f).value.trim()||wTitle(sp),size=$('[data-g=size] [aria-pressed=true]',f).dataset.v,place=$('[data-g=place] [aria-pressed=true]',f).dataset.v;
@@ -2907,7 +3111,7 @@ function wSuggest(w){const d=WCAT[w.spec.key],o=[];
  if(d.agent)o.push(w.spec.r===7?'Show 30 days':'Show 7 days');
  if(d.k==='visibility'){o.push('Alert me below 30%');o.push('Why is it down?')}return o.slice(0,4)}
 async function widgetChange(t,w,text,a){const x=text.toLowerCase(),d=WCAT[w.spec.key],sp={...w.spec},ch=[];
- if(d.k==='visibility'&&/alert|notify/.test(x)){const m=x.match(/(\d+(?:\.\d+)?)\s*%?/);await say(a,'Check the rule and save it.');return alertForm(a,{metric:'Visibility score',cond:/above|over|rises?/.test(x)?'rises above':'goes below',thr:(m?m[1]:'30')+'%'})}
+ if(d.k==='visibility'&&/alert|notify/.test(x)){const m=x.match(/(\d+(?:\.\d+)?)\s*%?/);await say(a,'Check the rule and save it.');return alertForm(a,{metric:'Visibility score',cond:/below|under|drops?|falls?/.test(x)?'goes below':'goes beyond',thr:(m?m[1]:'30')+'%'})}
  if(d.k==='visibility'&&/why|drop|down|fell/.test(x))return why(a);
  if(/remove|delete/.test(x)){await tool(a,'Removing the widget','Removed the widget',500);const r=removeW(w.id,false);return receipt(a,{ico:'x',title:`Removed “${w.title}”`,rows:[['From','Your widgets']],undo:()=>{S.widgets.splice(r.i,0,r.w);r.w.fresh=true;renderWidgets({focus:r.w.id})}})}
  const k=parseKind(x,d);if(k&&k!==sp.kind){ch.push(`${KN[sp.kind]} to ${KN[k].toLowerCase()}`);sp.kind=k}
@@ -3704,9 +3908,9 @@ const savedFlash=el=>{if(!el)return;el.classList.add('on');setTimeout(()=>el.cla
 
 const SEC={};
 SEC.profile=()=>({html:`<section class="sec">${secH('Profile','How you appear to teammates and in Gandalf’s activity log.')}
- <div class="card flush" id="fProfile">${srow('Photo','JPG or PNG, up to 2 MB.',`<span class="avatar" style="width:44px;height:44px;font-size:14px">${U.ini}</span><button class="btn secondary sm" data-a="photo">Change</button>`)}
+ <div class="card flush" id="fProfile">${srow('Photo','JPG or PNG, up to 2 MB.',`<span class="avatar" style="width:44px;height:44px;font-size:14px">${U.ini}</span><button class="btn ghost sm" data-a="photo">Change</button>`)}
  ${srow('Full name','',`<div class="fld" style="width:260px;max-width:100%"><div class="in"><input id="pName" value="${esc(SETV.name)}" autocomplete="name" aria-label="Full name"></div><div class="fe-slot"></div></div>`)}
- ${srow('Email','Used to sign in and for notifications.',`<span class="ro">${esc(U.email)}</span><button class="btn secondary sm" data-a="email">Change</button>`)}
+ ${srow('Email','Used to sign in and for notifications.',`<span class="ro">${esc(U.email)}</span><button class="btn ghost sm" data-a="email">Change</button>`)}
  ${srow('Role','Set by a workspace admin.',`<span class="ro">Admin</span>`)}</div></section>`,
  mount(r){const i=$('#pName',r);fldClear(r);i.oninput=()=>{if(i.value!==SETV.name||dirty)markDirty({save(){if(!i.value.trim()){fieldErr(i.closest('.fld'),'Name can’t be empty.');return}SETV.name=i.value.trim();U.name=SETV.name;dirty=null;showSave(false);toast('Profile saved.')},discard(){i.value=SETV.name;fieldOk(i.closest('.fld'))}})}
   r.onclick=e=>{const a=e.target.closest('[data-a]');if(!a)return;if(a.dataset.a==='photo')toast('Photo upload isn’t part of this prototype.');if(a.dataset.a==='email')changeEmail()}}});
@@ -3726,9 +3930,9 @@ SEC.prefs=()=>({html:`<section class="sec">${secH('Preferences','Saved as you ch
 const effT=()=>document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
 
 SEC.security=()=>({html:`<section class="sec">${secH('Sign-in','How you prove it’s you.')}
- <div class="card flush">${srow('Password','Last changed 4 months ago.',`<button class="btn secondary sm" data-a="pw">Change password</button>`)}
- ${srow('Two-step verification',SETV.tfa?'Required at every new device.':'Adds a code from your authenticator app. Recommended.',`${SETV.tfa?'<span class="tag ok dot">On</span><button class="btn secondary sm" data-a="tfa-off">Turn off</button>':'<span class="tag warn dot">Off</span><button class="btn primary sm" data-a="tfa">Set up</button>'}`)}
- ${SETV.passkeys.length?SETV.passkeys.map((k,i)=>srow(esc(k),'Added today with Touch ID',`<button class="btn danger sm" data-a="pk-del" data-i="${i}">Remove</button>`)).join(''):srow('Passkeys','Sign in with Touch ID, Face ID or a security key. No password to phish.',`<button class="btn secondary sm" data-a="pk">Add a passkey</button>`)}</div></section>
+ <div class="card flush">${srow('Password','Last changed 4 months ago.',`<button class="btn ghost sm" data-a="pw">Change password</button>`)}
+ ${srow('Two-step verification',SETV.tfa?'Required at every new device.':'Adds a code from your authenticator app. Recommended.',`${SETV.tfa?'<span class="tag ok dot">On</span><button class="btn ghost sm" data-a="tfa-off">Turn off</button>':'<span class="tag warn dot">Off</span><button class="btn primary sm" data-a="tfa">Set up</button>'}`)}
+ ${SETV.passkeys.length?SETV.passkeys.map((k,i)=>srow(esc(k),'Added today with Touch ID',`<button class="btn danger sm" data-a="pk-del" data-i="${i}">Remove</button>`)).join(''):srow('Passkeys','Sign in with Touch ID, Face ID or a security key. No password to phish.',`<button class="btn ghost sm" data-a="pk">Add a passkey</button>`)}</div></section>
  <section class="sec">${secH('Active sessions','Where you’re signed in right now.',`<button class="btn secondary sm" data-a="so-all" ${SESS.length<2?'disabled':''}>Sign out everywhere else</button>`)}
  <div class="card flush" id="sessCard">${SESS.length?`<div class="twrap"><table class="tbl"><thead><tr><th>Device</th><th>Location</th><th>Last active</th><th class="r act"><span class="sr">Action</span></th></tr></thead><tbody>${SESS.map((s,i)=>`<tr><td><b class="dn">${esc(s[0])}${s[4]?' <span class="you">(this device)</span>':''}</b><small class="sub">${esc(s[1])}</small></td><td>${esc(s[2])}</td><td class="when">${esc(s[3])}</td><td class="r act">${s[4]?'':`<button class="btn ghost sm" data-a="so" data-i="${i}">Sign out</button>`}</td></tr>`).join('')}</tbody></table></div>`:''}</div></section>`,
  mount(r){r.onclick=async e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
@@ -3753,7 +3957,7 @@ function tfaDlg(){const d=openDlg({title:'Set up two-step verification',sub:'Sca
 SEC.notify=()=>{const hasSlack=!!cur.slack||!!curInt().slack;const rows=[['approval','Approval needed','Gandalf has a plan waiting for you.'],['result','Result ready','A plan finished measuring.'],['integ','Integration needs attention','A connection failed or expired.'],['weekly','Weekly summary','Mondays at 09:00 in your time zone.']];
  return {html:`<section class="sec">${secH('Notifications','Quiet by default. Gandalf only interrupts when it needs you.')}
  <div class="card flush"><div class="twrap"><table class="tbl"><thead><tr><th>Event</th><th class="r">Email</th><th class="r">Slack</th><th class="r">In app</th></tr></thead><tbody>${rows.map(([k,t,d])=>`<tr><td><b style="font-weight:500">${t}</b><small style="display:block;color:var(--fg-2)">${d}</small></td>${[0,1,2].map(i=>`<td class="r">${sw(k+'.'+i,SETV.notify[k][i],t+' by '+['email','Slack','in app'][i],i===1&&!hasSlack)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>
- ${hasSlack?'':`<div class="banner"><div style="flex:1"><b>Slack isn’t connected</b><small>Connect it to get approvals in a channel.</small></div><button class="btn secondary sm" data-a="slack">Connect Slack</button></div>`}</section>`,
+ ${hasSlack?'':`<div class="banner"><div style="flex:1"><b>Slack isn’t connected</b><small>Connect it to get approvals in a channel.</small></div><button class="btn ghost sm" data-a="slack">Connect Slack</button></div>`}</section>`,
  mount(r){r.onclick=e=>{const s=e.target.closest('[data-sw]');if(s){const on=s.getAttribute('aria-checked')!=='true';s.setAttribute('aria-checked',String(on));const [k,i]=s.dataset.sw.split('.');SETV.notify[k][+i]=on?1:0;toast('Saved.')}
    if(e.target.closest('[data-a=slack]'))go('integrations')}}}};
 
@@ -3762,7 +3966,7 @@ SEC.general=()=>({html:`<section class="sec">${secH('Workspace','Shared with eve
  ${srow('Workspace URL','Where your team signs in.',`<span class="ro">henneth.ai/nike</span>`)}
  ${srow('Brand domains','Henneth tracks these in AI answers.',`<span class="ro">nike.com, nike.de</span>`)}</div></section>
  <section class="sec">${secH('Single sign-on','Sign in through your identity provider.')}
- <div class="card flush">${srow('Okta (nike.com)',SETV.sso?'Enforced. Members can’t use password or email-code sign-in. Owners always can.':'Off. Members can sign in with email and password.',`${SETV.sso?'<span class="tag ok dot">Enforced</span>':'<span class="tag mute dot">Off</span>'}<button class="btn secondary sm" data-a="sso">Manage</button>`)}</div></section>
+ <div class="card flush">${srow('Okta (nike.com)',SETV.sso?'Enforced. Members can’t use password or email-code sign-in. Owners always can.':'Off. Members can sign in with email and password.',`${SETV.sso?'<span class="tag ok dot">Enforced</span>':'<span class="tag mute dot">Off</span>'}<button class="btn ghost sm" data-a="sso">Manage</button>`)}</div></section>
  <section class="sec">${secH('Danger zone')}<div class="card zone pad"><div class="srow" style="padding:0;min-height:0"><div class="tx"><b>Delete workspace</b><small>Deletes all data, integrations and history for everyone. This can’t be undone.</small></div><div class="ctl"><button class="btn danger md" data-a="del">Delete workspace…</button></div></div></div></section>`,
  mount(r){const i=$('#wName',r);fldClear(r);i.oninput=()=>markDirty({save(){if(!i.value.trim()){fieldErr(i.closest('.fld'),'Name can’t be empty.');return}SETV.wsName=i.value.trim();$('.ws b').textContent=SETV.wsName;dirty=null;showSave(false);toast('Workspace saved.')},discard(){i.value=SETV.wsName;fieldOk(i.closest('.fld'))}});
   r.onclick=e=>{const a=e.target.closest('[data-a]');if(!a)return;if(a.dataset.a==='sso'){confirmDlg({title:SETV.sso?'Turn off enforced SSO?':'Enforce SSO?',body:`<p style="margin:0;color:var(--fg-2)">${SETV.sso?'Members will be able to sign in with a password or email code again.':'Members will have to sign in through Okta. Owners keep an email-code fallback.'}</p>`,ok:SETV.sso?'Turn off':'Enforce',danger:SETV.sso,onOk:()=>{SETV.sso=!SETV.sso;SECshow();toast(SETV.sso?'SSO is enforced.':'SSO enforcement is off.')}})}
@@ -3773,8 +3977,7 @@ function delWs(){const d=openDlg({title:'Delete the Nike workspace?',sub:'This d
 /* ---- members ---- */
 SEC.members=()=>{const q=mq.toLowerCase();const rows=MEMBERS.filter(m=>(mst==='all'||m[3]===mst)&&(!q||(m[0]+m[1]).toLowerCase().includes(q)));
  return {html:`<section class="sec">${secH('Members','24 of 25 seats used.',`<button class="btn primary md" data-a="invite">${icon('plus')}Invite people</button>`)}
- <div class="filters"><div class="find fld"><div class="in"><input id="mFind" type="search" placeholder="Search by name or email" aria-label="Search members" value="${esc(mq)}" autocomplete="off">${icon('search')}</div></div>
- <select class="sel sm fit" id="mSt" aria-label="Status">${[['all','All statuses'],['active','Active'],['invited','Invited'],['suspended','Suspended']].map(x=>`<option value="${x[0]}" ${x[0]===mst?'selected':''}>${x[1]}</option>`).join('')}</select></div>
+ <div class="filters mfil"><select class="sel sm fit" id="mSt" aria-label="Status">${[['all','All statuses'],['active','Active'],['invited','Invited'],['suspended','Suspended']].map(x=>`<option value="${x[0]}" ${x[0]===mst?'selected':''}>${x[1]}</option>`).join('')}</select><div class="find fld"><div class="in"><input id="mFind" type="search" placeholder="Search by name or email" aria-label="Search members" value="${esc(mq)}" autocomplete="off">${icon('search')}</div></div></div>
  <div class="card flush" id="mList">${S.loaded.mem?rowsH(rows):skTable(5)}</div></section>`,
  mount(r){firstLoad('mem',$('#mList',r),()=>rowsH(rows));const f=$('#mFind',r);f.oninput=()=>{mq=f.value;paintM()};$('#mSt',r).onchange=e=>{mst=e.target.value;paintM()};
   r.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;if(a==='invite')inviteDlg();else if(a==='clear'){mq='';mst='all';SECshow()}else if(a==='mm'){const m=MEMBERS[+b.dataset.i];memMenu(b,m)}}}}};
@@ -3866,11 +4069,19 @@ async function improveBlock(card){const k=card.dataset.k,blk=BR.blocks.find(x=>x
 const WF0=[{n:'Product feed sync',s:'needs',sub:'EU feeds need 2 attribute fixes',by:'Google Merchant Center',up:'12 min ago'},{n:'Comparison pages',s:'measuring',sub:'Day 3 of 7, 43%',by:'WordPress',up:'2 h ago'},{n:'Perplexity FAQ markup',s:'done',sub:'+2.0 pt visibility after 7 days',by:'Cloudflare',up:'Oct 8'},{n:'Outreach to citing sources',s:'done',sub:'3 sources updated',by:'—',up:'Oct 3'}];
 let wf='all';
 function wfAll(){const live=S.runs.map(r=>({n:r.plan&&r.plan.short||'Plan',s:r.status==='needs'?'needs':r.status==='failed'?'fail2':r.status==='run'?'run':(r.measure&&r.measure.state==='wait')?'measuring':'done',sub:r.status==='run'?'Gandalf is working':r.status==='needs'?'Waiting for you':r.measure&&r.measure.state==='wait'?'Measuring, '+(r.measure.win)+' days':r.measure&&r.measure.state==='result'?'Result is in':'Done',by:'Gandalf',up:'Just now',live:true}));return [...live,...WF0]}
+/* v172: the status is said once. "All" groups rows under a status heading; a filtered view needs no label at all. Every row has its next step. */
+const WFG=[['needs','Waiting for approval'],['run','Running'],['fail2','Stopped'],['measuring','Measuring'],['done','Done']];
+const WFA={needs:['secondary','Review'],run:['ghost','Follow along'],fail2:['secondary','Retry'],measuring:['ghost','See progress'],done:['ghost','See result']};
+function wfRow(x){const m=/Day (\d+) of (\d+)/.exec(x.sub||''),a=WFA[x.s]||WFA.done;
+ const prog=x.s==='measuring'&&m?`<div class="mprog" role="progressbar" aria-label="Measuring window" aria-valuemin="0" aria-valuemax="${m[2]}" aria-valuenow="${m[1]}"><i style="transform:scaleX(${(m[1]/m[2]).toFixed(3)})"></i></div>`:'';
+ return `<div class="lrow wrow click" tabindex="0" data-n="${esc(x.n)}"><div class="tx"><b>${esc(x.n)}</b><small>${esc(x.sub)}</small>${prog}</div><div class="sd"><span class="meta"><span>${esc(x.up)}</span>${x.by&&x.by!=='—'&&x.by!=='–'?`<span>${esc(x.by)}</span>`:''}</span><button class="btn ${a[0]} sm" data-a="review" aria-label="${esc(a[1]+': '+x.n)}">${a[1]}</button></div></div>`}
+function wfRows(rows){if(wf!=='all')return rows.map(wfRow).join('');
+ return WFG.map(([k,l])=>{const g=rows.filter(x=>x.s===k);return g.length?`<section class="wf-g" aria-label="${l}"><h3 class="wf-gh">${l}<span class="ct">${g.length}</span></h3>${g.map(wfRow).join('')}</section>`:''}).join('')}
 R.workflows={narrow:false,render(){const first=S.acct==='new'&&!obBase(),all=first?[]:wfAll();const G={all:'All',needs:'Needs approval',run:'Running',measuring:'Measuring',done:'Done'};const ct=k=>k==='all'?all.length:all.filter(x=>x.s===k).length;
  const rows=all.filter(x=>wf==='all'||x.s===wf);const p=$('#page');
  p.innerHTML=`<div class="ph1"><h1>Workflows</h1>${first?'':`<div class="acts"><button class="btn primary sm" data-a="ask">${icon('sparkles')}Ask Gandalf for a plan</button></div>`}</div><p class="psub">Plans Gandalf proposed or ran. Approve, follow along, or review results.</p>
  ${first?'':`${asegH('Filter','data-f',Object.entries(G).map(([k,l])=>({k,l,on:wf===k,ct:ct(k)})))}`}
- <div class="card flush" id="wfl">${rows.length?rows.map(x=>`<div class="lrow wrow click" tabindex="0" data-n="${esc(x.n)}"><div class="tx"><b>${esc(x.n)}${tagH(x.s)}</b><small>${esc(x.sub)}</small></div><div class="sd"><span class="meta"><span>${esc(x.up)}</span>${x.by&&x.by!=='—'&&x.by!=='–'?`<span>${esc(x.by)}</span>`:''}</span>${x.s==='needs'?`<button class="btn primary sm" data-a="review">Review</button>`:''}</div></div>`).join(''):emptyH(first?{scene:'workflows',icon:'flow',title:'Workflows start after your first baseline',body:obWaiting()?'Gandalf is measuring your prompts. When the numbers are in, it proposes the first plan and you approve it here.':'Pick your first prompts so Gandalf has something to measure. Plans show up here once the baseline is in.',acts:`<button class="btn primary md" data-ob="next">Continue setup</button>`}:wf==='all'?{scene:'workflows',icon:'flow',title:'No workflows yet',body:'Ask Gandalf what to improve. It proposes a plan, you approve, and it measures the result.',acts:`<button class="btn primary md" data-a="ask">Ask Gandalf</button>`}:{icon:'circlecheck',title:wf==='needs'?'Nothing is waiting for you':'Nothing here',body:wf==='needs'?'When Gandalf needs an approval, it shows up here and in the sidebar.':'Try another filter.',acts:`<button class="btn secondary md" data-f="all">Show all</button>`})}</div>`;
+ <div class="card flush" id="wfl">${rows.length?wfRows(rows):emptyH(first?{scene:'workflows',icon:'flow',title:'Workflows start after your first baseline',body:obWaiting()?'Gandalf is measuring your prompts. When the numbers are in, it proposes the first plan and you approve it here.':'Pick your first prompts so Gandalf has something to measure. Plans show up here once the baseline is in.',acts:`<button class="btn primary md" data-ob="next">Continue setup</button>`}:wf==='all'?{scene:'workflows',icon:'flow',title:'No workflows yet',body:'Ask Gandalf what to improve. It proposes a plan, you approve, and it measures the result.',acts:`<button class="btn primary md" data-a="ask">Ask Gandalf</button>`}:{icon:'circlecheck',title:wf==='needs'?'Nothing is waiting for you':'Nothing here',body:wf==='needs'?'When Gandalf needs an approval, it shows up here and in the sidebar.':'Try another filter.',acts:`<button class="btn secondary md" data-f="all">Show all</button>`})}</div>`;
  stag($('#wfl'));
  p.onclick=e=>{if(e.target.closest('[data-ob]')){obClick(e);return}const f=e.target.closest('[data-f]');if(f){const old=$('.aseg');wf=f.dataset.f;$$('[data-f]',old).forEach(x=>x.setAttribute('aria-pressed',String(x===f)));R.workflows.render();const nw=$('.aseg');if(old&&nw)nw.replaceWith(old);$(`.aseg [data-f=${wf}]`).focus();return}
   const b=e.target.closest('[data-a]');if(b&&(b.dataset.a==='ask'||b.dataset.a==='review')){openPanel();return}}}};
@@ -3902,11 +4113,11 @@ function addHome(t){t.home=true;if(S.acct==='new'&&typeof obHome==='function'&&!
  const sub=live.length?`${live.length} signal${live.length>1?'s':''} on Nike this week.${need?` ${need} plan${need>1?'s are':' is'} waiting for your approval.`:''}`:`No new signals on Nike.${need?` ${need} plan${need>1?'s are':' is'} waiting for your approval.`:''} Ask for anything.`;
  const tl={bad:'Needs attention',warn:'Worth watching',ok:'Good news'};
  const sig=(id,lead)=>{const g=SIGS[id];return lead
-  ?`<section class="glead"><h2><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i>${esc(g.title)}</h2><p>${esc(g.body)}</p><button class="btn primary sm" type="button" data-gsig="${id}">Look into it</button></section>`
+  ?`<section class="glead"><h2><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i>${esc(g.title)}</h2><p>${esc(g.body)}</p><button class="btn secondary sm" type="button" data-gsig="${id}">Look into it</button></section>`
   :`<li><button class="gcard" type="button" data-gsig="${id}"><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i><span class="gx"><b>${esc(g.title)}</b><span>${esc(g.body)}</span></span><span class="go"><span class="sr">Look into it</span>${icon('right')}</span></button></li>`};
  const el=h(`<div class="ghome"><div class="gt"><h1>${esc(greet())}</h1><p>${esc(sub)}</p></div><div class="gres-slot" data-resume></div>
   ${live.length?`<div class="gsug" role="group" aria-label="Signals to look into">${sig(live[0],true)}${live.length>1?`<ul class="grows">${live.slice(1).map(id=>sig(id,false)).join('')}</ul>`:''}</div>`:''}
-  <div class="chips gq" role="group" aria-label="Or start with"><button class="chip" type="button" data-gq="Set an alert"><span>Set an alert</span>${icon('right')}</button><button class="chip" type="button" data-gq="Show Visibility as bars"><span>Show Visibility as bars</span>${icon('right')}</button></div></div>`);
+  <div class="gq" role="group" aria-label="Or start with"><button class="btn secondary sm" type="button" data-gq="Set an alert">${icon('bell')}Set an alert</button><button class="btn secondary sm" type="button" data-gq="Show Visibility as bars">${icon('bar')}Show Visibility as bars</button></div></div>`);
  el.onclick=e=>{const c=e.target.closest('[data-gsig]'),q=e.target.closest('[data-gq]');if(c)lookInto(c.dataset.gsig);else if(q)send(q.dataset.gq)};
  t.el.appendChild(el)}
 dropHome=function(){S.threads.filter(x=>x.home&&!$('.turn',x.el)&&x!==S.active).forEach(x=>{x.el.remove();S.threads.splice(S.threads.indexOf(x),1)});renderRecents()};
@@ -4433,9 +4644,9 @@ function hl(t){const q=BV.q.trim();const safe=esc(t);if(!q)return safe;const re=
 function rtHl(t){const q=BV.q.trim();const r=richText(t);if(!q)return r;const re=new RegExp('('+esc(q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');return r.replace(/>([^<]+)</g,(m,x)=>'>'+x.replace(re,'<mark>$1</mark>')+'<')}
 const flat=t=>String(t).replace(/^\s*(?:\d+[.)]|[-•*])\s+/gm,'').replace(/\s*\n+\s*/g,' ').trim();
 const reqEmpty=c=>CATBY[c].subs.some(([k])=>isReq(c+'.'+k)&&!entries(c+'.'+k).length);
-function bwDefault(){return needsList().length?'needs':'c:'+BCAT[0].k}
+function bwDefault(){return 'c:'+BCAT[0].k}
 function bwSel(){let s=BV.sel;if(BV.q.trim()&&!s)s='search';
- if(!s||(s==='needs'&&!needsList().length)||(s==='search'&&!BV.q.trim())||(s.startsWith('c:')&&!CATBY[s.slice(2)])||(!['needs','search'].includes(s)&&!s.startsWith('c:')&&!SUBBY[s]))s=bwDefault();
+ if(!s||s==='needs'||(s==='search'&&!BV.q.trim())||(s.startsWith('c:')&&!CATBY[s.slice(2)])||(!['needs','search'].includes(s)&&!s.startsWith('c:')&&!SUBBY[s]))s=bwDefault();
  return BV.sel=s}
 const selCat=()=>{const s=bwSel();return s.startsWith('c:')?s.slice(2):SUBBY[s]?SUBBY[s].cat:null};
 
@@ -4444,17 +4655,17 @@ R.brain={narrow:false,render(){const p=$('#page');p.classList.remove('intx','bdo
  if(BV.open){const o=BV.open;BV.open=null;BV.sel=o.startsWith('c:')||SUBBY[o]?o:null}
  const fill=allFilled(),waiting=BR.learn.length,mem=memList().length;
  p.innerHTML=`<div class="ph1"><h1>Brain</h1></div>
- <p class="psub">What Gandalf knows about ${esc(brand())}. It reads the right section before every answer and plan.</p>
+ <p class="psub">What Gandalf knows about ${esc(brand())}. Gandalf reads a category when a question needs it.</p>
  <div class="ix-bar bd-bar">
-  <div class="tabs2" role="group" aria-label="Brain">
-   <button data-btab="context" aria-pressed="${BV.tab==='context'}">Brand context<span class="ct">${fill}/${SUBS.length}</span></button>
-   <button data-btab="memory" aria-pressed="${BV.tab==='memory'}" class="${waiting?'warn':''}">Gandalf memory<span class="ct">${waiting?waiting+' new':mem}</span></button></div>
+  <div class="aseg atabs"><div class="aseg-t" role="tablist" aria-label="Brain"><span class="aseg-sel" aria-hidden="true"></span>
+   <button type="button" role="tab" id="btab-context" aria-controls="bw" data-btab="context" aria-selected="${BV.tab==='context'}"><span class="aseg-l">Brand context<span class="ct">${fill}/${SUBS.length}</span></span></button>
+   <button type="button" role="tab" id="btab-memory" aria-controls="bw" data-btab="memory" aria-selected="${BV.tab==='memory'}" class="${waiting?'warn':''}"><span class="aseg-l">Gandalf memory<span class="ct">${waiting?waiting+' new':mem}</span></span></button></div></div>
   <div class="bb-r">
    <div class="find fld ix-find"><div class="in"><input id="bFind" type="search" placeholder="${BV.tab==='context'?'Search Brain':'Search memory'}" aria-label="${BV.tab==='context'?'Search Brain':'Search memory'}" aria-describedby="bLive" value="${esc(BV.q)}" autocomplete="off">${icon('search')}<kbd class="kbd" aria-hidden="true">/</kbd></div></div>
-   ${BV.tab==='context'&&fill<SUBS.length?`<button class="btn secondary sm ico" data-a="gaps" aria-label="Fill gaps with Gandalf" title="Fill gaps with Gandalf">${icon('sparkles')}</button>`:''}</div>
+   </div>
  </div>
  <div class="bt-tabs" id="bTabs" role="tablist" aria-label="Brand context categories"${BV.tab==='context'?'':' hidden'}></div>
- <div class="bw" id="bw">
+ <div class="bw" id="bw" role="tabpanel" aria-labelledby="btab-${BV.tab}">
   <nav class="bw-ix" id="bToc" aria-label="${BV.tab==='context'?'Brand context':'Memory'}"></nav>
   <section class="card bw-pane" id="bDoc" aria-labelledby="bwT"></section>
  </div>
@@ -4501,9 +4712,9 @@ function needsPane(){const L=needsList(),opt=SUBS.filter(s=>!isReq(s.id)&&!entri
 function catPane(k){const c=CATBY[k],ids=c.subs.map(([s])=>k+'.'+s);
  return `<div class="bw-cat" style="--h:var(--cat-${c.h})">`+bwHead(esc(c.t),esc(c.d),`<span class="bt" aria-hidden="true">${icon(c.i)}</span>`,`<span class="bw-cm">${catFilled(k)} of ${c.subs.length} filled</span>`)+
  `<div class="bw-body"><ul class="bw-grid">${ids.map(id=>{const s=SUBBY[id],L=entries(id),n=L.length,req=isReq(id);
-  return `<li><button class="bw-t ${n?'':'miss'} ${req&&!n?'req':''}" data-go="${id}"><span class="t-h"><i class="mk ${n?'on':req?'req':'off'}" aria-hidden="true"></i><b>${esc(s.t)}</b>${req&&!n?'<span class="bd-req">Needed</span>':''}</span>
-   <span class="t-x">${n?esc(flat(L[0].txt)):esc(s.d)}</span>
-   <span class="t-m">${n?`${entriesWord(n)}<span class="t-by">${esc(L[n-1].by||'You')}${L[n-1].when?', '+esc(L[n-1].when):''}</span>`:''}</span></button></li>`}).join('')}</ul></div></div>`}
+  return `<li><button class="bw-t ${n?'':'miss'} ${req&&!n?'req':''}" data-go="${id}"><span class="t-h"><i class="mk ${n?'on':req?'req':'off'}" aria-hidden="true"></i><b>${esc(s.t)}</b></span>
+   ${n?`<span class="t-n">${entriesWord(n)}</span>`:''}<span class="t-x">${n?esc(flat(L[0].txt)):esc(s.d)}</span>
+   <span class="t-m">${n?`<span class="t-by">${avStack(L)}</span>`:''}</span></button></li>`}).join('')}</ul></div></div>`}
 
 function secPane(id){const s=SUBBY[id],c=CATBY[s.cat],list=entries(id),ed=BV.editing&&BV.editing.id===id?BV.editing:null,req=isReq(id),q=BV.q.trim();
  const at=c.subs.findIndex(([k])=>c.k+'.'+k===id),gi=SEQ.indexOf(id),prev=SEQ[gi-1],next=SEQ[gi+1];
@@ -4514,12 +4725,12 @@ function secPane(id){const s=SUBBY[id],c=CATBY[s.cat],list=entries(id),ed=BV.edi
  const body=ed&&ed.i==='all'?bwForm(id,ed.draft||list.map(x=>x.txt).join('\n'),'Edit '+s.t)
   :list.length?`<div class="bd-es">${list.map((e,i)=>ed&&ed.i===i?`<div class="bd-e ed">${bwForm(id,e.txt,'Edit entry')}</div>`:`<div class="bd-e" data-ei="${i}">
    <div class="rt">${rtHl(e.txt)}</div>
-   <div class="bd-em"><span class="bd-by">${esc(e.by||'You')}${e.when?', '+esc(e.when):''}</span>
+   <div class="bd-em"><span class="bd-by">${avStack([e])}</span>
     <span class="bd-ea"><button type="button" data-a="eedit" data-sub="${id}" data-i="${i}">${icon('pencil')}Edit</button><button type="button" data-a="edel" data-sub="${id}" data-i="${i}">${icon('trash')}Delete</button></span></div></div>`).join('')}</div>`
   :ed?'':`<div class="bd-empty"><p>${req?'Gandalf needs this to answer well.':'Nothing here yet.'} Until you add it, Gandalf uses what it finds on your site.</p><div class="acts"><button class="btn secondary sm ico" data-a="draft" data-sub="${id}" aria-label="Draft with Gandalf" title="Draft with Gandalf">${icon('sparkles')}</button><button class="btn ghost sm" data-a="eadd" data-sub="${id}">Write</button></div></div>`;
  const foot=ed&&ed.i===-1?`<footer class="bw-pf ed">${bwForm(id,'','New entry in '+s.t)}</footer>`
   :list.length&&!ed?`<footer class="bw-pf"><button class="btn secondary sm" data-a="eadd" data-sub="${id}">${icon('plus')}Add entry</button>${MAPK[id]?`<button class="btn ghost sm" data-a="improve" data-sub="${id}">${icon('sparkles')}Improve with Gandalf</button>`:''}</footer>`:'';
- return `<div class="bw-sec" style="--h:var(--cat-${c.h})" data-sec="${id}">`+bwHead(`${hl(s.t)}${req&&!list.length?'<span class="bd-req">Needed</span>':''}`,hl(s.d),'',nav).replace('<div class="tx">','<div class="tx">'+up)+`<div class="bw-body">${body}</div>${foot}</div>`}
+ return `<div class="bw-sec" style="--h:var(--cat-${c.h})" data-sec="${id}">`+bwHead(`${hl(s.t)}`,hl(s.d),'',nav).replace('<div class="tx">','<div class="tx">'+up)+`<div class="bw-body">${body}</div>${foot}</div>`}
 
 function searchPane(){const q=BV.q.trim(),hits=SUBS.filter(subMatch);
  if(!hits.length)return `<div class="bw-body bd-nores">${emptyH({inline:true,icon:'search',title:`Nothing in Brain matches “${q}”`,body:'Try another word, or ask Gandalf to search your site.',acts:`<button class="btn secondary sm" data-a="clear">Clear search</button>`})}</div>`;
@@ -4529,7 +4740,7 @@ function searchPane(){const q=BV.q.trim(),hits=SUBS.filter(subMatch);
 /* Editor: starts at 3 lines, grows to 6, then scrolls inside. Never stretches the pane. */
 function bdSave(sub,v){const ed=BV.editing;if(!ed)return;
    if(ed.i==='all'){setEntries(sub,v.split('\n').map(x=>x.trim()).filter(Boolean).map(x=>en(x,'You','just now')),'You');BV.editing=null;bdSec(sub);toast(`Saved to ${SUBBY[sub].t}.`);return}
-   const list=entries(sub).slice();let at;if(ed.i>=0){list[ed.i]=en(v,'You','just now');at=ed.i}else{list.push(en(v,'You','just now'));at=list.length-1}
+   const list=entries(sub).slice();let at;if(ed.i>=0){const prev=list[ed.i],eds=[...editorsOf(prev).filter(k=>k!=='You'),'You'];list[ed.i]=Object.assign(en(v,'You','just now'),{eds});at=ed.i}else{list.push(en(v,'You','just now'));at=list.length-1}
    setEntries(sub,list,'You');BV.editing=null;bdSec(sub);const e=$(`#bDoc [data-ei="${at}"]`);if(e)e.scrollIntoView({block:'nearest'});toast(ed.i>=0?'Entry updated.':`Saved to ${SUBBY[sub].t}.`);bSay(`Saved to ${SUBBY[sub].t}`)}
 
 function bwForm(id,v,label){return `<div class="bs-f bw-f"><label class="sr" for="bTa">${esc(label)}</label><textarea id="bTa" rows="3" maxlength="2000" placeholder="What should Gandalf know?">${esc(v)}</textarea><div class="bs-fr"><span class="fh" id="bTc">${2000-v.length} characters left</span><button class="btn ghost sm" data-a="ecancel">Cancel</button><button class="btn secondary sm" data-a="esave" data-sub="${id}">Save</button></div></div>`}
@@ -4648,6 +4859,71 @@ addEventListener('resize',()=>{if(S.view==='brain')bdClamp()});
 /* Tabs follow the tablist pattern: ←/→/Home/End move between categories and open them. */
 function wireTabs(){const t=$('#bTabs');if(!t)return;t.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const L=$$('#bTabs .bt-tab'),i=L.indexOf(document.activeElement);if(i<0)return;e.preventDefault();
  const n=e.key==='Home'?0:e.key==='End'?L.length-1:(i+(e.key==='ArrowRight'?1:-1)+L.length)%L.length;bdGo(L[n].dataset.go,false);$(`#bTabs [data-go="${L[n].dataset.go}"]`).focus()}}
+/* =====================================================================
+   v132, Brain home: six category cards. Opening one goes to its sub page,
+   the existing workspace (index + document, entries with fade/blur, editor).
+   Crumb: Nike > Brain > Category. Brain in the crumb returns to the cards.
+   ===================================================================== */
+BV.home=true;
+/* Bylines: people get their profile avatar (initials circle); Gandalf gets its own mark, a rounded square with the sparkles glyph on the accent, so an AI edit never reads as a person. */
+function avH(by,when){by=by||'You';const lab=esc(by+(when?', '+when:''));if(/^Gandalf/i.test(by))return `<span class="av-g" role="img" aria-label="${lab}" title="${lab}">${icon('sparkles')}</span>`;
+ const full=by==='You'?'Erdem Ülker':((typeof MEMBERS!=='undefined'&&MEMBERS.find(m=>m[0].split(' ')[0]===by))||[by])[0];
+ const ini=full.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();return `<span class="av-p" role="img" aria-label="${lab}" title="${lab}">${esc(ini)}</span>`}
+/* Arc Avatar group: everyone who wrote in a section, latest first, up to 3 then +N. */
+/* Arc Avatar group (uiarc.dev/components/avatar-group): every editor, latest first, max 4 then a +N chip.
+   role=group named "Editors"; each avatar keeps its own name; hover fans the stack apart (fine pointers only). */
+function editorsOf(e){if(e.eds&&e.eds.length)return e.eds;const by=e.by||'You';if(/^Gandalf \(you accepted\)/i.test(by))return ['Gandalf','You'];return [/^Gandalf/i.test(by)?'Gandalf':by]}
+function avStack(L,max=4){const seen=[];[...L].reverse().forEach(e=>{[...editorsOf(e)].reverse().forEach(k=>{if(!seen.find(x=>x.k===k))seen.push({k,when:e.when})})});
+ const show=seen.slice(0,max),more=seen.length-show.length,lab=k=>k==='You'?'You':k;
+ return `<span class="av-st" role="group" aria-label="Editors" title="Edited by ${esc(seen.map(x=>lab(x.k)).join(', '))}">${show.map(x=>avH(x.k==='Gandalf'?'Gandalf':x.k,'').replace(/ title="[^"]*"/,'')).join('')}${more?`<span class="av-p av-more" role="img" aria-label="${more} more ${more===1?'editor':'editors'}">+${more}</span>`:''}</span>`}
+function bhCard(c){const ids=c.subs.map(([k])=>c.k+'.'+k),done=ids.filter(id=>entries(id).length).length,need=false,ne=ids.reduce((t,id)=>t+entries(id).length,0);
+ const meta=ne?`${ne} ${ne===1?'entry':'entries'} in ${done} ${done===1?'section':'sections'}`:'No entries yet';
+ return `<li><button class="bh-c" type="button" data-bcat="${c.k}" style="--h:var(--cat-${c.h})" aria-label="${esc(c.t)}, ${esc(meta)}">
+  <span class="bh-t">${esc(c.t)}</span><span class="bh-d">${esc(c.d)}</span>
+  <span class="bh-f"><span class="bh-ic" aria-hidden="true">${icon(c.i)}</span><span class="bh-n${!done&&need?' warn':''}">${esc(meta)}</span>
+  <span class="bh-bars" aria-hidden="true">${ids.map(id=>`<i class="${entries(id).length?'on':''}"></i>`).join('')}</span></span></button></li>`}
+function bhH(){const n=needsList().length;
+ return `<section class="bhome" aria-labelledby="bhT">
+  ${n?`<div class="bh-need"><span>${n===1?'1 key section is empty.':n+' key sections are empty.'} Gandalf answers better once they’re filled.</span><button class="btn ghost sm" type="button" data-bfill>${icon('sparkles')}Fill with Gandalf</button></div>`:''}
+  <div class="bh-h"><h2 id="bhT">Categories</h2></div>
+  <ul class="bh-grid">${BCAT.map(bhCard).join('')}</ul></section>`}
+function bhSync(){const p=$('#page');if(!p||S.view!=='brain')return;const on=BV.tab==='context'&&BV.home&&!BV.q.trim();p.classList.toggle('bh-on',on);
+ let h=$('.bhome',p);if(on){const x=document.createElement('div');x.innerHTML=bhH();const nh=x.firstElementChild;if(h)h.replaceWith(nh);else $('#bw').before(nh)}else if(h)h.remove();
+ bhHead(on);brCrumbs();if(!on)bwSize()}
+/* Sub page header: the H1 and line become the category's; tabs give way to a Back button in the same row, so the H1 never moves. */
+function bhHead(on){const p=$('#page');if(!p||S.view!=='brain')return;const sub=!on&&BV.tab==='context';p.classList.toggle('bh-sub',sub);
+ const h=$('.ph1 h1',p),d=$('.psub',p),bar=$('.ix-bar',p);if(!h||!d)return;
+ if(!sub){h.textContent='Brain';d.textContent=`What Gandalf knows about ${brand()}. Gandalf reads a category when a question needs it.`;const b=$('.bh-back',p);b&&b.remove();return}
+ const s=BV.sel,cat=selCat(),q=BV.q.trim();
+ h.textContent=q?'Search':s==='needs'?'Needs you':cat?CATBY[cat].t:'Brand context';
+ d.textContent=q?`Sections in Brain that match “${BV.q.trim()}”.`:s==='needs'?'Sections Gandalf needs before it can answer well.':cat?CATBY[cat].d:'';
+ if(bar&&!$('.bh-back',bar)){bar.insertAdjacentHTML('afterbegin',`<button class="btn ghost sm bh-back" type="button" data-bhome>${icon('left')}Brain</button>`);$('.bh-back',bar).onclick=()=>bhHome()}}
+/* Drill in / back: content enters from the side you are moving towards (in: from the right, back: from the left), title and line cross-fade. */
+function bhAnim(dx){if(reduce)return;const p=$('#page');const E=[...$$('#page>.bhome,#page>#bw',p)].filter(e=>getComputedStyle(e).display!=='none');
+ E.forEach(el=>el.animate([{opacity:0,transform:`translateX(${dx}px)`},{opacity:1,transform:'none'}],{duration:180,easing:'cubic-bezier(0,0,.2,1)'}));
+ $$('#page>.ph1 h1,#page>.psub,#page .bh-back',p).forEach(el=>el.animate([{opacity:0},{opacity:1}],{duration:140,easing:'cubic-bezier(0,0,.2,1)'}))}
+function bhOpen(sel){BV.home=false;BV.sel=sel;BV.editing=null;bhSync();bdPaint();bwSize();const b=$('#bDoc .bw-body');if(b)b.scrollTop=0;scrollTo&&$('#view')&&($('#view').scrollTop=0);const t=$('#bDoc h2');if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}bhAnim(24)}
+function bhHome(){BV.home=true;BV.q='';BV.sel=null;BV.editing=null;R.brain.render();bhAnim(-24);const t=$('#bhT');if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}}
+(function(){const R0=R.brain.render;
+ R.brain.render=function(){if(BV.open)BV.home=false;R0.call(this);const p=$('#page');
+  if(!p._bh){p._bh=1;p.addEventListener('click',e=>{if(S.view!=='brain')return;const c=e.target.closest('[data-bcat]');if(c){bhOpen('c:'+c.dataset.bcat);return}if(e.target.closest('[data-bfill]')){const ids=needsList().filter(n=>n.t==='req').map(n=>n.id);if(ids.length)fillGaps(ids)}})}
+  const f=$('#bFind');if(f){const o=f.oninput;f.oninput=()=>{if(f.value.trim()&&BV.home){BV.home=false}o&&o();bhSync()}}
+  bhSync();
+  /* Tab switch: the content below the tab bar slides in from the side of the new tab and fades up (direction follows tab order). */
+  const prev=BV._lt;BV._lt=BV.tab;if(prev&&prev!==BV.tab&&!reduce){const dx=BV.tab==='memory'?16:-16;
+   $$('#page>.bhome,#page>#bw').forEach(el=>{if(getComputedStyle(el).display==='none')return;el.animate([{opacity:0,transform:`translateX(${dx}px)`},{opacity:1,transform:'none'}],{duration:180,easing:'cubic-bezier(0,0,.2,1)'})})}};
+ const G0=bdGo;bdGo=function(id,focus){if(BV.home&&BV.tab!=='memory'){BV.home=false;bhSync()}G0(id,focus);brCrumbs()};
+ const P0=bdPaint;bdPaint=function(){P0();if(S.view==='brain'){brCrumbs();bhHead(BV.tab==='context'&&BV.home&&!BV.q.trim())}};
+ brCrumbs=function(){const c=$('#crumbs');if(!c||S.view!=='brain')return;const ws=`<span class="c-ws">${esc(brand())}</span>${icon('right')}`;
+  if(BV.tab==='memory'||BV.home&&!BV.q.trim()){c.innerHTML=ws+'<span aria-current="page">Brain</span>';c.onclick=null;return}
+  const s=BV.sel,cat=selCat(),lbl=BV.q.trim()?'Search':s==='needs'?'Needs you':cat?CATBY[cat].t:'Brand context';
+  c.innerHTML=ws+`<button type="button" class="c-lnk" data-bhome>Brain</button>${icon('right')}<span aria-current="page">${esc(lbl)}</span>`;
+  c.onclick=e=>{if(e.target.closest('[data-bhome]'))bhHome()}};
+ document.addEventListener('click',e=>{if(e.target.closest('#sbNav [data-go=brain]')){BV.home=true;BV.q='';BV.sel=null}},true);
+})();
+/* v167: Brain Arc Tabs keep their DOM across a re-render so the selection pill glides to the new tab instead of jumping. */
+(function(){const R0=R.brain.render;R.brain.render=function(){const old=$('#page .atabs');R0.apply(this,arguments);const nw=$('#page .atabs');
+ if(old&&nw&&old!==nw&&old._segInit){$$('[data-btab]',nw).forEach(b=>{const o=$(`[data-btab="${b.dataset.btab}"]`,old);if(!o)return;o.className=b.className;$('.aseg-l',o).innerHTML=$('.aseg-l',b).innerHTML;o.setAttribute('aria-selected',b.getAttribute('aria-selected'))});nw.replaceWith(old)}}})();
 
 /* =============== v2, drop 2: Integrations on the real backend model =============== */
 /* A connection is connected | pending (connect started, not finished) | expired (access expired, reconnect needed).
@@ -4727,7 +5003,7 @@ R.integrations={narrow:false,render(id){cur=curInt();iView=null;if(id&&BY[id]){O
  OB.el=$('#orbIn');OB.last=0;OB.raf&&cancelAnimationFrame(OB.raf);OB.raf=0;orbPlace();orbWake()}};
 
 /* ---------- panel rows and card ---------- */
-function rowAct(c,s){return !s?['connect','Connect','secondary']:s.st==='pending'?['finish','Finish setup','primary']:s.st==='expired'?['reconnect','Reconnect','primary']:null}
+function rowAct(c,s){return !s?['connect','Connect','secondary']:s.st==='pending'?['finish','Finish setup','secondary']:s.st==='expired'?['reconnect','Reconnect','secondary']:null}
 function orowH(c){const s=cur[c.id];const a=rowAct(c,s);const att=s&&ATT.includes(s.st);
  return `<div class="orow" data-id="${c.id}"><button class="orow-b" data-pick="${c.id}" aria-label="${esc(obLabel(c))}. Show details">${logo(c,'sm')}<span class="tx"><b>${esc(c.n)}${!s&&c.recommended?'<span class="orow-rec">Recommended</span>':''}</b>${s?`<span class="oc-st ${s.st==='connected'?'ok':s.st==='pending'?'pend':'warn'}"><i aria-hidden="true"></i>${s.st==='connected'?'Connected':s.st==='pending'?'Not finished':'Expired'}</span>`:''}<small>${esc(s&&SUB[s.st]||c.d)}</small></span></button>
   <span class="sd">${a?`<button class="${a[2]==='secondary'?'lnk act':'btn primary sm'}" data-a="${a[0]}" data-id="${c.id}" aria-label="${a[1]} for ${esc(c.n)}">${a[1]}</button>`:''}${s?`<button class="iconbtn" data-a="more" data-id="${c.id}" aria-haspopup="menu" aria-expanded="false" aria-label="More actions for ${esc(c.n)}">${icon('more')}</button>`:''}</span></div>`}
@@ -4747,8 +5023,8 @@ function cardH(c){const s=cur[c.id];const st=obStatus(c);const vis=obVisible();c
  const line=!s?'':s.st==='connected'?['ok','Connected.','']:s.st==='pending'?['pend','Not finished.',`Gandalf can’t use ${c.n} yet.`]:['warn','Expired.',`Reconnect so Gandalf can use ${c.n} again.`];
  const uses=c.use.map((u,k)=>k?u.charAt(0).toLowerCase()+u.slice(1):u).join(', ');
  const acts=!s?`<button class="btn primary md" data-a="connect" data-id="${c.id}">Connect ${esc(c.n)}</button>`
-  :s.st==='pending'?`<button class="btn primary md" data-a="finish" data-id="${c.id}">Finish setup</button><button class="btn ghost md" data-a="cancelpend" data-id="${c.id}">Cancel setup</button>`
-  :s.st==='expired'?`<button class="btn primary md" data-a="reconnect" data-id="${c.id}">Reconnect</button><button class="btn ghost md dg" data-a="disconnect" data-id="${c.id}">Disconnect</button>`
+  :s.st==='pending'?`<button class="btn secondary md" data-a="finish" data-id="${c.id}">Finish setup</button><button class="btn ghost md" data-a="cancelpend" data-id="${c.id}">Cancel setup</button>`
+  :s.st==='expired'?`<button class="btn secondary md" data-a="reconnect" data-id="${c.id}">Reconnect</button><button class="btn ghost md dg" data-a="disconnect" data-id="${c.id}">Disconnect</button>`
   :`<button class="btn ghost md dg" data-a="disconnect" data-id="${c.id}">${icon('trash')}Disconnect</button>`;
  return `<article class="ocard" id="oCard" aria-labelledby="ocT">
   <header class="oc-h">${logo(c,'lg')}<div class="grow"><div class="oc-tl"><h2 id="ocT">${esc(c.n)}</h2></div><small>${esc(c.c)}</small></div>
@@ -5036,7 +5312,7 @@ new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData')sepText
    One highlight glides under the labels with Arc's morph spring (visualDuration .42, bounce .16 → k≈155, c≈20.9).
    Only the selected option is a tab stop; arrows, Home and End move the selection. The track scrolls with edge fades when it overflows. */
 const SEG_K=Math.pow(2*Math.PI/(.42*1.2),2),SEG_C=2*(1-.16)*Math.sqrt(SEG_K);
-function segSync(root,animate){const t=$('.aseg-t',root),sel=$('.aseg-sel',root),b=$('[aria-pressed="true"]',t);if(!t||!sel)return;
+function segSync(root,animate){const t=$('.aseg-t',root),sel=$('.aseg-sel',root),b=$('[aria-pressed="true"],[aria-selected="true"]',t);if(!t||!sel)return;
  $$('button',t).forEach(x=>x.tabIndex=x===b?0:-1);
  if(!b){sel.style.opacity='0';return}sel.style.opacity='1';
  const tx=b.offsetLeft,tw=b.offsetWidth,st=root._seg||(root._seg={x:tx,w:tw,vx:0,vw:0,raf:0});
@@ -5051,9 +5327,9 @@ function segSync(root,animate){const t=$('.aseg-t',root),sel=$('.aseg-sel',root)
 function segEdges(t){const rest=t.scrollWidth-t.clientWidth-t.scrollLeft;t.toggleAttribute('data-fade-start',t.scrollLeft>1);t.toggleAttribute('data-fade-end',rest>1)}
 function segInit(root){if(root._segInit)return;root._segInit=1;const t=$('.aseg-t',root);
  t.addEventListener('scroll',()=>segEdges(t),{passive:true});
- t.addEventListener('keydown',e=>{const bs=$$('button:not(:disabled)',t);if(!bs.length)return;const i=Math.max(0,bs.findIndex(x=>x.getAttribute('aria-pressed')==='true')),L=bs.length-1;
+ t.addEventListener('keydown',e=>{const bs=$$('button:not(:disabled)',t);if(!bs.length)return;const i=Math.max(0,bs.findIndex(x=>x.getAttribute('aria-pressed')==='true'||x.getAttribute('aria-selected')==='true')),L=bs.length-1;
   const k=e.key,n=k==='ArrowRight'||k==='ArrowDown'?(i===L?0:i+1):k==='ArrowLeft'||k==='ArrowUp'?(i===0?L:i-1):k==='Home'?0:k==='End'?L:-1;if(n<0)return;e.preventDefault();bs[n].click();bs[n].focus({preventScroll:true})});
- new MutationObserver(()=>segSync(root,true)).observe(t,{attributes:true,subtree:true,attributeFilter:['aria-pressed']});
+ new MutationObserver(()=>segSync(root,true)).observe(t,{attributes:true,subtree:true,attributeFilter:['aria-pressed','aria-selected']});
  if(window.ResizeObserver)new ResizeObserver(()=>segSync(root,false)).observe(t);
  segSync(root,false)}
 $$('.aseg').forEach(segInit);
@@ -5075,6 +5351,60 @@ new MutationObserver(ms=>{for(const m of ms)m.addedNodes.forEach(n=>{if(n.nodeTy
  addEventListener('keydown',e=>{if(e.key==='Tab'||(/^(Arrow|Home$|End$)/.test(e.key)&&!TXT.test((document.activeElement||{}).tagName||'')))R.setAttribute('data-kbd','')},true);
  addEventListener('pointerdown',()=>R.removeAttribute('data-kbd'),true)})();
 go('gandalf');
+})();
+/* =====================================================================
+   v134, every search field is an Arc-style expanding search: a small ghost
+   icon at rest that grows into the field when clicked, focused or "/" is pressed.
+   The input stays the single tab stop (focus expands it); empty + blur or Escape folds it back.
+   ===================================================================== */
+function xsInit(root){(root||document).querySelectorAll('.in>input[type=search]').forEach(inp=>{
+ const w=inp.closest('.find')||inp.closest('.in').parentElement;if(!w||w.dataset.xs)return;w.dataset.xs='1';
+ const xw=w.getBoundingClientRect().width||280;w.style.setProperty('--xw',Math.round(Math.max(xw,300))+'px');w.classList.add('xs');
+ const b=document.createElement('button');b.type='button';b.className='xs-b';b.tabIndex=-1;b.setAttribute('aria-hidden','true');b.innerHTML=icon('search')+'<span>Search</span>';w.appendChild(b);w.style.setProperty('--fw',Math.ceil(b.getBoundingClientRect().width||88)+'px');
+ const fold=()=>{if(!inp.value.trim()&&document.activeElement!==inp)w.classList.add('fold')};
+ const open=()=>{w.classList.remove('fold')};
+ /* First paint is already folded: no width transition from the measured size (that read as the field jumping in). */
+ w.style.transition='none';if(!inp.value.trim())w.classList.add('fold');w.getBoundingClientRect();requestAnimationFrame(()=>{w.style.transition=''});
+ b.onmousedown=e=>e.preventDefault();b.onclick=()=>{open();inp.focus()};
+ inp.addEventListener('focus',open);inp.addEventListener('blur',()=>setTimeout(fold,0));
+ inp.addEventListener('keydown',e=>{if(e.key==='Escape'&&!inp.value){e.preventDefault();inp.blur()}})})}
+new MutationObserver(()=>xsInit($('#page'))).observe($('#page'),{childList:true,subtree:true});
+xsInit($('#page'));
+/* =====================================================================
+   v161, Arc-style detail motion on the dashboard metric tabs and chart.
+   - Animated counter: numbers count to their new value (old -> new on period/metric changes, 0 -> value on first paint).
+   - Tab indicator: one accent underline slides between metrics instead of jumping.
+   - Sparklines and the main line draw in; bars grow from the baseline with a short stagger.
+   Reduced motion: values and shapes appear in their final state.
+   ===================================================================== */
+(function(){
+ const NUM=/[-+−]?\d[\d,]*(?:\.\d+)?/;
+ const parse=s=>{const m=String(s).match(NUM);if(!m)return null;const raw=m[0].replace('−','-').replace(/,/g,'');return {v:parseFloat(raw),dec:(raw.split('.')[1]||'').length,pre:s.slice(0,m.index),suf:s.slice(m.index+m[0].length),minus:m[0][0]==='−'}};
+ const fmt=(p,v)=>{let t=Math.abs(v).toFixed(p.dec);if(v<0)t=(p.minus?'−':'-')+t;else if(/^[+]/.test(p.pre+''))t=t;return p.pre+t+p.suf};
+ function countTo(el,to,from){if(reduce||!el)return;const p=parse(to);if(!p)return;const f=from!=null?(parse(from)||{v:0}).v:0;if(f===p.v)return;
+  const t0=performance.now(),D=620,ease=t=>1-Math.pow(1-t,3);el.style.fontVariantNumeric='tabular-nums';
+  const step=now=>{const t=Math.min(1,(now-t0)/D);el.textContent=fmt(p,f+(p.v-f)*ease(t));if(t<1)requestAnimationFrame(step);else el.textContent=to};el.textContent=fmt(p,f);requestAnimationFrame(step)}
+ function draw(path,D=700,delay=0){if(reduce||!path||!path.getTotalLength)return;const L=path.getTotalLength();path.style.strokeDasharray=L;path.style.strokeDashoffset=L;
+  path.getBoundingClientRect();path.style.transition=`stroke-dashoffset ${D}ms cubic-bezier(.3,0,.2,1) ${delay}ms`;requestAnimationFrame(()=>{path.style.strokeDashoffset=0});setTimeout(()=>{path.style.strokeDasharray='';path.style.strokeDashoffset='';path.style.transition=''},D+delay+60)}
+ let first=true;
+ const RT=renderTabs;renderTabs=function(){const box=$('#tabs');const old={};let oldInd=null;
+  if(box){$$('.tab',box).forEach(t=>{old[t.dataset.tab]=$('.v',t)?.textContent});const s=$('.tab[aria-selected=true]',box);if(s)oldInd={x:s.offsetLeft,w:s.offsetWidth-20}}
+  RT.apply(this,arguments);const b=$('#tabs');if(!b)return;
+  $$('.tab',b).forEach((t,i)=>{const v=$('.v',t);if(v)countTo(v,v.textContent,first?null:old[t.dataset.tab]);
+   if(first){$$('.viz path[stroke]',t).forEach(pp=>draw(pp,700,120+i*60));$$('.viz path[fill]:not([fill=none])',t).forEach(pp=>{if(!reduce)pp.animate([{opacity:0},{opacity:.12}],{duration:300,delay:300+i*30,fill:'backwards'})})}});
+  /* sliding indicator */
+  let ind=$('.tab-ind',b);if(!ind){ind=document.createElement('i');ind.className='tab-ind';ind.setAttribute('aria-hidden','true');b.appendChild(ind)}
+  const s=$('.tab[aria-selected=true]',b);if(s){const to={x:s.offsetLeft,w:s.offsetWidth-20};
+   if(oldInd&&!reduce&&(oldInd.x!==to.x||oldInd.w!==to.w)){ind.style.transition='none';ind.style.transform=`translateX(${oldInd.x}px)`;ind.style.width=oldInd.w+'px';ind.getBoundingClientRect();ind.style.transition=''}
+   ind.style.transform=`translateX(${to.x}px)`;ind.style.width=to.w+'px'}
+  first=false};
+ const RC=renderChart;renderChart=function(){RC.apply(this,arguments);const c=$('#chart');if(!c||reduce)return;
+  $$('.plot path[stroke="var(--s1)"]',c).forEach(pp=>draw(pp,620));
+  $$('.plot path[stroke-dasharray]',c).forEach(pp=>pp.animate([{opacity:0},{opacity:1}],{duration:200,delay:200,fill:'backwards'}));
+  const bars=$$('.plot rect[fill="var(--s1)"]',c);bars.forEach((r,i)=>{r.style.transformBox='fill-box';r.style.transformOrigin='50% 100%';r.animate([{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{duration:260,delay:Math.floor(i/2)*25,easing:'cubic-bezier(.3,1.2,.4,1)',fill:'backwards'})});
+  $$('.plot text.val',c).forEach((t,i)=>t.animate([{opacity:0},{opacity:1}],{duration:160,delay:120+i*25,fill:'backwards'}));
+  $$('.plot circle[r="4.5"]',c).forEach(ci=>ci.animate([{opacity:0,transform:'scale(.4)'},{opacity:1,transform:'none'}],{duration:180,delay:300,fill:'backwards'}))};
+ addEventListener('resize',()=>{const b=$('#tabs'),s=b&&$('.tab[aria-selected=true]',b),ind=b&&$('.tab-ind',b);if(s&&ind){ind.style.transition='none';ind.style.transform=`translateX(${s.offsetLeft}px)`;ind.style.width=(s.offsetWidth-20)+'px';ind.getBoundingClientRect();ind.style.transition=''}});
 })();
 
 })();
