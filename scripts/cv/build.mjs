@@ -14,7 +14,7 @@ await p.evaluate(() => document.fonts.ready);
 const h = await p.evaluate(() => document.body.scrollHeight);
 const mm = h * 25.4 / 96;
 console.log(`content height ${mm.toFixed(1)}mm of 297mm`);
-if (mm > 290) { console.error('CV no longer fits one page with a bottom margin'); process.exit(1); }
-await p.pdf({ path: out, format: 'A4', printBackground: true, preferCSSPageSize: true, tagged: true, outline: false });
+await p.pdf({ path: mm > 290 ? out.replace(/\.pdf$/, '.overflow.pdf') : out, format: 'A4', printBackground: true, preferCSSPageSize: true, tagged: true, outline: false });
 await b.close();
+if (mm > 290) { console.error('CV no longer fits one page with a bottom margin'); process.exit(1); }
 console.log(out);
