@@ -1,7 +1,8 @@
 <title>Henneth Act Loop v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: app shell — 240px sidebar + main view (Gandalf thread, Dashboard grid). Arc UI tokens, dark-first. */
 :root{
@@ -16,10 +17,10 @@
   --shadow-float:0 22px 55px rgba(0,0,0,.34),0 3px 10px rgba(0,0,0,.2);
   --shadow-rest:0 1px 2px rgba(0,0,0,.18);
   --tip-bg:#262626; --tip-fg:#f2f2f2; --tip-fg-2:#b4b4b4; --tip-border:#3a3a3a;
-  --font-display:"Mona Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-body:"Mona Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-mono:"Mona Sans",system-ui,-apple-system,"Segoe UI",sans-serif; /* v81: no monospaced text. Mono is for aligned numerals only, see --font-num */
-  --font-num:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-display:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif; /* v185: Funnel Sans replaces Mona Sans */
+  --font-body:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace; /* v185: real mono for keycaps, counts, IDs and data values (reverses v81) */
+  --font-num:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --r-control:18px; --r-panel:26px; --r-surface:34px;
   /* motion tokens (see motion-system.md) */
   --t-instant:160ms; --t-fast:300ms; --t-base:440ms; --t-slow:720ms; --t-hero:1600ms;
@@ -443,7 +444,7 @@ body.pn .panel{transform:none;opacity:1;visibility:visible;transition-delay:0s}
 :root{
   /* layout tokens: every non-chat page uses these */
   --w-page:1240px; --w-narrow:760px; --gutter:40px; --sec-gap:40px; --sub-nav:200px;
-  /* type tokens (family Mona Sans; weights 400/500/600/700) */
+  /* type tokens (family Funnel Sans, mono DM Mono; weights 400/500/600/700) */
   --ty-display:600 30px/1.15 var(--font-display);  /* page title */
   --ty-title:600 20px/1.25 var(--font-display);    /* dialog, auth, empty state */
   --ty-head:600 15px/1.3 var(--font-display);      /* card and section heading */
@@ -2631,6 +2632,95 @@ html:not([data-kbd]) .atabs button:is(:focus,:focus-visible){box-shadow:none}
 /* v178: Members toolbar puts the status filter left and search right, like Integrations and Brain. */
 .filters.mfil{justify-content:space-between}
 .filters.mfil>.find{margin-left:auto}
+/* v180: Show dialog content. */
+.shw-l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.shw-l li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid var(--border-subtle)}
+.shw-l li:first-child{border-top:0;padding-top:0}
+.shw-l b{font-weight:500;color:var(--fg)}
+.shw-l span{color:var(--fg-2);font:var(--ty-small);line-height:1.5}
+.shw-p{margin:0;color:var(--fg);line-height:1.55}
+.shw-m{margin:12px 0 0;color:var(--fg-2);font:var(--ty-small)}
+.shw-l li:last-child{padding-bottom:0}.shw-l+.shw-m{margin-top:4px}
+/* v181: Gandalf home. The composer is the page: heading → composer → quick actions; signals, approvals and setup support below. */
+#panel.g-home .pf{display:none}
+.ghome.g2{margin:0 auto;padding:clamp(40px,14vh,150px) 0 48px;display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:760px;width:100%}
+.g2 .gt{text-align:center}
+.g2 .gt h1{font:600 30px/1.15 var(--font-display);letter-spacing:-.02em}
+.g2 .gt p{margin:8px auto 0;font-size:15px;max-width:52ch}
+.g2 .gcomp{margin-top:28px}
+.g2 .gcomp .comp{margin:0}
+.g2 .gcomp textarea{min-height:56px}
+.g2 .gacts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.g2 .gacts .btn{padding-inline:12px}
+.g2 .gres-slot:not(:empty){margin-top:32px}
+.g2 .gsupp{margin-top:64px}
+.gs-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 4px;font:500 13px/1.3 var(--font-body);color:var(--fg-2);letter-spacing:0;text-transform:none}
+.gs-h span{font-weight:400}
+.g2 .grows{border-top:1px solid var(--border-subtle)}
+.g2 .gcard{padding:14px 2px}
+.g2 .gcard b{font-weight:500;font-size:14px}
+.g2 .gcard .gx>span{font-size:13px}
+.g2 .gdock{margin-top:56px}
+.g2 .gdock:empty{display:none}
+.g2 .ob-guide{margin-top:48px}
+@media (max-width:760px){.ghome.g2{padding-top:24px}.g2 .gt h1{font-size:24px}.g2 .gacts{justify-content:flex-start}}
+/* v182: composer + menu, attachment chips, dictation. */
+.comp .cr .iconbtn{width:36px;height:36px;flex:none;color:var(--fg-2)}
+.comp .cr .iconbtn .i{width:18px;height:18px}
+.comp .cr .cadd{margin-left:-8px}
+.comp .cr .cadd[aria-expanded=true]{background:var(--hover);color:var(--fg)}
+[data-tip]{position:relative}
+@media (hover:hover) and (pointer:fine){.comp [data-tip]:hover::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);padding:6px 10px;border-radius:10px;background:var(--tip-bg);color:var(--tip-fg);border:1px solid var(--tip-border);font:500 12px/1.2 var(--font-body);white-space:nowrap;pointer-events:none;z-index:9}}
+.addm{position:absolute;left:-1px;bottom:calc(100% + 8px);width:min(440px,calc(100% + 2px));background:var(--raised);border:1px solid var(--border);border-radius:var(--r-panel);box-shadow:var(--shadow-float);padding:6px;z-index:9;max-height:min(420px,60vh);overflow:auto;animation:mo-in var(--t-fast) var(--e-enter) both}
+.gcomp .addm,.gcomp .slash{top:calc(100% + 8px);bottom:auto}
+.addm button{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:8px 12px;border:0;border-radius:calc(var(--r-panel) - 6px);background:none;color:var(--fg);text-align:left;font:inherit;cursor:pointer}
+.addm button:hover,.addm button:focus-visible{background:var(--hover);outline:none}
+.addm button[aria-disabled=true]{cursor:default;color:var(--fg-3)}
+.addm button[aria-disabled=true]:hover{background:none}
+.addm .i{width:16px;height:16px;flex:none;color:var(--fg-2)}
+.am-t{display:flex;align-items:baseline;gap:10px;flex:1;min-width:0}
+.am-t b{font-weight:500;font-size:14px;white-space:nowrap}
+.am-t span{color:var(--fg-2);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.am-back{color:var(--fg-2)!important;font-size:13px;font-weight:500;min-height:36px!important;border-bottom:1px solid var(--border-subtle)!important;border-radius:calc(var(--r-panel) - 6px) calc(var(--r-panel) - 6px) 0 0!important;margin-bottom:4px}
+@media (max-width:560px){.am-t{flex-direction:column;gap:2px}.am-t span{white-space:normal}}
+.atts{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px -8px}
+.att{display:inline-flex;align-items:center;gap:6px;max-width:260px;height:30px;padding:0 4px 0 10px;border:1px solid var(--border);border-radius:99px;background:var(--muted-surface);color:var(--fg);font:500 12.5px var(--font-body)}
+.att>.i{width:14px;height:14px;color:var(--fg-2);flex:none}
+.att-l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.att-x{display:grid;place-items:center;width:22px;height:22px;border:0;border-radius:50%;background:none;color:var(--fg-2);cursor:pointer;flex:none}
+.att-x:hover{background:var(--hover);color:var(--fg)}
+.att-x .i{width:12px;height:12px}
+.u-atts{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin:0 0 6px}
+.u-atts .att{padding-right:10px}
+.rec-l{display:none;align-items:center;gap:8px;color:var(--fg-2);font:500 12.5px var(--font-body)}
+.rec-l i{width:8px;height:8px;border-radius:50%;background:var(--danger,#e5484d);animation:recp 1.2s ease-in-out infinite}
+@keyframes recp{0%,100%{opacity:1}50%{opacity:.35}}
+.comp.rec .rec-l{display:inline-flex}
+.comp.rec #slashBtn{display:none}
+.comp.rec .cmic{background:var(--hover);color:var(--fg)}
+.comp.rec{border-color:var(--border-strong)}
+@media (prefers-reduced-motion:reduce){.rec-l i{animation:none}.addm{animation:none}}
+html:not([data-kbd]) .comp .iconbtn:is(:focus,:focus-visible){box-shadow:none}
+.g2 .gcomp:empty{display:none}
+/* v183: composer controls. Every control is a stroke button (1px border, transparent fill); Send is the one filled button. */
+.comp .cr{gap:8px}
+.comp .cr .cadd{margin-left:0}
+.comp .cr .cadd,.comp .cr .cmic{border:1px solid var(--border);border-radius:50%;background:none;color:var(--fg-2)}
+.comp .cr .cadd:hover,.comp .cr .cmic:hover{border-color:var(--border-strong);background:var(--hover);color:var(--fg)}
+.comp .cr .cadd[aria-expanded=true],.comp.rec .cmic{border-color:var(--border-strong);background:var(--hover);color:var(--fg)}
+.comp #slashBtn.hint{height:36px;margin:0;padding:0 14px 0 10px;gap:8px;border:1px solid var(--border);border-radius:99px;background:none;color:var(--fg-2);font:500 13px var(--font-body)}
+.comp #slashBtn.hint:hover,.comp #slashBtn.hint[aria-expanded=true]{border-color:var(--border-strong);background:var(--hover);color:var(--fg)}
+.comp #slashBtn.hint .kbd{min-width:20px;height:20px;padding:0 5px;font-size:11px}
+.comp .send,.comp .send:not([disabled]):hover{width:36px;height:36px;border:0;border-radius:50%;background:var(--fg);color:var(--bg);box-shadow:none;transition:opacity var(--t-fast) var(--e-standard)}
+.comp .send::before,.comp .send::after{content:none;display:none}
+@media (hover:hover) and (pointer:fine){.comp .send:not([disabled]):hover{opacity:.91}}
+.comp .send:not([disabled]):active{opacity:.84}
+.comp .send[disabled]{background:var(--fg);color:var(--bg);opacity:.3;cursor:not-allowed}
+.comp .send svg{width:18px;height:18px}
+/* v184: Actions pill. Label first, the "/" shortcut as a keycap at the end; padding balanced so the keycap sits as far from the right edge as the label from the left. */
+.comp #slashBtn.hint{padding:0 7px 0 14px;gap:10px}
+.comp #slashBtn.hint .kbd{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border:1px solid var(--border);border-radius:6px;background:var(--muted-surface);color:var(--fg-2);font:500 12px/1 var(--font-mono)}
+.psub{max-width:76ch}
 </style>
 
 <div class="app" id="app">
@@ -2675,8 +2765,11 @@ html:not([data-kbd]) .atabs button:is(:focus,:focus-visible){box-shadow:none}
     <div id="ctxslot"></div>
     <form class="comp" id="cform">
       <div class="slash" id="slash" role="listbox" aria-label="Actions" hidden></div>
+      <div class="addm" id="addMenu" role="menu" aria-label="Add to message" hidden></div>
+      <div class="atts" id="atts" aria-label="Added to this message" hidden></div>
       <textarea id="q" rows="1" placeholder="Ask Gandalf, or type / for actions" aria-label="Message Gandalf" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="slash"></textarea>
-      <div class="cr"><button type="button" class="hint" id="slashBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="slash"><span class="kbd">/</span><span>actions</span></button><span class="grow"></span><span class="send-hint"><span class="kbd">↵</span><span>send</span></span><button class="send" id="sendBtn" aria-label="Send" disabled><svg class="i"><use href="#i-up"/></svg></button></div>
+      <div class="cr"><button type="button" class="iconbtn cadd" id="addBtn" aria-label="Add files, Brain context, a signal or a tool" aria-haspopup="menu" aria-expanded="false" aria-controls="addMenu" data-tip="Add"><svg class="i"><use href="#i-plus"/></svg></button><span class="rec-l" aria-hidden="true"><i></i><span>Listening</span></span><button type="button" class="hint" id="slashBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="slash"><span>Actions</span><span class="kbd" aria-hidden="true">/</span></button><span class="grow"></span><span class="send-hint"><span class="kbd">↵</span><span>send</span></span><button type="button" class="iconbtn cmic" id="micBtn" aria-label="Dictate" aria-pressed="false" data-tip="Dictate"><svg class="i"><use href="#i-mic"/></svg></button><button class="send" id="sendBtn" aria-label="Send" disabled><svg class="i"><use href="#i-up"/></svg></button></div>
+      <input type="file" id="addFile" multiple hidden tabindex="-1">
     </form>
   </div>
 </aside>
@@ -2715,6 +2808,10 @@ html:not([data-kbd]) .atabs button:is(:focus,:focus-visible){box-shadow:none}
   <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
   <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/></symbol>
   <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
 </svg>
@@ -2856,8 +2953,10 @@ async function tool(a,run,done,ms=900){const c=h(`<span class="tc"><i class="spi
 function chips(a,list){const box=h('<div class="chips" role="group" aria-label="Suggested next steps"></div>');list.forEach(([label,fn])=>{const b=h(`<button class="chip" type="button"><span>${esc(label)}</span>${icon('right')}</button>`);b.onclick=()=>{box.remove();fn?fn():send(label)};box.appendChild(b)});a.appendChild(box);return box}
 function receipt(a,o){const warn=o.badgeTone==='warn';
  const el=h(`<div class="pc rc ${o.compact?'rc-1':''}"><div class="rc-h"><span class="rc-i ${warn?'warn':''}">${icon(o.ico==='x'?'x':warn?'file':'check')}</span><h5>${esc(o.title)}</h5></div>${o.rows&&!o.compact?`<dl class="rc-d">${o.rows.map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>`:''}<div class="row" data-btns></div></div>`);const b=$('[data-btns]',el);
+ /* v180: a receipt for created content leads with Show (secondary); Undo then steps back to ghost. Undo alone stays secondary so it lines up with the content. */
+ if(o.show){const x=h(`<button class="btn secondary sm" type="button">Show</button>`);x.onclick=o.show;b.appendChild(x)}
  (o.buttons||[]).forEach(bt=>{const x=h(`<button class="btn secondary sm" type="button">${bt.icon?icon(bt.icon):''}${esc(bt.label)}</button>`);x.onclick=bt.fn;b.appendChild(x)});
- if(o.undo){const u=h(`<button class="btn secondary sm" type="button">Undo</button>`);u.onclick=async()=>{await o.undo();$('h5',el).textContent='Undone';$('.rc-i',el).innerHTML=icon('undo');$('.rc-d',el)?.remove();b.remove()};b.appendChild(u)}
+ if(o.undo){const u=h(`<button class="btn ${b.children.length?'ghost':'secondary'} sm" type="button">Undo</button>`);u.onclick=async()=>{await o.undo();$('h5',el).textContent='Undone';$('.rc-i',el).innerHTML=icon('undo');$('.rc-d',el)?.remove();b.remove()};b.appendChild(u)}
  if(!b.children.length)b.remove();a.appendChild(el);return el}
 /* one-line undo for edits the previous sentence already described */
 function undoLine(a,fn){const el=h('<div class="pc rc rc-1"><div class="row" data-btns><button class="btn secondary sm" type="button">Undo</button></div></div>');$('button',el).onclick=async()=>{await fn();el.innerHTML='<p>Undone.</p>'};a.appendChild(el);return el}
@@ -2895,7 +2994,7 @@ function planPicker(plans,def){const n=++RCN;let v=def;
 async function choose(t,g,p){const a=turn(t,p.title);
  if(p.kind==='run'){await say(a,'On it. I research and draft on my own. Nothing leaves the product until you approve it.');await runPlan(t,g,p,a)}
  else if(p.kind==='alert'){await say(a,'Check the rule and save it.');alertForm(a,p.preset)}
- else{await tool(a,'Adding to the weekly summary','Added to the weekly summary',700);receipt(a,{ico:'file',title:p.done.title,rows:p.done.rows,undo:()=>{}})}}
+ else{await tool(a,'Adding to the weekly summary','Added to the weekly summary',700);receipt(a,{ico:'file',title:p.done.title,rows:p.done.rows,show:()=>showDone(p,p.done),undo:()=>{}})}}
 async function notNow(t,g){const a=turn(t,'Not now');await say(a,'Why? I will remember it.');
  chips(a,[['Not a priority'],['Wrong'],['Already done']].map(([l])=>[l,()=>learn(t,g,l)]))}
 async function learn(t,g,reason){const a=turn(t,reason);S.sigState[g.key]='dismissed';renderSigs();
@@ -2932,9 +3031,17 @@ async function blocked(run,i,a){setStep(run,i,'needs','Checking publish access')
  $('[data-c]',el).onclick=async e=>{const b=e.currentTarget,cf=$('input',el).checked;b.disabled=true;$('[data-h]',el).disabled=true;b.innerHTML=`<i class="spin"></i>Waiting for ${cf?'WordPress and Cloudflare':'WordPress'}…`;await wait(1700);S.int.wordpress=true;if(cf)S.int.cloudflare=true;
   const ok=h(`<span class="tc done">${icon('check')}<span>${cf?'WordPress and Cloudflare connected':'WordPress connected'}</span></span>`);el.replaceWith(ok);res('connected')};
  $('[data-h]',el).onclick=()=>{el.remove();setStep(run,i,'skip','You publish');const hc=h(`<div class="pc"><h5>The drafts are ready for you</h5><p>I keep this plan open. If you connect WordPress later, I publish from here.</p><div class="row"><button class="btn secondary sm" type="button" data-t="Copied to clipboard">${icon('file')}Copy</button><button class="btn secondary sm" type="button" data-t="Export is simulated">${icon('download')}Export .md</button><button class="btn secondary sm" type="button" data-t="Assigning is simulated">Assign to a teammate</button></div></div>`);$$('[data-t]',hc).forEach(b=>b.onclick=()=>toast(b.dataset.t));a.appendChild(hc);res('handoff')};a.appendChild(el)})}
+/* v180: what "Show" opens after Gandalf creates something. Prototype content, read-only. */
+function showDone(p,d,handoff){const it=((p.steps||[]).find(s=>s.items)||{}).items||[];let body='',sub=p.title;
+ if(p.id==='wk')body=`<p class="shw-p">Nike leads 2 of 20 tracked topics on ChatGPT and Gemini. Both answers cite Nike’s own spec pages and name Nike models from independent reviews.</p><p class="shw-m">Goes out with Monday’s summary. You can edit it until then.</p>`;
+ else if(/^Pattern/.test(d.title))body=`<ul class="shw-l"><li><b>Spec tables on nike.com</b><span>Both answers quote drop, weight and stack height straight from Nike’s product pages.</span></li><li><b>Named in independent reviews</b><span>Runner’s World and Wirecutter name the model, not just the brand.</span></li><li><b>Recent pages</b><span>Every cited page was updated in the last 90 days.</span></li></ul><p class="shw-m">The 18 trailing topics miss at least two of these.</p>`;
+ else if(p.kind==='run'&&/outreach|Sent/i.test(d.title+p.title))body=`<ul class="shw-l">${it.map(x=>`<li><b>${esc(x)}</b><span>“Updated Nike running data for your shoe guide”</span></li>`).join('')}</ul>`;
+ else if(it.length)body=`<ul class="shw-l">${it.map(x=>`<li><b>${esc(x)}</b><span>${handoff?'Draft, waiting for you to publish':'Live on nike.com'}</span></li>`).join('')}</ul>`;
+ else body=`<dl class="rc-d">${(d.rows||[]).map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>`;
+ openDlg({title:d.title,sub:esc(sub),body,foot:`<button class="btn secondary md" data-x>Close</button>`})}
 function finish(run,a,handoff){const p=run.plan,d=handoff?p.handoff:p.done;if(handoff)run.measure=null;else run.measure=p.measure?{...p.measure,state:'wait',start:S.day}:null;
  setStatus(run,'done');
- receipt(a,{ico:handoff?'file':'check',title:d.title,badge:handoff?'Waiting':'Done',badgeTone:handoff?'warn':'ok',sub:handoff?'Waiting for you, just now':'Done, just now',rows:d.rows,undo:handoff?null:()=>{run.measure=null;renderRuns();toast('Reverted. Nothing is live.')}});
+ receipt(a,{ico:handoff?'file':'check',title:d.title,badge:handoff?'Waiting':'Done',badgeTone:handoff?'warn':'ok',sub:handoff?'Waiting for you, just now':'Done, just now',rows:d.rows,show:()=>showDone(p,d,handoff),undo:handoff?null:()=>{run.measure=null;renderRuns();toast('Reverted. Nothing is live.')}});
  notify(run,run.plan.title+' is done');
  if(run.measure)say(a,'I measure this on the next runs and report back here and on the dashboard.')}
 
@@ -3100,7 +3207,7 @@ async function previewWidget(a,sp,t){const d=WCAT[sp.key];await tool(a,'Building
    f.addEventListener('click',e2=>{const b=e2.target.closest('[data-v]');if(b)$$('button',b.parentElement).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(e2.target.closest('[data-x]')){slot.innerHTML='';$('[data-pin]',card).hidden=false;$('[data-pin]',card).focus()}});
    f.addEventListener('submit',e2=>{e2.preventDefault();const title=$('input',f).value.trim()||wTitle(sp),size=$('[data-g=size] [aria-pressed=true]',f).dataset.v,place=$('[data-g=place] [aria-pressed=true]',f).dataset.v;
     let w;const dash=S.view==='dashboard'&&!S.full&&$('#wzone');if(dash){card.style.viewTransitionName='pin-card';const tr=vt(()=>{card.style.viewTransitionName='';w=addW(sp,title,size,place);const el=$(`#wzone [data-id="${w.id}"]`);if(el)el.style.viewTransitionName='pin-card'});if(tr&&tr.finished)tr.finished.finally(()=>{const el=$(`#wzone [data-id="${w.id}"]`);if(el)el.style.viewTransitionName=''});else{card.style.viewTransitionName=''}}else w=addW(sp,title,size,place);pinned=true;draw();
-    receipt(a,{ico:'pin',title:`Pinned “${title}”`,rows:[['Where','Your widgets'],['Size',SZ.find(z=>z[0]===size)[2]],['Refresh','Each run']],buttons:[{label:'View on dashboard',icon:'right',fn:()=>focusWidget(w.id)}],undo:()=>{removeW(w.id,false)}});
+    receipt(a,{ico:'pin',title:`Pinned “${title}”`,rows:[['Where','Your widgets'],['Size',SZ.find(z=>z[0]===size)[2]],['Refresh','Each run']],show:()=>focusWidget(w.id),undo:()=>{removeW(w.id,false)}});
     chips(a,[['Add another widget',()=>{const a2=turn(S.active,'Add another widget');say(a2,'What should it show?').then(()=>chips(a2,wChips(S.active)))}],['Edit layout',()=>{S.wEdit=true;renderWidgets({focus:w.id});toast('Editing layout. Press Done when you are finished.')}]])})}})}
 async function widgetThread(w,first){openPanel();let t=S.threads.find(x=>x.wid===w.id);if(t){activate(t);if(first)send(first);return}
  t=newThread(w.title,{label:w.title,icon:'bar',type:'widget'});t.wid=w.id;activate(t);const a=turn(t);
@@ -3120,7 +3227,7 @@ async function widgetChange(t,w,text,a){const x=text.toLowerCase(),d=WCAT[w.spec
  if(!ch.length){await say(a,'I can change the view, compare with the previous period, set an alert or remove it. Try one of these.');return chips(a,wSuggest(w).map(s=>[s]))}
  const prev={spec:{...w.spec},edited:w.edited,meta:w.meta};await tool(a,'Editing the widget','Edited the widget',600);w.spec=sp;w.edited=true;w.meta=wMeta(sp);renderWidgets({focus:w.id});
  await say(a,'Done. The numbers are the same, only the view changed.');
- receipt(a,{ico:'bar',title:`Edited “${w.title}”`,rows:[['Change',ch.join(', ')],['Scope','This widget'],['Where','Your widgets']],undo:()=>{w.spec=prev.spec;w.edited=prev.edited;w.meta=prev.meta;renderWidgets({focus:w.id})}});
+ receipt(a,{ico:'bar',title:`Edited “${w.title}”`,rows:[['Change',ch.join(', ')],['Scope','This widget'],['Where','Your widgets']],show:()=>focusWidget(w.id),undo:()=>{w.spec=prev.spec;w.edited=prev.edited;w.meta=prev.meta;renderWidgets({focus:w.id})}});
  chips(a,wSuggest(w).map(s=>[s]))}
 function widgetRoute(t,text,a){const x=text.toLowerCase();
  if(t.wid){const w=wById(t.wid);return w?widgetChange(t,w,text,a):say(a,'That widget is no longer on your dashboard.')}
@@ -3154,7 +3261,7 @@ const q=$('#q'),sb=$('#sendBtn');
 const auto=()=>{q.style.height='auto';q.style.height=Math.min(q.scrollHeight,120)+'px';sb.disabled=!q.value.trim()};
 q.addEventListener('input',auto);
 q.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#cform').requestSubmit()}});
-$('#cform').addEventListener('submit',e=>{e.preventDefault();const v=q.value;q.value='';auto();send(v)});
+$('#cform').addEventListener('submit',e=>{e.preventDefault();const v=q.value;if(!v.trim())return;if(window.micStop)micStop(true);q.value='';auto();const at=window.cmpTake?cmpTake():[];send(v);if(at.length&&window.cmpStamp)cmpStamp(at)});
 addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='j'){e.preventDefault();S.open?closePanel():openPanel()}
  if(e.key==='Escape'){if(!$('#pmenu').hidden){$('#pmenu').hidden=true;return}if(S.open)closePanel()}});
 addEventListener('resize',applyRail);
@@ -3240,6 +3347,7 @@ function openDlg(o){
  d.addEventListener('click',e=>{if(e.target.closest('[data-x]')&&!api.lock)api.close()});
  $('#layer').appendChild(sc);api.set(o);return api}
 
+window.openDlg=openDlg;/* v180: used by Show on chat receipts (js2) */
 /* confirm: consequence first, then the action. Destructive actions never use a generic "Are you sure". */
 function confirmDlg(o){const d=openDlg({title:o.title,sub:o.sub,body:o.body||'',foot:`<button class="btn ghost md" data-x>Cancel</button><button class="btn md ${o.danger?'danger solid':'primary'}" data-ok>${esc(o.ok)}</button>`});
  d.el.addEventListener('click',e=>{if(e.target.closest('[data-ok]')){d.close();o.onOk&&o.onOk()}});return d}
@@ -3931,7 +4039,7 @@ const effT=()=>document.documentElement.dataset.theme||(matchMedia('(prefers-col
 
 SEC.security=()=>({html:`<section class="sec">${secH('Sign-in','How you prove it’s you.')}
  <div class="card flush">${srow('Password','Last changed 4 months ago.',`<button class="btn ghost sm" data-a="pw">Change password</button>`)}
- ${srow('Two-step verification',SETV.tfa?'Required at every new device.':'Adds a code from your authenticator app. Recommended.',`${SETV.tfa?'<span class="tag ok dot">On</span><button class="btn ghost sm" data-a="tfa-off">Turn off</button>':'<span class="tag warn dot">Off</span><button class="btn primary sm" data-a="tfa">Set up</button>'}`)}
+ ${srow('Two-step verification',SETV.tfa?'Required at every new device.':'Adds a code from your authenticator app. Recommended.',`${SETV.tfa?'<span class="tag ok dot">On</span><button class="btn ghost sm" data-a="tfa-off">Turn off</button>':'<span class="tag warn dot">Off</span><button class="btn secondary sm" data-a="tfa">Set up</button>'}`)}
  ${SETV.passkeys.length?SETV.passkeys.map((k,i)=>srow(esc(k),'Added today with Touch ID',`<button class="btn danger sm" data-a="pk-del" data-i="${i}">Remove</button>`)).join(''):srow('Passkeys','Sign in with Touch ID, Face ID or a security key. No password to phish.',`<button class="btn ghost sm" data-a="pk">Add a passkey</button>`)}</div></section>
  <section class="sec">${secH('Active sessions','Where you’re signed in right now.',`<button class="btn secondary sm" data-a="so-all" ${SESS.length<2?'disabled':''}>Sign out everywhere else</button>`)}
  <div class="card flush" id="sessCard">${SESS.length?`<div class="twrap"><table class="tbl"><thead><tr><th>Device</th><th>Location</th><th>Last active</th><th class="r act"><span class="sr">Action</span></th></tr></thead><tbody>${SESS.map((s,i)=>`<tr><td><b class="dn">${esc(s[0])}${s[4]?' <span class="you">(this device)</span>':''}</b><small class="sub">${esc(s[1])}</small></td><td>${esc(s[2])}</td><td class="when">${esc(s[3])}</td><td class="r act">${s[4]?'':`<button class="btn ghost sm" data-a="so" data-i="${i}">Sign out</button>`}</td></tr>`).join('')}</tbody></table></div>`:''}</div></section>`,
@@ -4061,7 +4169,7 @@ async function improveBlock(card){const k=card.dataset.k,blk=BR.blocks.find(x=>x
  const done=()=>{const r=$('.row2',c);r&&r.remove()};
  $('[data-do]',c).onclick=()=>{done();const prev={txt:blk.txt,when:blk.when,by:blk.by};blk.txt=impApply(blk.txt,im);blk.when='just now';blk.by='Gandalf (you accepted)';
   if(S.view==='brain'){R.brain.render();const f=$(`#bl [data-k=${k}] .txt`);f&&f.classList.add('fresh')}
-  receipt(a,{ico:'brain',title:`Updated ${blk.t}`,rows:[['Block',blk.t],['Lines',String(im.lines.length)],['Where','Brain']],undo:async()=>{blk.txt=prev.txt;blk.when=prev.when;blk.by=prev.by;if(S.view==='brain')R.brain.render()}})};
+  receipt(a,{ico:'brain',title:`Updated ${blk.t}`,rows:[['Block',blk.t],['Lines',String(im.lines.length)],['Where','Brain']],show:()=>go('brain'),undo:async()=>{blk.txt=prev.txt;blk.when=prev.when;blk.by=prev.by;if(S.view==='brain')R.brain.render()}})};
  $('[data-edit]',c).onclick=()=>{done();const open=()=>{const sec=$(`#bl [data-k=${k}]`);if(sec)editBlock(sec,impApply(blk.txt,im))};if(S.view!=='brain'){go('brain');setTimeout(open,350)}else open()};
  $('[data-no]',c).onclick=()=>{done();say(a,'Okay. Nothing changed.')}}
 
@@ -4109,17 +4217,30 @@ R.workflows={narrow:false,render(){const first=S.acct==='new'&&!obBase(),all=fir
 VT.gandalf='Gandalf';
 const first=()=>'Erdem';
 function greet(){const hr=new Date().getHours();return (hr<5?'Good evening':hr<12?'Good morning':hr<18?'Good afternoon':'Good evening')+', '+first()}
+/* v181: the composer is the page. Heading, then the composer in the middle of the screen, then quick actions.
+   Signals, approvals and setup are supporting content below. The composer element is moved into the home
+   while the chat is empty and goes back to the panel footer as soon as the first message lands (gPlace). */
+const GQA=[['signal','Look into a signal','alert'],['alert','Set an alert','bell'],['chart','Change a chart','bar'],['brain','Improve Brain','brain']];
+function gActsH(list){return `<div class="gacts" role="group" aria-label="Quick actions">${list.map(([k,l,i,attr])=>`<button class="btn secondary sm" type="button" ${attr||`data-gact="${k}"`}>${icon(i)}${l}</button>`).join('')}</div>`}
+function gRun(k){const a=ACTS.find(x=>x.k===k);if(a)a.fn()}
 function addHome(t){t.home=true;if(S.acct==='new'&&typeof obHome==='function'&&!obAll()){return obHome(t)}const rank={bad:0,warn:1,ok:2},live=LIVESIG().slice().sort((x,y)=>rank[SIGS[x].tone]-rank[SIGS[y].tone]),need=S.runs.filter(r=>r.status==='needs').length;
- const sub=live.length?`${live.length} signal${live.length>1?'s':''} on Nike this week.${need?` ${need} plan${need>1?'s are':' is'} waiting for your approval.`:''}`:`No new signals on Nike.${need?` ${need} plan${need>1?'s are':' is'} waiting for your approval.`:''} Ask for anything.`;
  const tl={bad:'Needs attention',warn:'Worth watching',ok:'Good news'};
- const sig=(id,lead)=>{const g=SIGS[id];return lead
-  ?`<section class="glead"><h2><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i>${esc(g.title)}</h2><p>${esc(g.body)}</p><button class="btn secondary sm" type="button" data-gsig="${id}">Look into it</button></section>`
-  :`<li><button class="gcard" type="button" data-gsig="${id}"><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i><span class="gx"><b>${esc(g.title)}</b><span>${esc(g.body)}</span></span><span class="go"><span class="sr">Look into it</span>${icon('right')}</span></button></li>`};
- const el=h(`<div class="ghome"><div class="gt"><h1>${esc(greet())}</h1><p>${esc(sub)}</p></div><div class="gres-slot" data-resume></div>
-  ${live.length?`<div class="gsug" role="group" aria-label="Signals to look into">${sig(live[0],true)}${live.length>1?`<ul class="grows">${live.slice(1).map(id=>sig(id,false)).join('')}</ul>`:''}</div>`:''}
-  <div class="gq" role="group" aria-label="Or start with"><button class="btn secondary sm" type="button" data-gq="Set an alert">${icon('bell')}Set an alert</button><button class="btn secondary sm" type="button" data-gq="Show Visibility as bars">${icon('bar')}Show Visibility as bars</button></div></div>`);
- el.onclick=e=>{const c=e.target.closest('[data-gsig]'),q=e.target.closest('[data-gq]');if(c)lookInto(c.dataset.gsig);else if(q)send(q.dataset.gq)};
- t.el.appendChild(el)}
+ const sig=id=>{const g=SIGS[id];return `<li><button class="gcard" type="button" data-gsig="${id}"><i class="gd ${g.tone}" role="img" aria-label="${tl[g.tone]}"></i><span class="gx"><b>${esc(g.title)}</b><span>${esc(g.body)}</span></span><span class="go"><span class="sr">Look into it</span>${icon('right')}</span></button></li>`};
+ const meta=[live.length?`${live.length} signal${live.length>1?'s':''}`:'No new signals',need?`${need} plan${need>1?'s':''} waiting for approval`:''].filter(Boolean).join(', ');
+ const el=h(`<div class="ghome g2"><div class="gt"><h1>${esc(greet())}</h1><p>Ask about Nike, plan a fix, or change a chart.</p></div>
+  <div class="gcomp" data-gcomp></div>
+  ${gActsH(GQA)}
+  <div class="gres-slot" data-resume></div>
+  <section class="gsupp" aria-labelledby="gsH"><h2 class="gs-h" id="gsH">This week on Nike<span>${esc(meta)}</span></h2>${live.length?`<ul class="grows">${live.map(sig).join('')}</ul>`:''}</section></div>`);
+ el.onclick=e=>{const c=e.target.closest('[data-gsig]'),q=e.target.closest('[data-gact]');if(c)lookInto(c.dataset.gsig);else if(q)gRun(q.dataset.gact)};
+ t.el.appendChild(el);gPlace()}
+/* references are held here so the composer survives when an empty home thread is removed while it holds it */
+const G_CF=$('#cform'),G_DK=$('.ob-dock'),G_PF=$('#panel .pf');
+function gPlace(){const P=$('#panel'),PF=G_PF,CF=G_CF,DK=G_DK;if(!P||!PF||!CF)return;const t=S.active;
+ const home=!!(S.full&&t&&t.home&&!t.el.hidden&&!$('.turn',t.el)),slot=home&&$('[data-gcomp]',t.el),ds=home&&$('[data-gdock]',t.el);
+ if(slot){if(CF.parentElement!==slot)slot.appendChild(CF);if(DK&&ds&&DK.parentElement!==ds)ds.appendChild(DK);P.classList.add('g-home')}
+ else{if(DK&&DK.parentElement!==PF)PF.insertBefore(DK,PF.firstChild);if(CF.parentElement!==PF)PF.appendChild(CF);P.classList.remove('g-home')}}
+new MutationObserver(()=>gPlace()).observe($('#pbody'),{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});
 dropHome=function(){S.threads.filter(x=>x.home&&!$('.turn',x.el)&&x!==S.active).forEach(x=>{x.el.remove();S.threads.splice(S.threads.indexOf(x),1)});renderRecents()};
 /* top bar on this page: no breadcrumb. A named chat shows its title as plain text; New chat sits where the CTA sits on every other page. */
 crumbG=function(){const t=S.active,named=t&&t.title!=='New chat';const c=$('#crumbs');c.setAttribute('aria-label','Current chat');c.innerHTML=named?`<span aria-current="page">${esc(t.title)}</span>`:''};
@@ -4134,8 +4255,8 @@ $('#recents').addEventListener('click',e=>{const b=e.target.closest('[data-th]')
 function fullOn(){if(S.full)return;if(S.open)closePanel();S.full=true;S.open=true;
  document.body.classList.add('full');document.body.classList.remove('pn','rail');$('.main').appendChild($('#panel'));
  if(!S.active){const t=newThread('New chat',null);addHome(t);activate(t)}else activate(S.active);
- renderSigs();renderRecents();fades()}
-function fullOff(){if(!S.full)return;S.full=false;S.open=false;document.body.classList.remove('full');document.body.appendChild($('#panel'));$('#pmenu').hidden=true;renderSigs();renderRecents()}
+ renderSigs();renderRecents();fades();gPlace()}
+function fullOff(){if(!S.full)return;S.full=false;S.open=false;document.body.classList.remove('full');document.body.appendChild($('#panel'));$('#pmenu').hidden=true;renderSigs();renderRecents();gPlace()}
 R.gandalf={narrow:false,render(){$('#page').innerHTML='';fullOn();crumbG();gActs();renderResume();if(!$('#auth'))setTimeout(()=>$('#q').focus(),reduce?0:60)}};
 /* composer: slash actions popover. Typing "/" or pressing the hint opens it; arrows move, Enter or Tab runs, Escape closes. */
 const ACTS=[
@@ -4282,7 +4403,7 @@ const BCAT=[
   ['live','Live campaigns','The campaigns that run now, with their message and dates.'],
   ['programs','Programs','The ongoing programs, such as partnerships or events.'],
   ['calendar','Content calendar','The content that is planned, with its dates.']]}];
-const CATBY=Object.fromEntries(BCAT.map(c=>[c.k,c]));
+const CATBY=Object.fromEntries(BCAT.map(c=>[c.k,c]));window.BCAT=BCAT;/* v182: read by the composer + menu */
 const SUBS=BCAT.flatMap(c=>c.subs.map(([k,t,d])=>({id:c.k+'.'+k,cat:c.k,k,t,d})));
 const SUBBY=Object.fromEntries(SUBS.map(s=>[s.id,s]));
 const SHORT={'company.people':'People','company.voice':'Voice','offerings.products':'Products','audience.journey':'Journey','competitor.why':'Why us','execution.live':'Live','execution.calendar':'Calendar','strategy.visibility':'Visibility','offerings.capabilities':'Capabilities'};
@@ -4623,7 +4744,7 @@ async function fillGaps(ids){if(!ids.length)return;openPanel();const one=ids.len
  const done=()=>{const r=$('.row2',c);r&&r.remove()};
  $('[data-do]',c).onclick=()=>{done();const prev=ids.map(id=>[id,entries(id).slice()]);ids.forEach(id=>setEntries(id,[...entries(id),...gapDraft(id).map(l=>en(l,'Gandalf (you accepted)','just now'))],'Gandalf (you accepted)'));
   if(S.view==='brain')R.brain.render();
-  receipt(a,{ico:'brain',title:one?`Drafted ${SUBBY[ids[0]].t}`:`Filled ${ids.length} sections`,rows:[['Sections',ids.map(id=>SUBBY[id].t).join(', ')],['Where','Brain › Brand context']],undo:async()=>{prev.forEach(([id,l])=>setEntries(id,l,false));if(S.view==='brain')R.brain.render()}})};
+  receipt(a,{ico:'brain',title:one?`Drafted ${SUBBY[ids[0]].t}`:`Filled ${ids.length} sections`,rows:[['Sections',ids.map(id=>SUBBY[id].t).join(', ')],['Where','Brain › Brand context']],show:()=>{BV.open=ids[0];go('brain')},undo:async()=>{prev.forEach(([id,l])=>setEntries(id,l,false));if(S.view==='brain')R.brain.render()}})};
  $('[data-no]',c).onclick=()=>{done();say(a,'Okay. Nothing changed.')}}
 /* Older callers ("Improve with Gandalf → Edit first") open the mapped section with the draft in its editor. */
 function editBlock(card,draft){const id=KMAP[card.dataset.k];if(!id)return;BV.tab='context';const go_=()=>{BV.view=SUBBY[id].cat;BV.open=id;BV.editing={id,i:'all',draft:draft||''};BV.lay=null;R.brain.render()};if(S.view!=='brain'){go('brain');setTimeout(go_,60)}else go_()}
@@ -5102,6 +5223,7 @@ function wireOrbit(){_wireOrbitBase();const p=$('#page');const base=p.onclick;
    if(a==='more'){rowMenu(b,id);return}if(a==='reload'){S.ipreset='loading';R.integrations.render();setTimeout(()=>{S.ipreset='linked';syncIpre();if(S.view==='integrations')R.integrations.render()},900);return}}
   base&&base.call(p,e)}}
 function syncIpre(){$$('#pp [data-k=ipre] button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===S.ipreset)))}
+window.CAT8=CAT8;window.curInt=curInt;/* v182: read by the composer + menu */
 
 /* =============== FIRST LAUNCH (new account) ===============
    Prototype config: Prototype controls › Account › First launch. Existing account is the default.
@@ -5136,8 +5258,9 @@ function obInner(){const o=S.ob,d=obDone(),n=d.filter(Boolean).length,it=obItems
  <ol class="ob-l">${it.map((x,i)=>{const st=d[i]?'done':(x.auto?(d[1]?'wait':'lock'):(i===cur?'cur':'todo'));return `<li class="ob-i ${st}" data-k="${x.k}"><span class="ob-s ${lit[i]?'lit':''}" aria-hidden="true">${st==='done'?OB_CHECK:st==='wait'?'<i class="ob-pulse"></i>':''}</span><div class="ob-t"><b>${esc(x.t)}</b><small>${esc(x.x)}</small></div>${x.m&&st!=='done'?`<span class="ob-m mono">${x.m}</span>`:''}${x.auto?(st==='wait'?'<span class="tag mute dot">Running</span>':st==='done'?'<span class="tag ok dot">Done</span>':'<span class="tag mute">Waiting</span>'):`<button class="${st==='cur'?'btn primary sm':'lnk act'}" data-ob="${x.k}">${x.b}</button>`}</li>`}).join('')}</ol>
  <div class="ob-later"><span>After the baseline</span><button class="lnk act" data-ob="team">Invite your team</button><button class="lnk act" data-ob="weekly">Get a weekly summary</button></div>`}
 function obGuideH(){return `<section class="ob-guide" aria-label="How Henneth works"><h3>How Henneth works</h3><ol><li><b>Signals</b><small>Gandalf watches how AI assistants talk about Nike and flags what changed.</small></li><li><b>Plans</b><small>For each signal it drafts a plan. Nothing runs until you approve it.</small></li><li><b>Results</b><small>After it acts, Gandalf measures the effect and says whether it worked.</small></li></ol><p><span><span class="kbd">⌘K</span> jump anywhere</span><span><span class="kbd">⌘J</span> ask Gandalf from any page</span></p></section>`}
-function obHome(t){const el=h(`<div class="ghome ob-home"><div class="gt"><h1>Welcome to Henneth, ${esc(first())}</h1><p>Nike is created. Once it’s set up, Gandalf starts watching how AI assistants talk about it.</p></div><div class="gres-slot" data-resume></div>${obGuideH()}</div>`);
- el.onclick=obClick;t.el.appendChild(el);const dk=$('.ob-dock');if(dk)dk.onclick=obClick;obRefresh();renderResume()}
+function obHome(t){const el=h(`<div class="ghome g2 ob-home"><div class="gt"><h1>Welcome to Henneth, ${esc(first())}</h1><p>Nike is created. Ask anything, or set it up first.</p></div><div class="gcomp" data-gcomp></div>${gActsH([['brain','Improve Brain','brain'],['int','Connect a tool','plug','data-gact="int"'],['team','Invite your team','users','data-ob="team"']])}<div class="gres-slot" data-resume></div><div class="gdock" data-gdock></div>${obGuideH()}</div>`);
+ el.addEventListener('click',e=>{const q=e.target.closest('[data-gact]');if(!q)return;if(q.dataset.gact==='int')guard(()=>go('integrations'));else gRun(q.dataset.gact)});
+ el.onclick=obClick;t.el.appendChild(el);const dk=$('.ob-dock');if(dk)dk.onclick=obClick;obRefresh();renderResume();gPlace()}
 function obAskH(){const c=S.ob.chat,going=c&&!c.done;return `<section class="card sq ob-ask" aria-label="Set up Nike"><div class="ob-ask-h"><div><h2>${going?'Pick up where we left off?':'Set up Nike by talking?'}</h2><p>${going?`We got through ${c.i} of ${OB_Q.length} questions. I’ll carry on from the next one.`:`I’ll ask ${OB_Q.length} quick questions, one at a time. Most are a tap; type only if you want to. About 5 minutes.`}</p></div></div><div class="ob-ask-a"><button class="btn primary md" data-ob="talk">${going?'Continue':'Set up by talking'}</button><button class="btn secondary md" data-ob="manual">${going?'Use the checklist':'Skip for now'}</button></div></section>`}
 function obRefresh(){if(S.acct!=='new'||!S.ob){const c=$('#obChip');c&&(c.hidden=true);return}
  const d=obDone(),n=d.filter(Boolean).length;
@@ -5405,6 +5528,67 @@ xsInit($('#page'));
   $$('.plot text.val',c).forEach((t,i)=>t.animate([{opacity:0},{opacity:1}],{duration:160,delay:120+i*25,fill:'backwards'}));
   $$('.plot circle[r="4.5"]',c).forEach(ci=>ci.animate([{opacity:0,transform:'scale(.4)'},{opacity:1,transform:'none'}],{duration:180,delay:300,fill:'backwards'}))};
  addEventListener('resize',()=>{const b=$('#tabs'),s=b&&$('.tab[aria-selected=true]',b),ind=b&&$('.tab-ind',b);if(s&&ind){ind.style.transition='none';ind.style.transform=`translateX(${s.offsetLeft}px)`;ind.style.width=(s.offsetWidth-20)+'px';ind.getBoundingClientRect();ind.style.transition=''}});
+})();
+/* =============== v182: composer + menu and dictation ===============
+   + opens a menu of what Gandalf can take as input today: files, Brain context, a signal, a connected tool.
+   Picks become removable chips above the text and travel with the message. The mic dictates with the
+   browser's speech recognition; where the browser or the frame blocks the microphone, the prototype
+   simulates it so the flow can still be reviewed. */
+(function(){const F=$('#cform'),Q=$('#q'),B=$('#addBtn'),M=$('#addMenu'),A=$('#atts'),FI=$('#addFile'),MIC=$('#micBtn');if(!F||!B)return;
+ let atts=[],lvl='root';
+ const esc2=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const ic=n=>`<svg class="i"><use href="#i-${n}"/></svg>`;
+ const ROOT=[{k:'file',l:'Add files or photos',d:'Upload from your computer',i:'clip'},{k:'brain',l:'Add from Brain',d:'Reference brand context',i:'brain',sub:1},{k:'signal',l:'Reference a signal',d:'Ground the answer in this week’s data',i:'alert',sub:1},{k:'tool',l:'Use a connected tool',d:'Read from your integrations',i:'plug',sub:1}];
+ const tools=()=>{let st={};try{st=curInt()}catch(_){};return (typeof CAT8!=='undefined'?CAT8:[]).filter(c=>st[c.id]&&st[c.id].st==='connected')};
+ const subItems=k=>k==='brain'?BCAT.map(c=>({k:'b:'+c.k,l:c.t,d:c.d.split(',')[0].replace(/\.$/,''),i:'brain',chip:c.t+' (Brain)'}))
+  :k==='signal'?(LIVESIG().length?LIVESIG().map(id=>({k:'s:'+id,l:SIGS[id].title,d:SIGS[id].body,i:'alert',chip:SIGS[id].title})):[{k:'none',l:'No signals this week',d:'Signals appear after the first run',i:'alert',dis:1}])
+  :k==='tool'?[...tools().map(c=>({k:'t:'+c.id,l:c.n,d:c.c,i:'plug',chip:c.n})),{k:'go-int',l:'Connect another tool',d:'Opens Integrations',i:'plus'}]:[];
+ const TITLE={brain:'Add from Brain',signal:'Reference a signal',tool:'Use a connected tool'};
+ function paint(){const items=lvl==='root'?ROOT:subItems(lvl);
+  M.innerHTML=(lvl==='root'?'':`<button type="button" class="am-back" role="menuitem" data-back>${ic('left')}<span>${TITLE[lvl]}</span></button>`)+
+   items.map(x=>`<button type="button" class="am-i" role="menuitem" data-k="${x.k}" ${x.dis?'aria-disabled="true"':''} ${x.sub?'aria-haspopup="menu"':''}>${ic(x.i)}<span class="am-t"><b>${esc2(x.l)}</b><span>${esc2(x.d||'')}</span></span>${x.sub?ic('right'):''}</button>`).join('');}
+ function items(){return [...M.querySelectorAll('[role=menuitem]:not([aria-disabled=true])')]}
+ function open(){if(window.slClose)try{slClose()}catch(_){};lvl='root';paint();M.hidden=false;B.setAttribute('aria-expanded','true');items()[0]&&items()[0].focus()}
+ function close(focus){if(M.hidden)return;M.hidden=true;B.setAttribute('aria-expanded','false');if(focus)B.focus()}
+ function go(k){lvl=k;paint();const f=items();(f[lvl==='root'?0:1]||f[0])&&(f[lvl==='root'?0:1]||f[0]).focus()}
+ function add(a){if(atts.some(x=>x.k===a.k))return;atts.push(a);draw();Q.focus()}
+ function draw(){A.hidden=!atts.length;A.innerHTML=atts.map((a,i)=>`<span class="att">${ic(a.i)}<span class="att-l" title="${esc2(a.l)}">${esc2(a.l)}</span><button type="button" class="att-x" data-i="${i}" aria-label="Remove ${esc2(a.l)}">${ic('x')}</button></span>`).join('')}
+ B.addEventListener('click',()=>M.hidden?open():close(true));
+ M.addEventListener('click',e=>{const bk=e.target.closest('[data-back]');if(bk){go('root');return}const it=e.target.closest('.am-i');if(!it||it.getAttribute('aria-disabled')==='true')return;const k=it.dataset.k;
+  if(k==='file'){close();FI.value='';FI.click();return}
+  if(ROOT.some(r=>r.k===k&&r.sub)){go(k);return}
+  if(k==='go-int'){close();go_('integrations');return}
+  const x=subItems(lvl).find(s=>s.k===k);if(x){add({k,l:x.chip,i:x.i});close()}});
+ const go_=v=>window.__henneth?window.__henneth.go(v):null;
+ M.addEventListener('keydown',e=>{const f=items(),i=f.indexOf(document.activeElement);
+  if(e.key==='ArrowDown'){e.preventDefault();f[(i+1)%f.length].focus()}else if(e.key==='ArrowUp'){e.preventDefault();f[(i-1+f.length)%f.length].focus()}
+  else if(e.key==='Home'){e.preventDefault();f[0].focus()}else if(e.key==='End'){e.preventDefault();f[f.length-1].focus()}
+  else if(e.key==='ArrowRight'){const it=document.activeElement;if(it&&it.getAttribute('aria-haspopup')){e.preventDefault();it.click()}}
+  else if(e.key==='ArrowLeft'&&lvl!=='root'){e.preventDefault();go('root')}
+  else if(e.key==='Escape'){e.preventDefault();e.stopPropagation();if(lvl!=='root')go('root');else close(true)}
+  else if(e.key==='Tab')close()});
+ document.addEventListener('mousedown',e=>{if(!M.hidden&&!M.contains(e.target)&&!B.contains(e.target))close()});
+ FI.addEventListener('change',()=>{[...FI.files].forEach(f=>add({k:'f:'+f.name+f.size,l:f.name,i:/^image\//.test(f.type)?'file':'clip'}));});
+ A.addEventListener('click',e=>{const x=e.target.closest('.att-x');if(!x)return;atts.splice(+x.dataset.i,1);draw();Q.focus()});
+ window.cmpTake=()=>{const a=atts.slice();atts=[];draw();return a};
+ window.cmpStamp=list=>{const t=S.active;if(!t)return;const us=t.el.querySelectorAll('.turn .u');const u=us[us.length-1];if(!u)return;
+  u.insertAdjacentHTML('beforebegin',`<div class="u-atts">${list.map(a=>`<span class="att">${ic(a.i)}<span class="att-l">${esc2(a.l)}</span></span>`).join('')}</div>`)};
+ /* ---- dictation ---- */
+ let rec=null,simT=null,base='',on=false;const PH=Q.getAttribute('placeholder');
+ function set(v,sim){on=v;F.classList.toggle('rec',v);F.classList.toggle('sim',!!(v&&sim));MIC.setAttribute('aria-pressed',String(v));MIC.setAttribute('aria-label',v?'Stop dictation':'Dictate');MIC.dataset.tip=v?'Stop':'Dictate';
+  MIC.querySelector('use').setAttribute('href',v?'#i-stop':'#i-mic');Q.setAttribute('placeholder',v?'Listening. Speak, then press stop.':PH);
+  const l=F.querySelector('.rec-l span');if(l)l.textContent=sim?'Listening, simulated here':'Listening'}
+ function feed(s){Q.value=base+s;Q.dispatchEvent(new Event('input'))}
+ function simulate(){set(true,true);const w='How did Perplexity talk about Nike this week, and what should we fix first?'.split(' ');let i=0;simT=setInterval(()=>{if(i>=w.length){window.micStop();return}feed(w.slice(0,++i).join(' '))},reduce?40:170)}
+ window.micStop=function(silent){if(rec){const r=rec;rec=null;try{r.stop()}catch(_){}}clearInterval(simT);simT=null;if(on){set(false);if(!silent)Q.focus()}};
+ function start(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;close();base=Q.value.trim()?Q.value.replace(/\s*$/,' '):'';
+  if(!SR){simulate();return}
+  try{rec=new SR();rec.lang=navigator.language||'en-US';rec.interimResults=true;rec.continuous=true;
+   rec.onresult=e=>{let s='';for(const r of e.results)s+=r[0].transcript;feed(s)};
+   rec.onerror=e=>{const r=rec;rec=null;if(['not-allowed','service-not-allowed','audio-capture','network'].includes(e.error)&&!simT){try{r.abort()}catch(_){}simulate()}else window.micStop()};
+   rec.onend=()=>{if(rec)window.micStop()};rec.start();set(true,false)}catch(_){rec=null;simulate()}}
+ MIC.addEventListener('click',()=>on?window.micStop():start());
+ Q.addEventListener('keydown',e=>{if(e.key==='Escape'&&on){e.preventDefault();e.stopPropagation();window.micStop()}},true);
 })();
 
 })();
