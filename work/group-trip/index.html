@@ -568,13 +568,14 @@
     <h1 class="d-t" id="drT">One plan for where the group eats and who pays</h1>
     <p class="d-one">A mobile app for group trips, designed around one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic.</p>
     <div class="d-imp"><div><b>3 acts</b><span>decide, pay and settle, played end to end</span></div><div><b>1 object</b><span>the poll result, the plan item and the expense</span></div><div><b>2 phones</b><span>the same moment from the person owed and the person paying</span></div></div>
+    <p class="note d-impn">It has not launched yet, so there are no usage numbers. What the design proves is the link: every screen reuses a decision or a cost that already exists in the plan, so nobody types anything twice.</p>
     <div class="d-tl">
       <div><span>Role</span><b>Product design and the working prototype</b></div>
       <div><span>Team</span><b>Solo</b></div>
       
       <div><span>Year</span><b>2026</b></div>
     </div>
-    <div class="glance"><div><u>The decision that mattered</u><p>Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.</p></div><div><u>What it shows</u><p><b>3 acts</b> decide, pay and settle, played end to end.</p></div></div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.</p></div><div><u>What it cost</u><p>Less democratic, and there is no runoff. In return nobody has to be the one who calls it, which is where group chats stall.</p></div></div>
     <figure class="d-fig" data-ph="hero.png · The plan after the poll"><img src="images/case-06/hero.png" alt="The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0" onerror="figFail(this)"></figure><p class="d-cap">The plan after the vote. Dinner came from the poll, and the score stays on the item.</p>
     <section class="d-b"><h3>Context</h3><p>Group trips break down at two points. The decision happens in a chat thread, where the loudest voice wins and nobody commits. The money happens later, in a splitting app, as a pile of small transfers and reminders. The plan sits in a third place, and nothing connects them.</p><div class="before"><u>Before</u><p>Three tools for one dinner: a chat to argue in, a notes app for the plan, a splitting app for the bill.</p></div></section>
     <section class="d-b"><h3>Tension</h3><p>A map of the whole app would have been the safe deliverable, and shallow everywhere. I scoped it to one evening and played it end to end with real states, so every rule had to survive being used.</p></section>
@@ -606,7 +607,6 @@
       </div></div></section>
     
     <section class="d-b"><h3>The three acts</h3><figure class="d-fig" data-ph="decide.gif · Dinner, by poll"><img src="images/case-06/decide.gif" alt="Screen recording: the free evening slot opens a new poll, three places are picked from a map, and the poll is sent" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The empty evening slot starts the poll. Up to four places, picked from the map or typed in.</p><figure class="d-fig" data-ph="votes.gif · The plan updates itself"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/votes-still.png"><img src="images/case-06/votes.gif" alt="Screen recording: votes arrive one by one, the poll closes 3 to 0, and the winner appears in tonight’s plan" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">The poll closes on the last vote. The winner is in everyone’s plan before anyone asks.</p><figure class="d-fig" data-ph="expense.gif · Split by item"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/expense-still.png"><img src="images/case-06/expense.gif" alt="Screen recording: an expense linked to dinner gets two items, one person is removed from the wine, and balances count up to their new values" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">The expense is already linked to dinner. Balances count from their old value, so the change reads before the total.</p><figure class="d-fig" data-ph="settle.gif · Fewest transfers"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/settle-still.png"><img src="images/case-06/settle.gif" alt="Screen recording: settle up shows two transfers, explains why only two, sends requests, then switches to the other phone where the payment is made" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Two transfers for the whole trip. Then the other phone, where the request says exactly what it covers.</p></section>
-    <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>3 acts</b><span>decide, pay and settle, played end to end</span></div><div><b>1 object</b><span>the poll result, the plan item and the expense</span></div><div><b>2 phones</b><span>the same moment from the person owed and the person paying</span></div></div><p class="note">It has not launched yet, so there are no usage numbers. What the design proves is the link: every screen reuses a decision or a cost that already exists in the plan, so nobody types anything twice.</p></section>
     
     <details class="more"><summary><span class="pm"></span>More: craft details</summary><div class="more-in"><section class="d-b"><h3>Craft</h3><p>It is a working app in plain JavaScript, not a click-through file, so timing and state could be judged on a real phone.</p>
       <ul class="lst ld"><li><b>Balances count up</b><span>Each balance animates from its old value to its new one in 900ms.</span></li><li><b>Haptics</b><span>A short vibration on votes, payments and selections.</span></li><li><b>Notifications</b><span>Every banner opens the screen it talks about. They are what make it feel shared.</span></li><li><b>State that survives</b><span>The demo keeps its state, so a reload on a phone does not lose the evening.</span></li></ul></section></div></details>
@@ -1306,7 +1306,7 @@ const P = [
   metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
   one:'Components disagreed on size, spacing and type across two dashboards. Nothing was broken enough to escalate, so it lasted.',
   role:'Design system owner',
-  team:'Design and frontend across teams, 9 leaders for the type decision',
+  team:'Design and frontend across all product teams, 9 leaders for the type decision',
   time:'Ongoing initiative',
   year:'2026',
   hero:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',fb:'images/case-04/hero.png',
@@ -1386,6 +1386,8 @@ const P = [
     ]}
   ],
   leadership:[
+    ['Getting every team onto it','I pushed every product team to adopt the system, beyond the two dashboards it started from. A library only some teams use becomes the next source of drift.'],
+    ['Auditing every release','After development I audited each feature in a sandbox environment before release, so it shipped without design bugs.'],
     ['Getting a typeface approved','I mapped the system and made the case on licence cost, figures and text hierarchy. Nine leaders signed off.'],
     ['Absorbing a late reversal','Our VP rejected the segmented control in development planning. I produced alternatives and tested them with other leads. The revision is better, and it cost a cycle.'],
     ['Pulling my own feature','The keyboard focus ring looked right in isolation and clipped in real layouts. I paused it rather than ship a broken accessibility affordance.']
@@ -1522,7 +1524,6 @@ const P = [
   team:'Solo',
   year:'2026',
   keyH:'The three acts',
-  glanceH:'What it shows',
   keyN:4,
   hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
     alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
@@ -1685,13 +1686,14 @@ function renderCase(c){
     <h1 class="d-t" id="drT">${c.t}</h1>
     <p class="d-one">${c.one}</p>
     ${imp}
+    <p class="note d-impn">${c.impactNote}</p>
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
       ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
-    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it cost</u><p>${d0[2]}</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1709,7 +1711,6 @@ function renderCase(c){
       </div>`).join('')}</div>`):''}
     ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
     ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
-    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
     ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}

@@ -568,13 +568,14 @@
     <h1 class="d-t" id="drT">Arguing for the project nobody had funded</h1>
     <p class="d-one">Promotions shipped early as a small feature: a name, active or inactive, two dates. They also carried about 10% of platform revenue, and account managers tracked hundreds of them in side spreadsheets because the product could not say what state anything was in.</p>
     <div class="d-imp"><div><b>+12% publisher created</b><span>promotions created by self serve publishers, two months after release</span></div><div><b>+18% AM created</b><span>promotions created by account managers, same window, on several hundred active</span></div><div><b>2 to 5 states</b><span>in the table, replacing an active or inactive flag</span></div></div>
+    <p class="note d-impn">Account managers gained more than publishers. That fits: they run the volume, and they were the ones keeping spreadsheets.</p>
     <div class="d-tl">
       <div><span>Role</span><b>Product designer, end to end</b></div>
       <div><span>Team</span><b>PM, engineering, account managers as primary users</b></div>
       <div><span>Timeline</span><b>Analysis, then design in stages</b></div>
       <div><span>Year</span><b>2026</b></div>
     </div>
-    <div class="glance"><div><u>The decision that mattered</u><p>Five explicit states: scheduled, active, expired, draft and inactive.</p></div><div><u>What it changed</u><p><b>+12% publisher created</b> promotions created by self serve publishers, two months after release.</p></div></div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Five explicit states: scheduled, active, expired, draft and inactive.</p></div><div><u>What it cost</u><p>Dates would have been cheaper. They cannot tell a recurring promotion between runs from a parked one, and a draft has no dates. The three states causing confusion are exactly the three dates cannot express.</p></div></div>
     <figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-03/hero-still.png"><img src="images/case-03/hero.gif" alt="Filtering the promotions table by Expired status, then opening the action menu of an expired promotion on Reactivate" data-fb="images/case-03/lifecycle.png" onerror="figFail(this)"></picture></figure><p class="d-cap">Status is a filter like any other. An expired promotion is one filter and one click from reactivation.</p>
     <section class="d-b"><h3>Context</h3><p>We earn per install on the offers inside Playtime, and promotions are one of the strongest levers on that. My first change had nothing to do with lifecycle: I linked each promotion to its publisher, because the table did not say whose it was.</p><figure class="d-fig beforefig"><img src="images/case-03/old-table.png" alt="The original promotions table with only active and inactive statuses, no filtering and no date range control" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> Two statuses, no filters, no date range. Timing had to be read from the name or tracked somewhere else.</p></section>
     <section class="d-b"><h3>Tension</h3><p>Promotions sat behind much larger projects, and the view was that they worked. Nobody disputed the table was crude. They disputed that it mattered. So I put numbers on it: roughly 10% of platform revenue, the hours AMs spent reconciling side trackers, and the risk of a promotion overrunning or never starting. Framed as a recurring cost, it got funded. That took longer than the design.</p></section>
@@ -600,7 +601,6 @@
       </div></div></section>
     <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Making an invisible cost visible</b><span>Nobody said promotions worked well. They said other things mattered more. I quantified the revenue and the AM hours and presented them as a recurring cost.</span></li><li><b>Disagreeing with my PM</b><span>I argued for two confirmations from a past incident and the asymmetry of the actions. Consistency was the weaker argument here.</span></li><li><b>Taking a review correction</b><span>I first put the date picker inside the filter panel, which broke our established top bar pattern. A review caught it and I moved it.</span></li></ul></section>
     <section class="d-b"><h3>What shipped</h3><figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-03/guards-still.png"><img src="images/case-03/guards.gif" alt="Choosing Edit on a live promotion opens a confirmation naming the apps affected, then choosing Deactivate opens a second confirmation" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Friction on purpose. Editing or deactivating a live promotion says who it reaches before it goes through.</p><figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-03/reactivate-still.png"><img src="images/case-03/reactivate.gif" alt="Reactivating an expired promotion: choosing 14 days and a start date, reading the summary of the new window, then scheduling it" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Friction removed on purpose. An expired promotion comes back by setting a new window, without rebuilding the form.</p></section>
-    <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>+12% publisher created</b><span>promotions created by self serve publishers, two months after release</span></div><div><b>+18% AM created</b><span>promotions created by account managers, same window, on several hundred active</span></div><div><b>2 to 5 states</b><span>in the table, replacing an active or inactive flag</span></div></div><p class="note">Account managers gained more than publishers. That fits: they run the volume, and they were the ones keeping spreadsheets.</p></section>
     
     <details class="more"><summary><span class="pm"></span>More: the system underneath and more screens</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Five states, with the transitions that actually happen.</p>
       <div class="sys"><div class="sys-r">
@@ -1306,7 +1306,7 @@ const P = [
   metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
   one:'Components disagreed on size, spacing and type across two dashboards. Nothing was broken enough to escalate, so it lasted.',
   role:'Design system owner',
-  team:'Design and frontend across teams, 9 leaders for the type decision',
+  team:'Design and frontend across all product teams, 9 leaders for the type decision',
   time:'Ongoing initiative',
   year:'2026',
   hero:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',fb:'images/case-04/hero.png',
@@ -1386,6 +1386,8 @@ const P = [
     ]}
   ],
   leadership:[
+    ['Getting every team onto it','I pushed every product team to adopt the system, beyond the two dashboards it started from. A library only some teams use becomes the next source of drift.'],
+    ['Auditing every release','After development I audited each feature in a sandbox environment before release, so it shipped without design bugs.'],
     ['Getting a typeface approved','I mapped the system and made the case on licence cost, figures and text hierarchy. Nine leaders signed off.'],
     ['Absorbing a late reversal','Our VP rejected the segmented control in development planning. I produced alternatives and tested them with other leads. The revision is better, and it cost a cycle.'],
     ['Pulling my own feature','The keyboard focus ring looked right in isolation and clipped in real layouts. I paused it rather than ship a broken accessibility affordance.']
@@ -1522,7 +1524,6 @@ const P = [
   team:'Solo',
   year:'2026',
   keyH:'The three acts',
-  glanceH:'What it shows',
   keyN:4,
   hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
     alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
@@ -1685,13 +1686,14 @@ function renderCase(c){
     <h1 class="d-t" id="drT">${c.t}</h1>
     <p class="d-one">${c.one}</p>
     ${imp}
+    <p class="note d-impn">${c.impactNote}</p>
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
       ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
-    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it cost</u><p>${d0[2]}</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1709,7 +1711,6 @@ function renderCase(c){
       </div>`).join('')}</div>`):''}
     ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
     ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
-    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
     ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}

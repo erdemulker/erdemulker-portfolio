@@ -568,13 +568,14 @@
     <h1 class="d-t" id="drT">Getting the company out of its own support queue</h1>
     <p class="d-one">Every missing reward became a ticket for an account manager. Their tool predated boosters, promoted offers and cashback, so most of the day went on guessing what a row meant.</p>
     <div class="d-imp"><div><b>56%</b><span>less time per investigation over a two month window, against the old tool</span></div><div><b>5 mechanics</b><span>timed, event, repeatable, bonus and IAP on one row structure</span></div><div><b>6 releases</b><span>built on that structure since, none needing a redesign</span></div></div>
+    <p class="note d-impn">Same ticket types, two month window. Two of the six releases are mechanics that did not exist when I started.</p>
     <div class="d-tl">
       <div><span>Role</span><b>Product designer, end to end</b></div>
       <div><span>Team</span><b>1 PM, frontend and backend, support and AMs as users</b></div>
       <div><span>Timeline</span><b>Initial release, then ongoing iterations</b></div>
       <div><span>Year</span><b>2025 to 2026</b></div>
     </div>
-    <div class="glance"><div><u>The decision that mattered</u><p>One row grammar for every mechanic: base, promotion, final, state, timestamp.</p></div><div><u>What it changed</u><p><b>56%</b> less time per investigation over a two month window, against the old tool.</p></div></div>
+    <div class="glance"><div><u>The decision that mattered</u><p>One row grammar for every mechanic: base, promotion, final, state, timestamp.</p></div><div><u>What it cost</u><p>Slower, and data engineering had to expose the event store differently. It is also why cashback and repeatable bonuses later shipped as additions, with no rebuild.</p></div></div>
     <figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-01/hero-still.png"><img src="images/case-01/hero.gif" alt="Searching for user 1234, opening the Legend of Heroes offer and scrolling the reward history to a withheld payout that names the velocity rule" data-fb="images/case-01/milestones.png" onerror="figFail(this)"></picture></figure><p class="d-cap">Find the user, open the offer, read the history. The withheld row names the rule that held the money.</p>
     <section class="d-b"><h3>Context</h3><p>A reward can go missing at install attribution, the postback, milestone progress, a promotion or a fraud rule. Account managers traced it in a tool built before boosters, promoted offers and cashback, so it had no way to show any of them.</p><figure class="d-fig beforefig"><img src="images/case-01/old-table.png" alt="The previous investigation table, with limited columns and no state information" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> The old table. A timed event, a purchase and a bonus all read the same, and nothing said why a payout was withheld.</p></section>
     <section class="d-b"><h3>Tension</h3><p>I was asked to redesign the screen. The screen was the symptom. Nobody had ever defined what a reward event was, so each new mechanic landed as one more exception in the table. High volume regions were clearing over a hundred tickets a shift, and every slow answer made a partner doubt the payout logic itself.</p></section>
@@ -600,7 +601,6 @@
       </div></div></section>
     <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Earning the data dependency</b><span>I took the ticket taxonomy from eight shadowed investigations to data engineering, so the request arrived as evidence.</span></li><li><b>Auditing my own work</b><span>A post launch audit with support, TAMs and integration managers found manual rewarding shipped without honest success and failure feedback. That gap was mine, and it is the first fix on the roadmap.</span></li><li><b>Holding a line with the biggest publishers</b><span>They want an unlimited override of our fraud rules. I am arguing for graduated limits. It is still open.</span></li></ul></section>
     <section class="d-b"><h3>What shipped</h3><figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-01/constraints-still.png"><img src="images/case-01/constraints.gif" alt="The distribution tab: fourteen eligible campaigns narrowing to four, with Already installed and Sunday only expanded to list the campaigns they removed" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Why a campaign never showed. Fourteen eligible, four shown, and each rule lists exactly what it removed. Before, this was an unexplained absence.</p><figure class="d-fig"><img src="images/case-01/milestones.png" alt="Reward history for one offer: base, promotion and final per milestone, with skipped, manual and withheld states" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">One row grammar for every mechanic. Base, promotion and final stay in separate columns, so a disputed payout explains itself.</p></section>
-    <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>56%</b><span>less time per investigation over a two month window, against the old tool</span></div><div><b>5 mechanics</b><span>timed, event, repeatable, bonus and IAP on one row structure</span></div><div><b>6 releases</b><span>built on that structure since, none needing a redesign</span></div></div><p class="note">Same ticket types, two month window. Two of the six releases are mechanics that did not exist when I started.</p></section>
     
     <details class="more"><summary><span class="pm"></span>More: the system underneath, more screens, the open argument and what comes next</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Five groups, ordered by the question people arrive with.</p>
       <div class="sys"><div class="sys-r">
@@ -1318,7 +1318,7 @@ const P = [
   metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
   one:'Components disagreed on size, spacing and type across two dashboards. Nothing was broken enough to escalate, so it lasted.',
   role:'Design system owner',
-  team:'Design and frontend across teams, 9 leaders for the type decision',
+  team:'Design and frontend across all product teams, 9 leaders for the type decision',
   time:'Ongoing initiative',
   year:'2026',
   hero:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',fb:'images/case-04/hero.png',
@@ -1398,6 +1398,8 @@ const P = [
     ]}
   ],
   leadership:[
+    ['Getting every team onto it','I pushed every product team to adopt the system, beyond the two dashboards it started from. A library only some teams use becomes the next source of drift.'],
+    ['Auditing every release','After development I audited each feature in a sandbox environment before release, so it shipped without design bugs.'],
     ['Getting a typeface approved','I mapped the system and made the case on licence cost, figures and text hierarchy. Nine leaders signed off.'],
     ['Absorbing a late reversal','Our VP rejected the segmented control in development planning. I produced alternatives and tested them with other leads. The revision is better, and it cost a cycle.'],
     ['Pulling my own feature','The keyboard focus ring looked right in isolation and clipped in real layouts. I paused it rather than ship a broken accessibility affordance.']
@@ -1534,7 +1536,6 @@ const P = [
   team:'Solo',
   year:'2026',
   keyH:'The three acts',
-  glanceH:'What it shows',
   keyN:4,
   hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
     alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
@@ -1697,13 +1698,14 @@ function renderCase(c){
     <h1 class="d-t" id="drT">${c.t}</h1>
     <p class="d-one">${c.one}</p>
     ${imp}
+    <p class="note d-impn">${c.impactNote}</p>
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
       ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
-    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it cost</u><p>${d0[2]}</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1721,7 +1723,6 @@ function renderCase(c){
       </div>`).join('')}</div>`):''}
     ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
     ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
-    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
     ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}
