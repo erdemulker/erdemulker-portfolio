@@ -54,7 +54,7 @@ if (P.length !== SLUGS.length) throw new Error(`P has ${P.length} cases but SLUG
   const windowOf = s => (String(s).match(/\b(one|two|three|four|six|eight|twelve)[ -](day|week|month)s?\b/i) || [])[0]?.toLowerCase().replace('-', ' ');
   const problems = [];
   for (const [, value, label, source] of about.matchAll(/<div class="nm[^"]*"><b>([^<]*)<\/b><span>([^<]*)<\/span><i>([^<]*)<\/i>/g)) {
-    const hits = P.flatMap(c => c.impact.filter(m => m[0].startsWith(value)));
+    const hits = P.flatMap(c => (c.impact || []).filter(m => m[0].startsWith(value)));
     for (const m of hits) {
       const a = windowOf(source), b = windowOf(m[1]);
       if (a && b && a !== b) problems.push(`"${value}": About says "${a}", case says "${b}"`);
@@ -76,7 +76,7 @@ write('index.html', index);
 P.forEach((c, i) => {
   const url = ORIGIN + caseUrl(i);
   const title = `${plain(c.t)} · Erdem Ülker`;
-  const desc = plain(c.one);
+  const desc = plain(c.one || c.dm); // a locked case only has its card summary in the clear
   const img = c.hero || c.preview;
   for (const p of [c.hero?.src, c.preview?.src]) if (p && !existsSync(join(ROOT, p))) console.warn(`warn: ${p} not found`);
 
