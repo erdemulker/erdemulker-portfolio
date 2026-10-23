@@ -254,6 +254,7 @@
   .prj:hover .p-go{color:var(--s900)}
   .prj:hover .p-go svg{transform:translateX(5px)}
   .p-im{border-radius:10px;overflow:hidden;aspect-ratio:16/10;background:var(--s100)}
+  .p-im picture{display:block;width:100%;height:100%}
   .p-im img{width:100%;height:100%;object-fit:cover;object-position:top left;
     transform-origin:center center;will-change:transform;
     transition:transform 1100ms var(--soft)}
@@ -425,7 +426,7 @@
       <div class="p-m"><div><b>~10%</b><span>of platform revenue</span></div><div><b>2 to 5</b><span>lifecycle states</span></div></div>
       <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </div>
-    <div class="p-r"><div class="p-im"><img src="images/case-03/hero.png" alt="A promotions table showing lifecycle states with the reactivate action open" loading="lazy"></div></div>
+    <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-03/hero-still.png"><img src="images/case-03/hero.gif" alt="The promotions table switching between lifecycle tabs, then opening the action menu of an expired promotion on Reactivate" loading="lazy"></picture></div></div>
   </div></a><a class="prj rv" href="/work/design-system/" data-case="3" aria-haspopup="dialog" aria-label="Closing the gap between what shipped and what we drew. Design system, foundations to governance. Open case study."><div class="prj-g">
     <div class="p-l">
       <div><span class="p-ix">04</span><span class="p-kk">Design system, foundations to governance</span></div>
@@ -643,6 +644,7 @@
   .d-imp span{display:block;font-size:13px;font-weight:300;color:var(--s500);margin-top:8px;line-height:1.5}
 
   .d-fig{margin:clamp(50px,7vh,74px) 0 12px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
+  .d-fig picture{display:block}
   .beforefig{border-style:dashed;border-color:var(--s300)}
   .d-pair{display:grid;grid-template-columns:1fr;gap:14px;margin:26px 0 10px}
   @media(min-width:760px){.d-pair{grid-template-columns:1fr 1fr}}
@@ -1236,14 +1238,14 @@ const P = [
   kk:'Promotions, lifecycle and operations',
   t:'Arguing for the project nobody had funded',
   d:'Promotions brought in around a tenth of platform revenue and were run from a table with two statuses and a search box. The design was the quick part. Getting engineering time for it, against much larger projects, took longer.',
-  preview:{src:'images/case-03/hero.png',alt:'A promotions table showing lifecycle states with the reactivate action open'},
+  preview:{src:'images/case-03/hero.gif',still:'images/case-03/hero-still.png',alt:'The promotions table switching between lifecycle tabs, then opening the action menu of an expired promotion on Reactivate'},
   metrics:[['~10%','of platform revenue'],['2 to 5','lifecycle states']],
   one:'Promotions had been built quickly as a small feature: a display name, active or inactive, a start and an end date. They were also responsible for roughly a tenth of platform revenue, and account managers were tracking hundreds of them in side spreadsheets because the product could not tell them what state anything was in.',
   role:'Product designer, end to end',
   team:'PM, engineering, account managers as primary users',
   time:'Analysis, then design in stages',
   year:'2026',
-  hero:{src:'images/case-03/hero.png',fb:'images/case-03/lifecycle.png',alt:'The promotions table with five lifecycle states, an expired row selected and its action menu open on Reactivate',
+  hero:{src:'images/case-03/hero.gif',still:'images/case-03/hero-still.png',fb:'images/case-03/lifecycle.png',alt:'The promotions table switching between lifecycle tabs with counts, then opening the action menu of an expired promotion on Reactivate',
     cap:'Five explicit states in the table, and an expired promotion one click from reactivation.'},
   impact:[
     ['+12% publisher created','promotions created by publishers with self serve access, over a two month period after release'],
@@ -1284,15 +1286,15 @@ const P = [
   },
   galleryLabel:'The model, and the two places it needed friction',
   gallery:[
-    {src:'images/case-03/lifecycle.png',alt:'The promotions table showing five lifecycle states across rows, with filters, search and a date range control in the top bar',
+    {src:'images/case-03/lifecycle.png',alt:'The promotions table filtered to one publisher, one promotion in each of the five lifecycle states, with lifecycle tabs, search, a date control and filter chips above it',
      cap:'Five lifecycle states made explicit in the table, with filtering, search and a date range control in the top bar. Previously this was a binary flag and a search box.'},
     {src:'images/case-03/states.png',alt:'The five promotion states, with scheduled, active and expired forming a recurring loop and draft and inactive sitting outside it',
      cap:'The lifecycle as it already ran in production. The loop is the part a date comparison can express. Draft and inactive are the part it cannot, and the part account managers had been tracking by hand.'},
-    {src:'images/case-03/guards.png',alt:'Two confirmation dialogs, one before editing a live promotion and one before deactivating it',
+    {src:'images/case-03/guards.gif',still:'images/case-03/guards-still.png',alt:'Choosing Edit on a live promotion opens a confirmation naming the apps affected, then choosing Deactivate opens a second confirmation',
      cap:'Friction added on purpose. Editing or deactivating a running promotion changes what end users see immediately, so both state the consequence before they proceed.'},
-    {src:'images/case-03/reactivate.png',alt:'A schedule and reactivate modal asking only for a new start and end window, with an optional timezone',
+    {src:'images/case-03/reactivate.gif',still:'images/case-03/reactivate-still.png',alt:'Reactivating an expired promotion: choosing 14 days and a start date, reading the summary of the new window, then scheduling it and seeing it leave the expired list',
      cap:'Friction removed on purpose. An expired promotion returns by setting a new window rather than reopening the full creation form, because the rest of its configuration is already correct.'},
-    {src:'images/case-03/filters.png',alt:'The five filter dimensions, and a diagram showing that a date range returns any promotion overlapping it',
+    {src:'images/case-03/filters.gif',still:'images/case-03/filters-still.png',alt:'Adding two publishers as filter chips, then a Next 7 days date range whose note explains it returns any promotion overlapping the window',
      cap:'Five dimensions to filter, and the date range rule. A promotion is returned if it touches the window at any point, because account managers think in windows rather than in whole promotions.'}
   ],
   steps:[
@@ -1448,11 +1450,13 @@ function block(h,inner){return `<section class="d-b"><h3>${h}</h3>${inner}</sect
 /* One figure renderer for every case image.
    If the file is missing it becomes a labelled placeholder (when `ph` is set)
    or falls back to `fb`, so an unfinished asset never shows as a broken image. */
+/* animated figures carry a still frame for visitors who prefer reduced motion */
+function still(g){return g.still?`<picture><source media="(prefers-reduced-motion: reduce)" srcset="${g.still}">`:''}
 function fig(g,{cls='',prefix='',eager=false}={}){
   const lazy=eager?'':' loading="lazy"';
   const ph=g.ph?` data-ph="${g.ph}"`:'';
   const fb=g.fb?` data-fb="${g.fb}"`:'';
-  return `<figure class="d-fig${cls}"${ph}><img src="${g.src}" alt="${g.alt}"${lazy}${fb} onerror="figFail(this)"></figure><p class="d-cap">${prefix}${g.cap}</p>`;
+  return `<figure class="d-fig${cls}"${ph}>${still(g)}<img src="${g.src}" alt="${g.alt}"${lazy}${fb} onerror="figFail(this)">${g.still?'</picture>':''}</figure><p class="d-cap">${prefix}${g.cap}</p>`;
 }
 
 function renderCard(c,i){
@@ -1465,7 +1469,7 @@ function renderCard(c,i){
       <div class="p-m">${c.metrics.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
       <span class="p-go">Read the case ${AR}</span>
     </div>
-    <div class="p-r">${im?`<div class="p-im"><img src="${im.src}" alt="${im.alt}" loading="lazy"></div>`:''}</div>
+    <div class="p-r">${im?`<div class="p-im">${still(im)}<img src="${im.src}" alt="${im.alt}" loading="lazy">${im.still?'</picture>':''}</div>`:''}</div>
   </div></a>`;
 }
 
