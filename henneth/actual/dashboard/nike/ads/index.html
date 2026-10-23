@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preload" href="/henneth/actual/assets/funnel-sans-latin-wght-normal-zzU05adE.woff2" as="font" type="font/woff2" crossorigin="">
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/henneth/actual/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Henneth · Prototype</title>
+    <script>
+      // Theme before first paint, so the page never flashes the wrong theme. The choice (system, light, dark) persists in localStorage;
+      // data-theme always holds the resolved theme because some Arc parts style dark mode through [data-theme="dark"].
+      (function () {
+        var choice = 'system';
+        try { choice = localStorage.getItem('henneth-theme') || 'system'; } catch (e) {}
+        var dark = choice === 'dark' || (choice === 'system' && !matchMedia('(prefers-color-scheme: light)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        document.documentElement.dataset.themeChoice = choice;
+      })();
+    </script>
+    <script type="module" crossorigin src="/henneth/actual/assets/index-C7N5uQCA.js"></script>
+    <link rel="stylesheet" crossorigin href="/henneth/actual/assets/index-CGnlUSZA.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
