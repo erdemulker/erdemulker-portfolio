@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en" data-case="group-trip" style="overflow:hidden">
+<head>
+<meta charset="UTF-8" />
+<base href="/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>One plan for where the group eats and who pays · Erdem Ülker</title>
+<meta name="description" content="A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic." />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="canonical" href="https://erdemulker.com/work/group-trip/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Erdem Ülker" />
+<meta property="og:title" content="One plan for where the group eats and who pays" />
+<meta property="og:description" content="A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic." />
+<meta property="og:url" content="https://erdemulker.com/work/group-trip/" />
+<meta property="og:image" content="https://erdemulker.com/images/og/group-trip.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="One plan for where the group eats and who pays. Case study by Erdem Ülker." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="One plan for where the group eats and who pays" />
+<meta name="twitter:description" content="A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic." />
+<meta name="twitter:image" content="https://erdemulker.com/images/og/group-trip.png" />
+<script>
+  (()=>{
+    const saved=localStorage.getItem('theme');
+    const theme=saved||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  })();
+</script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.ln>i{transform:none!important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Erdem Ülker","jobTitle":"Senior Product Designer","url":"https://erdemulker.com/","email":"mailto:hello@erdemulker.com","address":{"@type":"PostalAddress","addressLocality":"Hamburg","addressCountry":"DE"},"sameAs":["https://www.linkedin.com/in/erdem-ulker/"],"knowsAbout":["Product design","B2B SaaS","Design systems","Monetization platforms","Martech"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --s50:#fafaf9;--s100:#f5f5f4;--s200:#e7e5e4;--s300:#d6d3d1;
+    --s400:#a8a29e;--s500:#78716c;--s600:#57534e;--s700:#44403c;
+    --s800:#292524;--s900:#1c1917;
+    --nav-bg:rgba(250,250,249,.88);--panel-bg:rgba(250,250,249,.9);
+    --card-shadow:rgba(28,25,23,.07);--scrim:rgba(28,25,23,.28);
+
+    --f:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+
+    --tk-lbl:.08em;
+    --tk-1:-.011em;
+    --tk-2:-.019em;
+    --tk-3:-.027em;
+
+    --ui:170ms;
+    --rev:720ms;
+    --soft:cubic-bezier(.22,1,.36,1);
+    --out:cubic-bezier(.16,1,.24,1);
+
+    --cols:4;--mx:24px;--gap:20px;
+    --pad:clamp(80px,10vh,120px);
+  }
+  :root[data-theme="dark"]{
+    --s50:#1c1917;--s100:#292524;--s200:#44403c;--s300:#57534e;
+    --s400:#78716c;--s500:#a8a29e;--s600:#d6d3d1;--s700:#e7e5e4;
+    --s800:#f5f5f4;--s900:#fafaf9;
+    --nav-bg:rgba(28,25,23,.88);--panel-bg:rgba(28,25,23,.9);
+    --card-shadow:rgba(0,0,0,.24);--scrim:rgba(0,0,0,.58);
+    color-scheme:dark;
+  }
+  @media(min-width:900px){:root{--cols:12;--mx:48px;--gap:24px}}
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--f);font-size:17px;font-weight:400;line-height:1.6;
+    background:var(--s50);color:var(--s900);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html.theme-fallback body,html.theme-fallback .nav,html.theme-fallback .mech-card,html.theme-fallback .dr-p,
+  html.theme-fallback .dr-bar,html.theme-fallback .cta,html.theme-fallback .btn{transition:background-color 520ms var(--soft),color 520ms var(--soft),border-color 520ms var(--soft),box-shadow 520ms var(--soft)}
+  ::selection{background:var(--s200)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font:inherit;color:inherit;background:none;border:0}
+  :focus-visible{outline:2px solid var(--s900);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--mx)}
+  .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap)}
+  .lbl{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500)}
+  .skip{position:absolute;left:-9999px;background:var(--s900);color:var(--s50);padding:12px 18px;z-index:300;font-size:13px}
+  .skip:focus{left:0}
+  .sec{padding:var(--pad) 0}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* nav */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:150;padding:22px 0;border-bottom:1px solid transparent;
+    transition:padding var(--rev) var(--soft),background var(--rev) var(--soft),border-color var(--rev) var(--soft)}
+  .nav.st{padding:14px 0;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(115%);border-bottom-color:var(--s200)}
+  .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
+  .bd{font-size:16px;font-weight:600;letter-spacing:var(--tk-1)}
+  .bd-short{display:none}
+  .bd-role{color:var(--s500);font-weight:400}
+  .nr{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--s500)}
+  .nr a:not(.cta){position:relative;transition:color var(--ui) linear}
+  .nr a:not(.cta)::before{content:'';position:absolute;inset:-10px -6px}
+  .nr a:not(.cta):hover{color:var(--s900)}
+  .nr a:not(.cta)::after{content:'';position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--s900);transition:width 420ms var(--soft)}
+  .nr a:not(.cta):hover::after{width:100%}
+  .cta{border:1px solid var(--s300);border-radius:99px;padding:7px 16px;font-size:14px;color:var(--s700);
+    transition:background var(--ui) linear,color var(--ui) linear,border-color var(--ui) linear}
+  .cta:hover,.cta:focus-visible{background:var(--s900);border-color:var(--s900);color:var(--s50)}
+  .theme-toggle{position:relative;width:58px;height:32px;flex:none;border-radius:99px;background:var(--s900);cursor:pointer;
+    color:var(--s50);isolation:isolate;transition:transform var(--ui) var(--soft),background-color 520ms var(--soft)}
+  .theme-toggle:hover{transform:scale(1.04)}
+  .theme-toggle:active{transform:scale(.96)}
+  .theme-toggle .knob{position:absolute;z-index:2;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--s50);
+    box-shadow:0 1px 4px var(--card-shadow);transition:transform 520ms var(--soft),background-color 520ms var(--soft)}
+  [data-theme="dark"] .theme-toggle .knob{transform:translateX(26px)}
+  .theme-toggle svg{position:absolute;top:7px;width:18px;height:18px;transition:opacity 320ms linear,transform 520ms var(--soft)}
+  .theme-toggle .sun{right:7px;opacity:1;transform:rotate(0)}
+  .theme-toggle .moon{left:7px;opacity:0;transform:rotate(-45deg)}
+  [data-theme="dark"] .theme-toggle .sun{opacity:0;transform:rotate(45deg)}
+  [data-theme="dark"] .theme-toggle .moon{opacity:1;transform:rotate(0)}
+  @media(max-width:820px){
+    .nav .wrap{gap:12px}.nr{gap:14px}.nr .work-link{display:none}.bd-role{display:none}
+    .bd-full{display:none}.bd-short{display:inline}.theme-toggle{width:32px}.theme-toggle .knob{display:none}
+    .theme-toggle svg{left:7px;right:auto}.nr .about-link{display:inline}
+    .cta{padding:6px 13px;font-size:13.5px;white-space:nowrap}
+  }
+  @media(max-width:400px){.nr{gap:11px}.cta{padding-inline:11px}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(16px);transition:opacity var(--rev) var(--out),transform var(--rev) var(--out)}
+  .rv.in{opacity:1;transform:none}
+  .ln{display:block;overflow:hidden;padding-bottom:.05em}
+  .ln>i{display:block;font-style:normal;transform:translateY(104%);transition:transform 900ms var(--soft)}
+  .in .ln>i{transform:none}
+  .ln:nth-child(2)>i{transition-delay:60ms}
+  .ln:nth-child(3)>i{transition-delay:120ms}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:150px 0 0}
+  .hero h1{font-size:clamp(36px,4.9vw,66px);font-weight:500;line-height:1.1;letter-spacing:var(--tk-3);max-width:21ch}
+  .hero h1 em{font-style:italic;font-weight:300;color:var(--s500)}
+  @media(max-width:620px){.hero h1 .ln,.hero h1 .ln>i{display:inline;overflow:visible}.hero h1 .ln:first-child::after{content:' '}}
+  .hsub{margin-top:26px;font-size:clamp(16.5px,1.3vw,19px);font-weight:300;color:var(--s600);line-height:1.64;max-width:54ch}
+  .proof{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--s200);max-width:980px}
+  @media(min-width:760px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .proof li{border-bottom:1px solid var(--s200)}
+  @media(min-width:760px){.proof li{border-bottom:0}.proof li+li{border-left:1px solid var(--s200);padding-left:24px}}
+  .proof a{display:block;padding:18px 16px 18px 0;transition:color var(--ui) linear}
+  .proof b{display:block;font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .proof span{display:block;margin-top:6px;font-size:13.5px;color:var(--s500);line-height:1.45;max-width:30ch}
+  .proof a:hover span{color:var(--s700)}
+  .hmeta{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--s500)}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--s300)}
+  .live{width:6px;height:6px;border-radius:50%;background:#16a34a;position:relative}
+  .live::after{content:'';position:absolute;inset:0;border-radius:50%;background:#16a34a;animation:pg 2.8s var(--out) infinite}
+  @keyframes pg{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+  /* the divider before the line break reads as a trailing dot once wrapped */
+  @media(max-width:620px){.hmeta .dot-wrap{display:none}.hmeta{column-gap:10px;row-gap:7px}}
+
+  /* ---------- SIGNATURE: THE MECHANISM ---------- */
+  .mech{margin-top:clamp(50px,7vh,80px);padding-bottom:clamp(80px,10vh,120px)}
+  .mech-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:20px}
+  .mech-q{font-size:15px;font-weight:300;color:var(--s500);max-width:46ch;line-height:1.56}
+  .mech-q b{font-weight:500;color:var(--s700)}
+  .mech-hint{font-size:12.5px;font-weight:300;color:var(--s500);white-space:nowrap}
+
+  .mech-stage{position:relative;border-top:1px solid var(--s200);border-bottom:1px solid var(--s200);
+    padding:clamp(22px,3.4vw,44px) 0}
+  .mech-svg{display:block;width:100%;height:auto;overflow:visible}
+
+  .g-body{fill:var(--s50);stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;opacity:.5;
+    transition:stroke 380ms linear,fill 380ms linear,stroke-width 380ms linear}
+  .g-hub{fill:var(--s50);stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5;transition:stroke 380ms linear,opacity 380ms linear}
+  .g-bore{fill:var(--s200);stroke:none;opacity:.5;transition:fill 380ms linear,opacity 380ms linear}
+  .g-spoke{stroke:var(--s200);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5;transition:stroke 380ms linear,opacity 380ms linear}
+  .g-mk{fill:var(--s300);opacity:.5;transition:fill 380ms linear,opacity 380ms linear}
+  .g-hit{fill:transparent;cursor:pointer}
+
+  .gear .g-body,.gear .g-hub,.gear .g-bore,.gear .g-spoke,.gear .g-mk{transition:opacity 380ms linear,stroke 380ms linear,fill 380ms linear,stroke-width 380ms linear}
+  .gear.dim .g-body{stroke:var(--s200);opacity:.34}
+  .gear.dim .g-hub,.gear.dim .g-bore{opacity:.34}
+  .gear.dim .g-hub{stroke:var(--s200)}
+  .gear.dim .g-spoke,.gear.dim .g-mk{stroke:var(--s200);fill:var(--s200)}
+  .gear.near .g-body{stroke:var(--s500);fill:var(--s100);opacity:.9}
+  .gear.near .g-hub,.gear.near .g-bore,.gear.near .g-spoke,.gear.near .g-mk{opacity:.9}
+  .gear.near .g-hub{stroke:var(--s400);fill:var(--s100)}
+  .gear.near .g-mk{fill:var(--s400)}
+  .gear.act .g-body{stroke:var(--s900);stroke-width:1.4;fill:var(--s100);opacity:1}
+  .gear.act .g-hub,.gear.act .g-bore,.gear.act .g-spoke,.gear.act .g-mk{opacity:1}
+  .gear.act .g-hub{stroke:var(--s700);fill:var(--s50)}
+  .gear.act .g-bore{fill:var(--s900)}
+  .gear.act .g-spoke{stroke:var(--s500)}
+  .gear.act .g-mk{fill:var(--s900)}
+  .gear:focus{outline:none}
+  .gear:focus-visible .g-body{stroke:var(--s900);stroke-width:1.6;opacity:1}
+
+  .lnk-l{stroke:var(--s300);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 5;opacity:0;transition:opacity 360ms linear}
+  .lnk-l.on{opacity:1}
+
+  /* hover card */
+  .mech-card{position:absolute;z-index:5;pointer-events:none;width:236px;
+    background:var(--s50);border:1px solid var(--s200);border-radius:9px;padding:15px 17px;
+    box-shadow:0 10px 30px var(--card-shadow);
+    opacity:0;transform:translateY(-50%) scale(.97);transform-origin:left center;
+    transition:opacity 260ms var(--soft),transform 320ms var(--soft)}
+  .mech-card[data-side=l]{transform:translate(-100%,-50%) scale(.97);transform-origin:right center}
+  .mech-card.on{opacity:1;transform:translateY(-50%) scale(1)}
+  .mech-card.on[data-side=l]{transform:translate(-100%,-50%) scale(1)}
+  .mech-empty{display:none}
+  .mc-n{font-size:15px;font-weight:500;letter-spacing:var(--tk-1);line-height:1.2}
+  .mc-s{font-size:13px;font-weight:300;color:var(--s500);line-height:1.5;margin-top:5px}
+  .mc-r{margin-top:12px;padding-top:11px;border-top:1px solid var(--s200);display:flex;flex-direction:column;gap:7px}
+  .mc-r div{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .mc-r u{text-decoration:none;font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);flex:none}
+  .mc-r b{font-size:12.5px;font-weight:400;color:var(--s700);text-align:right;line-height:1.35}
+  .mc-r b.rate{font-variant-numeric:tabular-nums;font-weight:500}
+  @media(max-width:820px){
+    .mech-card{position:static;width:auto;margin-top:16px;opacity:1;transform:none;box-shadow:none;
+      display:none}
+    .mech-card.on{display:block;transform:none}
+    .mech-card.on[data-side=l]{transform:none}
+    .mech-hint{display:none}
+    /* placeholder occupies the same slot as the card, so the gears do not shift */
+    .mech-empty{display:flex;align-items:center;justify-content:center;text-align:center;
+      margin-top:16px;min-height:150px;padding:20px;border:1px solid var(--s200);border-radius:12px;
+      font-size:14px;font-weight:300;color:var(--s500)}
+    .mech-card.on~.mech-empty{display:none}
+  }
+
+  /* ---------- work ---------- */
+  .shd{margin-bottom:clamp(30px,4.5vh,46px)}
+  .shd h2{margin-top:12px;font-size:clamp(24px,2.5vw,34px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.16;max-width:26ch}
+  .shd p{margin-top:13px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:56ch;line-height:1.62}
+
+  .prj{display:block;width:100%;text-align:left;border-top:1px solid var(--s200);padding:clamp(26px,3.4vh,38px) 0;
+    cursor:pointer}
+  #prjs .prj:last-child{border-bottom:1px solid var(--s200)}
+  .prj-g{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap);align-items:start}
+  .p-l{grid-column:span 4}
+  .p-r{grid-column:span 4;margin-top:16px}
+  @media(min-width:1000px){.p-l{grid-column:span 6}.p-r{grid-column:7 / span 6;margin-top:0}}
+  .p-ix{font-size:13px;color:var(--s500);font-variant-numeric:tabular-nums}
+  .p-kk{font-size:13px;color:var(--s500);font-weight:300;margin-left:11px}
+  .p-t{margin-top:11px;font-size:clamp(22px,2.1vw,29px);font-weight:500;line-height:1.18;letter-spacing:var(--tk-2)}
+  .p-d{margin-top:12px;font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.62;max-width:46ch}
+  .p-m{margin-top:22px;display:flex;gap:clamp(22px,3vw,40px);flex-wrap:wrap}
+  .p-m div{max-width:22ch}
+  .p-m div b{display:block;font-size:clamp(24px,2.3vw,32px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;color:var(--s900);font-variant-numeric:tabular-nums}
+  .p-m div span{display:block;margin-top:6px;font-size:13px;color:var(--s500);line-height:1.4}
+  a.p-go{text-decoration:none}
+  a.p-go:hover{color:var(--s900)}
+  a.p-go:hover svg{transform:translateX(5px)}
+  .p-go{display:inline-flex;align-items:center;gap:8px;margin-top:19px;font-size:14.5px;font-weight:500;color:var(--s700)}
+  .p-go svg{transition:transform 540ms var(--soft)}
+  .prj:hover .p-go{color:var(--s900)}
+  .prj:hover .p-go svg{transform:translateX(5px)}
+  .p-im{border-radius:10px;overflow:hidden;aspect-ratio:16/10;background:var(--s100)}
+  .p-im picture{display:block;width:100%;height:100%}
+  .p-im img{width:100%;height:100%;object-fit:cover;object-position:top left;
+    transform-origin:center center;will-change:transform;
+    transition:transform 1100ms var(--soft)}
+  .prj:hover .p-im img,.prj:focus-visible .p-im img{transform:scale(1.04)}
+  @media(max-width:999px){.prj{padding-bottom:52px}.prj+.prj{margin-top:24px}.p-r{margin-top:24px}}
+
+  /* more work: two smaller cards under the main four */
+  .mw{margin-top:clamp(64px,9vh,104px)}
+  .mw-h{margin-bottom:clamp(24px,3.5vh,36px)}
+  .mw-h h3{margin-top:12px;font-size:clamp(20px,1.9vw,26px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.2;max-width:30ch}
+  .mw-g{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(40px,5vh,56px) var(--gap)}
+  @media(min-width:760px){.mw-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .prj.sm{border-top:0;padding:0;margin:0}
+  .prj.sm .p-im{margin-bottom:20px}
+  .prj.sm .p-t{font-size:clamp(19px,1.6vw,23px)}
+  .prj.sm .p-d{font-size:15px}
+  .prj.sm .p-go{margin-top:14px}
+
+  /* ---------- about ---------- */
+  .ab{align-items:start}
+  .ab .l{grid-column:span 4}
+  .ab .r{grid-column:span 4;margin-top:34px}
+  @media(min-width:900px){.ab .l{grid-column:span 6}.ab .r{grid-column:8 / span 5;margin-top:0;position:sticky;top:104px}}
+  .lede{font-size:clamp(21px,2.2vw,29px);font-weight:400;line-height:1.3;letter-spacing:var(--tk-2)}
+  .lede em{font-style:italic;font-weight:300;color:var(--s500)}
+  .ab p.b{margin-top:20px;font-size:16.5px;font-weight:300;color:var(--s600);line-height:1.74;max-width:58ch}
+  .rowl{border-top:1px solid var(--s200)}
+  .rowl div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--s200)}
+  .rowl div b{font-weight:400;font-size:15.5px;letter-spacing:var(--tk-1)}
+  .rowl div span{font-size:13px;color:var(--s500);white-space:nowrap}
+
+  /* career path, compact; the full timeline lives on the about page */
+  .path{list-style:none;border-top:1px solid var(--s200)}
+  .path li{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:16px;padding:14px 0;border-bottom:1px solid var(--s200)}
+  .path .pt-y{grid-row:span 2;font-size:12.5px;color:var(--s500);font-variant-numeric:tabular-nums;padding-top:2px}
+  .path b{font-weight:500;font-size:15.5px;letter-spacing:var(--tk-1)}
+  .path .pt-d{font-size:13.5px;font-weight:300;color:var(--s500);line-height:1.5;margin-top:2px}
+  .pt-n{margin-top:18px;font-size:14px;font-weight:300;color:var(--s600);line-height:1.6;max-width:44ch}
+
+  /* testimonials */
+  .tm{display:grid;grid-template-columns:1fr;gap:var(--gap)}
+  @media(min-width:820px){.tm{grid-template-columns:repeat(2,1fr)}}
+  .tq{margin:0;border:1px solid var(--s200);border-radius:12px;padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px}
+  .tq blockquote{font-size:17px;font-weight:300;line-height:1.6;color:var(--s700);letter-spacing:var(--tk-1)}
+  .tq[data-pending]{border-style:dashed;border-color:var(--s300)}
+  .tq[data-pending] blockquote{color:var(--s500)}
+  .tq figcaption{display:flex;align-items:center;gap:14px}
+  .av{position:relative;width:44px;height:44px;flex:none;border-radius:50%;overflow:hidden;background:var(--s100);border:1px solid var(--s200);
+    display:flex;align-items:center;justify-content:center}
+  .av i{font-style:normal;font-size:13px;font-weight:500;color:var(--s500);letter-spacing:.02em}
+  .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tq figcaption b{display:block;font-size:15px;font-weight:500;letter-spacing:var(--tk-1)}
+  .tq figcaption em{display:block;font-style:normal;font-size:13px;font-weight:300;color:var(--s500);margin-top:2px}
+
+  /* ---------- contact ---------- */
+  .ct h2{font-size:clamp(27px,3.3vw,46px);font-weight:500;line-height:1.12;letter-spacing:var(--tk-3);max-width:24ch}
+  .ct h2 em{font-style:italic;font-weight:300;color:var(--s500)}
+  .ct p{margin-top:18px;font-size:16.5px;font-weight:300;color:var(--s600);max-width:52ch;line-height:1.64}
+  .ct-a{margin-top:32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--s900);color:var(--s50);border-radius:99px;
+    padding:13px 24px;font-size:15px;font-weight:500;letter-spacing:var(--tk-1);
+    transition:transform var(--ui) var(--soft),background var(--ui) linear}
+  .btn:hover{transform:translateY(-2px);background:var(--s800)}
+  .btn svg{transition:transform 540ms var(--soft)}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn-o{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--s300);color:var(--s800);border-radius:99px;
+    padding:12px 22px;font-size:15px;font-weight:500;letter-spacing:var(--tk-1);
+    transition:transform var(--ui) var(--soft),border-color var(--ui) linear,background var(--ui) linear}
+  .btn-o:hover{transform:translateY(-2px);border-color:var(--s900);background:var(--s100)}
+  .btn-o svg{transition:transform 540ms var(--soft)}
+  .btn-o:hover svg{transform:translateY(2px)}
+  .tl{font-size:15px;color:var(--s600);position:relative}
+  .tl::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:var(--s300);transition:background var(--ui) linear}
+  .tl:hover{color:var(--s900)}
+  .tl:hover::after{background:var(--s900)}
+  footer{border-top:1px solid var(--s200);padding:26px 0 34px;margin-top:clamp(60px,9vh,100px)}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--s500)}
+  footer a:hover{color:var(--s900)}
+  .fl{display:flex;gap:22px}
+  .fl a{display:inline-flex;align-items:center;min-height:32px}
+  ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-new(root){z-index:2;clip-path:circle(0 at var(--theme-x) var(--theme-y));animation:theme-reveal 680ms var(--soft) forwards}
+  ::view-transition-old(root){z-index:1}
+  @keyframes theme-reveal{to{clip-path:circle(var(--theme-radius) at var(--theme-x) var(--theme-y))}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"One plan for where the group eats and who pays","headline":"One plan for where the group eats and who pays","description":"A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic.","url":"https://erdemulker.com/work/group-trip/","image":"https://erdemulker.com/images/og/group-trip.png","author":{"@type":"Person","name":"Erdem Ülker","url":"https://erdemulker.com/"},"about":"Group travel app, concept case"}</script>
+</head>
+<body>
+<a href="#work" class="skip">Skip to work</a>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="bd"><span class="bd-full">Erdem Ülker</span><span class="bd-short">Erdem</span> <span class="bd-role">/ Product Designer</span></a>
+    <div class="nr">
+      <a href="#work" class="hs work-link">Work</a>
+      <a href="about.html" class="hs about-link">About</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+        <span class="knob" aria-hidden="true"></span>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15.4A9.4 9.4 0 1 1 8.6 3 7.5 7.5 0 0 0 21 15.4Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+      </button>
+      <a href="mailto:hello@erdemulker.com" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1 class="rv">
+      <span class="ln"><i>I design software where</i></span>
+      <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
+    </h1>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS, in monetization and martech. Most of my work is internal tooling, configuration flows and dashboards: the screens where a support agent, an account manager or a publisher decides something with money attached. I am usually brought in before anyone agrees what the thing is. I work AI-native: for new products the working prototype is the design file. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hmeta rv">
+      <span class="live"></span><span>Open to senior and lead roles</span>
+      <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
+      <span class="dot"></span><span>7+ years</span>
+    </p>
+    <ul class="proof rv" aria-label="Selected results">
+      <li><a href="/work/support/" data-case="0"><b>56%</b><span>less support time per investigation</span></a></li>
+      <li><a href="/work/configuration/" data-case="1"><b>7 → 5 weeks</b><span>deal to release for new publishers</span></a></li>
+      <li><a href="/work/design-system/" data-case="3"><b>3–4h → &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
+    </ul>
+  </div>
+
+  <!-- SIGNATURE INTERACTION: THE MECHANISM -->
+  <!-- Hidden for now: pushes the work below the fold. Remove `hidden` to restore; script below is untouched. -->
+  <section class="mech" aria-labelledby="mechH" hidden>
+    <div class="wrap">
+      <div class="mech-hd rv">
+        <p class="mech-q" id="mechH">One platform, ten parts, cut so the teeth actually mesh.
+          <b>Large parts turn slowly. Small parts never stop.</b></p>
+        <p class="mech-hint">Hover a part to trace what it drives</p>
+      </div>
+      <div class="mech-stage rv" id="mechStage">
+        <div class="mech-card" id="mechCard" data-side="r" aria-hidden="true">
+          <p class="mc-n" id="mcName"></p>
+          <p class="mc-s" id="mcSub"></p>
+          <div class="mc-r">
+            <div><u>Meshes with</u><b id="mcMesh"></b></div>
+            <div><u>Turn rate</u><b class="rate" id="mcRate"></b></div>
+          </div>
+        </div>
+        <p class="mech-empty">Click a part to see details</p>
+      </div>
+    </div>
+  </section>
+</header>
+
+<main id="main">
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Selected work</span>
+      <h2>Four projects, chosen for the decisions behind the screens.</h2>
+      <p>For each one: what I decided, what it cost, and what changed after release.</p>
+    </div>
+    <div id="prjs"><!-- @cards-start --><a class="prj rv" href="/work/support/" data-case="0" aria-haspopup="dialog" aria-label="Getting the company out of its own support queue. Offerwall platform, internal operations. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">01</span><span class="p-kk">Offerwall platform, internal operations</span></div>
+      <h3 class="p-t">Getting the company out of its own support queue</h3>
+      <p class="p-d">Every missing reward became a ticket for an account manager, worked in a tool older than half the product. I specified one event model for all five reward mechanics before drawing a screen. Investigation time fell 56%.</p>
+      <div class="p-m"><div><b>56%</b><span>less support time per case</span></div><div><b>5</b><span>mechanics, one structure</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-01/hero-still.png"><img src="images/case-01/hero.gif" alt="Searching for user 1234, opening an offer and landing on the reward history, where a withheld payout names the rule that held it" loading="lazy"></picture></div></div>
+  </div></a><a class="prj rv" href="/work/configuration/" data-case="1" aria-haspopup="dialog" aria-label="Sixty settings nobody could explain. Offerwall platform, partner onboarding. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">02</span><span class="p-kk">Offerwall platform, partner onboarding</span></div>
+      <h3 class="p-t">Sixty settings nobody could explain</h3>
+      <p class="p-d">Publisher setup ran through one dropdown of 60+ settings named by whoever built them, 54 with no description. I spent two months finding out what they did, then rebuilt the flow around the decisions they serve. Deal to release went from seven weeks to five.</p>
+      <div class="p-m"><div><b>7 to 5 weeks</b><span>deal to release</span></div><div><b>+17%</b><span>configs actually used</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-02/hero-still.png"><img src="images/case-02/hero.gif" alt="Switching on Playtime Web and Playtime Studio in the application setup, each revealing its own settings beside a stepper" loading="lazy"></picture></div></div>
+  </div></a><a class="prj rv" href="/work/promotions/" data-case="2" aria-haspopup="dialog" aria-label="Arguing for the project nobody had funded. Promotions, lifecycle and operations. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">03</span><span class="p-kk">Promotions, lifecycle and operations</span></div>
+      <h3 class="p-t">Arguing for the project nobody had funded</h3>
+      <p class="p-d">Promotions carried about a tenth of platform revenue and ran on a table with two statuses. The design was the quick part. Getting engineering time for it, against much larger projects, took longer.</p>
+      <div class="p-m"><div><b>~10%</b><span>of platform revenue</span></div><div><b>2 to 5</b><span>lifecycle states</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-03/hero-still.png"><img src="images/case-03/hero.gif" alt="Filtering promotions by Expired status, then opening the action menu of an expired promotion on Reactivate" loading="lazy"></picture></div></div>
+  </div></a><a class="prj rv" href="/work/design-system/" data-case="3" aria-haspopup="dialog" aria-label="Closing the gap between what shipped and what we drew. Design system, foundations to governance. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">04</span><span class="p-kk">Design system, foundations to governance</span></div>
+      <h3 class="p-t">Closing the gap between what shipped and what we drew</h3>
+      <p class="p-d">Two dashboards had drifted from the Figma library and from each other. I pulled production into the file, audited it, rebuilt the foundations as tokens and refactored ten components. Weekly frontend review went from three or four hours to under one.</p>
+      <div class="p-m"><div><b>200+ issues</b><span>found and closed</span></div><div><b>3-4h to <1h</b><span>weekly QA time</span></div></div>
+      <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-04/hero-still.png"><img src="images/case-04/hero.gif" alt="Shared components in use: a segmented control, switch, buttons pressed through their states, an input, a checkbox and two toasts" loading="lazy"></picture></div></div>
+  </div></a><!-- @cards-end --></div>
+    <div class="mw">
+      <div class="shd mw-h rv">
+        <span class="lbl">More work</span>
+        <h3>Outside B2B tooling, designed as working prototypes.</h3>
+        <p>An AI marketing product for a freelance client and a consumer concept. Both were reviewed on the real thing, not on a static file.</p>
+      </div>
+      <div class="mw-g" id="prjsMore"><!-- @more-start --><a class="prj sm rv" href="/work/agentic-marketing/" data-case="4" aria-haspopup="dialog" aria-label="Putting the agent at the front of an AI marketing harness. Agentic marketing harness, freelance. Open case study.">
+    <div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-05/plan-still.png"><img src="images/case-05/plan.gif" alt="Screen recording: a signal opens two plans, one is chosen, the agent works through three steps and stops for approval before sending" loading="lazy"></picture></div>
+    <div><span class="p-ix">05</span><span class="p-kk">Agentic marketing harness, freelance</span></div>
+    <h3 class="p-t">Putting the agent at the front of an AI marketing harness</h3>
+    <p class="p-d">New users could not tell what the harness did. I redesigned it inside a working prototype, tested every two days, until the first screen explained the product.</p>
+    <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a><a class="prj sm rv" href="/work/group-trip/" data-case="5" aria-haspopup="dialog" aria-label="One plan for where the group eats and who pays. Group travel app, concept case. Open case study.">
+    <div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/hero.png"><img src="images/case-06/decide.gif" alt="Screen recording: an empty evening slot becomes a dinner poll with three places picked from a map, and the poll is sent to the group" loading="lazy"></picture></div>
+    <div><span class="p-ix">06</span><span class="p-kk">Group travel app, concept case</span></div>
+    <h3 class="p-t">One plan for where the group eats and who pays</h3>
+    <p class="p-d">Group trips stall twice: deciding together and settling money. I designed one evening of a trip app where a poll result becomes the plan, and the bill attaches to it. Built as a working mobile prototype.</p>
+    <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a><!-- @more-end --></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap grid ab">
+    <div class="l">
+      <div class="shd rv"><span class="lbl">About</span></div>
+      <p class="lede rv">I am most useful before the interface is obvious: when the data model is unfinished, ownership is split between teams, and <em>somebody has to make a decision the rest can build on.</em></p>
+      <p class="b rv">In practice that means reading the data model before I open a design file, writing each tradeoff down before it ships, and going back after release to check which assumptions held. The screens come last.</p>
+      <p class="rv" style="margin-top:26px">
+        <a href="about.html" class="p-go" style="font-size:15px">More about how I work
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </p>
+    </div>
+    <div class="r">
+      <p class="lbl rv" style="margin-bottom:14px">The path</p>
+      <ol class="path">
+        <li class="rv"><span class="pt-y">2024 to now</span><b>adjoe</b><span class="pt-d">Rewarded ads platform, two dashboards and the design system</span></li>
+        <li class="rv"><span class="pt-y">2022 to 2024</span><b>Insider</b><span class="pt-d">Martech, led the Mobile Suite team</span></li>
+        <li class="rv"><span class="pt-y">2021 to 2022</span><b>Getir</b><span class="pt-d">Consumer super app, launched car rental</span></li>
+        <li class="rv"><span class="pt-y">2018 to 2021</span><b>Koç University</b><span class="pt-d">Branding and interface work for startups and NGOs</span></li>
+      </ol>
+      <p class="pt-n rv">Consumer speed first, then marketing tooling, then platform infrastructure. Each move took me closer to where a wrong decision has a measurable cost.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="words" style="padding-top:0">
+  <div class="wrap">
+    <div class="shd rv">
+      <span class="lbl">Worked with</span>
+      <h2>What the people I worked with say.</h2>
+    </div>
+    <div class="tm">
+      <figure class="tq rv">
+        <blockquote>Before Erdem joined my team, I had issues working with designers: messy Figma files, missed states, and a communication gap between teams. Erdem was a brilliant designer, and a friend, who did not just push designs to development but gathered everyone's input to mature the solution together. During handoff, every question we had was either resolved or got real attention from him. He turned our design to release cycle from a challenge into something to enjoy.</blockquote>
+        <figcaption><span class="av"><img src="images/people/mansur-muaz-ekici.jpg" alt="" loading="lazy" onerror="this.remove()"><i>ME</i></span><span><b>Mansur Muaz Ekici</b><em>Senior Frontend Engineer, Insider</em></span></figcaption>
+      </figure>
+      <figure class="tq rv">
+        <blockquote>Erdem is that magnetic force that keeps cross functional teams with very different backgrounds engaged and together. He creates a space where laughter meets rigour. He has a unique approach: he executes meticulous design work and then delivers it with a good portion of dad jokes. As we worked together, he inspired me in my own leadership journey. It was a blast to work with him.</blockquote>
+        <figcaption><span class="av"><img src="images/people/duygu-ozgul.jpg" alt="" loading="lazy" onerror="this.remove()"><i>DÖ</i></span><span><b>Duygu Özgül</b><em>Design Lead, Insider</em></span></figcaption>
+      </figure>
+      <figure class="tq rv">
+        <blockquote>In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard. I really enjoy his approach as a proactive problem solver.</blockquote>
+        <figcaption><span class="av"><img src="images/people/puru.jpg" alt="" loading="lazy" onerror="this.remove()"><i>P</i></span><span><b>Puru</b><em>Senior Frontend Engineer, adjoe</em></span></figcaption>
+      </figure>
+      <figure class="tq rv">
+        <blockquote>Getir has a speed culture, and design has to respond to every requirement at once: C-level requests, legal pushes, fast growing market demands. Under all that pressure, Erdem was one of the solution makers in my team. I relied on him for multiple projects and crises, trusting him to take a brief from me and finalise it end to end.</blockquote>
+        <figcaption><span class="av"><img src="images/people/umut-can-yurtalan.jpg" alt="" loading="lazy" onerror="this.remove()"><i>UY</i></span><span><b>Umut Can Yurtalan</b><em>Head of Design, Getir</em></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec ct" id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="shd rv"><span class="lbl">Contact</span></div>
+    <h2 class="rv">If the problem is genuinely complicated, I am <em>interested</em>.</h2>
+    <p class="rv">Open to senior and lead roles in B2B and platform teams. Happy to talk through any of the work above in detail.</p>
+    <div class="ct-a rv">
+      <a href="mailto:hello@erdemulker.com" class="btn">hello@erdemulker.com
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="cv/erdem-ulker-cv.pdf" class="btn-o" target="_blank" rel="noopener">Download CV
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 1.5v9M3.5 7l4 4 4-4M2 13.5h11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener" class="tl">LinkedIn</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Erdem Ülker</span>
+      <span class="fl">
+        <a href="about.html">About</a>
+        <a href="cv/erdem-ulker-cv.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="https://www.linkedin.com/in/erdem-ulker/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@erdemulker.com">Email</a>
+      </span>
+    </div>
+  </footer>
+</section>
+</main>
+
+<div class="dr on" id="dr" role="dialog" aria-modal="true" aria-labelledby="drT">
+  <div class="dr-bg" id="drBg"></div>
+  <article class="dr-p" id="drP">
+    <div class="dr-bar">
+      <div class="wrap2">
+        <span class="dr-ix lbl" id="drIx">Case 06</span>
+        <span class="dr-acts"><button class="dr-x" id="drLink" type="button" aria-label="Copy link to this case">Copy link</button><button class="dr-x" id="drX" aria-label="Close case study">Close</button></span>
+      </div>
+      <div class="dr-prog" id="drProg"></div>
+    </div>
+    <div class="dr-in" id="drC">
+    <p class="d-kk">Group travel app, concept case</p>
+    <h1 class="d-t" id="drT">One plan for where the group eats and who pays</h1>
+    <p class="d-one">A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic.</p>
+    <div class="d-imp"><div><b>3 acts</b><span>decide, pay and settle, played end to end</span></div><div><b>1 object</b><span>the poll result, the plan item and the expense</span></div><div><b>2 phones</b><span>the same moment from the person owed and the person paying</span></div></div>
+    <div class="d-tl">
+      <div><span>Role</span><b>Product design and the working prototype</b></div>
+      <div><span>Team</span><b>Solo</b></div>
+      
+      <div><span>Year</span><b>2026</b></div>
+    </div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.</p></div><div><u>What it shows</u><p><b>3 acts</b> decide, pay and settle, played end to end.</p></div></div>
+    <figure class="d-fig" data-ph="hero.png · The plan after the poll"><img src="images/case-06/hero.png" alt="The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0" onerror="figFail(this)"></figure><p class="d-cap">The plan after the vote. Dinner came from the poll, and the score stays on the item.</p>
+    <section class="d-b"><h3>Context</h3><p>Group trips break down at two points. The decision happens in a chat thread, where the loudest voice wins and nobody commits. The money happens later, in a splitting app, as a pile of small transfers and reminders. The plan sits in a third place, and nothing connects them.</p><div class="before"><u>Before</u><p>Three tools for one dinner: a chat to argue in, a notes app for the plan, a splitting app for the bill.</p></div></section>
+    <section class="d-b"><h3>Tension</h3><p>A map of the whole app would have been the safe deliverable, and shallow everywhere. I scoped it to one evening and played it end to end with real states, so every rule had to survive being used.</p></section>
+    <section class="d-b"><h3>Insight</h3><p>Plan, decision and expense are one object. A poll result should become a plan item, and an expense should attach to the item it paid for. Once that holds, the app does the bookkeeping people now do in their heads.</p><p class="d-pull">The poll result is the plan item. The bill is attached to it.</p></section>
+    <section class="d-b"><h3>Decisions, and what each one cost</h3><div class="dcs">
+      <div class="dc"><div class="dc-h">An open poll, or one that closes itself</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.</div>
+          <div class="dc-c rj"><u>What it cost</u>Less democratic, and there is no runoff. In return nobody has to be the one who calls it, which is where group chats stall.</div>
+        </div>
+      </div>
+      <div class="dc"><div class="dc-h">Report the result, or act on it</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>The winner replaces the empty evening slot in everyone’s plan, with the score on the item.</div>
+          <div class="dc-c rj"><u>What it cost</u>Changing the plan after a result needs its own path. I left it as a stub.</div>
+        </div>
+      </div>
+      <div class="dc"><div class="dc-h">Split the bill, or split the items</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>Per item. Each line has its own people, so nobody pays for wine they did not drink. An equal split stays the default.</div>
+          <div class="dc-c rj"><u>What it cost</u>More input than one total divided by three. The default keeps the quick case quick.</div>
+        </div>
+      </div>
+      <div class="dc"><div class="dc-h">Pay back each expense, or net the trip</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>Net everything into the fewest transfers, with a “Why only 2” note that explains the maths. The person paying sees an itemised list of what for.</div>
+          <div class="dc-c rj"><u>What it cost</u>Individual debts drop out of the main view. The explainer and the itemised list are there to earn that trust back.</div>
+        </div>
+      </div></div></section>
+    
+    <section class="d-b"><h3>The three acts</h3><figure class="d-fig" data-ph="decide.gif · Dinner, by poll"><img src="images/case-06/decide.gif" alt="Screen recording: the free evening slot opens a new poll, three places are picked from a map, and the poll is sent" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap">The empty evening slot starts the poll. Up to four places, picked from the map or typed in.</p><figure class="d-fig" data-ph="votes.gif · The plan updates itself"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/votes-still.png"><img src="images/case-06/votes.gif" alt="Screen recording: votes arrive one by one, the poll closes 3 to 0, and the winner appears in tonight’s plan" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">The poll closes on the last vote. The winner is in everyone’s plan before anyone asks.</p><figure class="d-fig" data-ph="expense.gif · Split by item"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/expense-still.png"><img src="images/case-06/expense.gif" alt="Screen recording: an expense linked to dinner gets two items, one person is removed from the wine, and balances count up to their new values" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">The expense is already linked to dinner. Balances count from their old value, so the change reads before the total.</p><figure class="d-fig" data-ph="settle.gif · Fewest transfers"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/settle-still.png"><img src="images/case-06/settle.gif" alt="Screen recording: settle up shows two transfers, explains why only two, sends requests, then switches to the other phone where the payment is made" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Two transfers for the whole trip. Then the other phone, where the request says exactly what it covers.</p></section>
+    <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>3 acts</b><span>decide, pay and settle, played end to end</span></div><div><b>1 object</b><span>the poll result, the plan item and the expense</span></div><div><b>2 phones</b><span>the same moment from the person owed and the person paying</span></div></div><p class="note">It is a concept, so there are no usage numbers. What it shows is the link: every screen reuses a decision or a cost that already exists in the plan, so nobody types anything twice.</p></section>
+    
+    <details class="more"><summary><span class="pm"></span>More: craft details</summary><div class="more-in"><section class="d-b"><h3>Craft</h3><p>It is a working app in plain JavaScript, not a click-through file, so timing and state could be judged on a real phone.</p>
+      <ul class="lst ld"><li><b>Balances count up</b><span>Each balance animates from its old value to its new one in 900ms.</span></li><li><b>Haptics</b><span>A short vibration on votes, payments and selections.</span></li><li><b>Notifications</b><span>Every banner opens the screen it talks about. They are what make it feel shared.</span></li><li><b>State that survives</b><span>The demo keeps its state, so a reload on a phone does not lose the evening.</span></li></ul></section></div></details>
+    <section class="d-b"><h3>Looking back</h3><p>The first thing I would test with real groups is whether auto-close with a creator tie-break feels fair to the person who lost. Onboarding, trip creation and more than one trip are stubs on purpose. Next it needs more than one currency, partial payments, and the friend who leaves before anyone settles.</p></section>
+    <nav class="d-nx" aria-label="More case studies">
+      <a href="/work/agentic-marketing/" data-case="4"><u>Previous case</u><b>Putting the agent at the front of an AI marketing harness</b></a>
+      
+    </nav></div>
+  </article>
+</div>
+
+<style>
+  /* ---------- case drawer ---------- */
+  .dr{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none}
+  .dr.on{visibility:visible;pointer-events:auto}
+  .dr-bg{position:absolute;inset:0;background:var(--scrim);opacity:0;
+    transition:opacity 560ms var(--soft);backdrop-filter:blur(4px)}
+  .dr.on .dr-bg{opacity:1}
+  .dr-p{position:absolute;inset:0 0 0 auto;width:min(1060px,96vw);background:var(--s50);
+    transform:translate3d(100%,0,0);transition:transform 700ms var(--soft);
+    overflow-y:auto;overscroll-behavior:contain}
+  .dr.on .dr-p{transform:none}
+  .dr-bar{position:sticky;top:0;z-index:6;background:var(--panel-bg);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--s200)}
+  .wrap2{max-width:820px;margin-inline:auto;padding:14px clamp(22px,4vw,56px);
+    display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .dr-x{font-size:13.5px;font-weight:500;color:var(--s600);border:1px solid var(--s200);border-radius:99px;
+    padding:7px 15px;cursor:pointer;transition:background var(--ui) linear,color var(--ui) linear,border-color var(--ui) linear}
+  .dr-x:hover{background:var(--s900);color:var(--s50);border-color:var(--s900)}
+  .dr-acts{display:flex;gap:8px}
+  #drLink{min-width:100px;text-align:center}
+  .dr-prog{height:1px;background:var(--s900);width:0;transition:width 90ms linear}
+  .dr-in{max-width:820px;margin-inline:auto;padding:clamp(40px,5.5vw,64px) clamp(22px,4vw,56px) 120px}
+
+  /* above the fold in the drawer */
+  .d-kk{font-size:13px;color:var(--s500);font-weight:300}
+  .d-t{margin:12px 0 18px;font-size:clamp(27px,3.7vw,46px);font-weight:500;line-height:1.1;letter-spacing:var(--tk-3)}
+  .d-one{font-size:clamp(17.5px,1.6vw,21px);font-weight:300;color:var(--s600);line-height:1.58;max-width:56ch}
+  .d-tl{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--s200)}
+  .d-tl div span{display:block;font-size:12px;color:var(--s500);margin-bottom:5px}
+  .d-tl div b{font-size:14.5px;font-weight:500;letter-spacing:var(--tk-1)}
+  /* headline impact, above the fold */
+  .d-imp{display:grid;grid-template-columns:1fr;gap:0;margin-top:26px;border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  @media(min-width:700px){.d-imp{grid-template-columns:repeat(3,1fr)}}
+  .d-imp div{padding:20px 22px;border-top:1px solid var(--s200)}
+  .d-imp div:first-child{border-top:0}
+  @media(min-width:700px){.d-imp div{border-top:0}.d-imp div+div{border-left:1px solid var(--s200)}}
+  .d-imp b{display:block;font-size:clamp(21px,2.2vw,27px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.1;font-variant-numeric:tabular-nums}
+  .d-imp span{display:block;font-size:13px;font-weight:300;color:var(--s500);margin-top:8px;line-height:1.5}
+
+  .d-fig{margin:clamp(50px,7vh,74px) 0 12px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
+  .d-fig picture{display:block}
+  .beforefig{border-style:dashed;border-color:var(--s300)}
+  .d-pair{display:grid;grid-template-columns:1fr;gap:14px;margin:26px 0 10px}
+  @media(min-width:760px){.d-pair{grid-template-columns:1fr 1fr}}
+  .d-pair figure{margin:0;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100)}
+  /* awaiting assets: collapse the frame instead of showing a broken image */
+  .d-fig img,.d-shot img,.p-im img{min-height:1px}
+  .d-fig:has(img[src=""]),.d-fig:has(img:not([src])){display:none}
+  /* asset not delivered yet: a labelled slot at the same proportions as the Figma frame */
+  .d-fig.ph{aspect-ratio:880/560;border-style:dashed;border-color:var(--s300);display:flex;align-items:center;justify-content:center;padding:24px}
+  .d-fig.ph span{font-size:13px;font-weight:400;color:var(--s500);letter-spacing:var(--tk-1);text-align:center}
+  .d-pair u{display:block;text-decoration:none;font-size:10.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s500);padding:9px 12px;border-bottom:1px solid var(--s200);background:var(--s50)}
+  .d-cap{font-size:13px;font-weight:300;color:var(--s500);line-height:1.6;margin-bottom:clamp(46px,7vh,72px)}
+  .d-shot{margin:clamp(50px,7vh,74px) 0 12px;border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s100);max-height:620px;overflow-y:auto}
+
+  .d-b{margin-top:clamp(52px,7vh,76px)}
+  .d-b>h3{font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);
+    padding-bottom:11px;border-bottom:1px solid var(--s200);margin-bottom:20px}
+  .d-b p{font-size:16.5px;font-weight:300;color:var(--s700);line-height:1.76;margin-bottom:14px}
+  .d-b p b{font-weight:500;color:var(--s900)}
+  .d-pull{margin:26px 0;padding-left:20px;border-left:2px solid var(--s300);
+    font-size:clamp(18px,1.8vw,23px);font-weight:300;line-height:1.42;letter-spacing:var(--tk-1);color:var(--s800)}
+
+  /* decision blocks with rejected direction */
+  .dcs{display:flex;flex-direction:column;gap:14px}
+  .dc{border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  .dc-h{padding:16px 20px;font-size:15.5px;font-weight:500;letter-spacing:var(--tk-1);border-bottom:1px solid var(--s200)}
+  .dc-b{display:grid;grid-template-columns:1fr}
+  @media(min-width:700px){.dc-b{grid-template-columns:1fr 1fr}}
+  .dc-c{padding:16px 20px;font-size:14.5px;font-weight:300;color:var(--s600);line-height:1.6}
+  @media(min-width:700px){.dc-c+.dc-c{border-left:1px solid var(--s200)}}
+  .dc-c u{display:block;text-decoration:none;font-size:11.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
+  .dc-c.rj{background:var(--s100)}
+
+  /* system diagram, plain and structural.
+     Dividers are grid gaps showing the container background, so a row that
+     does not fill every column can never leave a hanging rule. */
+  .sys{border:1px solid var(--s200);border-radius:10px;overflow:hidden;background:var(--s200)}
+  .sys-r{display:grid;grid-template-columns:1fr;gap:1px}
+  .sys-c{background:var(--s50);display:grid;grid-template-columns:minmax(100px,.65fr) minmax(0,1.35fr);gap:18px;padding:16px 20px}
+  .sys-c u{display:block;text-decoration:none;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500)}
+  .sys-c ul{display:flex;gap:6px 18px;flex-wrap:wrap}
+  .sys-c li{list-style:none;font-size:13.5px;font-weight:300;color:var(--s600);line-height:1.45}
+  .sys-n{background:var(--s50);font-size:13px;font-weight:300;color:var(--s500);padding:16px 20px;margin-top:1px;line-height:1.6}
+  @media(min-width:700px){
+    .sys-r{grid-template-columns:repeat(2,1fr)}
+    .sys-c{display:block;padding:18px 20px}
+    /* an odd final group spans the row instead of leaving an empty cell */
+    .sys-c:last-child:nth-child(odd){grid-column:1 / -1}
+    .sys-c u{margin-bottom:10px}.sys-c ul{display:block}.sys-c li{padding:3px 0}.sys-n{padding:18px 20px}
+  }
+  @media(min-width:1000px){
+    .sys-r{grid-template-columns:repeat(4,1fr)}
+    .sys-c:last-child:nth-child(4n+1){grid-column:1 / -1}
+  }
+
+  .lst{list-style:none}
+  .lst li{display:flex;gap:18px;padding:15px 0;border-top:1px solid var(--s200);font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.64}
+  .lst li:first-child{border-top:0;padding-top:0}
+  .lst li b{flex:none;width:172px;color:var(--s900);font-weight:500}
+  @media(max-width:700px){.lst li{flex-direction:column;gap:5px}.lst li b{width:auto}}
+
+  .stp{list-style:none;counter-reset:q}
+  .stp li{counter-increment:q;position:relative;padding:17px 0 17px 46px;border-top:1px solid var(--s200);
+    font-size:15.5px;font-weight:300;color:var(--s600);line-height:1.66}
+  .stp li::before{content:counter(q);position:absolute;left:0;top:16px;width:25px;height:25px;border-radius:50%;
+    border:1px solid var(--s300);font-size:12px;font-weight:500;color:var(--s600);display:flex;align-items:center;justify-content:center}
+  .stp li b{display:block;font-size:16.5px;font-weight:500;color:var(--s900);letter-spacing:var(--tk-1);margin-bottom:5px}
+
+  .ld{background:var(--s100);border:1px solid var(--s200);border-radius:10px;padding:24px 26px}
+  .ld li{border-top-color:var(--s200)}
+  .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
+
+  /* optional depth */
+  .glance{margin-top:30px;display:grid;grid-template-columns:1fr;border:1px solid var(--s200);border-radius:12px;overflow:hidden}
+  @media(min-width:720px){.glance{grid-template-columns:1fr 1fr}}
+  .glance>div{padding:18px 20px}
+  .glance>div+div{border-top:1px solid var(--s200)}
+  @media(min-width:720px){.glance>div+div{border-top:0;border-left:1px solid var(--s200)}}
+  .glance u{display:block;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
+  .glance p{font-size:15.5px;line-height:1.6;color:var(--s800,var(--s900));font-weight:400;margin:0}
+  .d-q{margin:32px 0 0;padding:22px 24px;border-left:2px solid var(--s900);background:var(--s100);border-radius:0 10px 10px 0}
+  .d-q blockquote{margin:0;font-size:17px;font-weight:300;line-height:1.6;color:var(--s700)}
+  .d-q figcaption{margin-top:12px;font-size:13.5px;color:var(--s500)}
+  .d-q figcaption b{color:var(--s900);font-weight:500}
+  .d-nx{margin-top:clamp(56px,8vh,84px);display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--s200);padding-top:24px}
+  .d-nx a{display:block;padding:16px 18px;border:1px solid var(--s200);border-radius:10px;transition:border-color var(--ui) linear,background var(--ui) linear}
+  .d-nx a:hover{border-color:var(--s900)}
+  .d-nx a.nx{text-align:right;grid-column:2}
+  .d-nx u{display:block;text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:6px}
+  .d-nx b{font-size:15px;font-weight:500;line-height:1.35}
+  .more{margin-top:16px;border-top:1px solid var(--s200)}
+  .more summary{list-style:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:500;color:var(--s600);transition:color var(--ui) linear}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary:hover{color:var(--s900)}
+  .more summary .pm{width:16px;height:16px;position:relative;flex:none}
+  .more summary .pm::before,.more summary .pm::after{content:'';position:absolute;background:currentColor;
+    transition:transform 320ms var(--soft)}
+  .more summary .pm::before{left:0;top:7.5px;width:16px;height:1px}
+  .more summary .pm::after{left:7.5px;top:0;width:1px;height:16px}
+  .more[open] summary .pm::after{transform:scaleY(0)}
+  .more-in{padding-bottom:20px}
+
+  .before{margin-top:22px;border:1px dashed var(--s300);border-radius:10px;background:var(--s100);padding:22px}
+  .before u{display:block;text-decoration:none;font-size:11.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:10px}
+  .before p{font-size:14.5px;font-weight:300;color:var(--s500);margin:0}
+
+  .road{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+  @media(min-width:700px){.road{grid-template-columns:1fr 1fr}}
+  .rc{border:1px solid var(--s200);border-radius:10px;overflow:hidden}
+  .rh{background:var(--s100);border-bottom:1px solid var(--s200);padding:13px 17px;
+    font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:var(--tk-lbl);color:var(--s600);
+    display:flex;justify-content:space-between;align-items:center}
+  .rh span{background:var(--s900);color:var(--s50);border-radius:99px;min-width:20px;height:20px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0;padding:0 6px}
+  .ri{padding:14px 17px;border-top:1px solid var(--s200);font-size:14px;font-weight:300;color:var(--s600);line-height:1.56}
+  .ri:first-of-type{border-top:0}
+  .ri b{display:block;color:var(--s900);font-weight:500;font-size:14.5px;margin-bottom:4px}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+      transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .rv{opacity:1;transform:none}.ln>i{transform:none}
+  }
+</style>
+
+<script>
+const themeToggle=document.getElementById('theme-toggle');
+const setToggleState=()=>{
+  const dark=document.documentElement.dataset.theme==='dark';
+  const label=`Switch to ${dark?'light':'dark'} mode`;
+  themeToggle.setAttribute('aria-label',label);
+  themeToggle.setAttribute('aria-pressed',String(dark));
+  themeToggle.title=label;
+};
+setToggleState();
+themeToggle.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  const apply=()=>{
+    document.documentElement.dataset.theme=next;
+    localStorage.setItem('theme',next);
+    setToggleState();
+  };
+  if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches){
+    document.documentElement.classList.add('theme-fallback');
+    apply();
+    setTimeout(()=>document.documentElement.classList.remove('theme-fallback'),560);
+    return;
+  }
+  const box=themeToggle.getBoundingClientRect();
+  const x=box.left+box.width/2;
+  const y=box.top+box.height/2;
+  const radius=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+  document.documentElement.style.setProperty('--theme-x',`${x}px`);
+  document.documentElement.style.setProperty('--theme-y',`${y}px`);
+  document.documentElement.style.setProperty('--theme-radius',`${radius}px`);
+  document.startViewTransition(apply);
+});
+/* ============================================================
+   THE MECHANISM
+   Ten parts of one platform, cut so the teeth truly mesh.
+   Constant module, so any pair fits. Angular velocity is
+   inversely proportional to tooth count: the design system
+   turns slowly, bug triage never stops.
+   ============================================================ */
+(function mechanism(){
+  const NS='http://www.w3.org/2000/svg';
+  const stage=document.getElementById('mechStage');
+  if(!stage||stage.closest('[hidden]'))return;
+
+  const M=3.4;
+  const PARTS=[
+    ['ds', 34,null,  null, 'Design system','Tokens, components, the shared vocabulary'],
+    ['ui', 26,'ds', -140.0,'Interfaces','Dashboards, configuration, operational flows'],
+    ['usr',18,'ui',  -55.0,'End users','The reward experience inside partner apps'],
+    ['dat',22,'ui',  130.0,'Data model','Events, states, the schema everything reads'],
+    ['s2s',16,'dat',-125.0,'Server to server','Postbacks, callbacks, partner integration'],
+    ['rw', 20,'s2s', 175.0,'Rewards','Payout logic across every mechanic'],
+    ['fr', 13,'rw',  125.0,'Fraud','Guards, ceilings, minimum thresholds'],
+    ['rep',14,'rw', -150.0,'Reporting','Revenue, attribution, reconciliation'],
+    ['sup',15,'usr',  30.0,'Support','Investigation and manual resolution'],
+    ['bug',11,'sup',   0.0,'Bug triage','Regressions, edge cases, the daily churn']
+  ];
+
+  const R={},POS={},T={},NAME={},SUB={},BEAR={},PAR={};
+  PARTS.forEach(([id,t,p,a,n,s])=>{R[id]=M*t/2;T[id]=t;NAME[id]=n;SUB[id]=s;BEAR[id]=a;PAR[id]=p});
+  PARTS.forEach(([id,t,p,a])=>{
+    if(!p){POS[id]=[0,0];return}
+    const d=R[p]+R[id], ra=a*Math.PI/180;
+    POS[id]=[POS[p][0]+d*Math.cos(ra), POS[p][1]+d*Math.sin(ra)];
+  });
+
+  const MESH=PARTS.filter(p=>p[2]).map(p=>[p[0],p[2]]);
+  const nb=id=>MESH.filter(m=>m.includes(id)).map(m=>m[0]===id?m[1]:m[0]);
+
+  /* Tooth profile with curved flanks.
+     Sampled around the pitch circle: root arc, rising flank as a
+     smooth cubic, flat tip, falling flank. Reads as a machined
+     gear rather than a star. */
+  function toothPath(n,r){
+    const ad=M*0.50, de=M*0.58;
+    const rt=r+ad, rr=r-de;
+    const st=Math.PI*2/n;
+    const tipW=st*0.30, rootW=st*0.40;
+    const P=(rad,ang)=>[+(rad*Math.cos(ang)).toFixed(2),+(rad*Math.sin(ang)).toFixed(2)];
+    let d='';
+    for(let i=0;i<n;i++){
+      const c=i*st;
+      const rA=c-st/2+rootW/2;     // root end, start of rise
+      const tA=c-tipW/2;           // tip start
+      const tB=c+tipW/2;           // tip end
+      const rB=c+st/2-rootW/2;     // root start, end of fall
+      const p0=P(rr,rA), p1=P(rt,tA), p2=P(rt,tB), p3=P(rr,rB);
+      // control points sit between root and tip radius for a filleted flank
+      const mid=(r+rt)/2, low=(rr+r)/2;
+      const c1=P(low,rA+(tA-rA)*0.34), c2=P(mid,rA+(tA-rA)*0.72);
+      const c3=P(mid,tB+(rB-tB)*0.28), c4=P(low,tB+(rB-tB)*0.66);
+      if(i===0) d+=`M${p0[0]} ${p0[1]}`;
+      d+=`C${c1[0]} ${c1[1]} ${c2[0]} ${c2[1]} ${p1[0]} ${p1[1]}`;
+      d+=`A${rt.toFixed(2)} ${rt.toFixed(2)} 0 0 1 ${p2[0]} ${p2[1]}`;
+      d+=`C${c3[0]} ${c3[1]} ${c4[0]} ${c4[1]} ${p3[0]} ${p3[1]}`;
+      const nx=P(rr,(i+1)*st-st/2+rootW/2);
+      d+=`A${rr.toFixed(2)} ${rr.toFixed(2)} 0 0 1 ${nx[0]} ${nx[1]}`;
+    }
+    return d+'Z';
+  }
+
+  const xs=Object.values(POS).map(p=>p[0]), ys=Object.values(POS).map(p=>p[1]);
+  const pad=Math.max(...Object.values(R))*0.55+16;
+  const vb=[Math.min(...xs)-pad, Math.min(...ys)-pad,
+            (Math.max(...xs)-Math.min(...xs))+pad*2,
+            (Math.max(...ys)-Math.min(...ys))+pad*2];
+
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','mech-svg');
+  svg.setAttribute('viewBox',vb.map(v=>v.toFixed(1)).join(' '));
+  svg.setAttribute('role','img');
+  svg.setAttribute('aria-label','Ten interlocking parts of one platform drawn as meshing gears. Larger parts change slowly, smaller parts change constantly.');
+  svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+  const linkG=document.createElementNS(NS,'g');svg.appendChild(linkG);
+  const linkEls={};
+  MESH.forEach(([a,b])=>{
+    const l=document.createElementNS(NS,'line');
+    l.setAttribute('class','lnk-l');
+    l.setAttribute('x1',POS[a][0].toFixed(1));l.setAttribute('y1',POS[a][1].toFixed(1));
+    l.setAttribute('x2',POS[b][0].toFixed(1));l.setAttribute('y2',POS[b][1].toFixed(1));
+    linkG.appendChild(l);linkEls[a+'|'+b]=l;
+  });
+
+  const gears={};
+  PARTS.forEach(([id,t])=>{
+    const g=document.createElementNS(NS,'g');
+    g.setAttribute('class','gear');
+    g.setAttribute('tabindex','0');
+    g.setAttribute('role','button');
+    g.setAttribute('aria-label',NAME[id]+'. '+SUB[id]+'. '+t+' teeth, meshes with '+nb(id).map(x=>NAME[x]).join(' and ')+'.');
+
+    const rot=document.createElementNS(NS,'g');
+    rot.setAttribute('transform',`translate(${POS[id][0].toFixed(1)} ${POS[id][1].toFixed(1)})`);
+    const spin=document.createElementNS(NS,'g');
+
+    const body=document.createElementNS(NS,'path');
+    body.setAttribute('class','g-body');
+    body.setAttribute('d',toothPath(t,R[id]));
+    spin.appendChild(body);
+
+    const hub=document.createElementNS(NS,'circle');
+    hub.setAttribute('class','g-hub');
+    hub.setAttribute('r',(R[id]*0.30).toFixed(1));
+    spin.appendChild(hub);
+
+    const bore=document.createElementNS(NS,'circle');
+    bore.setAttribute('class','g-bore');
+    bore.setAttribute('r',(R[id]*0.10).toFixed(1));
+    spin.appendChild(bore);
+
+    const sp=t>=22?5:(t>=15?4:3);
+    for(let k=0;k<sp;k++){
+      const ang=(k/sp)*Math.PI*2;
+      const l=document.createElementNS(NS,'line');
+      l.setAttribute('class','g-spoke');
+      l.setAttribute('x1',(Math.cos(ang)*R[id]*0.32).toFixed(1));
+      l.setAttribute('y1',(Math.sin(ang)*R[id]*0.32).toFixed(1));
+      l.setAttribute('x2',(Math.cos(ang)*R[id]*0.70).toFixed(1));
+      l.setAttribute('y2',(Math.sin(ang)*R[id]*0.70).toFixed(1));
+      spin.appendChild(l);
+    }
+    rot.appendChild(spin);
+
+    // marker dot, so rotation is legible without labels
+    const mk=document.createElementNS(NS,'circle');
+    mk.setAttribute('class','g-mk');
+    mk.setAttribute('r','1.7');
+    mk.setAttribute('cx',(R[id]*0.52).toFixed(1));
+    spin.appendChild(mk);
+
+    const hit=document.createElementNS(NS,'circle');
+    hit.setAttribute('class','g-hit');
+    hit.setAttribute('r',(R[id]*0.94).toFixed(1));
+    rot.appendChild(hit);
+
+    g.appendChild(rot);svg.appendChild(g);
+    gears[id]={g,spin,phase:0};
+  });
+  stage.appendChild(svg);
+
+  /* Mesh phase, derived rather than guessed.
+     With centres along bearing T, the parent must present a TOOTH toward the
+     child and the child a GAP toward the parent. That gives the invariant
+       np*(Pp - T) + nc*(Pc - T - 180) = 180  (mod 360)
+     which is preserved as they turn, because the angular terms cancel.
+     Solving for the child's phase: */
+  const dir={},off={};
+  PARTS.forEach(([id,t,p])=>{
+    if(!p){dir[id]=1;off[id]=0;return}
+    dir[id]=-dir[p];
+    const Tb=BEAR[id];
+    off[id]=Tb+180+(180-T[p]*(off[p]-Tb))/t;
+  });
+
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const BASE=7;
+  let running=!reduce,t0=performance.now(),cur=null;
+
+  function frame(now){
+    const dt=Math.min((now-t0)/1000,.05);t0=now;
+    if(running){
+      PARTS.forEach(([id,t])=>{
+        const gr=gears[id];
+        gr.phase+=BASE*(T['ds']/t)*dir[id]*dt;
+        gr.spin.setAttribute('transform',`rotate(${(gr.phase+off[id]).toFixed(2)})`);
+      });
+    }
+    requestAnimationFrame(frame);
+  }
+  if(reduce){PARTS.forEach(([id])=>gears[id].spin.setAttribute('transform',`rotate(${off[id].toFixed(2)})`))}
+  else{requestAnimationFrame(frame)}
+
+  /* ---- hover card, positioned beside the gear ---- */
+  const card=document.getElementById('mechCard');
+  const cName=document.getElementById('mcName');
+  const cSub=document.getElementById('mcSub');
+  const cMesh=document.getElementById('mcMesh');
+  const cRate=document.getElementById('mcRate');
+
+  function place(id){
+    const r=stage.getBoundingClientRect();
+    const sx=r.width/vb[2];
+    const px=(POS[id][0]-vb[0])*sx, py=(POS[id][1]-vb[1])*sx;
+    const rr=R[id]*sx;
+    const right=px<r.width*0.56;
+    card.style.left=(right?px+rr+16:px-rr-16)+'px';
+    card.style.top=py+'px';
+    card.dataset.side=right?'r':'l';
+  }
+
+  function focusG(id){
+    cur=id;
+    const near=nb(id);
+    Object.keys(gears).forEach(k=>{
+      const c=gears[k].g.classList;
+      c.remove('act','near','dim');
+      c.add(k===id?'act':near.includes(k)?'near':'dim');
+    });
+    Object.keys(linkEls).forEach(k=>linkEls[k].classList.toggle('on',k.split('|').includes(id)));
+    cName.textContent=NAME[id];
+    cSub.textContent=SUB[id];
+    cMesh.textContent=near.map(x=>NAME[x]).join(', ');
+    cRate.textContent=(T['ds']/T[id]).toFixed(2)+'x';
+    place(id);
+    card.classList.add('on');
+  }
+  function blurG(){
+    if(matchMedia('(hover:none), (pointer:coarse)').matches&&cur)return;
+    cur=null;
+    Object.keys(gears).forEach(k=>gears[k].g.classList.remove('act','near','dim'));
+    Object.keys(linkEls).forEach(k=>linkEls[k].classList.remove('on'));
+    card.classList.remove('on');
+  }
+
+  Object.keys(gears).forEach(id=>{
+    const g=gears[id].g;
+    g.addEventListener('mouseenter',()=>focusG(id));
+    g.addEventListener('focus',()=>focusG(id));
+    g.addEventListener('blur',blurG);
+    g.addEventListener('click',()=>focusG(id));
+    g.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();focusG(id)}
+    });
+  });
+  stage.addEventListener('mouseleave',()=>{
+    if(matchMedia('(hover:none), (pointer:coarse)').matches)return;
+    if(!document.activeElement||!document.activeElement.classList.contains('gear'))blurG();
+  });
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(cur)place(cur)},120)},{passive:true});
+
+  new IntersectionObserver(es=>es.forEach(e=>{running=!reduce&&e.isIntersecting}),{threshold:.05}).observe(stage);
+})();
+
+
+/* ============================================================
+   CASE STUDIES
+   Structured as strategic product stories, not UX process docs.
+   ============================================================ */
+/* @render-start: case data and pure renderers.
+   scripts/build-case-pages.mjs evaluates this region to prerender the cards
+   and the /work/<slug>/ pages. Keep it free of DOM access. */
+const P = [
+{
+  ix:'01',
+  kk:'Offerwall platform, internal operations',
+  t:'Getting the company out of its own support queue',
+  d:'Every missing reward became a ticket for an account manager, worked in a tool older than half the product. I specified one event model for all five reward mechanics before drawing a screen. Investigation time fell 56%.',
+  preview:{src:'images/case-01/hero.gif',still:'images/case-01/hero-still.png',alt:'Searching for user 1234, opening an offer and landing on the reward history, where a withheld payout names the rule that held it'},
+  metrics:[['56%','less support time per case'],['5','mechanics, one structure']],
+  hero:{src:'images/case-01/hero.gif',still:'images/case-01/hero-still.png',fb:'images/case-01/milestones.png',alt:'Searching for user 1234, opening the Legend of Heroes offer and scrolling the reward history to a withheld payout that names the velocity rule',
+    cap:'Find the user, open the offer, read the history. The withheld row names the rule that held the money.'},
+  one:'Every missing reward became a ticket for an account manager. Their tool predated boosters, promoted offers and cashback, so most of the day went on guessing what a row meant.',
+  role:'Product designer, end to end',
+  team:'1 PM, frontend and backend, support and AMs as users',
+  time:'Initial release, then ongoing iterations',
+  year:'2025 to 2026',
+  impact:[
+    ['56%','less time per investigation over a two month window, against the old tool'],
+    ['5 mechanics','timed, event, repeatable, bonus and IAP on one row structure'],
+    ['6 releases','built on that structure since, none needing a redesign']
+  ],
+  impactNote:'Same ticket types, two month window. Two of the six releases are mechanics that did not exist when I started.',
+  context:'A reward can go missing at install attribution, the postback, milestone progress, a promotion or a fraud rule. Account managers traced it in a tool built before boosters, promoted offers and cashback, so it had no way to show any of them.',
+  beforeImg:{src:'images/case-01/old-table.png',alt:'The previous investigation table, with limited columns and no state information',
+    cap:'The old table. A timed event, a purchase and a bonus all read the same, and nothing said why a payout was withheld.'},
+  tension:'I was asked to redesign the screen. The screen was the symptom. Nobody had ever defined what a reward event was, so each new mechanic landed as one more exception in the table. High volume regions were clearing over a hundred tickets a shift, and every slow answer made a partner doubt the payout logic itself.',
+  insight:'I shadowed eight investigations. Every agent had the data. Each had built a private method for turning rows into an explanation a partner would accept, and no two matched. So I specified the event model first and let the table follow from it.',
+  pull:'Five mechanics drawn as one list. Naming them was most of the design work.',
+  decisions:[
+    ['Model the event, or redesign the table',
+     'One row grammar for every mechanic: base, promotion, final, state, timestamp.',
+     'Slower, and data engineering had to expose the event store differently. It is also why cashback and repeatable bonuses later shipped as additions, with no rebuild.'],
+    ['Manual rewards always on, or gated by state',
+     'Offered only where the milestone state allows, and locked while sending.',
+     'More states to specify and build. Without the lock, the same payout can go out twice.'],
+    ['Hide internal blockers, or name them',
+     'A withheld payout names its rule. The distribution funnel names every campaign each rule removed.',
+     'Untidy internal logic ends up in front of investigators. It is also the only way they can tell a partner which rule held the money.']
+  ],
+  leadership:[
+    ['Earning the data dependency','I took the ticket taxonomy from eight shadowed investigations to data engineering, so the request arrived as evidence.'],
+    ['Auditing my own work','A post launch audit with support, TAMs and integration managers found manual rewarding shipped without honest success and failure feedback. That gap was mine, and it is the first fix on the roadmap.'],
+    ['Holding a line with the biggest publishers','They want an unlimited override of our fraud rules. I am arguing for graduated limits. It is still open.']
+  ],
+  galleryLabel:'More from the investigation',
+  gallery:[
+    {src:'images/case-01/constraints.gif',still:'images/case-01/constraints-still.png',alt:'The distribution tab: fourteen eligible campaigns narrowing to four, with Already installed and Sunday only expanded to list the campaigns they removed',
+     cap:'Why a campaign never showed. Fourteen eligible, four shown, and each rule lists exactly what it removed. Before, this was an unexplained absence.'},
+    {src:'images/case-01/milestones.png',alt:'Reward history for one offer: base, promotion and final per milestone, with skipped, manual and withheld states',
+     cap:'One row grammar for every mechanic. Base, promotion and final stay in separate columns, so a disputed payout explains itself.'},
+    {src:'images/case-01/manual.gif',still:'images/case-01/manual-still.png',alt:'Rewarding level 30 manually: confirm, the row locks while sending, then a success toast. Level 35 then fails with a toast naming the duplicate device rule',
+     cap:'The first roadmap fix, prototyped. Confirm, lock the row while sending, end in a named result. The second payout fails because the duplicate device rule blocks it, and the toast says so.'},
+    {src:'images/case-01/eventtypes.png',alt:'Specification of timed, event, repeatable, bonus and IAP event types, each with a promoted variant',
+     cap:'The row grammar as a spec, written before any screen. It is why the next six releases were cheap.'},
+    {src:'images/case-01/actions.png',alt:'Specification of which manual reward actions each milestone state allows, including a disabled state while processing',
+     cap:'Actions by state. Both disable while one is processing, so a payout cannot be issued twice.'}
+  ],
+  system:{
+    intro:'Five groups, ordered by the question people arrive with.',
+    cols:[
+      ['Progress',['Timed events','Level events','Repeatable']],
+      ['Rewards',['Bonus','IAP and cashback','Promotions']],
+      ['Attribution',['Install postback','Click window','MMP handshake']],
+      ['Identity',['UUID','External ID','Device, country']],
+      ['Guards',['Fraud rules','Payout ceilings','Consent state']]
+    ],
+    note:'Progress and rewards answer most tickets, so they lead. Guards come last and are named, so a withheld payout reads as a decision. A new mechanic joins a group instead of adding a column.'
+  },
+  debate:{
+    q:'Should the dashboard override our own fraud protection?',
+    intro:'The decision I have not won yet. It arrives as a UI request and is really a commercial argument.',
+    sides:[
+      ['What publishers want','An absolute override, so their support can bypass fraud flags for users who complain publicly. They carry the fraud cost, so they want the final call.'],
+      ['Why unlimited is dangerous','Manual completion moves money. One user claimed every milestone on a campaign; the install was a day old, so most claims were impossible.'],
+      ['Why a hard block is also wrong','It protects margin and pushes the work back into our queue, the problem this project existed to remove.']
+    ],
+    pos:'Graduated. Soft caps on manual earnings per user and per campaign, an amber warning at the threshold showing how much was already granted, and the issuer recorded on every manual payout.',
+    why:'The risky path gets slower and stays possible, and finance gets a ceiling. If I am wrong, it shows up in an audit log, not quietly in the margin.'
+  },
+  road:{
+    intro:'From the post launch audit. Repairs to trust in shipped work come before anything new.',
+    quick:[
+      ['Honest success and failure feedback','A manual reward can show success on a failure. Prototyped above.'],
+      ['Statuses that cannot contradict','A row can read installed while the postback says not received.'],
+      ['Visible payout blockers','Show internal limits instead of leaving the investigator to guess.']
+    ],
+    big:[
+      ['Reversible manual rewards','A delay window before the reward sends.'],
+      ['External ID remapping','Several accounts on one device collapse into one record today.'],
+      ['GDPR deletion in product','Consent revocation still runs through manual tickets.']
+    ]
+  },
+  reflection:'I was asked for a better table, and a better table would have broken on the next mechanic. The business has added two since. Both fitted the event model without a redesign.'
+},
+{
+  ix:'02',
+  kk:'Offerwall platform, partner onboarding',
+  t:'Sixty settings nobody could explain',
+  d:'Publisher setup ran through one dropdown of 60+ settings named by whoever built them, 54 with no description. I spent two months finding out what they did, then rebuilt the flow around the decisions they serve. Deal to release went from seven weeks to five.',
+  preview:{src:'images/case-02/hero.gif',still:'images/case-02/hero-still.png',alt:'Switching on Playtime Web and Playtime Studio in the application setup, each revealing its own settings beside a stepper'},
+  metrics:[['7 to 5 weeks','deal to release'],['+17%','configs actually used']],
+  one:'The settings that decide how Playtime behaves sat in one dropdown under names their developers chose. 54 had no description, and several of the authors had left. Before restructuring anything, I had to find out what they did.',
+  role:'Product designer, end to end',
+  team:'Tech leads, developers, BI, technical and growth account managers',
+  time:'Two months of analysis, then design',
+  year:'2025 to 2026',
+  hero:{src:'images/case-02/hero.gif',still:'images/case-02/hero-still.png',fb:'images/case-02/flow.png',alt:'Switching on Playtime Web reveals the domain field; switching on Playtime Studio reveals its tracking settings, with the setup stepper on the right',
+    cap:'Integration type first. Each type you switch on brings its own settings, so Studio configs stop scattering across three sections.'},
+  impact:[
+    ['7 to 5 weeks','signed deal to live release, two months after launch'],
+    ['+17% configs used','more settings in active use. Nothing was added; they became findable'],
+    ['54 documented','settings explained in the interface for the first time. Eight dead ones removed']
+  ],
+  impactNote:'Two months after launch. With a seven week baseline, one month barely completes a cycle. At five new publishers a month, two weeks each is about ten publisher weeks back every month. I lead with the 17% because nothing new was built.',
+  context:'Application setup decides how rewards behave, what users see and how payouts reach them. Business wrote the requirements, engineers named the configs for the backend, and we onboard about five publishers a month, so every week of friction recurs.',
+  beforeImg:{src:'images/case-02/old-dropdown.png',alt:'The original configuration dropdown, holding sixty plus backend named options with no descriptions',
+    cap:'One dropdown, 60+ backend names, no grouping. 54 had no tooltip of any kind.'},
+  tension:'Three problems stacked. With 54 settings undescribed, account managers only enabled what someone had told them about. Nothing said where a new setting belonged: Playtime Studio started as one toggle, and its later settings split between rewards and the dropdown. And many authors had left, so the backend code was the only documentation.',
+  insight:'Every label was written by the person who implemented the setting, for themselves. Nobody had written for the person deciding whether to switch it on. Grouping stopped being the job. Translation became it.',
+  pull:'Every label answered the engineer. None answered the account manager.',
+  decisions:[
+    ['Searchable side panel, or everything visible and grouped',
+     'Everything visible, grouped by purpose, optional detail folded away.',
+     'I expected the tidier side panel to win. Five of eight testers chose the open layout because three visible sections told them where they were. I shipped theirs, and the page got longer.'],
+    ['What earns a place near the top',
+     'BI usage and revenue per config.',
+     'Niche configs moved down and revenue drivers moved up. When someone disagreed with the order, the numbers settled it.'],
+    ['Group by data type, or by dependency',
+     '18 configs that only work together became 6 dependency groups.',
+     'More modelling up front. It is what stops a publisher shipping cashback with no rate and no cap.'],
+    ['Self serve fraud settings, or gate them',
+     'Security configs are internal. Loosening a fraud rule needs a business agreement first.',
+     'Publishers cannot self serve here, on purpose. Money is at risk, so it belongs in a conversation.']
+  ],
+  system:{
+    intro:'Integration type comes first because it decides which configs matter. The sections after it follow who answers them.',
+    cols:[
+      ['Integration types',['Playtime SDK','Playtime Web','Playtime Studio']],
+      ['Integration configurations',['Payout setup','Install postback','Event tracking']],
+      ['Rewards and offers',['Currency and margins','Reward Connect','IAP and cashback']],
+      ['Security and system',['Restriction rules','Fraud features','Internal only']]
+    ],
+    note:'Engineers answer the integration sections, a commercial owner answers rewards. Security is ours alone, and the interface shows that boundary instead of hiding it.'
+  },
+  galleryLabel:'More from the setup',
+  gallery:[
+    {src:'images/case-02/grouped.gif',still:'images/case-02/grouped-still.png',alt:'Opening Other settings: grouped into Offerwall display, Server to server and Data and APIs. Choosing Portrait changes the row from No change to 1 change',
+     cap:'Optional settings, grouped by what they affect. Every row says how far it is from the default, so a reviewer sees what was touched without opening anything.'},
+    {src:'images/case-02/feedback.gif',still:'images/case-02/feedback-still.png',alt:'Switching on cashback reveals a required rate and cap; entering 20% and $5 shows that a user spending $25 gets 500 coins back',
+     cap:'Settings that only work together, checked together. Cashback asks for its rate and cap at once, then shows what a user would earn.'},
+    {src:'images/case-02/flow.png',alt:'The application setup on one page, with a stepper counting the required settings left per section',
+     cap:'One page in place of a six step wizard. The stepper counts what each section still needs.'}
+  ],
+  leadership:[
+    ['Recovering knowledge that had left','Ten alignment sessions with tech leads, developers and account managers, plus backend notes, to establish what 60+ configs actually did.'],
+    ['Deleting dead settings','Eight configs had been removed from the endpoints but still rendered, and AMs had been offering them to publishers. I removed them.'],
+    ['Losing the argument to users','I favoured the side panel. Five of eight testers did not, and they were right.']
+  ],
+  reflection:'The form is cleaner, but the explanations did the work: 17% more settings in use with nothing new built. For two of those months I drew nothing.'
+},
+{
+  ix:'03',
+  kk:'Promotions, lifecycle and operations',
+  t:'Arguing for the project nobody had funded',
+  d:'Promotions carried about a tenth of platform revenue and ran on a table with two statuses. The design was the quick part. Getting engineering time for it, against much larger projects, took longer.',
+  preview:{src:'images/case-03/hero.gif',still:'images/case-03/hero-still.png',alt:'Filtering promotions by Expired status, then opening the action menu of an expired promotion on Reactivate'},
+  metrics:[['~10%','of platform revenue'],['2 to 5','lifecycle states']],
+  one:'Promotions shipped early as a small feature: a name, active or inactive, two dates. They also carried about 10% of platform revenue, and account managers tracked hundreds of them in side spreadsheets because the product could not say what state anything was in.',
+  role:'Product designer, end to end',
+  team:'PM, engineering, account managers as primary users',
+  time:'Analysis, then design in stages',
+  year:'2026',
+  hero:{src:'images/case-03/hero.gif',still:'images/case-03/hero-still.png',fb:'images/case-03/lifecycle.png',alt:'Filtering the promotions table by Expired status, then opening the action menu of an expired promotion on Reactivate',
+    cap:'Status is a filter like any other. An expired promotion is one filter and one click from reactivation.'},
+  impact:[
+    ['+12% publisher created','promotions created by self serve publishers, two months after release'],
+    ['+18% AM created','promotions created by account managers, same window, on several hundred active'],
+    ['2 to 5 states','in the table, replacing an active or inactive flag']
+  ],
+  impactNote:'Account managers gained more than publishers. That fits: they run the volume, and they were the ones keeping spreadsheets.',
+  context:'We earn per install on the offers inside Playtime, and promotions are one of the strongest levers on that. My first change had nothing to do with lifecycle: I linked each promotion to its publisher, because the table did not say whose it was.',
+  beforeImg:{src:'images/case-03/old-table.png',alt:'The original promotions table with only active and inactive statuses, no filtering and no date range control',
+    cap:'Two statuses, no filters, no date range. Timing had to be read from the name or tracked somewhere else.'},
+  tension:'Promotions sat behind much larger projects, and the view was that they worked. Nobody disputed the table was crude. They disputed that it mattered. So I put numbers on it: roughly 10% of platform revenue, the hours AMs spent reconciling side trackers, and the risk of a promotion overrunning or never starting. Framed as a recurring cost, it got funded. That took longer than the design.',
+  insight:'The lifecycle already ran in production every day: scheduled, active, expired, and back to scheduled when recurring, plus drafts and deliberately parked promotions. One flag flattened all of it, so AMs rebuilt the states in spreadsheets. I wrote down the model they were already using.',
+  pull:'The spreadsheets were the spec.',
+  decisions:[
+    ['Infer state from dates, or model it',
+     'Five explicit states: scheduled, active, expired, draft and inactive.',
+     'Dates would have been cheaper. They cannot tell a recurring promotion between runs from a parked one, and a draft has no dates. The three states causing confusion are exactly the three dates cannot express.'],
+    ['Keep the flow linear, or add friction',
+     'A confirmation before editing or deactivating a live promotion, and a short modal to reactivate an expired one.',
+     'My PM argued against both, since we had no confirmation dialogs anywhere. These actions are asymmetric, and we had already paid for one live edit mistake. We shipped them.'],
+    ['Better search, or structured filters',
+     'Filters for status, publisher, application, targeting and date, plus sortable columns.',
+     'Search only works if titles carry every attribute, so titles had become improvised metadata. Filters move that into structure, at the cost of a busier top bar.']
+  ],
+  system:{
+    intro:'Five states, with the transitions that actually happen.',
+    cols:[
+      ['Scheduled',['Waiting for its window','Returns here if recurring']],
+      ['Active',['Running now','Edits ask first']],
+      ['Expired',['Window closed','Reactivate via modal']],
+      ['Draft',['Half filled','Saved partway']],
+      ['Inactive',['Parked on purpose','Not derivable from dates']]
+    ],
+    note:'Scheduled, active and expired form the loop. Draft and inactive sit outside it, which is why no date logic could ever produce them.'
+  },
+  galleryLabel:'The model behind it',
+  gallery:[
+    {src:'images/case-03/guards.gif',still:'images/case-03/guards-still.png',alt:'Choosing Edit on a live promotion opens a confirmation naming the apps affected, then choosing Deactivate opens a second confirmation',
+     cap:'Friction on purpose. Editing or deactivating a live promotion says who it reaches before it goes through.'},
+    {src:'images/case-03/reactivate.gif',still:'images/case-03/reactivate-still.png',alt:'Reactivating an expired promotion: choosing 14 days and a start date, reading the summary of the new window, then scheduling it',
+     cap:'Friction removed on purpose. An expired promotion comes back by setting a new window, without rebuilding the form.'},
+    {src:'images/case-03/filters.gif',still:'images/case-03/filters-still.png',alt:'Adding two publishers as filter chips, then a Next 7 days date range',
+     cap:'A date range returns any promotion that touches the window, because AMs plan in windows.'},
+    {src:'images/case-03/lifecycle.png',alt:'The promotions table filtered to one publisher, one promotion in each of the five lifecycle states',
+     cap:'One publisher, one promotion in each state.'},
+    {src:'images/case-03/states.png',alt:'The five promotion states, with scheduled, active and expired forming a recurring loop and draft and inactive outside it',
+     cap:'The loop is what a date comparison can express. Draft and inactive are what it cannot, and what AMs had been tracking by hand.'}
+  ],
+  leadership:[
+    ['Making an invisible cost visible','Nobody said promotions worked well. They said other things mattered more. I quantified the revenue and the AM hours and presented them as a recurring cost.'],
+    ['Disagreeing with my PM','I argued for two confirmations from a past incident and the asymmetry of the actions. Consistency was the weaker argument here.'],
+    ['Taking a review correction','I first put the date picker inside the filter panel, which broke our established top bar pattern. A review caught it and I moved it.']
+  ],
+  reflection:'The screens were the easy half. The work was showing that a feature everyone called finished was costing revenue and hours every week, and turning that into funded engineering time.'
+},
+{
+  ix:'04',
+  kk:'Design system, foundations to governance',
+  t:'Closing the gap between what shipped and what we drew',
+  d:'Two dashboards had drifted from the Figma library and from each other. I pulled production into the file, audited it, rebuilt the foundations as tokens and refactored ten components. Weekly frontend review went from three or four hours to under one.',
+  preview:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',alt:'Shared components in use: a segmented control, switch, buttons pressed through their states, an input, a checkbox and two toasts'},
+  metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
+  one:'Components disagreed on size, spacing and type across two dashboards. Nothing was broken enough to escalate, so it lasted.',
+  role:'Design system owner',
+  team:'Design and frontend across teams, 9 leaders for the type decision',
+  time:'Ongoing initiative',
+  year:'2026',
+  hero:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',fb:'images/case-04/hero.png',
+    alt:'Shared components in use: choosing Europe in a segmented control, switching Recurring on, pressing Create promotion, checking a box, typing a name and saving, which shows a success toast beside an error toast',
+    cap:'Every piece on this card comes from the same tokens, including the states you see as it is used.'},
+  impact:[
+    ['200+ issues closed','about ten per page across roughly twenty pages, found by audit'],
+    ['3-4h to under 1h','weekly frontend review, since component correctness stopped being a manual check'],
+    ['10 components','refactored with full state coverage, each a paired design and development task']
+  ],
+  impactNote:'The QA number is the one I defend. Review used to mean checking every component against the file by hand. Now it covers flow and behaviour, about 130 hours a year back.',
+  context:'Both dashboards share a Material UI base, but each grew its own conventions, and the Figma library described neither. The typeface was a paid licence with proportional figures, so numbers in tables never lined up. Spacing, radius and shadow had no tokens, which is where the soft, blurred cards came from.',
+  beforeImg:{src:'images/case-04/type.png',ph:'type.png · Typography, before and Figtree',
+    alt:'The same metrics card set in Hellix and in Figtree, showing figures aligning in Figtree and three distinct text greys replacing two identical ones',
+    cap:'Hellix against Figtree on the same card: an open licence, aligned figures, and text greys that finally separate secondary from disabled.'},
+  tension:'There was no single failure. Each inconsistency was small and the cost only showed in aggregate: engineers rebuilt components that existed, designers picked values by eye, and I spent three to four hours a week checking whether what shipped matched the file. Frontend engineers sit in other teams, so all of this was side work in their sprints.',
+  insight:'Neither side was a source of truth. Production had drifted, and the library described something that never quite shipped. So I ran it as an audit: production beside the file, closed item by item. Once the foundations were tokens, correctness became something a machine could check.',
+  pull:'Two hundred small disagreements, none worth a ticket alone.',
+  decisions:[
+    ['Audit by hand, or pull production in',
+     'HTML to Figma for the live screens, a first pass with OpenCode, then my own review of all of it.',
+     'The automated pass missed things, so nothing went out unreviewed. It was still faster, and it caught patterns a page by page read would have explained away.'],
+    ['Keep the typeface, or change it',
+     'Figtree, signed off by nine leaders.',
+     'A typeface touches every screen, so it needed alignment more than a design decision. The case: open licence, tabular figures, and a chance to fix two text levels that shared one grey.'],
+    ['Name by value, or by role',
+     'Five roles (primary, error, warning, info, success), each with main, light, dark and strong.',
+     'Every raw value reference had to migrate. Engineers reach for primary.dark because the name says what it is for.'],
+    ['Solid fills only, or an interaction overlay',
+     'One overlay of the role colour: nothing at rest, 4% on hover, 8% pressed.',
+     'It needs care on coloured surfaces. Without it, ghost and text buttons had no legitimate hover, which is where most improvised colours came from.']
+  ],
+  system:{
+    intro:'Four layers. Components never reference a primitive.',
+    cols:[
+      ['Primitives',['adjoeBlue and grey ramps','Red, yellow, blue, green','Type scale in Figtree']],
+      ['Semantic',['Primary, error, warning','Info, success','Main, light, dark, strong']],
+      ['Interaction',['Rest at 0%','Hover at 4%','Pressed at 8%']],
+      ['Structural',['Spacing tokens','Radius tokens','Elevation, redefined']]
+    ],
+    note:'The interaction and structural layers did not exist before. They are why a component declares its own states instead of an engineer deciding them per screen.'
+  },
+  galleries:[
+    {label:'Foundations',items:[
+      {src:'images/case-04/tokens.gif',still:'images/case-04/tokens-still.png',
+       alt:'The adjoeBlue ramp mapped to primary.main, dark and strong. Hovering the Create promotion button lights the primary.dark path from adjoeBlue 700; pressing it lights primary.strong from 800',
+       cap:'Primitive, role, state, live. Hover the button and primary.dark lights up, press it and primary.strong does. Nothing skips a layer.'},
+      {src:'images/case-04/greys.png',ph:'greys.png · Grey ramp, mixed to cool grey',
+       alt:'The grey ramp before and after, mixed cool and neutral tones resolved into one cool grey family',
+       cap:'The old ramp mixed cool and neutral greys with no rule, so two adjacent surfaces could disagree.'},
+      {src:'images/case-04/semantic.png',ph:'semantic.png · Five roles, four tones each',
+       alt:'Five semantic colour roles, each with main, light, dark and strong tones',
+       cap:'Five roles, four tones each, so no component derives a state colour on its own.'},
+      {src:'images/case-04/opacity.png',ph:'opacity.png · Interaction states, 4 and 8 percent',
+       alt:'Ghost buttons at rest, hover and pressed on three different surfaces, using a 4 and 8 percent overlay',
+       cap:'One overlay, 4% on hover and 8% pressed, holding up on every surface it sits on.'},
+      {src:'images/case-04/structural.png',ph:'structural.png · Spacing, radius, elevation',
+       alt:'The spacing scale on an 8 pixel base, radius tokens, and five elevation levels from none to prominent',
+       cap:'Spacing, radius and elevation. The blurred cards came from elevation that had only ever been approximated.'},
+      {src:'images/case-04/icons.png',ph:'icons.png · Icon ruleset, 16 and 24 only',
+       alt:'An icon magnified on its 24 pixel grid, beside the set drawn at the two permitted sizes, 16 and 24',
+       cap:'Two icon sizes, 16 and 24. Every other size was a source of misalignment.'}
+    ]},
+    {label:'Components, and the one I pulled',items:[
+      {src:'images/case-04/button.png',ph:'button.png · Button, hierarchies, colours and states',
+       alt:'The button matrix: primary and secondary in brand and danger, ghost in neutral, each in default, hover, pressed, focus, disabled and loading',
+       cap:'Button had the largest gap from best practice, so it became the proving ground for the colour system: three hierarchies, three colours, six states.'},
+      {src:'images/case-04/segment.png',ph:'segment.png · Segmented control, before and after review',
+       alt:'The segmented control as first designed, beside the revised version after leadership review',
+       cap:'Segmented control, before and after our VP sent it back from development planning.'},
+      {src:'images/case-04/components.png',ph:'components.png · The ten refactored components',
+       alt:'Six refactored components: input, switch, checkbox and radio, toast, filter chip and time picker',
+       cap:'Part of the refactored set. Each shipped as a paired design and development task, checked in Storybook and a sandbox.'},
+      {src:'images/case-04/focus.png',ph:'focus.png · Focus ring clipped by flush wrappers',
+       alt:'The same focused button inside a filter panel, inset with its ring intact, and flush to the edge with the ring clipped',
+       cap:'Why the focus ring is paused. Wrappers sit flush to component edges, so the ring clips inside dialogs and filter panels.'}
+    ]}
+  ],
+  leadership:[
+    ['Getting a typeface approved','I mapped the system and made the case on licence cost, figures and text hierarchy. Nine leaders signed off.'],
+    ['Absorbing a late reversal','Our VP rejected the segmented control in development planning. I produced alternatives and tested them with other leads. The revision is better, and it cost a cycle.'],
+    ['Pulling my own feature','The keyboard focus ring looked right in isolation and clipped in real layouts. I paused it rather than ship a broken accessibility affordance.']
+  ],
+  road:{
+    intro:'Two threads open: the focus ring, waiting on a container fix, and agent readability.',
+    quick:[
+      ['Reserve a focus inset','A spacing token so a focus ring always has room to render.'],
+      ['State coverage as a rule','A component without hover, pressed and focus tones does not pass review.']
+    ],
+    big:[
+      ['Return the focus ring','Once containers reserve space, nesting cannot clip it.'],
+      ['Visual regression coverage','So the 200 closed issues cannot quietly return.']
+    ]
+  },
+  quote:{text:'In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard.',who:'Puru',role:'Senior Frontend Engineer, adjoe'},
+  ai:{
+    intro:'Coding agents read the system as well as people. That was a goal from the start.',
+    points:[
+      ['Ask what it needs first','I ask the model how it wants to read a component. Where its expectations differ from our structure, our definitions are usually ambiguous.'],
+      ['Fetch state, not screenshots','An MCP connection pulls component states and specs into the codebase, so generated code references the system itself.']
+    ]
+  },
+  reflection:'Two parts I would defend: the interaction layer, because engineers stopped inventing colours, and three hours a week back. The focus ring sits on the other side of the ledger. A ring that is sometimes clipped is worse than none.'
+},
+{
+  ix:'05',
+  more:true,
+  kk:'Agentic marketing harness, freelance',
+  t:'Putting the agent at the front of an AI marketing harness',
+  d:'The harness could already read how AI assistants describe a brand, draft a fix and publish it. New users could not tell. In six weeks I redesigned it inside a working prototype, put a new version in front of users every two days, and shipped 214 versions until the first screen explained the product.',
+  dm:'New users could not tell what the harness did. I redesigned it inside a working prototype, tested every two days, until the first screen explained the product.',
+  preview:{src:'images/case-05/plan.gif',still:'images/case-05/plan-still.png',alt:'Screen recording: a signal opens two plans, one is chosen, the agent works through three steps and stops for approval before sending'},
+  metrics:[['214 versions','in six weeks'],['Every 2 days','tested with users and stakeholders']],
+  one:'The product reads how ChatGPT, Gemini, Perplexity and Grok describe a brand, drafts a fix and publishes it. New users landed on charts, found the agent in a side panel, and were asked to configure what it should do before it had done anything.',
+  role:'Freelance product designer, end to end',
+  team:'Solo, with an AI built prototype',
+  time:'Six weeks',
+  year:'2026',
+  keyH:'What it became',
+  hero:{src:'images/case-05/hero.png',fb:'images/preview/case-05.png',ph:'hero.png · The agent as the front door',
+    alt:'The redesigned home: a greeting, a centred composer with add, actions and dictation controls, four quick actions and this week’s signals below',
+    cap:'The home after six weeks: one question, four actions, this week’s signals underneath. Product, brand and agent names are changed.'},
+  impact:[
+    ['214 versions','of one working prototype in six weeks'],
+    ['Every 2 days','a new version in the hands of users and stakeholders'],
+    ['Minutes','from a review comment to the next published version']
+  ],
+  impactNote:'The count matters less than what each version cost. A change took minutes, so I could try the uncomfortable option, watch someone use it and drop it the same day. Most of what made the first screen readable came from versions I would never have spent a week drawing.',
+  context:'The users are marketing and growth leads with little time and no interest in building automations. I audited the live app block by block and rebuilt the navigation around five places: the agent, Dashboard, Workflows, Integrations, and Brain, where the agent keeps what it knows about the brand.',
+  before:'Charts first, the agent in a side panel, actions configured before anything was asked, and no moment where the agent said what it was about to do.',
+  tension:'An agent cannot be judged from a static screen. Trust comes from timing, from what it says while it works and from when it stops to ask, and a mockup shows none of that. A normal handoff cycle tests a handful of versions. This needed dozens.',
+  insight:'So the prototype became the design file. An AI built each version from my comments and a set of written rules, and every two days users and stakeholders used the latest one. I stopped reviewing how a screen looked and watched what a new user understood in the first ten seconds.',
+  pull:'A change that costs minutes is a change you can afford to test.',
+  decisions:[
+    ['Mockups and a handoff, or a working prototype',
+     'A working prototype from day one, clickable in both themes and at phone width. My comments and the written rules were the brief for every version.',
+     'No polished file to hide behind. Some versions were worse than the last and got rolled back in front of the people testing them. Every review was on the real thing, timing and the agent’s own words included.'],
+    ['Dashboard first, or the agent first',
+     'The agent is the home: one question in the middle of the screen, four quick actions under it, the week’s signals below.',
+     'People who want numbers at a glance lose a click. Any chart can be pinned to the dashboard from the chat, so the numbers stay one step away.'],
+    ['Let the agent act, or make it ask',
+     'Draft and ask. The agent offers plans, works through them on its own and stops at the one action that leaves the product, with a card listing exactly what will be sent.',
+     'One extra click per action. For a team handing its brand to an agent, that click is the product. Approvals, alert rules and blockers all use the same decision card, one decision per card.'],
+    ['Show all the agent knows, or only what helps',
+     'Brain went through five structures, from a map to a long document to six category cards that each open their own page.',
+     'Each structure lived a day or two before testing replaced it. The worst was a queue of “needs you” items: an optional knowledge base started to feel like overdue work, so the queue went.']
+  ],
+  leadership:[
+    ['Running the rhythm','A new version in front of users and stakeholders every two days, and every hesitation I saw turned into a comment for the next build.'],
+    ['Directing the build','I wrote the design system and motion rules as files the AI read before every change. Reviews were a few words pinned to an element, like “alignment issue”.'],
+    ['Checking the checker','Scripts measured contrast, overflow and alignment on every version. One failed a legend at 2.95 to 1. The real value was 7.1 to 1, so I fixed the script and left the design alone.']
+  ],
+  galleries:[
+    {label:'The agent',items:[
+      {src:'images/case-05/composer.gif',still:'images/case-05/composer-still.png',ph:'composer.gif · Add context, dictate, send',
+       alt:'Screen recording: the add menu opens with files, Brain, a signal and a connected tool, two context chips are added, dictation fills the message, and it is sent',
+       cap:'The add menu offers only what the agent can use today: files, a Brain category, a signal or a connected tool. Picks travel with the message.'},
+      {src:'images/case-05/plan.gif',still:'images/case-05/plan-still.png',ph:'plan.gif · Choose, approve, act, show',
+       alt:'Screen recording: a signal opens two plans, one is chosen, the agent works through three steps, asks for approval to send three notes, sends them and shows the result',
+       cap:'Two plans, the steps worked through, and a stop at the one action that leaves the product. The result comes back with Show and Undo.'},
+      {src:'images/case-05/home-evolution.png',ph:'home-evolution.png · Four versions of the home',
+       alt:'Four versions of the home: a card for every signal, one lead signal, the lead signal with quick action buttons, and the composer first',
+       cap:'Four of the home’s versions. Each round gave the conversation more of the page.'}
+    ]},
+    {label:'Brain',items:[
+      {src:'images/case-05/brain-evolution.png',ph:'brain-evolution.png · Five structures, four shown',
+       alt:'Four versions of Brain: a radial map, a workspace with a to do queue, category tabs with line art, and six category cards',
+       cap:'Four of Brain’s five structures. The cards won because each category says what it is for before you open it.'},
+      {src:'images/case-05/brain.gif',still:'images/case-05/brain-still.png',ph:'brain.gif · Opening a category',
+       alt:'Screen recording: a category card opens into its own page with sections and editor avatars, then returns to the cards, and the tabs switch with a sliding pill',
+       cap:'A category opens into its own page. Editors show as avatars, and the agent has its own.'}
+    ]},
+    {label:'Motion and data',items:[
+      {src:'images/case-05/dash.gif',still:'images/case-05/dash-still.png',ph:'dash.gif · Metric tabs',
+       alt:'Screen recording: dashboard metric tabs switch, the underline slides, numbers count and the chart redraws',
+       cap:'The underline follows the chosen metric, numbers count to their new value and the line draws in.'},
+      {src:'images/case-05/sparklines.png',ph:'sparklines.png · Sparklines before and after',
+       alt:'Two rows of metric tiles: before, each sparkline scaled to itself so small changes look dramatic; after, each uses the chart axis with labelled top and bottom',
+       cap:'A 0.2 point wobble used to draw a V. Sparklines now share the main chart’s axis.'},
+      {src:'images/case-05/skip.gif',still:'images/case-05/skip-still.png',ph:'skip.gif · Skipping setup',
+       alt:'Screen recording: the setup card is skipped and its label flies into the sidebar, where setup can be resumed',
+       cap:'Skipping setup keeps it. The card moves to the sidebar with its progress.'},
+      {src:'images/case-05/orbit.gif',still:'images/case-05/orbit-still.png',ph:'orbit.gif · Integrations',
+       alt:'Screen recording: connected tools orbit the product on an inner ring, available ones on an outer ring, and a filter rearranges them',
+       cap:'Connected tools on the inner ring, available ones outside it.'},
+      {src:'images/case-05/light.png',ph:'light.png · Light theme',
+       alt:'The dashboard in the light theme',
+       cap:'Every colour is a token with a dark and a light value, both AA for text.'}
+    ]}
+  ],
+  ai:{
+    h:'The cycle',label:'the cycle',
+    intro:'One loop, repeated 214 times.',
+    points:[
+      ['Comment','A short note on one element of the live prototype.'],
+      ['Build','The AI changes the code, runs the rule and contrast checks, and publishes the next version within minutes.'],
+      ['Test','Every two days, users and stakeholders work through the latest version while I watch where they stop.'],
+      ['Keep','Anything worth keeping becomes a rule in the design system file, so no later version forgets it.']
+    ]
+  },
+  reflection:'I would keep the rhythm: rules first, a working version, a real person using it within two days. One call I would make faster. The primary button went through seven styles because I kept polishing a look before asking where a primary action was needed at all.'
+},
+{
+  ix:'06',
+  more:true,
+  kk:'Group travel app, concept case',
+  t:'One plan for where the group eats and who pays',
+  d:'Group trips stall twice: deciding together and settling money. I designed one evening of a trip app where a poll result becomes the plan, and the bill attaches to it. Built as a working mobile prototype.',
+  preview:{src:'images/case-06/decide.gif',still:'images/case-06/hero.png',alt:'Screen recording: an empty evening slot becomes a dinner poll with three places picked from a map, and the poll is sent to the group'},
+  metrics:[['3 acts','decide, pay and settle'],['1 object','poll, plan item and expense']],
+  one:'A mobile concept for group trips, scoped to one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic.',
+  role:'Product design and the working prototype',
+  team:'Solo',
+  year:'2026',
+  keyH:'The three acts',
+  glanceH:'What it shows',
+  keyN:4,
+  hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
+    alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
+    cap:'The plan after the vote. Dinner came from the poll, and the score stays on the item.'},
+  impact:[
+    ['3 acts','decide, pay and settle, played end to end'],
+    ['1 object','the poll result, the plan item and the expense'],
+    ['2 phones','the same moment from the person owed and the person paying']
+  ],
+  impactNote:'It is a concept, so there are no usage numbers. What it shows is the link: every screen reuses a decision or a cost that already exists in the plan, so nobody types anything twice.',
+  context:'Group trips break down at two points. The decision happens in a chat thread, where the loudest voice wins and nobody commits. The money happens later, in a splitting app, as a pile of small transfers and reminders. The plan sits in a third place, and nothing connects them.',
+  before:'Three tools for one dinner: a chat to argue in, a notes app for the plan, a splitting app for the bill.',
+  tension:'A map of the whole app would have been the safe deliverable, and shallow everywhere. I scoped it to one evening and played it end to end with real states, so every rule had to survive being used.',
+  insight:'Plan, decision and expense are one object. A poll result should become a plan item, and an expense should attach to the item it paid for. Once that holds, the app does the bookkeeping people now do in their heads.',
+  pull:'The poll result is the plan item. The bill is attached to it.',
+  decisions:[
+    ['An open poll, or one that closes itself',
+     'Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.',
+     'Less democratic, and there is no runoff. In return nobody has to be the one who calls it, which is where group chats stall.'],
+    ['Report the result, or act on it',
+     'The winner replaces the empty evening slot in everyone’s plan, with the score on the item.',
+     'Changing the plan after a result needs its own path. I left it as a stub.'],
+    ['Split the bill, or split the items',
+     'Per item. Each line has its own people, so nobody pays for wine they did not drink. An equal split stays the default.',
+     'More input than one total divided by three. The default keeps the quick case quick.'],
+    ['Pay back each expense, or net the trip',
+     'Net everything into the fewest transfers, with a “Why only 2” note that explains the maths. The person paying sees an itemised list of what for.',
+     'Individual debts drop out of the main view. The explainer and the itemised list are there to earn that trust back.']
+  ],
+  gallery:[
+    {src:'images/case-06/decide.gif',ph:'decide.gif · Dinner, by poll',
+     alt:'Screen recording: the free evening slot opens a new poll, three places are picked from a map, and the poll is sent',
+     cap:'The empty evening slot starts the poll. Up to four places, picked from the map or typed in.'},
+    {src:'images/case-06/votes.gif',still:'images/case-06/votes-still.png',ph:'votes.gif · The plan updates itself',
+     alt:'Screen recording: votes arrive one by one, the poll closes 3 to 0, and the winner appears in tonight’s plan',
+     cap:'The poll closes on the last vote. The winner is in everyone’s plan before anyone asks.'},
+    {src:'images/case-06/expense.gif',still:'images/case-06/expense-still.png',ph:'expense.gif · Split by item',
+     alt:'Screen recording: an expense linked to dinner gets two items, one person is removed from the wine, and balances count up to their new values',
+     cap:'The expense is already linked to dinner. Balances count from their old value, so the change reads before the total.'},
+    {src:'images/case-06/settle.gif',still:'images/case-06/settle-still.png',ph:'settle.gif · Fewest transfers',
+     alt:'Screen recording: settle up shows two transfers, explains why only two, sends requests, then switches to the other phone where the payment is made',
+     cap:'Two transfers for the whole trip. Then the other phone, where the request says exactly what it covers.'}
+  ],
+  ai:{
+    h:'Craft',label:'craft details',
+    intro:'It is a working app in plain JavaScript, not a click-through file, so timing and state could be judged on a real phone.',
+    points:[
+      ['Balances count up','Each balance animates from its old value to its new one in 900ms.'],
+      ['Haptics','A short vibration on votes, payments and selections.'],
+      ['Notifications','Every banner opens the screen it talks about. They are what make it feel shared.'],
+      ['State that survives','The demo keeps its state, so a reload on a phone does not lose the evening.']
+    ]
+  },
+  reflection:'The first thing I would test with real groups is whether auto-close with a creator tie-break feels fair to the person who lost. Onboarding, trip creation and more than one trip are stubs on purpose. Next it needs more than one currency, partial payments, and the friend who leaves before anyone settles.'
+}
+];
+
+const SLUGS=['support','configuration','promotions','design-system','agentic-marketing','group-trip'];
+const AR='<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const caseUrl=i=>'/work/'+SLUGS[i]+'/';
+
+function block(h,inner){return `<section class="d-b"><h3>${h}</h3>${inner}</section>`}
+
+/* One figure renderer for every case image.
+   If the file is missing it becomes a labelled placeholder (when `ph` is set)
+   or falls back to `fb`, so an unfinished asset never shows as a broken image. */
+/* animated figures carry a still frame for visitors who prefer reduced motion */
+function still(g){return g.still?`<picture><source media="(prefers-reduced-motion: reduce)" srcset="${g.still}">`:''}
+function fig(g,{cls='',prefix='',eager=false}={}){
+  const lazy=eager?'':' loading="lazy"';
+  const ph=g.ph?` data-ph="${g.ph}"`:'';
+  const fb=g.fb?` data-fb="${g.fb}"`:'';
+  return `<figure class="d-fig${cls}"${ph}>${still(g)}<img src="${g.src}" alt="${g.alt}"${lazy}${fb} onerror="figFail(this)">${g.still?'</picture>':''}</figure><p class="d-cap">${prefix}${g.cap}</p>`;
+}
+
+function renderCard(c,i){
+  const im=c.preview||c.hero;
+  return `<a class="prj rv" href="${caseUrl(i)}" data-case="${i}" aria-haspopup="dialog" aria-label="${c.t}. ${c.kk}. Open case study."><div class="prj-g">
+    <div class="p-l">
+      <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
+      <h3 class="p-t">${c.t}</h3>
+      <p class="p-d">${c.d}</p>
+      <div class="p-m">${c.metrics.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+      <span class="p-go">Read the case ${AR}</span>
+    </div>
+    <div class="p-r">${im?`<div class="p-im">${still(im)}<img src="${im.src}" alt="${im.alt}" loading="lazy">${im.still?'</picture>':''}</div>`:''}</div>
+  </div></a>`;
+}
+
+/* Smaller card for the "More work" row: picture first, no metrics. */
+function renderMoreCard(c,i){
+  const im=c.preview||c.hero;
+  return `<a class="prj sm rv" href="${caseUrl(i)}" data-case="${i}" aria-haspopup="dialog" aria-label="${c.t}. ${c.kk}. Open case study.">
+    ${im?`<div class="p-im">${still(im)}<img src="${im.src}" alt="${im.alt}" loading="lazy">${im.still?'</picture>':''}</div>`:''}
+    <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
+    <h3 class="p-t">${c.t}</h3>
+    <p class="p-d">${c.dm||c.d}</p>
+    <span class="p-go">Read the case ${AR}</span>
+  </a>`;
+}
+
+/* Case layout, in reading order for a hiring manager:
+   at a glance, context, tension, insight, decisions and what they cost,
+   leadership, two key screens, impact. Everything else (system detail,
+   remaining screens, roadmap) sits behind one disclosure that names its contents. */
+function screensOf(c){
+  const out=[];
+  const shot=s=>`<figure class="d-shot"><img src="${s.src}" alt="${s.alt}" loading="lazy"></figure><p class="d-cap">${s.cap}</p>`;
+  if(c.shots) c.shots.forEach(s=>out.push({html:shot(s),group:null}));
+  if(c.gallery) c.gallery.forEach(g=>out.push({html:fig(g,{cls:g.wide?' wide':''}),group:c.galleryLabel||'What it looks like'}));
+  if(c.galleries) c.galleries.forEach(gr=>gr.items.forEach((g,k)=>out.push({html:fig(g),group:gr.label,first:k===0})));
+  return out;
+}
+function renderCase(c){
+  const i=P.indexOf(c);
+  const all=screensOf(c);
+  // two key screens up front: the first of each gallery group if there are groups, otherwise the first two
+  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,c.keyN||2);
+  const rest=all.filter(s=>!key.includes(s));
+  const restHtml=(()=>{
+    if(!rest.length) return '';
+    const groups=[...new Set(rest.map(s=>s.group))];
+    return groups.map(gp=>{
+      const items=rest.filter(s=>s.group===gp).map(s=>s.html).join('');
+      return block(gp||'More screens',items);
+    }).join('');
+  })();
+
+  const extra=[
+    c.system?['the system underneath',block('The system underneath',`<p>${c.system.intro}</p>
+      <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
+        <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
+        <p class="sys-n">${c.system.note}</p></div>`)]:null,
+    c.ai?[c.ai.label||'agent readability',block(c.ai.h||'Built to be read by agents',`<p>${c.ai.intro}</p>
+      <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
+    c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
+    restHtml?['more screens',restHtml]:null,
+    c.debate?['the open argument',block('The argument still open',`
+      <div class="dc"><div class="dc-h">${c.debate.q}</div>
+        <div class="dc-c" style="border-bottom:1px solid var(--s200)">${c.debate.intro}</div>
+        ${c.debate.sides.map(s=>`<div class="dc-c" style="border-top:1px solid var(--s200)"><u>${s[0]}</u>${s[1]}</div>`).join('')}
+        <div class="dc-c" style="border-top:1px solid var(--s200);background:var(--s100)"><u>Where I landed</u>${c.debate.pos}</div>
+      </div>
+      <p class="note">${c.debate.why}</p>`)]:null,
+    c.road?['what comes next',block('What comes next',`<p>${c.road.intro}</p>
+      <div class="road">
+        <div class="rc"><div class="rh">Quick wins <span>${c.road.quick.length}</span></div>
+          ${c.road.quick.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
+        <div class="rc"><div class="rh">Structural <span>${c.road.big.length}</span></div>
+          ${c.road.big.map(q=>`<div class="ri"><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}</div>
+      </div>`)]:null
+  ].filter(Boolean);
+  const labels=extra.map(e=>e[0]);
+  const list=labels.length>1?labels.slice(0,-1).join(', ')+' and '+labels[labels.length-1]:labels[0];
+  const imp=`<div class="d-imp">${c.impact.map(m=>`<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`;
+  const d0=c.decisions&&c.decisions[0];
+  const prev=i>0?P[i-1]:null, next=i<P.length-1?P[i+1]:null;
+  return `
+    <p class="d-kk">${c.kk}</p>
+    <h1 class="d-t" id="drT">${c.t}</h1>
+    <p class="d-one">${c.one}</p>
+    ${imp}
+    <div class="d-tl">
+      <div><span>Role</span><b>${c.role}</b></div>
+      <div><span>Team</span><b>${c.team}</b></div>
+      ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
+      <div><span>Year</span><b>${c.year}</b></div>
+    </div>
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${c.hero?fig(c.hero,{eager:true}):''}
+    ${block('Context',`<p>${c.context}</p>${
+      c.beforeImg
+        ? fig(c.beforeImg,{cls:' beforefig',prefix:'<b>Before.</b> '})
+        : (c.before?`<div class="before"><u>Before</u><p>${c.before}</p></div>`:'')
+    }`)}
+    ${c.tension?block('Tension',`<p>${c.tension}</p>`):''}
+    ${block('Insight',`<p>${c.insight}</p>${c.pull?`<p class="d-pull">${c.pull}</p>`:''}`)}
+    ${c.decisions?block('Decisions, and what each one cost',`<div class="dcs">${c.decisions.map(d=>`
+      <div class="dc"><div class="dc-h">${d[0]}</div>
+        <div class="dc-b">
+          <div class="dc-c"><u>What I chose</u>${d[1]}</div>
+          <div class="dc-c rj"><u>What it cost</u>${d[2]}</div>
+        </div>
+      </div>`).join('')}</div>`):''}
+    ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
+    ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
+    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
+    ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
+    ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
+    ${block('Looking back',`<p>${c.reflection}</p>`)}
+    <nav class="d-nx" aria-label="More case studies">
+      ${prev?`<a href="${caseUrl(i-1)}" data-case="${i-1}"><u>Previous case</u><b>${prev.t}</b></a>`:''}
+      ${next?`<a class="nx" href="${caseUrl(i+1)}" data-case="${i+1}"><u>Next case</u><b>${next.t}</b></a>`:''}
+    </nav>`;
+}
+/* @render-end */
+
+/* ---------- project list ----------
+   Cards are prerendered into #prjs by the build script, so crawlers and link
+   previews see the work. If they are missing (e.g. a local edit without running
+   the build), they are rendered here instead. */
+const prjs=document.getElementById('prjs');
+if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map((c,i)=>c.more?'':renderCard(c,i)).join('');
+const prjsMore=document.getElementById('prjsMore');
+if(!prjsMore.querySelector('.prj')) prjsMore.innerHTML=P.map((c,i)=>c.more?renderMoreCard(c,i):'').join('');
+document.querySelectorAll('#prjs .prj, #prjsMore .prj, .proof a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
+    e.preventDefault();openCase(+a.dataset.case);
+  });
+});
+
+/* ---------- case drawer ---------- */
+const dr=document.getElementById('dr'),drP=document.getElementById('drP'),
+      drC=document.getElementById('drC'),drX=document.getElementById('drX'),
+      drIx=document.getElementById('drIx'),drProg=document.getElementById('drProg');
+let lastFocus=null;
+
+window.figFail=function(img){
+  const f=img.closest('figure');
+  if(img.dataset.fb&&img.src.indexOf(img.dataset.fb)<0){img.src=img.dataset.fb;return}
+  if(f&&f.dataset.ph){f.classList.add('ph');f.innerHTML=`<span>${f.dataset.ph}</span>`}
+  else if(f){f.style.display='none'}
+};
+
+function openCase(i){
+  const c=P[i];
+  current=i;
+  lastFocus=document.activeElement;
+  drIx.textContent='Case '+c.ix;
+  const want=caseUrl(i);
+  if(location.pathname!==want){history.pushState(null,'',want);openedViaPush=true}
+  document.title=c.t+' · Erdem Ülker';
+  drC.innerHTML=renderCase(c);
+
+  dr.classList.add('on');
+  document.documentElement.style.overflow='hidden';
+  drP.scrollTop=0;drProg.style.width='0%';
+  drX.focus();
+  document.addEventListener('keydown',onKey);
+}
+function closeCase(fromHistory){
+  dr.classList.remove('on');
+  document.documentElement.style.overflow='';
+  document.removeEventListener('keydown',onKey);
+  if(!fromHistory&&caseFromLocation()>=0){
+    if(openedViaPush) history.back();
+    else history.replaceState(null,'','/#work');
+  }
+  openedViaPush=false;
+  document.title=BASE_TITLE;
+  if(lastFocus)lastFocus.focus();
+}
+function onKey(e){
+  if(e.key==='Escape'){closeCase();return}
+  if(e.key==='Tab'){
+    const f=dr.querySelectorAll('button,a[href],summary,[tabindex]:not([tabindex="-1"])');
+    if(!f.length)return;
+    const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+  }
+}
+document.getElementById('drBg').addEventListener('click',()=>closeCase());
+drC.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-case]');
+  if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+  e.preventDefault();openCase(+a.dataset.case);
+});
+drX.addEventListener('click',()=>closeCase());
+drP.addEventListener('scroll',()=>{
+  const h=drP.scrollHeight-drP.clientHeight;
+  drProg.style.width=(h>0?(drP.scrollTop/h)*100:0)+'%';
+},{passive:true});
+
+/* ---------- deep links ----------
+   Each case has a real page at /work/<slug>/ (generated by the build script).
+   Opening a case from the list pushes that path, so back closes it and a
+   shared link loads a page with the case already rendered. Old #case-<slug>
+   links still work. */
+const BASE_TITLE='Erdem Ülker, Product Designer';
+let openedViaPush=false,current=-1;
+function caseFromLocation(){
+  const m=location.pathname.match(/^\/work\/([a-z-]+)\/?$/)||location.hash.match(/^#case-([a-z-]+)$/);
+  return m?SLUGS.indexOf(m[1]):-1;
+}
+function syncFromHash(){
+  const i=caseFromLocation();
+  if(i>=0){ if(!dr.classList.contains('on')||current!==i) openCase(i); }
+  else if(dr.classList.contains('on')) closeCase(true);
+}
+addEventListener('popstate',syncFromHash);
+addEventListener('hashchange',syncFromHash);
+const drLink=document.getElementById('drLink');
+drLink.addEventListener('click',async()=>{
+  const url=location.origin+caseUrl(current);
+  try{await navigator.clipboard.writeText(url);drLink.textContent='Link copied'}
+  catch(e){drLink.textContent='Copy failed'}
+  setTimeout(()=>{drLink.textContent='Copy link'},1800);
+});
+if(caseFromLocation()>=0) openCase(caseFromLocation());
+
+/* ---------- reveal ---------- */
+const io2=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})
+},{threshold:0,rootMargin:'0px 0px 12% 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.style.transitionDelay=(i%5)*50+'ms';io2.observe(el);
+});
+
+/* ---------- nav ---------- */
+const nav=document.getElementById('nav');
+let r2=false;
+addEventListener('scroll',()=>{
+  if(r2)return;r2=true;
+  requestAnimationFrame(()=>{nav.classList.toggle('st',scrollY>40);r2=false});
+},{passive:true});
+</script>
+</body>
+</html>
