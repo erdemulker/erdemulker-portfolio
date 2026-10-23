@@ -568,13 +568,14 @@
     <h1 class="d-t" id="drT">Sixty settings nobody could explain</h1>
     <p class="d-one">The settings that decide how Playtime behaves sat in one dropdown under names their developers chose. 54 had no description, and several of the authors had left. Before restructuring anything, I had to find out what they did.</p>
     <div class="d-imp"><div><b>7 to 5 weeks</b><span>signed deal to live release, two months after launch</span></div><div><b>+17% configs used</b><span>more settings in active use. Nothing was added; they became findable</span></div><div><b>54 documented</b><span>settings explained in the interface for the first time. Eight dead ones removed</span></div></div>
+    <p class="note d-impn">Two months after launch. With a seven week baseline, one month barely completes a cycle. At five new publishers a month, two weeks each is about ten publisher weeks back every month. I lead with the 17% because nothing new was built.</p>
     <div class="d-tl">
       <div><span>Role</span><b>Product designer, end to end</b></div>
       <div><span>Team</span><b>Tech leads, developers, BI, technical and growth account managers</b></div>
       <div><span>Timeline</span><b>Two months of analysis, then design</b></div>
       <div><span>Year</span><b>2025 to 2026</b></div>
     </div>
-    <div class="glance"><div><u>The decision that mattered</u><p>Everything visible, grouped by purpose, optional detail folded away.</p></div><div><u>What it changed</u><p><b>7 to 5 weeks</b> signed deal to live release, two months after launch.</p></div></div>
+    <div class="glance"><div><u>The decision that mattered</u><p>Everything visible, grouped by purpose, optional detail folded away.</p></div><div><u>What it cost</u><p>I expected the tidier side panel to win. Five of eight testers chose the open layout because three visible sections told them where they were. I shipped theirs, and the page got longer.</p></div></div>
     <figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-02/hero-still.png"><img src="images/case-02/hero.gif" alt="Switching on Playtime Web reveals the domain field; switching on Playtime Studio reveals its tracking settings, with the setup stepper on the right" data-fb="images/case-02/flow.png" onerror="figFail(this)"></picture></figure><p class="d-cap">Integration type first. Each type you switch on brings its own settings, so Studio configs stop scattering across three sections.</p>
     <section class="d-b"><h3>Context</h3><p>Application setup decides how rewards behave, what users see and how payouts reach them. Business wrote the requirements, engineers named the configs for the backend, and we onboard about five publishers a month, so every week of friction recurs.</p><figure class="d-fig beforefig"><img src="images/case-02/old-dropdown.png" alt="The original configuration dropdown, holding sixty plus backend named options with no descriptions" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> One dropdown, 60+ backend names, no grouping. 54 had no tooltip of any kind.</p></section>
     <section class="d-b"><h3>Tension</h3><p>Three problems stacked. With 54 settings undescribed, account managers only enabled what someone had told them about. Nothing said where a new setting belonged: Playtime Studio started as one toggle, and its later settings split between rewards and the dropdown. And many authors had left, so the backend code was the only documentation.</p></section>
@@ -606,7 +607,6 @@
       </div></div></section>
     <section class="d-b"><h3>Leadership and ownership</h3><ul class="lst ld"><li><b>Recovering knowledge that had left</b><span>Ten alignment sessions with tech leads, developers and account managers, plus backend notes, to establish what 60+ configs actually did.</span></li><li><b>Deleting dead settings</b><span>Eight configs had been removed from the endpoints but still rendered, and AMs had been offering them to publishers. I removed them.</span></li><li><b>Losing the argument to users</b><span>I favoured the side panel. Five of eight testers did not, and they were right.</span></li></ul></section>
     <section class="d-b"><h3>What shipped</h3><figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-02/grouped-still.png"><img src="images/case-02/grouped.gif" alt="Opening Other settings: grouped into Offerwall display, Server to server and Data and APIs. Choosing Portrait changes the row from No change to 1 change" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Optional settings, grouped by what they affect. Every row says how far it is from the default, so a reviewer sees what was touched without opening anything.</p><figure class="d-fig"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-02/feedback-still.png"><img src="images/case-02/feedback.gif" alt="Switching on cashback reveals a required rate and cap; entering 20% and $5 shows that a user spending $25 gets 500 coins back" loading="lazy" onerror="figFail(this)"></picture></figure><p class="d-cap">Settings that only work together, checked together. Cashback asks for its rate and cap at once, then shows what a user would earn.</p></section>
-    <section class="d-b"><h3>Impact</h3><div class="d-imp"><div><b>7 to 5 weeks</b><span>signed deal to live release, two months after launch</span></div><div><b>+17% configs used</b><span>more settings in active use. Nothing was added; they became findable</span></div><div><b>54 documented</b><span>settings explained in the interface for the first time. Eight dead ones removed</span></div></div><p class="note">Two months after launch. With a seven week baseline, one month barely completes a cycle. At five new publishers a month, two weeks each is about ten publisher weeks back every month. I lead with the 17% because nothing new was built.</p></section>
     
     <details class="more"><summary><span class="pm"></span>More: the system underneath and more screens</summary><div class="more-in"><section class="d-b"><h3>The system underneath</h3><p>Integration type comes first because it decides which configs matter. The sections after it follow who answers them.</p>
       <div class="sys"><div class="sys-r">
@@ -1311,7 +1311,7 @@ const P = [
   metrics:[['200+ issues','found and closed'],['3-4h to <1h','weekly QA time']],
   one:'Components disagreed on size, spacing and type across two dashboards. Nothing was broken enough to escalate, so it lasted.',
   role:'Design system owner',
-  team:'Design and frontend across teams, 9 leaders for the type decision',
+  team:'Design and frontend across all product teams, 9 leaders for the type decision',
   time:'Ongoing initiative',
   year:'2026',
   hero:{src:'images/case-04/hero.gif',still:'images/case-04/hero-still.png',fb:'images/case-04/hero.png',
@@ -1391,6 +1391,8 @@ const P = [
     ]}
   ],
   leadership:[
+    ['Getting every team onto it','I pushed every product team to adopt the system, beyond the two dashboards it started from. A library only some teams use becomes the next source of drift.'],
+    ['Auditing every release','After development I audited each feature in a sandbox environment before release, so it shipped without design bugs.'],
     ['Getting a typeface approved','I mapped the system and made the case on licence cost, figures and text hierarchy. Nine leaders signed off.'],
     ['Absorbing a late reversal','Our VP rejected the segmented control in development planning. I produced alternatives and tested them with other leads. The revision is better, and it cost a cycle.'],
     ['Pulling my own feature','The keyboard focus ring looked right in isolation and clipped in real layouts. I paused it rather than ship a broken accessibility affordance.']
@@ -1527,7 +1529,6 @@ const P = [
   team:'Solo',
   year:'2026',
   keyH:'The three acts',
-  glanceH:'What it shows',
   keyN:4,
   hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
     alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
@@ -1690,13 +1691,14 @@ function renderCase(c){
     <h1 class="d-t" id="drT">${c.t}</h1>
     <p class="d-one">${c.one}</p>
     ${imp}
+    <p class="note d-impn">${c.impactNote}</p>
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
       ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
-    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it cost</u><p>${d0[2]}</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1714,7 +1716,6 @@ function renderCase(c){
       </div>`).join('')}</div>`):''}
     ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
     ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
-    ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
     ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
     ${block('Looking back',`<p>${c.reflection}</p>`)}
