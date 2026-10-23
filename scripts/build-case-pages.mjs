@@ -3,7 +3,8 @@
   Prerenders the case studies so they exist as real HTML, not only as JS.
 
   What it writes:
-    index.html               project cards between <!-- @cards-start --> and <!-- @cards-end -->
+    index.html               project cards between <!-- @cards-start --> and <!-- @cards-end -->,
+                             smaller `more` cards between <!-- @more-start --> and <!-- @more-end -->
     work/<slug>/index.html   one page per case: own title, description, OG image, canonical,
                              with the case already rendered in the drawer
     sitemap.xml              home, about, CV and every case page
@@ -42,8 +43,8 @@ const end = index.indexOf('/* @render-end */');
 if (start < 0 || end < 0) throw new Error('render markers missing in index.html');
 const ctx = {};
 vm.createContext(ctx);
-vm.runInContext(index.slice(start, end) + '\n;globalThis.__x={P,SLUGS,renderCard,renderCase,caseUrl};', ctx);
-const { P, SLUGS, renderCard, renderCase, caseUrl } = ctx.__x;
+vm.runInContext(index.slice(start, end) + '\n;globalThis.__x={P,SLUGS,renderCard,renderMoreCard,renderCase,caseUrl};', ctx);
+const { P, SLUGS, renderCard, renderMoreCard, renderCase, caseUrl } = ctx.__x;
 if (P.length !== SLUGS.length) throw new Error(`P has ${P.length} cases but SLUGS has ${SLUGS.length}`);
 
 // ---- 0. consistency: a number on About must not contradict the same number in a case ----
@@ -64,8 +65,11 @@ if (P.length !== SLUGS.length) throw new Error(`P has ${P.length} cases but SLUG
 }
 
 // ---- 1. cards into index.html ----
-const cards = P.map((c, i) => renderCard(c, i)).join('');
+// main cases in the list, `more: true` cases in the smaller row under it
+const cards = P.map((c, i) => c.more ? '' : renderCard(c, i)).join('');
+const more = P.map((c, i) => c.more ? renderMoreCard(c, i) : '').join('');
 index = swapRe(index, /<!-- @cards-start -->[\s\S]*?<!-- @cards-end -->/, `<!-- @cards-start -->${cards}<!-- @cards-end -->`, 'cards');
+index = swapRe(index, /<!-- @more-start -->[\s\S]*?<!-- @more-end -->/, `<!-- @more-start -->${more}<!-- @more-end -->`, 'more cards');
 write('index.html', index);
 
 // ---- 2. one page per case ----

@@ -228,10 +228,10 @@ def('profile', () => ({ html: `
   <div class="content stagger" style="padding-top:12px">
     <div style="display:flex;align-items:center;gap:14px">${av('A', 'l')}<div style="flex:1"><div class="h3">Ari Lopes</div><div class="b14 sec">ari@mail.com</div></div><button class="btn btn-sm btn-secondary tap" data-a="soon">Edit</button></div>
     <div class="section-head"><h2 class="h3">Money</h2></div>
-    ${list([lrow({ lead: ibox('credit-card'), t: 'Pay with', val: '<span class="b14 sec" style="font-weight:400">Apple Pay</span>', a: 'soon' }), lrow({ lead: ibox('banknote'), t: 'Get paid to', val: '<span class="b14 sec" style="font-weight:400">IBAN •••• 7730</span>', a: 'soon' }), lrow({ lead: ibox('coins'), t: 'Currency', val: '<span class="b14 sec" style="font-weight:400">EUR €</span>', a: 'soon' })], 68)}
+    ${list([lrow({ lead: ibox('credit-card'), t: 'Pay with', val: '<span class="b14 sec" style="font-weight:400">Card •••• 2291</span>', a: 'soon' }), lrow({ lead: ibox('banknote'), t: 'Get paid to', val: '<span class="b14 sec" style="font-weight:400">IBAN •••• 7730</span>', a: 'soon' }), lrow({ lead: ibox('coins'), t: 'Currency', val: '<span class="b14 sec" style="font-weight:400">EUR €</span>', a: 'soon' })], 68)}
     <div class="section-head"><h2 class="h3">App</h2></div>
     ${list([lrow({ lead: ibox('playing-cards-fan'), t: 'Notifications', val: '<span class="b14 sec" style="font-weight:400">Polls, payments</span>', a: 'soon' }), lrow({ lead: ibox('rotate-ccw'), t: 'Restart demo', s: 'Back to the start of the Lisbon evening', a: 'resetDemo' })], 68)}
-    <p class="b14 ter" style="text-align:center">TripUp prototype · Bending Spoons case · Erdem Ulker</p>
+    <p class="b14 ter" style="text-align:center">TripUp prototype · Concept case · Erdem Ülker</p>
   </div></div>` }));
 act('resetDemo', () => { App.reset(); toast('Demo restarted', 'rotate-ccw'); });
 })();
