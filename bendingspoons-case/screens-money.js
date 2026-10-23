@@ -128,7 +128,7 @@ let payT = [];
 function simPayments() {
   payT.forEach(clearTimeout); payT = [];
   const b = shares(S());
-  [['R', 5000, 'Apple Pay'], ['C', 9000, 'Bank transfer']].filter(([p]) => App.group().includes(p)).forEach(([p, t, m]) => payT.push(setTimeout(() => pay(p, m), t)));
+  [['R', 5000, 'Card'], ['C', 9000, 'Bank transfer']].filter(([p]) => App.group().includes(p)).forEach(([p, t, m]) => payT.push(setTimeout(() => pay(p, m), t)));
 }
 function pay(p, method) {
   const b = shares(S()); if (b[p] > -0.5) return;
@@ -151,16 +151,16 @@ def('pay', () => {
     <div class="card"><div class="b14 sec" style="padding:14px 16px 0">What for</div>
       ${S().expenses.filter(e => !e.settled && e.payer === 'A' && e.shares && e.shares.N).map(e => lrow({ lead: thumb(e.img), t: esc(e.title), s: `Your share of ${eur(e.total)}`, val: eur(e.shares.N), chev: false })).join('')}
       <div class="divider"></div><div class="lrow" style="min-height:52px;cursor:default"><span class="txt"><span class="t">Total</span></span><span class="val num">${eur(v)}</span></div></div>
-    <div><div class="b14 sec" style="margin-bottom:8px">Pay with</div><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><span style="width:52px;height:36px;border-radius:8px;background:#000;color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px"> Pay</span><span style="flex:1"><span class="b16b" style="display:block">Apple Pay</span><span class="b14 sec">Visa •••• 2291</span></span><span class="badge">Default</span></div></div>
+    <div><div class="b14 sec" style="margin-bottom:8px">Pay with</div><div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 16px"><span style="width:52px;height:36px;border-radius:8px;background:#000;color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px">${ic('credit-card')}</span><span style="flex:1"><span class="b16b" style="display:block">Card</span><span class="b14 sec">•••• 2291</span></span><span class="badge">Default</span></div></div>
   </div></div>
-  <div class="actionbar col" style="gap:4px"><button class="btn btn-primary btn-block tap" data-a="applePay" ${v ? '' : 'disabled'}>${v ? `Pay ${eur(v)} with  Pay` : 'Paid'}</button><button class="btn btn-ghost tap" data-a="applePay">Pay by bank transfer</button></div>` };
+  <div class="actionbar col" style="gap:4px"><button class="btn btn-primary btn-block tap" data-a="applePay" ${v ? '' : 'disabled'}>${v ? `Pay ${eur(v)} by card` : 'Paid'}</button><button class="btn btn-ghost tap" data-a="applePay">Pay by bank transfer</button></div>` };
 });
 act('applePay', async (d, b) => {
   b.disabled = true; b.innerHTML = `<span class="spin" style="width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:99px;animation:spin .8s linear infinite"></span>`;
   await wait(1100); vibrate([10, 40, 10]);
   b.classList.add('paid'); b.innerHTML = `${ic('check')}Paid`; lucide.createIcons();
   await wait(1800); pop();
-  setTimeout(() => pay('N', 'Apple Pay'), 400);
+  setTimeout(() => pay('N', 'Card'), 400);
 });
 
 /* ---------- Settled (S12) ---------- */
@@ -170,7 +170,7 @@ def('settled', () => { const s0 = S(); const s = Object.assign({}, s0, { settled
   <div class="scroll"><div class="content" style="padding-top:8px">
     <div class="collage"><img src="${IMG('castelo')}" alt=""><img src="${IMG('fogo')}" alt=""><img src="${IMG('torel')}" alt=""></div>
     <div class="success" style="padding-top:0"><span class="badge"><span class="dot live"></span>All settled</span><div class="h1" style="margin-top:8px">Everyone’s squared up</div><div class="b16 sec">${eur(Object.values(s.settled).reduce((a, b) => a + b, 0))} received · Lisboa trip</div></div>
-    <div class="card stagger">${App.others().filter(p => s.settled[p]).map((p, i) => (i ? '<div class="divider" style="--div-inset:68px"></div>' : '') + lrow({ lead: av(p), t: `${PEOPLE[p].name} paid you`, s: m[p] || 'Apple Pay', val: eur(s.settled[p]), chev: false })).join('')}</div>
+    <div class="card stagger">${App.others().filter(p => s.settled[p]).map((p, i) => (i ? '<div class="divider" style="--div-inset:68px"></div>' : '') + lrow({ lead: av(p), t: `${PEOPLE[p].name} paid you`, s: m[p] || 'Card', val: eur(s.settled[p]), chev: false })).join('')}</div>
   </div></div>
   <div class="actionbar" style="border-top:0"><button class="btn btn-primary btn-block tap" data-a="goHome">Back to home</button></div>` }; });
 act('goHome', () => { App.setTab('trips'); App.resetTo('trips', {}, 'fade'); });

@@ -261,6 +261,18 @@
   .prj:hover .p-im img,.prj:focus-visible .p-im img{transform:scale(1.04)}
   @media(max-width:999px){.prj{padding-bottom:52px}.prj+.prj{margin-top:24px}.p-r{margin-top:24px}}
 
+  /* more work: two smaller cards under the main four */
+  .mw{margin-top:clamp(64px,9vh,104px)}
+  .mw-h{margin-bottom:clamp(24px,3.5vh,36px)}
+  .mw-h h3{margin-top:12px;font-size:clamp(20px,1.9vw,26px);font-weight:500;letter-spacing:var(--tk-2);line-height:1.2;max-width:30ch}
+  .mw-g{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(40px,5vh,56px) var(--gap)}
+  @media(min-width:760px){.mw-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .prj.sm{border-top:0;padding:0;margin:0}
+  .prj.sm .p-im{margin-bottom:20px}
+  .prj.sm .p-t{font-size:clamp(19px,1.6vw,23px)}
+  .prj.sm .p-d{font-size:15px}
+  .prj.sm .p-go{margin-top:14px}
+
   /* ---------- about ---------- */
   .ab{align-items:start}
   .ab .l{grid-column:span 4}
@@ -355,7 +367,7 @@
       <span class="ln"><i>I design software where</i></span>
       <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
     </h1>
-    <p class="hsub rv">Senior Product Designer for B2B SaaS, in monetization and martech. Most of my work is internal tooling, configuration flows and dashboards: the screens where a support agent, an account manager or a publisher decides something with money attached. I am usually brought in before anyone agrees what the thing is. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS, in monetization and martech. Most of my work is internal tooling, configuration flows and dashboards: the screens where a support agent, an account manager or a publisher decides something with money attached. I am usually brought in before anyone agrees what the thing is. I work AI-native: for new products the working prototype is the design file. Currently in ad tech, on rewards infrastructure.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to senior and lead roles</span>
       <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
@@ -437,6 +449,26 @@
     </div>
     <div class="p-r"><div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-04/hero-still.png"><img src="images/case-04/hero.gif" alt="Shared components in use: a segmented control, switch, buttons pressed through their states, an input, a checkbox and two toasts" loading="lazy"></picture></div></div>
   </div></a><!-- @cards-end --></div>
+    <div class="mw">
+      <div class="shd mw-h rv">
+        <span class="lbl">More work</span>
+        <h3>An AI agent product and a consumer mobile app, designed end to end.</h3>
+        <p>The same judgement, outside B2B tooling. I designed both in working code, so every decision was tested on the real product rather than a static file.</p>
+      </div>
+      <div class="mw-g" id="prjsMore"><!-- @more-start --><a class="prj sm rv" href="/work/agentic-marketing/" data-case="4" aria-haspopup="dialog" aria-label="Putting the agent at the front of an AI marketing harness. Agentic marketing harness, freelance. Open case study.">
+    <div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-05/plan-still.png"><img src="images/case-05/plan.gif" alt="Screen recording: a signal opens two plans, one is chosen, the agent works through three steps and stops for approval before sending" loading="lazy"></picture></div>
+    <div><span class="p-ix">05</span><span class="p-kk">Agentic marketing harness, freelance</span></div>
+    <h3 class="p-t">Putting the agent at the front of an AI marketing harness</h3>
+    <p class="p-d">New users could not tell what the harness did. I redesigned it inside a working prototype, tested every two days, until the first screen explained the product.</p>
+    <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a><a class="prj sm rv" href="/work/group-trip/" data-case="5" aria-haspopup="dialog" aria-label="One plan for where the group eats and who pays. Group travel app, mobile. Open case study.">
+    <div class="p-im"><picture><source media="(prefers-reduced-motion: reduce)" srcset="images/case-06/hero.png"><img src="images/case-06/decide.gif" alt="Screen recording: an empty evening slot becomes a dinner poll with three places picked from a map, and the poll is sent to the group" loading="lazy"></picture></div>
+    <div><span class="p-ix">06</span><span class="p-kk">Group travel app, mobile</span></div>
+    <h3 class="p-t">One plan for where the group eats and who pays</h3>
+    <p class="p-d">Group trips stall twice: deciding together and settling money. I designed one evening of a trip app where a poll result becomes the plan, and the bill attaches to it. Built as a working mobile prototype.</p>
+    <span class="p-go">Read the case <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </a><!-- @more-end --></div>
+    </div>
   </div>
 </section>
 
@@ -593,7 +625,7 @@
     <section class="d-b"><h3>Looking back</h3><p>Two parts I would defend: the interaction layer, because engineers stopped inventing colours, and three hours a week back. The focus ring sits on the other side of the ledger. A ring that is sometimes clipped is worse than none.</p></section>
     <nav class="d-nx" aria-label="More case studies">
       <a href="/work/promotions/" data-case="2"><u>Previous case</u><b>Arguing for the project nobody had funded</b></a>
-      
+      <a class="nx" href="/work/agentic-marketing/" data-case="4"><u>Next case</u><b>Putting the agent at the front of an AI marketing harness</b></a>
     </nav></div>
   </article>
 </div>
@@ -1390,10 +1422,177 @@ const P = [
     ]
   },
   reflection:'Two parts I would defend: the interaction layer, because engineers stopped inventing colours, and three hours a week back. The focus ring sits on the other side of the ledger. A ring that is sometimes clipped is worse than none.'
+},
+{
+  ix:'05',
+  more:true,
+  kk:'Agentic marketing harness, freelance',
+  t:'Putting the agent at the front of an AI marketing harness',
+  d:'The harness could already read how AI assistants describe a brand, draft a fix and publish it. New users could not tell. In six weeks I redesigned it inside a working prototype, put a new version in front of users every two days, and shipped 214 versions until the first screen explained the product.',
+  dm:'New users could not tell what the harness did. I redesigned it inside a working prototype, tested every two days, until the first screen explained the product.',
+  preview:{src:'images/case-05/plan.gif',still:'images/case-05/plan-still.png',alt:'Screen recording: a signal opens two plans, one is chosen, the agent works through three steps and stops for approval before sending'},
+  metrics:[['214 versions','in six weeks'],['Every 2 days','tested with users and stakeholders']],
+  one:'The product reads how ChatGPT, Gemini, Perplexity and Grok describe a brand, drafts a fix and publishes it. New users landed on charts, found the agent in a side panel, and were asked to configure what it should do before it had done anything.',
+  role:'Freelance product designer, end to end',
+  team:'Solo, with an AI built prototype',
+  time:'Six weeks',
+  year:'2026',
+  keyH:'What it became',
+  hero:{src:'images/case-05/hero.png',fb:'images/preview/case-05.png',ph:'hero.png · The agent as the front door',
+    alt:'The redesigned home: a greeting, a centred composer with add, actions and dictation controls, four quick actions and this week’s signals below',
+    cap:'The home after six weeks: one question, four actions, this week’s signals underneath. Product, brand and agent names are changed.'},
+  impact:[
+    ['214 versions','of one working prototype in six weeks'],
+    ['Every 2 days','a new version in the hands of users and stakeholders'],
+    ['Minutes','from a review comment to the next published version']
+  ],
+  impactNote:'The count matters less than what each version cost. A change took minutes, so I could try the uncomfortable option, watch someone use it and drop it the same day. Most of what made the first screen readable came from versions I would never have spent a week drawing.',
+  context:'The users are marketing and growth leads with little time and no interest in building automations. I audited the live app block by block and rebuilt the navigation around five places: the agent, Dashboard, Workflows, Integrations, and Brain, where the agent keeps what it knows about the brand.',
+  before:'Charts first, the agent in a side panel, actions configured before anything was asked, and no moment where the agent said what it was about to do.',
+  tension:'An agent cannot be judged from a static screen. Trust comes from timing, from what it says while it works and from when it stops to ask, and a mockup shows none of that. A normal handoff cycle tests a handful of versions. This needed dozens.',
+  insight:'So the prototype became the design file. An AI built each version from my comments and a set of written rules, and every two days users and stakeholders used the latest one. I stopped reviewing how a screen looked and watched what a new user understood in the first ten seconds.',
+  pull:'A change that costs minutes is a change you can afford to test.',
+  decisions:[
+    ['Mockups and a handoff, or a working prototype',
+     'A working prototype from day one, clickable in both themes and at phone width. My comments and the written rules were the brief for every version.',
+     'No polished file to hide behind. Some versions were worse than the last and got rolled back in front of the people testing them. Every review was on the real thing, timing and the agent’s own words included.'],
+    ['Dashboard first, or the agent first',
+     'The agent is the home: one question in the middle of the screen, four quick actions under it, the week’s signals below.',
+     'People who want numbers at a glance lose a click. Any chart can be pinned to the dashboard from the chat, so the numbers stay one step away.'],
+    ['Let the agent act, or make it ask',
+     'Draft and ask. The agent offers plans, works through them on its own and stops at the one action that leaves the product, with a card listing exactly what will be sent.',
+     'One extra click per action. For a team handing its brand to an agent, that click is the product. Approvals, alert rules and blockers all use the same decision card, one decision per card.'],
+    ['Show all the agent knows, or only what helps',
+     'Brain went through five structures, from a map to a long document to six category cards that each open their own page.',
+     'Each structure lived a day or two before testing replaced it. The worst was a queue of “needs you” items: an optional knowledge base started to feel like overdue work, so the queue went.']
+  ],
+  leadership:[
+    ['Running the rhythm','A new version in front of users and stakeholders every two days, and every hesitation I saw turned into a comment for the next build.'],
+    ['Directing the build','I wrote the design system and motion rules as files the AI read before every change. Reviews were a few words pinned to an element, like “alignment issue”.'],
+    ['Checking the checker','Scripts measured contrast, overflow and alignment on every version. One failed a legend at 2.95 to 1. The real value was 7.1 to 1, so I fixed the script and left the design alone.']
+  ],
+  galleries:[
+    {label:'The agent',items:[
+      {src:'images/case-05/composer.gif',still:'images/case-05/composer-still.png',ph:'composer.gif · Add context, dictate, send',
+       alt:'Screen recording: the add menu opens with files, Brain, a signal and a connected tool, two context chips are added, dictation fills the message, and it is sent',
+       cap:'The add menu offers only what the agent can use today: files, a Brain category, a signal or a connected tool. Picks travel with the message.'},
+      {src:'images/case-05/plan.gif',still:'images/case-05/plan-still.png',ph:'plan.gif · Choose, approve, act, show',
+       alt:'Screen recording: a signal opens two plans, one is chosen, the agent works through three steps, asks for approval to send three notes, sends them and shows the result',
+       cap:'Two plans, the steps worked through, and a stop at the one action that leaves the product. The result comes back with Show and Undo.'},
+      {src:'images/case-05/home-evolution.png',ph:'home-evolution.png · Four versions of the home',
+       alt:'Four versions of the home: a card for every signal, one lead signal, the lead signal with quick action buttons, and the composer first',
+       cap:'Four of the home’s versions. Each round gave the conversation more of the page.'}
+    ]},
+    {label:'Brain',items:[
+      {src:'images/case-05/brain-evolution.png',ph:'brain-evolution.png · Five structures, four shown',
+       alt:'Four versions of Brain: a radial map, a workspace with a to do queue, category tabs with line art, and six category cards',
+       cap:'Four of Brain’s five structures. The cards won because each category says what it is for before you open it.'},
+      {src:'images/case-05/brain.gif',still:'images/case-05/brain-still.png',ph:'brain.gif · Opening a category',
+       alt:'Screen recording: a category card opens into its own page with sections and editor avatars, then returns to the cards, and the tabs switch with a sliding pill',
+       cap:'A category opens into its own page. Editors show as avatars, and the agent has its own.'}
+    ]},
+    {label:'Motion and data',items:[
+      {src:'images/case-05/dash.gif',still:'images/case-05/dash-still.png',ph:'dash.gif · Metric tabs',
+       alt:'Screen recording: dashboard metric tabs switch, the underline slides, numbers count and the chart redraws',
+       cap:'The underline follows the chosen metric, numbers count to their new value and the line draws in.'},
+      {src:'images/case-05/sparklines.png',ph:'sparklines.png · Sparklines before and after',
+       alt:'Two rows of metric tiles: before, each sparkline scaled to itself so small changes look dramatic; after, each uses the chart axis with labelled top and bottom',
+       cap:'A 0.2 point wobble used to draw a V. Sparklines now share the main chart’s axis.'},
+      {src:'images/case-05/skip.gif',still:'images/case-05/skip-still.png',ph:'skip.gif · Skipping setup',
+       alt:'Screen recording: the setup card is skipped and its label flies into the sidebar, where setup can be resumed',
+       cap:'Skipping setup keeps it. The card moves to the sidebar with its progress.'},
+      {src:'images/case-05/orbit.gif',still:'images/case-05/orbit-still.png',ph:'orbit.gif · Integrations',
+       alt:'Screen recording: connected tools orbit the product on an inner ring, available ones on an outer ring, and a filter rearranges them',
+       cap:'Connected tools on the inner ring, available ones outside it.'},
+      {src:'images/case-05/light.png',ph:'light.png · Light theme',
+       alt:'The dashboard in the light theme',
+       cap:'Every colour is a token with a dark and a light value, both AA for text.'}
+    ]}
+  ],
+  ai:{
+    h:'The cycle',label:'the cycle',
+    intro:'One loop, repeated 214 times.',
+    points:[
+      ['Comment','A short note on one element of the live prototype.'],
+      ['Build','The AI changes the code, runs the rule and contrast checks, and publishes the next version within minutes.'],
+      ['Test','Every two days, users and stakeholders work through the latest version while I watch where they stop.'],
+      ['Keep','Anything worth keeping becomes a rule in the design system file, so no later version forgets it.']
+    ]
+  },
+  reflection:'I would keep the rhythm: rules first, a working version, a real person using it within two days. One call I would make faster. The primary button went through seven styles because I kept polishing a look before asking where a primary action was needed at all.'
+},
+{
+  ix:'06',
+  more:true,
+  kk:'Group travel app, mobile',
+  t:'One plan for where the group eats and who pays',
+  d:'Group trips stall twice: deciding together and settling money. I designed one evening of a trip app where a poll result becomes the plan, and the bill attaches to it. Built as a working mobile prototype.',
+  preview:{src:'images/case-06/decide.gif',still:'images/case-06/hero.png',alt:'Screen recording: an empty evening slot becomes a dinner poll with three places picked from a map, and the poll is sent to the group'},
+  metrics:[['3 acts','decide, pay and settle'],['1 object','poll, plan item and expense']],
+  one:'A mobile app for group trips, designed around one evening in Lisbon. Three friends decide where to eat, the plan updates itself, and they settle up with the fewest transfers and no arithmetic.',
+  role:'Product design and the working prototype',
+  team:'Solo',
+  year:'2026',
+  keyH:'The three acts',
+  glanceH:'What it shows',
+  keyN:4,
+  hero:{src:'images/case-06/hero.png',ph:'hero.png · The plan after the poll',
+    alt:'The trip plan for Tuesday: a castle visit, a park, and dinner at the poll winner, marked as coming from a poll that ended 3 to 0',
+    cap:'The plan after the vote. Dinner came from the poll, and the score stays on the item.'},
+  impact:[
+    ['3 acts','decide, pay and settle, played end to end'],
+    ['1 object','the poll result, the plan item and the expense'],
+    ['2 phones','the same moment from the person owed and the person paying']
+  ],
+  impactNote:'It has not launched yet, so there are no usage numbers. What the design proves is the link: every screen reuses a decision or a cost that already exists in the plan, so nobody types anything twice.',
+  context:'Group trips break down at two points. The decision happens in a chat thread, where the loudest voice wins and nobody commits. The money happens later, in a splitting app, as a pile of small transfers and reminders. The plan sits in a third place, and nothing connects them.',
+  before:'Three tools for one dinner: a chat to argue in, a notes app for the plan, a splitting app for the bill.',
+  tension:'A map of the whole app would have been the safe deliverable, and shallow everywhere. I scoped it to one evening and played it end to end with real states, so every rule had to survive being used.',
+  insight:'Plan, decision and expense are one object. A poll result should become a plan item, and an expense should attach to the item it paid for. Once that holds, the app does the bookkeeping people now do in their heads.',
+  pull:'The poll result is the plan item. The bill is attached to it.',
+  decisions:[
+    ['An open poll, or one that closes itself',
+     'Four options at most, closed automatically once everyone has voted. On a tie, the creator’s pick wins.',
+     'Less democratic, and there is no runoff. In return nobody has to be the one who calls it, which is where group chats stall.'],
+    ['Report the result, or act on it',
+     'The winner replaces the empty evening slot in everyone’s plan, with the score on the item.',
+     'Changing the plan after a result needs its own path. I left it as a stub.'],
+    ['Split the bill, or split the items',
+     'Per item. Each line has its own people, so nobody pays for wine they did not drink. An equal split stays the default.',
+     'More input than one total divided by three. The default keeps the quick case quick.'],
+    ['Pay back each expense, or net the trip',
+     'Net everything into the fewest transfers, with a “Why only 2” note that explains the maths. The person paying sees an itemised list of what for.',
+     'Individual debts drop out of the main view. The explainer and the itemised list are there to earn that trust back.']
+  ],
+  gallery:[
+    {src:'images/case-06/decide.gif',ph:'decide.gif · Dinner, by poll',
+     alt:'Screen recording: the free evening slot opens a new poll, three places are picked from a map, and the poll is sent',
+     cap:'The empty evening slot starts the poll. Up to four places, picked from the map or typed in.'},
+    {src:'images/case-06/votes.gif',still:'images/case-06/votes-still.png',ph:'votes.gif · The plan updates itself',
+     alt:'Screen recording: votes arrive one by one, the poll closes 3 to 0, and the winner appears in tonight’s plan',
+     cap:'The poll closes on the last vote. The winner is in everyone’s plan before anyone asks.'},
+    {src:'images/case-06/expense.gif',still:'images/case-06/expense-still.png',ph:'expense.gif · Split by item',
+     alt:'Screen recording: an expense linked to dinner gets two items, one person is removed from the wine, and balances count up to their new values',
+     cap:'The expense is already linked to dinner. Balances count from their old value, so the change reads before the total.'},
+    {src:'images/case-06/settle.gif',still:'images/case-06/settle-still.png',ph:'settle.gif · Fewest transfers',
+     alt:'Screen recording: settle up shows two transfers, explains why only two, sends requests, then switches to the other phone where the payment is made',
+     cap:'Two transfers for the whole trip. Then the other phone, where the request says exactly what it covers.'}
+  ],
+  ai:{
+    h:'Craft',label:'craft details',
+    intro:'It is a working app in plain JavaScript, not a click-through file, so timing and state could be judged on a real phone.',
+    points:[
+      ['Balances count up','Each balance animates from its old value to its new one in 900ms.'],
+      ['Haptics','A short vibration on votes, payments and selections.'],
+      ['Notifications','Every banner opens the screen it talks about. They are what make it feel shared.'],
+      ['State that survives','The demo keeps its state, so a reload on a phone does not lose the evening.']
+    ]
+  },
+  reflection:'The first thing I would test with real groups is whether auto-close with a creator tie-break feels fair to the person who lost. Onboarding, trip creation and more than one trip are stubs on purpose. Next it needs more than one currency, partial payments, and the friend who leaves before anyone settles.'
 }
 ];
 
-const SLUGS=['support','configuration','promotions','design-system'];
+const SLUGS=['support','configuration','promotions','design-system','agentic-marketing','group-trip'];
 const AR='<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h12M8 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const caseUrl=i=>'/work/'+SLUGS[i]+'/';
 
@@ -1425,6 +1624,18 @@ function renderCard(c,i){
   </div></a>`;
 }
 
+/* Smaller card for the "More work" row: picture first, no metrics. */
+function renderMoreCard(c,i){
+  const im=c.preview||c.hero;
+  return `<a class="prj sm rv" href="${caseUrl(i)}" data-case="${i}" aria-haspopup="dialog" aria-label="${c.t}. ${c.kk}. Open case study.">
+    ${im?`<div class="p-im">${still(im)}<img src="${im.src}" alt="${im.alt}" loading="lazy">${im.still?'</picture>':''}</div>`:''}
+    <div><span class="p-ix">${c.ix}</span><span class="p-kk">${c.kk}</span></div>
+    <h3 class="p-t">${c.t}</h3>
+    <p class="p-d">${c.dm||c.d}</p>
+    <span class="p-go">Read the case ${AR}</span>
+  </a>`;
+}
+
 /* Case layout, in reading order for a hiring manager:
    at a glance, context, tension, insight, decisions and what they cost,
    leadership, two key screens, impact. Everything else (system detail,
@@ -1441,7 +1652,7 @@ function renderCase(c){
   const i=P.indexOf(c);
   const all=screensOf(c);
   // two key screens up front: the first of each gallery group if there are groups, otherwise the first two
-  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,2);
+  const key=c.galleries?all.filter(s=>s.first).slice(0,2):all.slice(0,c.keyN||2);
   const rest=all.filter(s=>!key.includes(s));
   const restHtml=(()=>{
     if(!rest.length) return '';
@@ -1457,7 +1668,7 @@ function renderCase(c){
       <div class="sys"><div class="sys-r">${c.system.cols.map(col=>`
         <div class="sys-c"><u>${col[0]}</u><ul>${col[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
         <p class="sys-n">${c.system.note}</p></div>`)]:null,
-    c.ai?['agent readability',block('Built to be read by agents',`<p>${c.ai.intro}</p>
+    c.ai?[c.ai.label||'agent readability',block(c.ai.h||'Built to be read by agents',`<p>${c.ai.intro}</p>
       <ul class="lst ld">${c.ai.points.map(a=>`<li><b>${a[0]}</b><span>${a[1]}</span></li>`).join('')}</ul>`)]:null,
     c.steps?['step by step',block('How it works, step by step',`<ol class="stp">${c.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol>`)]:null,
     restHtml?['more screens',restHtml]:null,
@@ -1489,10 +1700,10 @@ function renderCase(c){
     <div class="d-tl">
       <div><span>Role</span><b>${c.role}</b></div>
       <div><span>Team</span><b>${c.team}</b></div>
-      <div><span>Timeline</span><b>${c.time}</b></div>
+      ${c.time?`<div><span>Timeline</span><b>${c.time}</b></div>`:''}
       <div><span>Year</span><b>${c.year}</b></div>
     </div>
-    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>What it changed</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
+    ${d0?`<div class="glance"><div><u>The decision that mattered</u><p>${d0[1]}</p></div><div><u>${c.glanceH||'What it changed'}</u><p><b>${c.impact[0][0]}</b> ${c.impact[0][1]}.</p></div></div>`:''}
     ${c.hero?fig(c.hero,{eager:true}):''}
     ${block('Context',`<p>${c.context}</p>${
       c.beforeImg
@@ -1509,7 +1720,7 @@ function renderCase(c){
         </div>
       </div>`).join('')}</div>`):''}
     ${c.leadership?block('Leadership and ownership',`<ul class="lst ld">${c.leadership.map(l=>`<li><b>${l[0]}</b><span>${l[1]}</span></li>`).join('')}</ul>`):''}
-    ${key.length?block('What shipped',key.map(s=>s.html).join('')):''}
+    ${key.length?block(c.keyH||'What shipped',key.map(s=>s.html).join('')):''}
     ${block('Impact',`${imp}<p class="note">${c.impactNote}</p>`)}
     ${c.quote?`<figure class="d-q"><blockquote>${c.quote.text}</blockquote><figcaption><b>${c.quote.who}</b>, ${c.quote.role}</figcaption></figure>`:''}
     ${extra.length?`<details class="more"><summary><span class="pm"></span>More: ${list}</summary><div class="more-in">${extra.map(e=>e[1]).join('')}</div></details>`:''}
@@ -1526,8 +1737,10 @@ function renderCase(c){
    previews see the work. If they are missing (e.g. a local edit without running
    the build), they are rendered here instead. */
 const prjs=document.getElementById('prjs');
-if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map(renderCard).join('');
-document.querySelectorAll('#prjs .prj, .proof a').forEach(a=>{
+if(!prjs.querySelector('.prj')) prjs.innerHTML=P.map((c,i)=>c.more?'':renderCard(c,i)).join('');
+const prjsMore=document.getElementById('prjsMore');
+if(!prjsMore.querySelector('.prj')) prjsMore.innerHTML=P.map((c,i)=>c.more?renderMoreCard(c,i):'').join('');
+document.querySelectorAll('#prjs .prj, #prjsMore .prj, .proof a').forEach(a=>{
   a.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // keep open-in-new-tab
     e.preventDefault();openCase(+a.dataset.case);
