@@ -2239,7 +2239,7 @@ const THEME = (() => {
   const KEY = 'aa-theme-inputs', DEF = { th:86, tk:1, ah:266 };
   const TONES = [['Stone', 86, 1], ['Grey', 86, 0], ['Cool', 255, .7], ['Sage', 150, .8]];
   const ACCENTS = [['Blue', 266], ['Violet', 300], ['Green', 155], ['Amber', 70], ['Rose', 15]];
-  let cur = { ...DEF }; try { Object.assign(cur, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch(e){}
+  let cur = { ...DEF }; try { localStorage.removeItem(KEY); } catch(e){}   // every visit starts on Stone with the blue accent; picks last for the visit only
   const isTone = ([, hh, k]) => +k === +cur.tk && (+k === 0 || +hh === +cur.th);
   const isAccent = ([, hh]) => +hh === +cur.ah;
   const toneRow = $('#toneRow'), accentRow = $('#accentRow'), toneTune = $('#toneTune'), accentTune = $('#accentTune');
@@ -2260,7 +2260,6 @@ const THEME = (() => {
   }
   function apply(){
     root.style.setProperty('--tone-h', cur.th); root.style.setProperty('--tone-k', cur.tk); root.style.setProperty('--accent-h', cur.ah);
-    try { localStorage.setItem(KEY, JSON.stringify(cur)); } catch(e){}
     render();
   }
   let redraw = 0;
