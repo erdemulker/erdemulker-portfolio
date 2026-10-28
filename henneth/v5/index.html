@@ -23,7 +23,7 @@
    ------------------------------------------------------------------- */
 :root{
   /* 1 · inputs */
-  --tone-h:86; --tone-k:1;            /* neutral hue (0–360) and tint strength (0 = pure grey, 1 = stone, 2 = strong) */
+  --tone-h:86; --tone-k:0;            /* neutral hue (0–360) and tint strength (0 = pure grey, the default; 1 = stone; 2 = strong) */
   --accent-h:266;                     /* accent hue; lightness and chroma come from the theme */
 
   /* 2 · theme */
@@ -2236,10 +2236,10 @@ function drawTiles(){
 })();
 /* ===================== theme inputs: tone hue, tint strength and accent hue. CSS derives every colour from them ===================== */
 const THEME = (() => {
-  const KEY = 'aa-theme-inputs', DEF = { th:86, tk:1, ah:266 };
+  const KEY = 'aa-theme-inputs', DEF = { th:86, tk:0, ah:266 };
   const TONES = [['Stone', 86, 1], ['Grey', 86, 0], ['Cool', 255, .7], ['Sage', 150, .8]];
   const ACCENTS = [['Blue', 266], ['Violet', 300], ['Green', 155], ['Amber', 70], ['Rose', 15]];
-  let cur = { ...DEF }; try { localStorage.removeItem(KEY); } catch(e){}   // every visit starts on Stone with the blue accent; picks last for the visit only
+  let cur = { ...DEF }; try { localStorage.removeItem(KEY); } catch(e){}   // every visit starts on Grey with the blue accent; picks last for the visit only
   const isTone = ([, hh, k]) => +k === +cur.tk && (+k === 0 || +hh === +cur.th);
   const isAccent = ([, hh]) => +hh === +cur.ah;
   const toneRow = $('#toneRow'), accentRow = $('#accentRow'), toneTune = $('#toneTune'), accentTune = $('#accentTune');
