@@ -1551,6 +1551,52 @@ ul.past li.fail{color:var(--danger)}
 .wl .wt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 /* toggle tiles: a value never breaks inside ("1 of 4") */
 .toggle-grid .val .n{white-space:nowrap}
+/* ---------- Content: a piece in four steps (brief, draft, review, export) ---------- */
+.csteps{display:flex;align-items:center;gap:var(--s-4);margin:0;padding:0;list-style:none}
+.csteps li{display:flex;align-items:center}
+.csteps li+li::before{content:'';width:var(--s-16);height:1px;margin-right:var(--s-4);background:var(--border)}
+.csteps button{display:inline-flex;align-items:center;gap:var(--s-8);height:var(--ctl-sm);padding:0 var(--s-10) 0 var(--s-4);border-radius:var(--r-round);font-size:var(--fs-md);color:var(--ink-3);transition:background var(--t-sm) var(--ease),color var(--t-sm) var(--ease)}
+.csteps button:not(:disabled):hover{background:var(--hover);color:var(--ink)}
+.csteps button:disabled{cursor:default;opacity:.6}
+.csteps .sn{display:grid;place-items:center;width:20px;height:20px;border-radius:var(--r-round);background:var(--surface-2);font:500 var(--fs-xs)/var(--lh-none) var(--font-mono)}
+.csteps .done{color:var(--ink-2)} .csteps .done .sn{background:var(--ink);color:var(--canvas)}
+.csteps .cur{color:var(--ink)} .csteps .cur .sn{background:var(--ink);color:var(--canvas)}
+.csteps [aria-current="step"]{background:var(--surface);color:var(--ink);font-weight:500}
+.ced .sec-h{flex-wrap:wrap;row-gap:var(--s-12)}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--s-24);align-items:start}
+.crail{display:flex;flex-direction:column;gap:var(--s-16);position:sticky;top:calc(67px + 76px)}
+.cside{padding:var(--s-20)} .cside .t{display:flex;align-items:center;justify-content:space-between;gap:var(--s-8)} .cside>p{margin-top:var(--s-8)}
+.cside .cact{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-top:auto;padding-top:var(--s-16)}
+.cside .cact .ctl,.cside .t .ctl{margin-top:0;padding-top:0;align-self:auto;text-decoration:none}
+.cnum{display:flex;align-items:baseline;gap:var(--s-6);margin-top:var(--s-8)} .cnum b{font:600 var(--fs-4xl)/var(--lh-none) var(--font-display);color:var(--ink)} .cnum span{color:var(--ink-3)}
+.cparts{list-style:none;margin:var(--s-16) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--s-12)}
+.cparts li{display:flex;flex-direction:column;gap:var(--s-4)} .cparts small{font-size:var(--fs-sm);color:var(--ink-3)}
+.cpl{display:flex;justify-content:space-between;font-size:var(--fs-md);color:var(--ink-2)} .cpl .mono{font-size:var(--fs-sm);color:var(--ink)}
+.cbar{display:block;height:4px;border-radius:var(--r-2);background:var(--surface-2);overflow:hidden} .cbar i{display:block;height:100%;background:var(--ink);transform-origin:left}
+.cchecks{list-style:none;margin:var(--s-10) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--s-8);font-size:var(--fs-md);color:var(--ink-3)}
+.cchecks li{display:flex;align-items:center;gap:var(--s-8)} .cchecks li.ok{color:var(--ink)}
+.ctools{display:flex;align-items:center;gap:var(--s-8);margin-bottom:var(--s-12)} .ctools .sp{flex:1}
+.cbrief h4{margin:var(--s-20) 0 var(--s-4);font-weight:500;font-size:var(--fs-lg);color:var(--ink)}
+.cbrief .clab{display:block;font-size:var(--fs-sm);color:var(--ink-3)}
+.cbrief .cranks{list-style:none;padding:0} .cbrief .cranks li+li{margin-top:var(--s-12)} .cbrief .cranks b{font-weight:500;color:var(--ink)} .cbrief .csrc{color:var(--ink-3)}
+.cbrief[contenteditable="true"]{box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 45%,transparent);border-radius:var(--r-8)}
+.cready{display:flex;align-items:center;gap:var(--s-14);padding:var(--s-20) var(--s-24);border-radius:var(--r-16);background:var(--surface)}
+.cready .cri{display:grid;place-items:center;width:40px;height:40px;border-radius:var(--r-12);background:var(--ink);color:var(--canvas)}
+.cready b{display:block;font:600 var(--fs-xl)/var(--lh-snug) var(--font-display);color:var(--ink)} .cready div>span{font-size:var(--fs-md);color:var(--ink-2)} .cready .sp{flex:1}
+.cfh{margin:var(--s-32) 0 var(--s-12)}
+.cfmts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-12)}
+.cfmt{display:flex;flex-direction:column;align-items:center;gap:var(--s-6);padding:var(--s-24) var(--s-16);border-radius:var(--r-16);background:var(--surface);color:var(--ink);transition:background var(--t-sm) var(--ease),box-shadow var(--t-sm) var(--ease)}
+.cfmt:hover{background:var(--surface-up);box-shadow:inset 0 0 0 1px var(--border)} .cfmt b{font-weight:500;font-size:var(--fs-md)} .cfmt .mono{font-size:var(--fs-sm);color:var(--ink-3)}
+.ced .acts{margin-top:var(--s-12)}
+.cseo{display:flex;flex-direction:column;gap:var(--s-16)}
+@media (max-width:980px){ .cgrid{grid-template-columns:1fr} .crail{position:static} .cfmts{grid-template-columns:1fr} .cready{flex-wrap:wrap} }
+
+/* the content editor on phones: the title wraps, the steps keep their numbers and only the open step its name */
+@media (max-width:720px){
+  .ced .sec-h h2{white-space:normal}
+  .csteps{max-width:100%;gap:var(--s-2)} .csteps li+li::before{width:var(--s-8)}
+  .csteps button:not([aria-current]){padding-right:var(--s-4);font-size:0;gap:0} .csteps button:not([aria-current]) .sn{font-size:var(--fs-xs)}
+}
 </style>
 
 <div class="app">
@@ -5935,7 +5981,7 @@ VIEWS.brain = (() => {
    outline → Start drafting; a draft in review → Approve and publish; a published piece opens in the editor (#content/<id>),
    which exports to Markdown, HTML or text. Content from the React app's Content page (D_CONTENT). */
 VIEWS.content = (() => {
-  const C = D_CONTENT, STAGES = ['Brief', 'Drafting', 'In review', 'Published'];
+  const C = D_CONTENT, STAGES = ['Brief', 'Drafting', 'In review', 'Ready', 'Published'];
   const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many || one + 's');
   const cell = (...k) => h('div', { class:'cell' }, ...k);
   const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
@@ -5945,7 +5991,7 @@ VIEWS.content = (() => {
   C.published.forEach(p => add({ id: p.id, title: p.title, type: p.type, stage: 'Published', score: p.score, updated: p.updated, body: p.body }));
   C.activeWork.filter(a => a.title).forEach(a => add({ title: a.title, type: /vs\.?/.test(a.title) ? 'Comparison' : 'Blog / Guide', stage: a.status === 'Review' ? 'In review' : a.status === 'Brief' ? 'Brief' : 'Drafting', updated: a.age }));
   C.briefs.forEach(b => add({ title: b.title, type: b.type, stage: 'Brief', updated: b.updated }));
-  const CS = { stage: null, open: null, edits: {}, unsaved: {} };
+  const CS = { stage: null, open: null, edits: {}, unsaved: {}, view: {}, briefEdit: null };
   const count = st => items.filter(i => i.stage === st).length;
 
   /* ---------- the list ---------- */
@@ -5954,23 +6000,23 @@ VIEWS.content = (() => {
     if (it) return editor(el, it);
     const sig = signals();
     const tiles = h('div', { class:'toggle-grid' }, ...STAGES.map(st => h('button', { type:'button', 'aria-pressed': CS.stage === st ? 'true' : 'false', onclick: () => { CS.stage = CS.stage === st ? null : st; keep(); } },
-      h('span', { class:'top' }, h('span', { class:'lbl' }, st === 'Brief' ? 'Briefs' : st)), h('span', { class:'val' }, h('span', { class:'n' }, String(count(st))), h('span', { class:'p' }, ({ Brief:'waiting to be drafted', Drafting:'being written', 'In review':'waiting on you', Published:'live on nike.com' })[st])))));
+      h('span', { class:'top' }, h('span', { class:'lbl' }, st === 'Brief' ? 'Briefs' : st)), h('span', { class:'val' }, h('span', { class:'n' }, String(count(st))), h('span', { class:'p' }, ({ Brief:'waiting to be drafted', Drafting:'being written', 'In review':'waiting on you', Ready:'ready to export', Published:'live on nike.com' })[st])))));
     el.replaceChildren(
       UI.sec('ctSigH', 'Signals', 'What is waiting in the pipeline, most urgent first.', UI.viewAll(sig.length), UI.signals(sig)),
-      UI.sec('ctListH', 'Pipeline', 'Every piece, from brief to published. Briefs Gandalf sends from other pages land here as briefs, for your team to draft.', null,
+      UI.sec('ctListH', 'Pipeline', 'Every piece, from brief to published. Open one to work on it. Briefs Gandalf sends from other pages land here as briefs, for your team to draft.', null,
         h('div', { class:'resp' }, h('div', { class:'resp-h' }, h('span', { class:'lbl-s' }, 'Filter by stage'), h('span', { class:'lbl-s' }, plural(items.length, 'piece'))), tiles),
         table()),
       UI.colophon(['Source: ', h('b', {}, 'Henneth content'), ' for nike.com. AI score is how well a published page answers the questions it targets, out of 100.'], 'Updated today'));
   }
   function keep() { const y = window.scrollY; renderPage(); window.scrollTo(0, y); }
   function table() {
-    const list = items.filter(i => !CS.stage || i.stage === CS.stage).sort((a, b) => STAGES.indexOf(a.stage) === STAGES.indexOf(b.stage) ? 0 : ({ 'In review':0, Brief:1, Drafting:2, Published:3 })[a.stage] - ({ 'In review':0, Brief:1, Drafting:2, Published:3 })[b.stage]);
+    const list = items.filter(i => !CS.stage || i.stage === CS.stage).sort((a, b) => STAGES.indexOf(a.stage) === STAGES.indexOf(b.stage) ? 0 : ({ 'In review':0, Ready:1, Brief:2, Drafting:3, Published:4 })[a.stage] - ({ 'In review':0, Ready:1, Brief:2, Drafting:3, Published:4 })[b.stage]);
     const tb = h('tbody', { onmouseleave: () => askFloat.hide() });
     for (const i of list) {
-      const ctx = { page:'content', key: i.stage.toLowerCase(), label: i.title, i, text: i.title + ' · ' + i.stage, q: ({ Brief:'Draft an outline for “' + i.title + '”', Drafting:'Where is “' + i.title + '” up to?', 'In review':'Is “' + i.title + '” ready to publish?', Published:'How is “' + i.title + '” doing?' })[i.stage] };
-      const tr = h('tr', { class:'row', role: i.stage === 'Published' ? 'link' : null, tabindex: i.stage === 'Published' ? '0' : null, onclick: () => { if (i.stage === 'Published') go('#content/' + i.id); }, onkeydown: e => { if (e.key === 'Enter' && i.stage === 'Published') go('#content/' + i.id); } },
+      const ctx = { page:'content', key: i.stage.toLowerCase(), label: i.title, i, text: i.title + ' · ' + i.stage, q: ({ Brief:'Draft an outline for “' + i.title + '”', Drafting:'Where is “' + i.title + '” up to?', 'In review':'Is “' + i.title + '” ready to publish?', Ready:'Where should “' + i.title + '” go live?', Published:'How is “' + i.title + '” doing?' })[i.stage] };
+      const tr = h('tr', { class:'row', role:'link', tabindex:'0', onclick: () => go('#content/' + i.id), onkeydown: e => { if (e.key === 'Enter') go('#content/' + i.id); } },   // every piece opens in the editor, at its step
         h('td', {}, cell(h('div', { class:'name' }, h('b', {}, i.title), h('small', {}, i.type + (i.from ? ' · from ' + i.from : ''))))),
-        h('td', {}, cell(h('span', { class:'tag sm ' + (({ 'In review':'accent', Published:'success' })[i.stage] || '') }, i.stage))),
+        h('td', {}, cell(h('span', { class:'tag sm ' + (({ 'In review':'accent', Ready:'ink', Published:'success' })[i.stage] || '') }, i.stage))),
         h('td', { class:'r' }, cell(h('span', { class: i.score ? 'n' : 'seen' }, i.score ? String(i.score) : '—'))),
         h('td', { class:'r' }, cell(h('span', { class:'seen' }, i.updated))));
       tr.lastChild.firstChild.append(askBtn(ctx)); tr.addEventListener('mouseenter', () => askFloat.show(tr, ctx));
@@ -5979,7 +6025,7 @@ VIEWS.content = (() => {
     if (!list.length) tb.append(h('tr', {}, h('td', { colspan:4 }, cell(UI.empty('Nothing at this stage', 'Briefs arrive when Gandalf finds a gap on Visibility, Shopping, Impact or Readiness and you send it here.')))));
     return [h('div', { class:'tblbox' }, h('div', { class:'tblwrap sfade-x fade-lg' }, h('table', { class:'tbl cnt wrap' },
       h('thead', {}, h('tr', {}, ...[['Piece'], ['Stage'], ['AI score', 'r'], ['Updated', 'r']].map(([t, c]) => h('th', { scope:'col', class: c || null }, t)))), tb))),
-      h('div', { class:'tfoot' }, h('span', {}, 'Open a published piece to edit or export it. Ask Gandalf on any row to move it on.'), h('span'))];
+      h('div', { class:'tfoot' }, h('span', {}, 'Open any piece to work on it: brief, draft, review, export. Or ask Gandalf on its row.'), h('span'))];
   }
 
   /* ---------- the editor: a published piece, its text editable in place, exported in one menu ---------- */
@@ -5995,21 +6041,173 @@ VIEWS.content = (() => {
   }
   function toMd(article) { return [...article.children].map(e => e.tagName === 'H3' ? '## ' + e.textContent : e.tagName === 'UL' ? [...e.children].map(li => '- ' + li.textContent).join('\n') : e.textContent).join('\n\n'); }
   function download(name, type, text) { const a = h('a', { href: URL.createObjectURL(new Blob([text], { type })), download: name }); document.body.append(a); a.click(); a.remove(); }
+  /* ---------- a piece, from brief to export: one editor, four steps (Brief · Draft · Review · Export) ----------
+     Every piece opens here (#content/<id>). The step it is at is current; earlier steps can be looked at again. Brief: what
+     ranks now, the gap, an outline tied to it, open questions (Gandalf's research, editable) → Approve. Draft: Gandalf writes a
+     first draft from the outline, or you start from its headings; edit in place → Send to review. Review: the AI score, out
+     of 100 in four parts, with what to fix → Approve and mark ready. Export: Markdown, HTML, text or rich text, and how it
+     reads in search → Mark published. */
+  const STEPS = ['Brief', 'Draft', 'Review', 'Export'];
+  const stepOf = st => ({ Brief:0, Drafting:1, 'In review':2, Ready:3, Published:3 })[st];
+  const topicOf = it => it.title.replace(/^(Brief|FAQ): /, '').replace(/^make (\S+) citable$/, 'what shoppers ask on $1');
+  const textOf = it => CS.unsaved[it.id] || it.draft || CS.edits[it.id] || it.body || '';
+  const wordsIn = t => t.replace(/[#*\-]/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+  const sectionsIn = t => (t.match(/^## /gm) || []).length;
+  // the brief Gandalf researches for a topic: what ranks now, where the gap is, an outline tied to it, and what is still open
+  function briefFor(it) {
+    const t = topicOf(it), rival = VIS.BRANDS[VIS.agg(VIS.days()).order.find(b => b !== VIS.YOU)].name;
+    return {
+      ranks: [
+        ['nike.com', 'A category page', 'Lists the products with filters, but says nothing about how to choose between them.'],
+        ['Runner’s World', 'The year’s best picks', 'Names two or three models, a Nike one among them, with lab testing behind each pick.'],
+        ['Wirecutter', 'A tested review', 'Recommends one Nike model as the neutral, all-round option.'],
+        [rival.toLowerCase().replace(/\s+/g, '') + '.com', 'A brand page', 'Describes ' + rival + '’s own models by use, in plain words that assistants quote.'],
+        ['Fleet Feet', 'A retailer listing', 'Shipping and returns; nothing on how to choose.'],
+      ],
+      gaps: [
+        { gap: 'A plain answer to “' + t + '”, in Nike’s words', checked: 'nike.com has filters only; the roundups pick models without explaining the choice.', conf: 'Partial gap: the picks are covered, the reasoning is not.' },
+        { gap: 'What Nike’s technologies do (ZoomX, ReactX, Air Zoom), and what each is for', checked: 'No ranking page names them; Runner’s World mentions cushioning only as a quality.', conf: 'Open: no page explains them.' },
+      ],
+      outline: [
+        ['The short answer', 'How assistants quote a page: the answer in its first lines.', 'Which Nike model fits which runner, with one reason each.'],
+        ['How to choose', 'The first gap above.', 'By use, fit, cushioning and price. Nike owns the category structure on nike.com and can link each choice to it.'],
+        ['The models, compared', 'The roundups name the Pegasus and the Vomero.', 'Product names within approved trademarks; no specs the writer cannot verify.'],
+        ['What the technology does', 'The second gap above.', 'ZoomX, ReactX and Air Zoom in a sentence each, from Nike product documentation.'],
+        ['Questions runners ask next', 'The prompts on Visibility for this topic.', 'Five short answers, marked up as FAQ.'],
+      ],
+      questions: ['Which market is it for? What ranks now is US-centred.', 'Which model is current? Confirm on nike.com before naming a version.', 'May owned content cite third-party roundups? Check with legal.'],
+    };
+  }
+  // Gandalf's first draft: the outline, written out in Nike's voice (Brain › Voice and tone)
+  function draftFor(it) {
+    return ['## The short answer', 'Start with the Pegasus if you want one shoe for most runs, and the Vomero if you want more cushioning for long, easy miles. Both are on nike.com in every size, with free returns.',
+      '## How to choose', 'Choose by what you run, not by the newest model:\n- Daily runs and a first marathon: a neutral, cushioned trainer.\n- Long, easy miles: the most cushioning you find comfortable.\n- Race day: a lighter shoe with a plate, once your training is settled.',
+      '## The models, compared', 'The **Pegasus** is the all-rounder: responsive, durable, and the shoe the roundups recommend to new runners. The **Vomero** trades a little speed for softer landings over long distances.',
+      '## What the technology does', '**ZoomX** is Nike’s lightest, most responsive foam. **ReactX** is durable and returns more energy than React. **Air Zoom** units add a springy feel under the forefoot.',
+      '## Questions runners ask next', '- How long does a running shoe last? About 500 to 800 km, depending on your weight and the surface.\n- How should a running shoe fit? Leave about a thumb’s width at the toe.\n- Do I need a different shoe for races? Not for your first; train and race in the one you trust.'].join('\n\n');
+  }
+  // the AI score: how well assistants can find, read and quote the draft, four parts of 25
+  function scoreOf(it, text) {
+    const heads = (text.match(/^## .+/gm) || []).map(x => x.slice(3).trim().toLowerCase()), low = text.toLowerCase();
+    const outline = it.brief.outline.map(o => o[0].toLowerCase()), covered = outline.filter(o => heads.includes(o)).length;
+    const named = ['pegasus', 'vomero', 'zoomx', 'reactx', 'air zoom', 'nike.com'].filter(n => low.includes(n)).length, figures = (text.match(/\d+/g) || []).length;
+    const first = (text.split(/\n\n/).find(p => p.trim() && !/^#/.test(p)) || ''), short = wordsIn(first) <= 45, list = /^- /m.test(text);
+    const banned = ['revolutionary', 'game-changing', 'best ever', 'guarantee', 'injury-free'].filter(w => low.includes(w));
+    const parts = [
+      ['Topic coverage', Math.round(25 * covered / outline.length), covered + ' of ' + outline.length + ' outline sections'],
+      ['Authority', Math.min(25, 6 + named * 2 + Math.min(figures, 4) * 2), (named ? plural(named, 'product or technology', 'products and technologies') + ' named' : 'Name the models') + (figures >= 4 ? ', with figures' : '; add a source or a figure for each claim')],
+      ['Structure', (short ? 9 : 3) + Math.min(8, heads.length * 2) + (list ? 8 : 0), [short ? 'Short answer first' : 'Open with a short answer', plural(heads.length, 'section'), list ? 'a list' : 'no list'].join(' · ')],
+      ['Brand fit', Math.max(0, 25 - banned.length * 8), banned.length ? 'Uses “' + banned.join('”, “') + '”: Brain says avoid it' : 'Matches Voice and tone in Brain'],
+    ];
+    return { total: parts.reduce((a, p) => a + p[1], 0), parts };
+  }
   function editor(el, it) {
-    const art = h('article', { class:'doc', contenteditable:'true', spellcheck:'true', 'aria-label': it.title }, ...md(CS.unsaved[it.id] || CS.edits[it.id] || it.body));   // unsaved text survives leaving the page
-    const words = () => art.textContent.trim().split(/\s+/).filter(Boolean).length;
-    const wc = h('span', { class:'lbl-s' }, plural(words(), 'word')), save = h('button', { type:'button', class:'ctl sm pri', hidden:true, hidden: !CS.unsaved[it.id], onclick: () => { CS.edits[it.id] = toMd(art); delete CS.unsaved[it.id]; it.updated = 'just now'; save.hidden = true; saved.hidden = false; } }, 'Save changes'), saved = h('span', { class:'lbl-s', hidden:true }, 'Saved');
-    art.addEventListener('input', () => { CS.unsaved[it.id] = toMd(art); wc.textContent = plural(words(), 'word'); save.hidden = false; saved.hidden = true; });
-    const exp = h('button', { type:'button', class:'ctl sm' }, icon('download'), 'Export', icon('chevron-down'));
-    const name = it.id;
-    el.replaceChildren(h('section', { class:'sec first docsec', 'aria-labelledby':'ctDocH' },
-      h('div', { class:'sec-h' }, h('div', {}, h('h2', { id:'ctDocH' }, it.title), h('div', { class:'sub' }, it.type + ' · published · AI score ' + it.score + ' of 100 · updated ' + it.updated)),
-        h('div', { class:'sec-tt' }, wc, saved, save, UI.menu(exp, [
-          { label:'Markdown', sub:'.md', on: () => download(name + '.md', 'text/markdown', '# ' + it.title + '\n\n' + toMd(art)) },
-          { label:'HTML', sub:'.html', on: () => download(name + '.html', 'text/html', '<h1>' + it.title + '</h1>\n' + art.innerHTML) },
-          { label:'Plain text', sub:'.txt', on: () => download(name + '.txt', 'text/plain', it.title + '\n\n' + art.innerText) }], { right:true }))),
-      h('div', { class:'docwrap' }, art)),
-      UI.colophon(['Unsaved edits wait here until you save or leave Henneth; publishing changes runs through your CMS.'], it.type));
+    it.brief = it.brief || briefFor(it);
+    const cur = stepOf(it.stage), view = Math.min(CS.view[it.id] != null ? CS.view[it.id] : cur, cur);
+    const stepper = h('ol', { class:'csteps', 'aria-label':'Workflow' }, ...STEPS.map((st, i) => h('li', {}, h('button', { type:'button', class: i < cur ? 'done' : i === cur ? 'cur' : '', 'aria-current': i === view ? 'step' : null, disabled: i > cur, onclick: () => { CS.view[it.id] = i; keep(); } },
+      h('span', { class:'sn' }, i < cur || (i === 3 && it.stage === 'Published') ? icon('check', 'xs') : String(i + 1)), st))));
+    el.replaceChildren(h('section', { class:'sec first docsec ced', 'aria-labelledby':'ctDocH' },
+      h('div', { class:'sec-h' }, h('div', {}, h('h2', { id:'ctDocH' }, it.title), h('div', { class:'sub' }, it.type + ' · ' + it.stage + (it.score ? ' · AI score ' + it.score : '') + ' · updated ' + it.updated)), stepper),
+      ...[briefView, draftView, reviewView, exportView][view](it)),
+      UI.colophon([it.from === 'You' ? 'Created by you. ' : it.from ? 'Brief from ' + it.from + '. ' : '', 'Unsaved edits wait here until you save or leave Henneth; publishing runs through your CMS.'], it.type));
+  }
+  const rail = (...kids) => h('aside', { class:'crail' }, ...kids);
+  const lab = t => h('span', { class:'clab' }, t);
+  function briefView(it) {
+    const b = it.brief, editing = CS.briefEdit === it.id;
+    const doc = h('article', { class:'doc cbrief', contenteditable: editing ? 'true' : 'false', 'aria-label':'Brief for ' + it.title },
+      ...(it.briefHtml ? [] : [
+        h('h3', {}, 'What ranks now'), h('ul', { class:'cranks' }, ...b.ranks.map(([src, what, covers]) => h('li', {}, h('b', {}, what), h('span', { class:'csrc' }, ' · ' + src), h('p', {}, covers)))),
+        h('h3', {}, 'The gap'), ...b.gaps.flatMap(g => [h('h4', {}, g.gap), h('p', {}, lab('Pages checked'), g.checked), h('p', {}, lab('Confidence'), g.conf)]),
+        h('h3', {}, 'Outline'), ...b.outline.flatMap(([hd, tied, say]) => [h('h4', {}, hd), h('p', {}, lab('Tied to'), tied), h('p', {}, lab('What Nike can say'), say)]),
+        h('h3', {}, 'Open questions'), h('ul', {}, ...b.questions.map(q => h('li', {}, q)))]));
+    if (it.briefHtml) doc.innerHTML = it.briefHtml;
+    if (editing) requestAnimationFrame(() => doc.focus());
+    const mine = it.stage === 'Brief';
+    return [h('div', { class:'cgrid' }, h('div', { class:'docwrap' }, doc),
+      rail(h('div', { class:'card cside' }, h('div', { class:'t' }, h('span', { class:'lbl-s' }, 'Brief')),
+        h('p', {}, mine ? 'Gandalf read what ranks for this topic and where Nike is missing. Edit anything, then approve it to start the draft.' : 'Approved. The draft follows its outline.'),
+        h('div', { class:'cact' }, mine ? h('button', { type:'button', class:'ctl sm pri', onclick: () => { if (editing) { it.briefHtml = doc.innerHTML; CS.briefEdit = null; } move(it, 'Drafting'); CS.view[it.id] = 1; keep(); } }, 'Approve brief') : null,
+          h('button', { type:'button', class:'ctl sm' + (editing ? ' pri' : ''), onclick: () => { if (editing) { it.briefHtml = doc.innerHTML; CS.briefEdit = null; } else CS.briefEdit = it.id; keep(); } }, editing ? 'Save brief' : 'Edit brief')))))];
+  }
+  function scoreCard(it, getText) {
+    const sc = it.ai;
+    const run = h('button', { type:'button', class:'ctl sm' + (sc ? ' ghost' : ' pri'), disabled: !getText, onclick: () => { run.disabled = true; run.textContent = 'Scoring…'; setTimeout(() => { it.ai = scoreOf(it, getText()); it.score = it.ai.total; keep(); }, RM() ? 0 : 900); } }, sc ? icon('refresh') : icon('sparkle'), sc ? 'Rescore' : 'Run AI score');
+    return h('div', { class:'card cside cscore' }, h('div', { class:'t' }, h('span', { class:'lbl-s' }, 'AI score'), sc ? run : null),
+      sc ? h('div', { class:'cnum' }, h('b', {}, String(sc.total)), h('span', {}, '/ 100')) : h('p', {}, 'How well assistants can find, read and quote this draft: topic coverage, authority, structure and brand fit, out of 100.'),
+      sc ? h('ul', { class:'cparts' }, ...sc.parts.map(([l, v, note]) => h('li', {}, h('div', { class:'cpl' }, h('span', {}, l), h('span', { class:'mono' }, v + '/25')), h('span', { class:'cbar' }, h('i', { style:'transform:scaleX(' + (v / 25).toFixed(3) + ')' })), h('small', {}, note)))) : null,
+      sc ? null : h('div', { class:'cact' }, run));
+  }
+  function draftView(it) {
+    const text = textOf(it);
+    if (!text) return [h('div', { class:'cgrid' }, h('div', { class:'docwrap' }, UI.empty('No draft yet', 'Gandalf writes a first draft from the brief’s outline, in Nike’s voice. Or start from the outline’s headings and write it yourself.',
+      h('div', { class:'acts' }, h('button', { type:'button', class:'ctl pri', onclick: e => { const b = e.currentTarget; b.disabled = true; b.lastChild.textContent = 'Drafting…'; setTimeout(() => { it.draft = draftFor(it); it.updated = 'just now'; keep(); }, RM() ? 0 : 1200); } }, icon('gandalf'), h('span', {}, 'Draft with Gandalf')),
+        h('button', { type:'button', class:'ctl', onclick: () => { it.draft = it.brief.outline.map(o => '## ' + o[0] + '\n\nWrite here.').join('\n\n'); keep(); } }, 'Start from the outline')))),
+      rail(scoreCard(it, null)))];
+    const art = h('article', { class:'doc', contenteditable:'true', spellcheck:'true', 'aria-label': it.title }, ...md(text));
+    const wc = h('span', { class:'lbl-s' }, plural(wordsIn(text), 'word') + ' · ' + plural(sectionsIn(text), 'section')), dirty = !!CS.unsaved[it.id];
+    const save = h('button', { type:'button', class:'ctl sm', hidden: !dirty, onclick: () => commit() }, 'Save');
+    const commit = () => { it.draft = toMd(art); if (it.stage === 'Published') it.body = it.draft; delete CS.unsaved[it.id]; it.updated = 'just now'; save.hidden = true; };
+    art.addEventListener('input', () => { CS.unsaved[it.id] = toMd(art); const t = CS.unsaved[it.id]; wc.textContent = plural(wordsIn(t), 'word') + ' · ' + plural(sectionsIn(t), 'section'); save.hidden = false; });
+    const next = it.stage === 'Drafting' ? h('button', { type:'button', class:'ctl sm pri', onclick: () => { commit(); it.ai = scoreOf(it, it.draft); it.score = it.ai.total; move(it, 'In review'); CS.view[it.id] = 2; keep(); } }, 'Send to review') : null;
+    return [h('div', { class:'ctools' }, wc, h('span', { class:'sp' }), save, next),
+      h('div', { class:'cgrid' }, h('div', { class:'docwrap' }, art), rail(scoreCard(it, () => toMd(art))))];
+  }
+  function reviewView(it) {
+    const text = textOf(it), heads = (text.match(/^## .+/gm) || []).map(x => x.slice(3).trim().toLowerCase());
+    if (!it.ai) { it.ai = scoreOf(it, text); it.score = it.ai.total; }
+    const checks = it.brief.outline.map(([hd]) => [hd, heads.includes(hd.toLowerCase())]);
+    const mine = it.stage === 'In review';
+    return [h('div', { class:'ctools' }, h('span', { class:'lbl-s' }, plural(wordsIn(text), 'word') + ' · ' + plural(sectionsIn(text), 'section')), h('span', { class:'sp' }),
+        mine ? h('button', { type:'button', class:'ctl sm ghost', onclick: () => { move(it, 'Drafting'); CS.view[it.id] = 1; keep(); } }, 'Back to draft') : null,
+        mine ? h('button', { type:'button', class:'ctl sm pri', onclick: () => { move(it, 'Ready'); CS.view[it.id] = 3; keep(); } }, icon('check'), 'Approve and mark ready') : null),
+      h('div', { class:'cgrid' }, h('div', { class:'docwrap' }, h('article', { class:'doc', 'aria-label': it.title }, ...md(text))),
+        rail(scoreCard(it, () => textOf(it)), h('div', { class:'card cside' }, h('div', { class:'t' }, h('span', { class:'lbl-s' }, 'Against the brief')),
+          h('ul', { class:'cchecks' }, ...checks.map(([hd, ok]) => h('li', { class: ok ? 'ok' : '' }, icon(ok ? 'check' : 'minus', 'sm'), hd))))))];
+  }
+  function exportView(it) {
+    const text = textOf(it), name = it.id, art = h('article', { class:'doc' }, ...md(text));
+    const first = (text.split(/\n\n/).find(p => p.trim() && !/^#/.test(p)) || '').replace(/\*\*/g, '');
+    it.seo = it.seo || { title: it.title.replace(/^Brief: /, ''), desc: first.length > 155 ? first.slice(0, first.lastIndexOf(' ', 152)) + '…' : first };
+    const field = (k, label, max, area) => { const n = h('span', { class:'cnt' }, it.seo[k].length + ' / ' + max), i = h(area ? 'textarea' : 'input', { class:'pin', rows: area ? 3 : null, maxlength: max, 'aria-label': label, value: area ? null : it.seo[k], oninput: e => { it.seo[k] = e.target.value; n.textContent = e.target.value.length + ' / ' + max; } }, area ? it.seo[k] : null);
+      return h('div', { class:'pfield' }, h('div', { class:'pfl' }, h('label', {}, label), n), i); };
+    const copy = h('button', { type:'button', class:'ctl', onclick: async () => {
+      const html = '<h1>' + it.title + '</h1>' + art.innerHTML;
+      try { await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html], { type:'text/html' }), 'text/plain': new Blob([art.innerText], { type:'text/plain' }) })]); copy.lastChild.textContent = 'Copied'; }
+      catch (e) { try { await navigator.clipboard.writeText(art.innerText); copy.lastChild.textContent = 'Copied as text'; } catch (e2) { copy.lastChild.textContent = 'Select and copy'; } }
+      setTimeout(() => { copy.lastChild.textContent = 'Copy as rich text'; }, 1600); } }, icon('copy'), h('span', {}, 'Copy as rich text'));
+    const fmt = (label, ext, d, run) => h('button', { type:'button', class:'cfmt', onclick: run }, icon(d), h('b', {}, label), h('span', { class:'mono' }, ext));
+    const pub = it.stage === 'Published';
+    return [h('div', { class:'cready' }, h('span', { class:'cri' }, icon('check')), h('div', {}, h('b', {}, pub ? 'Published on nike.com' : 'Content ready'), h('span', {}, 'Export it for your CMS, or copy it as rich text.')),
+        h('span', { class:'sp' }), pub ? null : h('button', { type:'button', class:'ctl pri', onclick: () => { move(it, 'Published'); keep(); } }, 'Mark published')),
+      h('section', { class:'figures three', 'aria-label':'This piece' }, UI.fig('Sections', sectionsIn(text), null, ['headings in the piece']), UI.fig('Words', wordsIn(text), null, ['about ' + Math.max(1, Math.round(wordsIn(text) / 230)) + ' min to read']), UI.fig('AI score', it.score || '—', it.score ? '/ 100' : null, [it.score >= 85 ? 'ready for assistants to quote' : 'rescore in Review after edits'])),
+      h('div', { class:'lbl-s cfh' }, 'Download'),
+      h('div', { class:'cfmts' },
+        fmt('Markdown', '.md', 'file', () => download(name + '.md', 'text/markdown', '# ' + it.title + '\n\n' + text)),
+        fmt('HTML', '.html', 'code', () => download(name + '.html', 'text/html', '<h1>' + it.title + '</h1>\n' + art.innerHTML)),
+        fmt('Plain text', '.txt', 'text', () => download(name + '.txt', 'text/plain', it.title + '\n\n' + art.innerText))),
+      h('div', { class:'acts' }, copy, h('button', { type:'button', class:'ctl ghost', onclick: () => { CS.view[it.id] = 1; keep(); } }, icon('edit'), 'Edit the text')),
+      h('div', { class:'lbl-s cfh' }, 'How it reads in search and in answers'),
+      h('div', { class:'pbcol cseo' }, field('title', 'Title', 60), field('desc', 'Description', 160, true))];
+  }
+
+  /* ---------- a new piece: what it should answer and what kind it is; Gandalf researches the brief ---------- */
+  function newContent() {
+    const f = { q:'', type:'Guide' }, TYPES = ['Guide', 'Comparison', 'FAQ', 'Blog'];
+    const q = h('textarea', { class:'pin', rows:3, maxlength:140, placeholder:'Which running shoe is right for a first marathon?', oninput: e => { f.q = e.target.value; sync(); } });
+    const chips = h('div', { class:'cchips', role:'group', 'aria-label':'Kind of piece' }, ...TYPES.map(t => h('button', { type:'button', class:'chipb', 'aria-pressed': String(t === f.type), onclick: e => { f.type = t; chips.querySelectorAll('.chipb').forEach(b => b.setAttribute('aria-pressed', String(b.textContent === t))); } }, t)));
+    const gaps = VIS.topicsNow(null).filter(x => x.status !== 'Leading').sort((a, b) => a.gap - b.gap).slice(0, 6);
+    const helper = h('div', { class:'sheethelp' }, h('span', { class:'lbl-s' }, 'Start from a topic where Nike is close behind the leader.'),
+      UI.menu(h('button', { type:'button', class:'ctl sm' }, icon('visibility'), 'Pick a topic', icon('chevron-down')), gaps.map(x => ({ label: x.tp.name, sub: (x.gap * 100).toFixed(1) + ' pts behind ' + VIS.BRANDS[x.leader].name, on: () => { f.q = x.tp.name; q.value = f.q; sync(); } }))));
+    const create = h('button', { type:'button', class:'ctl pri', onclick: () => { if (!f.q.trim()) { q.focus(); return; }
+      const it = { id: slug(f.q) + '-' + Date.now().toString(36).slice(-4), title: f.q.trim(), type: f.type, stage:'Brief', updated:'just now', from:'You' };
+      items.unshift(it); openPanel(false); go('#content/' + it.id); } }, icon('gandalf'), 'Research the brief');
+    const status = h('span', { class:'lbl-s' });
+    const sync = () => { status.textContent = f.q.trim() ? 'Gandalf reads what ranks now and drafts the brief.' : 'Say what it should answer.'; };
+    sync();
+    openSheet({ title:'New content', sub:'It starts as a brief in the pipeline', foot: h('div', { class:'sheetfoot' }, status, h('span', { class:'sp' }), h('button', { type:'button', class:'ctl ghost', onclick: () => openPanel(false) }, 'Cancel'), create),
+      body: [helper, h('section', { class:'pstep' }, h('div', { class:'pfield' }, h('div', { class:'pfl' }, h('label', {}, 'What should it answer?')), q, h('div', { class:'pfh' }, 'The question shoppers ask, in their words. It becomes the title; you can change it later.')),
+        h('div', { class:'pfield' }, h('div', { class:'pfl' }, h('label', {}, 'Kind')), chips))] });
   }
 
   /* ---------- briefs from other pages ---------- */
@@ -6058,7 +6256,7 @@ VIEWS.content = (() => {
       ideas: [['What is waiting on review?', 'In review', plural(count('In review'), 'piece'), 'content'], ['Outline the oldest brief', 'Outline a brief', plural(count('Brief'), 'brief'), 'edit'], ['Which topics need a brief?', 'Find gaps', 'From Visibility', 'visibility']] };
   }
   function dek() { const r = count('In review'); return ['Pages that answer the questions assistants are asked about Nike, from brief to published. ', r ? h('b', {}, plural(r, 'piece waits', 'pieces wait') + ' on review') : h('b', {}, 'Nothing waits on review'), '.']; }
-  function tools() { return SUB && items.find(i => i.id === SUB) ? [h('button', { type:'button', class:'ctl ghost', onclick: () => go('#content') }, icon('arrow-left'), 'All content')] : []; }
+  function tools() { return SUB && items.find(i => i.id === SUB) ? [h('button', { type:'button', class:'ctl ghost', onclick: () => go('#content') }, icon('arrow-left'), 'All content')] : [h('button', { type:'button', class:'ctl', onclick: () => newContent() }, icon('plus'), 'New content')]; }
   return { title:'Content', dek, tools, render, signals, starters, plan, receive, withdraw };
 })();
 
