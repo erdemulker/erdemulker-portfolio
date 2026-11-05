@@ -297,10 +297,10 @@
   .pt-n{margin-top:18px;font-size:14px;font-weight:300;color:var(--s600);line-height:1.6;max-width:44ch}
 
   /* testimonials */
-  .tm{display:grid;grid-template-columns:1fr;gap:var(--gap)}
+  .tm{display:grid;grid-template-columns:1fr;column-gap:var(--gap);row-gap:28px}
   @media(min-width:820px){.tm{grid-template-columns:repeat(2,1fr)}}
-  .tq{margin:0;border:1px solid var(--s200);border-radius:12px;padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px}
-  .tq blockquote{font-size:17px;font-weight:300;line-height:1.6;color:var(--s700);letter-spacing:var(--tk-1)}
+  .tq{margin:0;border-top:1px solid var(--s200);padding:24px 0 8px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+  .tq blockquote{font-size:clamp(18px,1.6vw,21px);font-weight:400;line-height:1.45;color:var(--s900);letter-spacing:var(--tk-1)}
   .tq[data-pending]{border-style:dashed;border-color:var(--s300)}
   .tq[data-pending] blockquote{color:var(--s500)}
   .tq figcaption{display:flex;align-items:center;gap:14px}
@@ -369,7 +369,7 @@
       <span class="ln"><i>I design software where</i></span>
       <span class="ln"><i>a wrong default costs <em>money</em>.</i></span>
     </h1>
-    <p class="hsub rv">Senior Product Designer for B2B SaaS, in monetization and martech. Most of my work is internal tooling, configuration flows and dashboards: the screens where a support agent, an account manager or a publisher decides something with money attached. I am usually brought in before anyone agrees what the thing is. I work AI-native: for new products the working prototype is the design file. Currently in ad tech, on rewards infrastructure.</p>
+    <p class="hsub rv">Senior Product Designer for B2B SaaS, in monetization and martech. I design the screens where a support agent, an account manager or a publisher decides something with money attached, usually before anyone agrees what the thing is. On new products I work AI-native: the working prototype is the design file.</p>
     <p class="hmeta rv">
       <span class="live"></span><span>Open to senior and lead roles</span>
       <span class="dot dot-wrap"></span><span>Hamburg, working remotely</span>
@@ -377,8 +377,8 @@
     </p>
     <ul class="proof rv" aria-label="Selected results">
       <li><a href="/work/support/" data-case="0"><b>56%</b><span>less support time per investigation</span></a></li>
-      <li><a href="/work/configuration/" data-case="1"><b>7 → 5 weeks</b><span>deal to release for new publishers</span></a></li>
-      <li><a href="/work/design-system/" data-case="3"><b>3–4h → &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
+      <li><a href="/work/configuration/" data-case="1"><b>7 to 5 weeks</b><span>deal to release for new publishers</span></a></li>
+      <li><a href="/work/design-system/" data-case="3"><b>3-4h to &lt;1h</b><span>weekly frontend QA after the design system rebuild</span></a></li>
     </ul>
   </div>
 
@@ -478,7 +478,7 @@
   <div class="wrap grid ab">
     <div class="l">
       <div class="shd rv"><span class="lbl">About</span></div>
-      <p class="lede rv">I am most useful before the interface is obvious: when the data model is unfinished, ownership is split between teams, and <em>somebody has to make a decision the rest can build on.</em></p>
+      <p class="lede rv">I am most useful before the interface is obvious: when the data model is unfinished, ownership is split between teams, and somebody has to make a decision the rest can build on.</p>
       <p class="b rv">In practice that means reading the data model before I open a design file, writing each tradeoff down before it ships, and going back after release to check which assumptions held. The screens come last.</p>
       <p class="rv" style="margin-top:26px">
         <a href="about.html" class="p-go" style="font-size:15px">More about how I work
@@ -503,23 +503,23 @@
   <div class="wrap">
     <div class="shd rv">
       <span class="lbl">Worked with</span>
-      <h2>What the people I worked with say.</h2>
+      <h2>What the people I worked with say</h2>
     </div>
     <div class="tm">
       <figure class="tq rv">
-        <blockquote>Before Erdem joined my team, I had issues working with designers: messy Figma files, missed states, and a communication gap between teams. Erdem was a brilliant designer, and a friend, who did not just push designs to development but gathered everyone's input to mature the solution together. During handoff, every question we had was either resolved or got real attention from him. He turned our design to release cycle from a challenge into something to enjoy.</blockquote>
+        <blockquote>During handoff, every question we had was either resolved or got real attention from him.</blockquote>
         <figcaption><span class="av"><img src="images/people/mansur-muaz-ekici.jpg" alt="" loading="lazy" onerror="this.remove()"><i>ME</i></span><span><b>Mansur Muaz Ekici</b><em>Senior Frontend Engineer, Insider</em></span></figcaption>
       </figure>
       <figure class="tq rv">
-        <blockquote>Erdem is that magnetic force that keeps cross functional teams with very different backgrounds engaged and together. He creates a space where laughter meets rigour. He has a unique approach: he executes meticulous design work and then delivers it with a good portion of dad jokes. As we worked together, he inspired me in my own leadership journey. It was a blast to work with him.</blockquote>
+        <blockquote>He executes meticulous design work and then delivers it with a good portion of dad jokes.</blockquote>
         <figcaption><span class="av"><img src="images/people/duygu-ozgul.jpg" alt="" loading="lazy" onerror="this.remove()"><i>DÖ</i></span><span><b>Duygu Özgül</b><em>Design Lead, Insider</em></span></figcaption>
       </figure>
       <figure class="tq rv">
-        <blockquote>In a fast paced company with a lot of tech debt, Erdem always found a workaround. Sometimes an alternative design, sometimes more detail on how our product is structured. What he does best is provide solutions rather than become a bottleneck when times are hard. I really enjoy his approach as a proactive problem solver.</blockquote>
+        <blockquote>What he does best is provide solutions rather than become a bottleneck when times are hard.</blockquote>
         <figcaption><span class="av"><img src="images/people/puru.jpg" alt="" loading="lazy" onerror="this.remove()"><i>P</i></span><span><b>Puru</b><em>Senior Frontend Engineer, adjoe</em></span></figcaption>
       </figure>
       <figure class="tq rv">
-        <blockquote>Getir has a speed culture, and design has to respond to every requirement at once: C-level requests, legal pushes, fast growing market demands. Under all that pressure, Erdem was one of the solution makers in my team. I relied on him for multiple projects and crises, trusting him to take a brief from me and finalise it end to end.</blockquote>
+        <blockquote>I relied on him for multiple projects and crises, trusting him to take a brief from me and finalise it end to end.</blockquote>
         <figcaption><span class="av"><img src="images/people/umut-can-yurtalan.jpg" alt="" loading="lazy" onerror="this.remove()"><i>UY</i></span><span><b>Umut Can Yurtalan</b><em>Head of Design, Getir</em></span></figcaption>
       </figure>
     </div>
@@ -529,7 +529,7 @@
 <section class="sec ct" id="contact" style="padding-bottom:0">
   <div class="wrap">
     <div class="shd rv"><span class="lbl">Contact</span></div>
-    <h2 class="rv">If the problem is genuinely complicated, I am <em>interested</em>.</h2>
+    <h2 class="rv">If the problem is complicated, I am interested.</h2>
     <p class="rv">Open to senior and lead roles in B2B and platform teams. Happy to talk through any of the work above in detail.</p>
     <div class="ct-a rv">
       <a href="mailto:hello@erdemulker.com" class="btn">hello@erdemulker.com
@@ -582,13 +582,7 @@
     <section class="d-b"><h3>Context</h3><p>A reward can go missing at install attribution, the postback, milestone progress, a promotion or a fraud rule. Account managers traced it in a tool built before boosters, promoted offers and cashback, so it had no way to show any of them.</p><figure class="d-fig beforefig"><img src="images/case-01/old-table.png" alt="The previous investigation table, with limited columns and no state information" loading="lazy" onerror="figFail(this)"></figure><p class="d-cap"><b>Before.</b> The old table. A timed event, a purchase and a bonus all read the same, and nothing said why a payout was withheld.</p></section>
     <section class="d-b"><h3>Tension</h3><p>I was asked to redesign the screen. The screen was the symptom. Nobody had ever defined what a reward event was, so each new mechanic landed as one more exception in the table. High volume regions were clearing over a hundred tickets a shift, and every slow answer made a partner doubt the payout logic itself.</p></section>
     <section class="d-b"><h3>Insight</h3><p>I shadowed eight investigations. Every agent had the data. Each had built a private method for turning rows into an explanation a partner would accept, and no two matched. So I specified the event model first and let the table follow from it.</p><p class="d-pull">Five mechanics drawn as one list. Naming them was most of the design work.</p></section>
-    <section class="d-b"><h3>Decisions, and what each one cost</h3><div class="dcs">
-      <div class="dc"><div class="dc-h">Model the event, or redesign the table</div>
-        <div class="dc-b">
-          <div class="dc-c"><u>What I chose</u>One row grammar for every mechanic: base, promotion, final, state, timestamp.</div>
-          <div class="dc-c rj"><u>What it cost</u>Slower, and data engineering had to expose the event store differently. It is also why cashback and repeatable bonuses later shipped as additions, with no rebuild.</div>
-        </div>
-      </div>
+    <section class="d-b"><h3>The other decisions, and what each cost</h3><div class="dcs">
       <div class="dc"><div class="dc-h">Manual rewards always on, or gated by state</div>
         <div class="dc-b">
           <div class="dc-c"><u>What I chose</u>Offered only where the milestone state allows, and locked while sending.</div>
@@ -725,6 +719,17 @@
     letter-spacing:var(--tk-lbl);color:var(--s500);margin-bottom:8px}
   .dc-c.rj{background:var(--s100)}
 
+  /* In the decisions list: ruled rows, the question over two columns, no boxes.
+     The decision that mattered already sits at the top of the case. */
+  .dcs{gap:0}
+  .dcs .dc{border:0;border-top:1px solid var(--s200);border-radius:0;padding:22px 0 24px}
+  .dcs .dc:last-child{border-bottom:1px solid var(--s200)}
+  .dcs .dc-h{padding:0 0 14px;border:0;font-size:17px}
+  .dcs .dc-b{gap:12px 40px}
+  .dcs .dc-c{padding:0;font-size:15px}
+  @media(min-width:700px){.dcs .dc-c+.dc-c{border-left:0}}
+  .dcs .dc-c.rj{background:none}
+
   /* system diagram, plain and structural.
      Dividers are grid gaps showing the container background, so a row that
      does not fill every column can never leave a hanging rule. */
@@ -760,7 +765,8 @@
     border:1px solid var(--s300);font-size:12px;font-weight:500;color:var(--s600);display:flex;align-items:center;justify-content:center}
   .stp li b{display:block;font-size:16.5px;font-weight:500;color:var(--s900);letter-spacing:var(--tk-1);margin-bottom:5px}
 
-  .ld{background:var(--s100);border:1px solid var(--s200);border-radius:10px;padding:24px 26px}
+  /* Leadership reads as a ruled list, like the decisions above it */
+  .ld{border-top:1px solid var(--s200);border-bottom:1px solid var(--s200);padding:20px 0}
   .ld li{border-top-color:var(--s200)}
   .note{font-size:13px;font-weight:300;color:var(--s500);margin-top:16px;line-height:1.65}
 
@@ -1675,7 +1681,7 @@ function renderCase(c){
     }`)}
     ${c.tension?block('Tension',`<p>${c.tension}</p>`):''}
     ${block('Insight',`<p>${c.insight}</p>${c.pull?`<p class="d-pull">${c.pull}</p>`:''}`)}
-    ${c.decisions?block('Decisions, and what each one cost',`<div class="dcs">${c.decisions.map(d=>`
+    ${c.decisions&&c.decisions.length>1?block(d0?'The other decisions, and what each cost':'Decisions, and what each one cost',`<div class="dcs">${(d0?c.decisions.slice(1):c.decisions).map(d=>`
       <div class="dc"><div class="dc-h">${d[0]}</div>
         <div class="dc-b">
           <div class="dc-c"><u>What I chose</u>${d[1]}</div>
